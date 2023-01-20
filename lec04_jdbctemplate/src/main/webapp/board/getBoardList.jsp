@@ -38,7 +38,7 @@ body {
 }
 
 header {
-	background-color: #FFFAFA;
+	background-color: #FFF;
 }
 
 nav {
@@ -90,9 +90,12 @@ nav {
 					</div>
 
 					<div class="col mt-3 text-end r_menu">
-						<a href="#">좋아요</a> <span class="mx-4"> <a
-							href="getUserList.do">마이페이지</a></span> <span>
+						<a href="#">좋아요</a> <span class="mx-4">
+						 <a href="getUserList.do">마이페이지</a></span> 
+						   <span class="mx-2">${ sessionScope.user.getName() }님</span>
 					</div>
+					
+					
 				</div>
 			</div>
 		</header>

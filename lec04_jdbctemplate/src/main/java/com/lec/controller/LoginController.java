@@ -18,6 +18,7 @@ public class LoginController {
 	@Autowired
 	UserServiceImpl userService;
 	
+	
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login(UserVO vo) {
 		return "login/login.jsp";
@@ -26,7 +27,7 @@ public class LoginController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public ModelAndView login(UserVO vo, ModelAndView mav, HttpSession sess) {
 		UserVO user = userService.getUser(vo);
-		mav.setViewName("user/getUserInfo.jsp");
+		mav.setViewName("board/getBoardList.jsp");
 		sess.setAttribute("user", user);
 		return mav.addObject("user", user);
 	}	

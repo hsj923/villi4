@@ -11,50 +11,177 @@
 		crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
+	
+	<style>
+	@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+body {
+	font-family: 'Pretendard-Regular';
+}
+	
+	</style>
+	
+	<!-- 비밀번호 확인 스크립트 -->
+	<script type="text/javascript">
+		
+	function passConfirm(){
+		
+		var password = document.getElementById("password");  // 비밀번호
+		var passwordConfirm = document.getElementById("passwordCheck"); //비밀번호 확인값
+		var confirmMsg = document.getElementById('confirmMsg'); //확인메세지
+		var correctColor = "#23dbc9"; // 일치할 때 출력되는 색
+		var wrongColor = "#F0614B";    // 틀렸을 때 출력되는 색
+		
+		if(password.value == passwordConfirm.value){
+			confirmMsg.style.color = correctColor; 
+			confirmMsg.innerHTML = "비밀번호가 일치합니다";
+			$('#passwordCheck').attr("check_pw", "success");
+			
+		}else{
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML = "비밀번호가 일치하지 않습니다.";
+		}
+	};
+		
+		
+	</script>
+
+	<script type="text/javascript">
+ 
+		function checkResult(){
+	 
+	 if($('#passwordCheck').attr("check_pw") == "fail"){
+		 alert("비밀번호를 확인해주시기 바랍니다.");
+		 $('#passwordCheck').focus();
+		 return false;
+	 }
+ }
+
+
+</script>
+<style type="text/css">
+
+/* Header */
+
+header {
+	background-color: #FFF;
+}
+
+.r_menu a{
+text-decoration: none;
+color:black;
+}
+
+.r_menu a:hover{
+color:#23dbc9;
+}
+
+.btn_radius{
+border-radius:1.5em;
+
+}
+
+</style>
 </head>
 <body>
 
-	
-	<div class="container" align="center">
-		<div class="mt-4 p-5 bg-success text-white rounded">
-			<h3>사용자 수정하기</h3>
-			<p>상세설명.................</p>
+	<!-- ===========header================ -->
+	<header class="border-bottom border-white">
+		<div class="container">
+			<div class="row align-items-start p-3">
+				<div class="col mt-3">
+					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
+				</div>
+				<div class="col" align="center">
+					<a href="getBoardList.do"><img src="resources/images/test.png"
+						alt="logo" width=70px height=70px></a>
+				</div>
+
+				<div class="col mt-3 text-end r_menu">
+					<span class= mx-2><a href="#">좋아요</a> </span>
+					<span class= mx-1><a href="mypage.jsp">마이페이지</a></span>
+					<span class="mx-2">${ sessionScope.user.getName() }님</span>
+				</div>
+				
+			</div>
 		</div>
-	</div>
+	</header>
+	<!------------------ 본문 --------------------->
 	
-	<div class="container col-3 mt-4">
-		<form action="updateUser.do" method="post">
+	<div class="container col-5 mt-4">
+	<h4>프로필 수정</h4>
+	<hr/>
+		<form role="form" action="updateUser.do" method="post" onSubmit="return checkResult();" >
+			
+			
 			<input type="hidden" name="id" value="${user.getId()}">
-			<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
+				<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
 			<input type="hidden" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 			<input type="hidden" name="searchCategory" value="${searchVO.getSearchCategory()}">
 			<input type="hidden" name="searchType" value="${searchVO.getSearchType()}">
 			<input type="hidden" name="searchWord" value="${searchVO.getSearchWord()}">
-			
-			<div class="col-2 input-group mb-3">
-				<div class="input-group-text"><i class="fas fa-user"></i></div>
+		 
+		 
+		 <!-- 프로필 사진 수정하는 거 만들기? -->
+		<!--  <label for="inputProfile">프로필 이미지</label>
+		  <div class="col-2 input-group mb-3 mt-2">
+		 
+			 </div -->
+		  <!--  아이디 입력칸, 변경불가  : 아마도 이메일로 바뀜  -->
+			<label for="inputEmail">이메일주소</label>
+			    
+			<div class="col-2 input-group mb-3 mt-2" >
 				<input type="text" name="id" class="form-control" value="${ user.getId() }" disabled>
 			</div>
-			<div class="col-2 input-group mb-3">
-				<div class="input-group-text"><i class="fas fa-address-book"></i></div>
-				<input type="password" name="password" class="form-control" value="${ user.getPassword() }" disbled>
-			</div>
-			<div class="col-2 input-group mb-3">
-				<div class="input-group-text"><i class="fas fa-address-book"></i></div>
+
+			<!-- 이름(닉네임) 변경  --> 
+			<label for="inputName">닉네임</label>
+			
+			<div class="col-2 input-group mb-3 mt-2">
 				<input type="text" name="name" class="form-control" value="${ user.getName() }">
 			</div>
-			<div class="col-2 mb-3 form-check start-0">
+			
+			
+			<!--  비밀번호 변경 1 -->
+			<label for="inputPassword">비밀번호</label>
+			
+			<div class="col-2 input-group mb-3 mt-2">
+				<input type="password" name="password"  id="password" class="form-control " placeholder="비밀번호" required >
+			</div>
+			
+			<!--  비밀번호 변경 2 -->
+			<label for="inputPassword">비밀번호 확인</label>
+			
+			<div class="col-2 input-group mb-3 mt-2">
+				<input type="password"  id="passwordCheck" class="form-control" placeholder="비밀번호 확인" onkeyup="passConfirm();" check_pw="fail" required >
+			</div>
+			
+			<span id="confirmMsg"></span>
+			
+			
+		<!--  <div class="col-2 mb-3 form-check start-0">
 			    <input type="checkbox" class="form-check-input" name="role" ${ user.getRole().toUpperCase() == "ADMIN" ? "checked" : "" }>
 			    <label class="form-check-label" for="role">Administrator</label>
 			</div>
-			
-			<div class="container" align="center">
-				<a href="logout.do" class="btn btn-primary mt-3">logout</a>
-				<input type="submit" class="btn btn-primary mt-3" value="사용자수정"/>
-				<a href="deleteUser.do?id=${user.getId()}" class="btn btn-primary mt-3">사용자삭제</a>
-				<a href="getUserList.do" class="btn btn-primary mt-3">사용자목록</a>			
+		  -->
+		  
+			<div class="container btn_box mt-5" align="center">
+				
+				<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기" onClick="location.href='getUserList.do'"/>
+				<a href="logout.do" class="btn btn-dark mx-4 btn_radius">로그아웃</a>
+						
 			</div>	
-		</form>			
+			
+		</form>	
+		
+				
 	</div>	
 </body>
-</html>		
+</html>
