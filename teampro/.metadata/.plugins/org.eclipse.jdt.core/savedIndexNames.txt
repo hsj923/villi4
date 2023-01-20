@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+D:\팀프로젝트 소스\lec04_jdbc\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
