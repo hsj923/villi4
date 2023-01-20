@@ -66,13 +66,48 @@ public class BoardController {
 	
 	@RequestMapping("*/insertBoard.do")
 	public String insertBoard(BoardVO board) throws IOException {
-		MultipartFile uploadFile = board.getUploadFile1();
-		if (!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			uploadFile.transferTo(new File(uploadFolder + fileName));
+		MultipartFile uploadFile1 = board.getUploadFile1();
+		if (!uploadFile1.isEmpty()) {
+			String fileName = uploadFile1.getOriginalFilename();
+			uploadFile1.transferTo(new File(uploadFolder + fileName));
 			board.setFileName1(fileName);
 		}	
+		MultipartFile uploadFile2 = board.getUploadFile2();
+		if (!uploadFile2.isEmpty()) {
+			String fileName = uploadFile2.getOriginalFilename();
+			uploadFile2.transferTo(new File(uploadFolder + fileName));
+			board.setFileName2(fileName);
+		}	
+		MultipartFile uploadFile3 = board.getUploadFile3();
+		if (!uploadFile3.isEmpty()) {
+			String fileName = uploadFile3.getOriginalFilename();
+			uploadFile3.transferTo(new File(uploadFolder + fileName));
+			board.setFileName3(fileName);
+		}	
 		boardService.insertBoard(board);
+		return "redirect:/getBoardList.do";
+	}	
+	@RequestMapping("*/insertServiceBoard.do")
+	public String insertServiceBoard(BoardVO board) throws IOException {
+		MultipartFile uploadFile1 = board.getUploadFile1();
+		if (!uploadFile1.isEmpty()) {
+			String fileName = uploadFile1.getOriginalFilename();
+			uploadFile1.transferTo(new File(uploadFolder + fileName));
+			board.setFileName1(fileName);
+		}	
+		MultipartFile uploadFile2 = board.getUploadFile2();
+		if (!uploadFile2.isEmpty()) {
+			String fileName = uploadFile2.getOriginalFilename();
+			uploadFile2.transferTo(new File(uploadFolder + fileName));
+			board.setFileName2(fileName);
+		}		
+		MultipartFile uploadFile3 = board.getUploadFile3();
+		if (!uploadFile3.isEmpty()) {
+			String fileName = uploadFile3.getOriginalFilename();
+			uploadFile3.transferTo(new File(uploadFolder + fileName));
+			board.setFileName3(fileName);
+		}		
+		boardService.insertServiceBoard(board);
 		return "redirect:/getBoardList.do";
 	}	
 	

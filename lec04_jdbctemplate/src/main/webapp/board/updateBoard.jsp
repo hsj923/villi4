@@ -79,10 +79,8 @@ nav {
 												aria-expanded="false">글작성</button>
 											<ul class="dropdown-menu dropdown-menu-dark"
 												aria-labelledby="dropdownMenuButton2">
-												<li><a class="dropdown-item active" href="board/insertBoard.jsp">상품</a></li>
+												<li><a class="dropdown-item" href="board/insertBoard.jsp">상품</a></li>
 												<li><a class="dropdown-item" href="board_sinsert.jsp">서비스</a></li>
-												<li><a class="dropdown-item"
-													href="../dongnae/dongnae_main.jsp">동네생활</a></li>
 											</ul>
 										</div>
 									<li class="nav-item"><a class="nav-link"
@@ -148,10 +146,10 @@ nav {
 						data-bs-slide-to="1" aria-label="Slide 2"></button>
 					<button type="button" data-bs-target="#carouselExampleIndicators"
 						data-bs-slide-to="2" aria-label="Slide 3"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide-to="3" aria-label="Slide 4"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide-to="4" aria-label="Slide 5"></button>
+<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+<!-- 						data-bs-slide-to="3" aria-label="Slide 4"></button> -->
+<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+<!-- 						data-bs-slide-to="4" aria-label="Slide 5"></button> -->
 				</div>
 
 
@@ -203,32 +201,34 @@ nav {
 
 
 
-					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg">
-						<c:if test="${ !empty  board.fileName4}">
-							<img src="resources/images/${ board.fileName4}"
-								class="d-block w-75 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-						<c:if test="${ empty  board.fileName4}">
-							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-					</div>
+<!-- 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg"> -->
+<%-- 						<c:if test="${ !empty  board.fileName4}"> --%>
+<%-- 							<img src="resources/images/${ board.fileName4}" --%>
+<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
+<!-- 								alt="img"> -->
+<%-- 						</c:if> --%>
+<%-- 						<c:if test="${ empty  board.fileName4}"> --%>
+<!-- 							<img src="resources/images/noimg.png" -->
+<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
+<!-- 								alt="img"> -->
+<%-- 						</c:if> --%>
+<!-- 					</div> -->
 
 
-					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg">
-						<c:if test="${ !empty  board.fileName5}">
-							<img src="resources/images/${ board.fileName5}"
-								class="d-block w-75 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-						<c:if test="${ empty  board.fileName5}">
-							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-					</div>
+<!-- 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg"> -->
+<%-- 						<c:if test="${ !empty  board.fileName5}"> --%>
+<%-- 							<img src="resources/images/${ board.fileName5}" --%>
+<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
+<!-- 								alt="img"> -->
+<%-- 						</c:if> --%>
+<%-- 						<c:if test="${ empty  board.fileName5}"> --%>
+<!-- 							<img src="resources/images/noimg.png" -->
+<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
+<!-- 								alt="img"> -->
+<%-- 						</c:if> --%>
+<!-- 					</div> -->
+
+
 				</div>
 
 			</div>

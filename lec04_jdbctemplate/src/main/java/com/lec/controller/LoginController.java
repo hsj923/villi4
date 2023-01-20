@@ -27,7 +27,7 @@ public class LoginController {
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public ModelAndView login(UserVO vo, ModelAndView mav, HttpSession sess) {
 		UserVO user = userService.getUser(vo);
-		mav.setViewName("board/getBoardList.jsp");
+		mav.setViewName("getBoardList.do");
 		sess.setAttribute("user", user);
 		return mav.addObject("user", user);
 	}	

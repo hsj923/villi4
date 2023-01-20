@@ -80,16 +80,14 @@ color:#23dbc9
 					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
 				</div>
 				<div class="col" align="center">
-					<a href="getBoardList.do"><img src="resources/images/test.png"
+					<a href="getBoardList.do"><img src="../resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
 					<span class= mx-2><a href="#">좋아요</a> </span>
 					<span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
-					<c:forEach  var="user" items="${ userList }">	
-						<span class="mx-2">${ user.getName() }님</span>
-					</c:forEach>
+					<span class="mx-2">${ sessionScope.user.getName() }님</span>
 					
 				</div>
 			</div>
@@ -101,12 +99,10 @@ color:#23dbc9
       <img src="resources/images/logo.png" class="rounded-circle" id="admin_img" alt="" width="100px" height="100px">
       </div>
       <div class="container mt-3" id="mem_info">
-       <%--  <h3>${sessionScope.user.getName()}님</h3> --%>
+      <h3>${sessionScope.user.getName()}님</h3>
   
   
-  		<c:forEach  var="user" items="${ userList }">
-					<h3>${ user.getName() }</h3>
-		</c:forEach>		
+  			
 					
 					
         </div>
@@ -117,7 +113,7 @@ color:#23dbc9
       <div class="container mt-3" align="left">
         <ul class="list-group list-group-flush">			
   	     <a href="updateUser.do?id=${ user.getId() }" class="list-group-item">프로필 수정</a>
-         <a href="user/location.jsp" class="list-group-item">동네설정</a>
+         <a href="location.jsp" class="list-group-item">동네설정</a>
           <a href="#" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>
           <a href="#" class="list-group-item">내가 쓴 글 목록</a>
