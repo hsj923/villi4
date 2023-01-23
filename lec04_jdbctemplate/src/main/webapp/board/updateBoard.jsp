@@ -79,10 +79,8 @@ nav {
 												aria-expanded="false">글작성</button>
 											<ul class="dropdown-menu dropdown-menu-dark"
 												aria-labelledby="dropdownMenuButton2">
-												<li><a class="dropdown-item active" href="board/insertBoard.jsp">상품</a></li>
+												<li><a class="dropdown-item" href="board/insertBoard.jsp">상품</a></li>
 												<li><a class="dropdown-item" href="board_sinsert.jsp">서비스</a></li>
-												<li><a class="dropdown-item"
-													href="../dongnae/dongnae_main.jsp">동네생활</a></li>
 											</ul>
 										</div>
 									<li class="nav-item"><a class="nav-link"
@@ -148,10 +146,10 @@ nav {
 						data-bs-slide-to="1" aria-label="Slide 2"></button>
 					<button type="button" data-bs-target="#carouselExampleIndicators"
 						data-bs-slide-to="2" aria-label="Slide 3"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide-to="3" aria-label="Slide 4"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide-to="4" aria-label="Slide 5"></button>
+<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+<!-- 						data-bs-slide-to="3" aria-label="Slide 4"></button> -->
+<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+<!-- 						data-bs-slide-to="4" aria-label="Slide 5"></button> -->
 				</div>
 
 
@@ -203,32 +201,34 @@ nav {
 
 
 
-					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg">
-						<c:if test="${ !empty  board.fileName4}">
-							<img src="resources/images/${ board.fileName4}"
-								class="d-block w-75 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-						<c:if test="${ empty  board.fileName4}">
-							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-					</div>
+<!-- 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg"> -->
+<%-- 						<c:if test="${ !empty  board.fileName4}"> --%>
+<%-- 							<img src="resources/images/${ board.fileName4}" --%>
+<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
+<!-- 								alt="img"> -->
+<%-- 						</c:if> --%>
+<%-- 						<c:if test="${ empty  board.fileName4}"> --%>
+<!-- 							<img src="resources/images/noimg.png" -->
+<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
+<!-- 								alt="img"> -->
+<%-- 						</c:if> --%>
+<!-- 					</div> -->
 
 
-					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg">
-						<c:if test="${ !empty  board.fileName5}">
-							<img src="resources/images/${ board.fileName5}"
-								class="d-block w-75 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-						<c:if test="${ empty  board.fileName5}">
-							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-					</div>
+<!-- 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg"> -->
+<%-- 						<c:if test="${ !empty  board.fileName5}"> --%>
+<%-- 							<img src="resources/images/${ board.fileName5}" --%>
+<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
+<!-- 								alt="img"> -->
+<%-- 						</c:if> --%>
+<%-- 						<c:if test="${ empty  board.fileName5}"> --%>
+<!-- 							<img src="resources/images/noimg.png" -->
+<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
+<!-- 								alt="img"> -->
+<%-- 						</c:if> --%>
+<!-- 					</div> -->
+
+
 				</div>
 
 			</div>
@@ -256,29 +256,24 @@ nav {
 						<p class="fs-6 fst-italic">${ board.cate2 }·${board.regDate}</p> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ board.cnt }</p></li>
-					<li class="list-group-item text-start"><a
-						href="report/report_insert.jsp" class="btn btn-danger">이 게시글
-							신고하기</a></li>
+					<li class="list-group-item text-start"><a href="report/report_insert.jsp" class="btn btn-danger rounded-pill">이 게시글 신고하기</a></li>
 				</ul>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-							<span class="fs-4 mx-3"><i
-								class="bi bi-heart-fill text-danger"> </i></span> <span class="fs-5">${ board.price }₩</span>
+							<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span> <span class="fs-5">${ board.price }₩</span>
 						</div>
 						<div class="col-8 text-end">
-							<a href="#" class="btn boarder border-dark fs-4 fw-bold">채팅하기</a>
+							<a href="#" class="btn btn-dark ps-6 rounded-pill">채팅하기</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</form>
 		<div class="container" align="center">
-			<a href="logout.do" class="btn btn-primary my-3">logout</a> <input
-				type="submit" class="btn btn-primary my-3" value="게시글수정" /> <a
-				href="deleteBoard.do?seq=${board.getSeq()}"
-				class="btn btn-primary my-3">게시글삭제</a> <a href="getBoardList.do"
-				class="btn btn-primary my-3">게시글목록</a>
+			<input type="submit" class="btn btn-dark my-3 rounded-pill" value="게시글수정" /> 
+			<a href="deleteBoard.do?seq=${board.getSeq()}" class="btn btn-dark my-3 rounded-pill">게시글삭제</a> 
+			<a href="getBoardList.do" class="btn btn-dark my-3 rounded-pill">게시글목록</a>
 		</div>
 	</div>
 	<!-- 삭제시 confirm -->
@@ -355,7 +350,7 @@ nav {
 						src="resources/images/img-trust-3.png">
 				</div>
 				<div class="col align-self-center">
-					<h2 class="home-main-title fw-bold">당신 근처에서 만나서 거래해요</h2>
+					<h2 class="home-main-title fw-bold">근처에서 만나서 거래해요</h2>
 					<p class="text-m">중고거래 사기의 대부분은 택배거래에서 발생한다는 사실, 알고 계셨나요? 빌리에서는
 						택배거래보다 직거래를 권장해요. 만나서 거래할 때는 누구나 찾기 쉽고 안전한 공공장소가 좋아요. 빌리에서 가까운 이웃과
 						따뜻하게 거래하세요.</p>

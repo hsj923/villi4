@@ -28,6 +28,7 @@ public class BoardDAO {
 	private String selectBySeq = "";
 	private String boardTotalRowCount = "";
 	private String insertBoard = "";
+	private String insertServiceBoard = "";
 	private String deleteBoard = "";
 	private String updateBoard = "";
 	private String updateCount = "";
@@ -41,6 +42,7 @@ public class BoardDAO {
 		selectBySeq              = environment.getProperty("selectBySeq");
 		boardTotalRowCount       = environment.getProperty("boardTotalRowCount");
 		insertBoard              = environment.getProperty("insertBoard");
+		insertServiceBoard       = environment.getProperty("insertServiceBoard");
 		deleteBoard              = environment.getProperty("deleteBoard");
 		updateBoard              = environment.getProperty("updateBoard");
 		updateCount              = environment.getProperty("updateCount");
@@ -96,6 +98,11 @@ public class BoardDAO {
 	
 	public BoardVO insertBoard(BoardVO board) {
 		jdbcTemplate.update(insertBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3(), board.getFileName4(), board.getFileName5());
+		return board;
+	}	
+	
+	public BoardVO insertServiceBoard(BoardVO board) {
+		jdbcTemplate.update(insertServiceBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3(), board.getFileName4(), board.getFileName5());
 		return board;
 	}	
 	

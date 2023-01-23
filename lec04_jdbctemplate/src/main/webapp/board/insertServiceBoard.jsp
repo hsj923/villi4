@@ -155,7 +155,7 @@ nav {
 
 	<!-- 카테고리 -->
 	<div class="container mt-3" align="center">
-		<form id="frm" action="insertBoard.do" method="post" onsubmit="return formCheck();" name="frm"
+		<form id="frm" action="insertServiceBoard.do" method="post" onsubmit="return formCheck();" name="frm"
 			enctype="multipart/form-data">
 			<div class="row">
 <!-- 				<div class="col"> -->

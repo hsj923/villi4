@@ -64,15 +64,11 @@ nav {
 	margin-bottom
 	:
 	1rem;
-	}
-	
-.card-mtext{
+}
 
- width=10px; 
- height=10px;
-	}
+.card-mtext {width =10px;height =10px;
 	
-
+}
 </style>
 </head>
 <body>
@@ -90,8 +86,9 @@ nav {
 					</div>
 
 					<div class="col mt-3 text-end r_menu">
-						<a href="#">좋아요</a> <span class="mx-4"> <a
-							href="getUserList.do">마이페이지</a></span> <span>
+					  <span class= mx-2><a href="#">좋아요</a> </span>
+					  <span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
+					  <span class="mx-2">${ sessionScope.user.getName() }님</span>	
 					</div>
 				</div>
 			</div>
@@ -167,12 +164,10 @@ nav {
 													aria-expanded="false">글작성</button>
 												<ul class="dropdown-menu dropdown-menu-dark"
 													aria-labelledby="dropdownMenuButton2">
-													<li><a class="dropdown-item active"
+													<li><a class="dropdown-item"
 														href="board/insertBoard.jsp">상품</a></li>
 													<li><a class="dropdown-item"
-														href="board/board_sinsert.jsp">서비스</a></li>
-													<li><a class="dropdown-item"
-														href="dongnae/dongnae_main.jsp">동네생활</a></li>
+														href="board/insertServiceBoard.jsp">서비스</a></li>
 												</ul>
 											</div>
 										<li class="nav-item"><a class="nav-link"
@@ -184,7 +179,7 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 											href="getVoteList.do">동네투표</a></li>
 										<li class="nav-item"><a class="nav-link"
-											href="getVoteList.do">동네투표</a></li>
+											href="getWantBoardList.do">빌리요청</a></li>
 									</ul>
 									<form action="getBoardList.do" method="post" id="boardForm">
 										<input type="hidden" id="curPage" name="curPage"
@@ -233,24 +228,54 @@ nav {
 				<c:forEach items="${boardList}" var="board">
 					<div class="col-12 col-md-6 col-lg-3 mt-5">
 						<div class="card">
-								<a href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
-										style="text-decoration: none"><img class="card-img-top"
+							<a href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
+								style="text-decoration: none"><img class="card-img-top"
 								src="resources/images/${ board.fileName1 }" alt="image"></a>
 							<div class="card-body">
-								<h6 class="card-title fw-bold">
-								 ${board.title} 
-								</h6>
+								<h6 class="card-title fw-bold">${board.title}</h6>
 								<p class="card-text">
-									<span class="card-text bg-success text-white fs-6">${board.status}</span>
-									${ board.price }원
+
+
+									<c:choose>
+										<c:when test="${board.status eq '대기중'}">
+											<span class="card-text bg-success text-white fs-6">${board.status}</span>
+										</c:when>
+										<c:when test="${board.status eq '예약중'}">
+											<span class="card-text bg-warning text-white fs-6">${board.status}</span>
+											</c:when>
+										<c:when test="${board.status eq '대여중'}">
+											<span class="card-text bg-danger text-white fs-6">${board.status}</span>
+											</c:when>
+									</c:choose>					
+									<c:if test="${ !empty  board.price}">
+										<span>${ board.price }원</span>
+									</c:if>
+									<c:if test="${ empty  board.price}">
+										<span>가격협의</span>
+									</c:if>
+
+
+									<%-- 									<span class="card-text bg-success text-white fs-6">${board.status}</span> --%>
+									<%-- 									${ board.price } --%>
 								</p>
 								<p class="card-text">대충위지자리</p>
-								<p class="card-mtext"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-</svg>  ${board.cnt}  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chat-square-dots" viewBox="0 0 16 16">
-  <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-  <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-</svg> 10</p>
+								<p class="card-mtext">
+									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+										fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path
+											d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+</svg>
+									${board.cnt}
+									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+										fill="currentColor" class="bi bi-chat-square-dots"
+										viewBox="0 0 16 16">
+  <path
+											d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+  <path
+											d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+</svg>
+									10
+								</p>
 							</div>
 						</div>
 					</div>

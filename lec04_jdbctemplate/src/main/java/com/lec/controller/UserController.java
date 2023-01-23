@@ -38,7 +38,7 @@ public class UserController {
 		List<UserVO> userList = userService.getUserList(searchVO);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("userList", userList);
-		return "user/getUserList.jsp";
+		return "user/mypage.jsp";
 	}
 	
 	@RequestMapping("*/insertUser.do")
