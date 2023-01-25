@@ -49,6 +49,8 @@ nav {
 	height: 600px;
 	object-fit: fill;
 }
+
+a { text-decoration:none }
 </style>
 <body>
 	<!-- ============search=============== -->
@@ -175,12 +177,12 @@ nav {
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName2}">
 							<img src="resources/images/${ board.fileName2 }"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName2}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
@@ -189,12 +191,12 @@ nav {
 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg">
 						<c:if test="${ !empty  board.fileName3}">
 							<img src="resources/images/${ board.fileName3 }"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName3}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
@@ -256,7 +258,7 @@ nav {
 						<p class="fs-6 fst-italic">${ board.cate2 }·${board.regDate}</p> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ board.cnt }</p></li>
-					<li class="list-group-item text-start"><a href="report/report_insert.jsp" class="btn btn-danger rounded-pill">이 게시글 신고하기</a></li>
+					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
 				</ul>
 				<div class="card-body">
 					<div class="row">
@@ -264,16 +266,16 @@ nav {
 							<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span> <span class="fs-5">${ board.price }₩</span>
 						</div>
 						<div class="col-8 text-end">
-							<a href="#" class="btn btn-dark ps-6 rounded-pill">채팅하기</a>
+							<a href="#" class="btn btn-dark ps-6 ">채팅하기</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</form>
-		<div class="container" align="center">
-			<input type="submit" class="btn btn-dark my-3 rounded-pill" value="게시글수정" /> 
-			<a href="deleteBoard.do?seq=${board.getSeq()}" class="btn btn-dark my-3 rounded-pill">게시글삭제</a> 
-			<a href="getBoardList.do" class="btn btn-dark my-3 rounded-pill">게시글목록</a>
+		<div class="container row-3" align="center">
+			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
+			<a href="deleteBoard.do?seq=${board.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
+			<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 		</div>
 	</div>
 	<!-- 삭제시 confirm -->

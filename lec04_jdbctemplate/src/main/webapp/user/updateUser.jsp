@@ -106,10 +106,9 @@ border-radius:1.5em;
 
 				<div class="col mt-3 text-end r_menu">
 					<span class= mx-2><a href="#">좋아요</a> </span>
-					<span class= mx-1><a href="mypage.jsp">마이페이지</a></span>
+					<span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
 					<span class="mx-2">${ sessionScope.user.getName() }님</span>
 				</div>
-				
 			</div>
 		</div>
 	</header>
@@ -122,18 +121,32 @@ border-radius:1.5em;
 			
 			
 			<input type="hidden" name="id" value="${user.getId()}">
-				<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
+			<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
 			<input type="hidden" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 			<input type="hidden" name="searchCategory" value="${searchVO.getSearchCategory()}">
 			<input type="hidden" name="searchType" value="${searchVO.getSearchType()}">
 			<input type="hidden" name="searchWord" value="${searchVO.getSearchWord()}">
 		 
 		 
-		 <!-- 프로필 사진 수정하는 거 만들기? -->
-		<!--  <label for="inputProfile">프로필 이미지</label>
-		  <div class="col-2 input-group mb-3 mt-2">
-		 
-			 </div -->
+		 <!-- 프로필 사진 수정 -->
+		 <label for="inputProfile">프로필 사진</label>
+		  <div class="col-2 input-group mb-3 mt-2"> 
+		  
+		  <!--!!!!! DB에 사용자 프로필 이미지 컬럼 넣어야 함   -->
+		 <%--  <c:if test="${ !empty  board.fileName5}">
+			<img src="resources/images/${ board.fileName5 }" class="d-block w-75 card-img-top embed-responsive-item" alt="img">
+		  </c:if>
+		  <c:if test="${ empty  board.fileName5}">
+			<img src="resources/images/noimg.png" class="d-block w-75 card-img-top embed-responsive-item" alt="img">
+		  </c:if>
+		  
+		  <input type="file" class="form-control" name="uploadFile5"
+					id="uploadFile5" aria-describedby="uploadFile" aria-label="Upload">
+		 --%>
+		  </div>
+		  
+			 
+			 
 		  <!--  아이디 입력칸, 변경불가  : 아마도 이메일로 바뀜  -->
 			<label for="inputEmail">이메일주소</label>
 			    
@@ -174,7 +187,7 @@ border-radius:1.5em;
 		  
 			<div class="container btn_box mt-5" align="center">
 				
-				<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기" onClick="location.href='getUserList.do'"/>
+				<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기" onClick="location.href='user/mypage.jsp'"/>
 				<a href="logout.do" class="btn btn-dark mx-4 btn_radius">로그아웃</a>
 						
 			</div>	
