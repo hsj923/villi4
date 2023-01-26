@@ -73,7 +73,7 @@ color:#23dbc9
 					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
 				</div>
 				<div class="col" align="center">
-					<a href="getBoardList.do"><img src="../resources/images/test.png"
+					<a href="../getBoardList.do"><img src="../resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 

@@ -24,22 +24,24 @@
 	crossorigin="anonymous"></script>
 
 <style>
-@font-face {
+   
+   @font-face {
 	font-family: 'Pretendard-Regular';
 	src:
 		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
 		format('woff');
 	font-weight: 400;
 	font-style: normal;
-}
-
+   }
 body {
 	font-family: 'Pretendard-Regular';
+}
+header {
+	background-color: #FFFAFA;
 }
 nav {
 	background-color: #FFFAFA;
 }
-
 .trust-image-01 {
 	background-image:
 		url(https://d1unjqcospf8gs.cloudfront.net/assets/home/trust/3x/img-trust-1-08564a68dc6a07f9f05a35b2308a288ace19158318c3412960a257b4ffa2d9f8.png);
@@ -48,92 +50,85 @@ nav {
 	height: 600px;
 	object-fit: fill;
 }
+a { text-decoration:none }
 </style>
 <body>
-			<!-- ============search=============== -->
-		<nav class="border-bottom border-dark sticky-top z-index-10">
-			<div class="container" align="center">
-				<div class="row p-3">
-					<div class="col">
+	<!-- ============search=============== -->
+	<nav class="border-bottom border-dark sticky-top z-index-10">
+		<div class="container" align="center">
+			<div class="row p-3">
+				<div class="col">
 
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<div class="container-fluid">
-								<a class="navbar-brand" href="getBoardList.do">Villi</a>
-								<button class="navbar-toggler" type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#navbarSupportedContent"
-									aria-controls="navbarSupportedContent" aria-expanded="false"
-									aria-label="Toggle navigation">
-									<span class="navbar-toggler-icon"></span>
-								</button>
-								<!--================ nav bar ===================-->
-								<div class="collapse navbar-collapse"
-									id="navbarSupportedContent">
-									<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-										<li class="nav-item">
-											<!-- ================글작성버튼============= -->
-											<div class="dropdown">
-												<button class="btn dropdown-toggle" type="button"
-													id="dropdownMenuButton2" data-bs-toggle="dropdown"
-													aria-expanded="false">글작성</button>
-												<ul class="dropdown-menu dropdown-menu-dark"
-													aria-labelledby="dropdownMenuButton2">
-													<li><a class="dropdown-item"
-														href="board/insertBoard.jsp">상품</a></li>
-													<li><a class="dropdown-item"
-														href="board/insertServiceBoard.jsp">서비스</a></li>
-												</ul>
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<div class="container-fluid">
+							<a class="navbar-brand" href="getBoardList.do">Villi</a>
+							<button class="navbar-toggler" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarSupportedContent"
+								aria-controls="navbarSupportedContent" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+
+							<!--================ nav bar ===================-->
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+									<li class="nav-item">
+										<!-- ================글작성버튼============= -->
+										<div class="dropdown">
+											<button class="btn dropdown-toggle" type="button"
+												id="dropdownMenuButton2" data-bs-toggle="dropdown"
+												aria-expanded="false">글작성</button>
+											<ul class="dropdown-menu dropdown-menu-dark"
+												aria-labelledby="dropdownMenuButton2">
+												<li><a class="dropdown-item" href="board/insertBoard.jsp">상품</a></li>
+												<li><a class="dropdown-item" href="board/insertServiceBoard.jsp">서비스</a></li>
+											</ul>
+										</div>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getQuestionList.do">우리동네질문</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getLostList.do">동네분실센터</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getMeetingList.do">동네모임</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="getVoteList.do">동네투표</a></li>
+								</ul>
+								<form action="getBoardList.do" method="post" id="boardForm">
+									<input type="hidden" id="curPage" name="curPage"
+										value="${searchVO.getCurPage()}"> <input type="hidden"
+										id="rowSizePerPage" name="rowSizePerPage"
+										value="${searchVO.getRowSizePerPage()}">
+									<div class="container">
+										<div class="row justify-content-md">
+											<div class="col-md-auto">
+												<select class="form-select" id="searchType"
+													name="searchType">
+													<option value="">검색</option>
+													<option value="title"
+														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
+													<option value="writer"
+														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
+													<option value="cate2"
+														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
+												</select>
 											</div>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getQuestionList.do">우리동네질문</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getLostList.do">동네분실센터</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getMeetingList.do">동네모임</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getVoteList.do">동네투표</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getDemandList.do">빌리요청</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
-									</ul>
-									<form action="getBoardList.do" method="post" id="boardForm">
-										<input type="hidden" id="curPage" name="curPage"
-											value="${searchVO.getCurPage()}"> <input
-											type="hidden" id="rowSizePerPage" name="rowSizePerPage"
-											value="${searchVO.getRowSizePerPage()}">
-										<div class="container">
-											<div class="row justify-content-md">
-												<div class="col-md-auto">
-
-													<select class="form-select" id="searchType"
-														name="searchType">
-														<option value="">검색</option>
-														<option value="title"
-															${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-														<option value="writer"
-															${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
-														<option value="cate2"
-															${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
-													</select>
-												</div>
-												<div class="col col-lg-6">
-													<input class="form-control" name="searchWord" type="text"
-														placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
-												</div>
-												<div class="col col-lg-2">
-													<button class="btn btn-outline-success" type="submit">Search</button>
-												</div>
+											<div class="col col-lg-6">
+												<input class="form-control" name="searchWord" type="text" />
+											</div>
+											<div class="col col-lg-2">
+												<button class="btn btn-outline-dark" type="submit">Search</button>
 											</div>
 										</div>
-									</form>
-								</div>
+									</div>
+								</form>
 							</div>
-						</nav>
-					</div>
+						</div>
+					</nav>
 				</div>
 			</div>
-		</nav>
+		</div>
+	</nav>
 
 
 
@@ -182,12 +177,12 @@ nav {
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName2}">
 							<img src="resources/images/${ board.fileName2 }"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName2}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
@@ -196,12 +191,12 @@ nav {
 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg">
 						<c:if test="${ !empty  board.fileName3}">
 							<img src="resources/images/${ board.fileName3 }"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName3}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
@@ -263,29 +258,24 @@ nav {
 						<p class="fs-6 fst-italic">${ board.cate2 }·${board.regDate}</p> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ board.cnt }</p></li>
-					<li class="list-group-item text-start"><a
-						href="report/report_insert.jsp" class="btn btn-danger">이 게시글
-							신고하기</a></li>
+					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
 				</ul>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-							<span class="fs-4 mx-3"><i
-								class="bi bi-heart-fill text-danger"> </i></span> <span class="fs-5">${ board.price }₩</span>
+							<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span> <span class="fs-5">${ board.price }₩</span>
 						</div>
 						<div class="col-8 text-end">
-							<a href="#" class="btn boarder border-dark fs-4 fw-bold">채팅하기</a>
+							<a href="#" class="btn ps-6 text-white rounded-pill" style="background-color: #72CCD2;">채팅하기</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</form>
-		<div class="container" align="center">
-			<a href="logout.do" class="btn btn-primary my-3">logout</a> <input
-				type="submit" class="btn btn-primary my-3" value="게시글수정" /> <a
-				href="deleteBoard.do?seq=${board.getSeq()}"
-				class="btn btn-primary my-3">게시글삭제</a> <a href="getBoardList.do"
-				class="btn btn-primary my-3">게시글목록</a>
+		<div class="container row-3" align="center">
+			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
+			<a href="deleteBoard.do?seq=${board.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
+			<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 		</div>
 	</div>
 	<!-- 삭제시 confirm -->
@@ -362,7 +352,7 @@ nav {
 						src="resources/images/img-trust-3.png">
 				</div>
 				<div class="col align-self-center">
-					<h2 class="home-main-title fw-bold">당신 근처에서 만나서 거래해요</h2>
+					<h2 class="home-main-title fw-bold">근처에서 만나서 거래해요</h2>
 					<p class="text-m">중고거래 사기의 대부분은 택배거래에서 발생한다는 사실, 알고 계셨나요? 빌리에서는
 						택배거래보다 직거래를 권장해요. 만나서 거래할 때는 누구나 찾기 쉽고 안전한 공공장소가 좋아요. 빌리에서 가까운 이웃과
 						따뜻하게 거래하세요.</p>

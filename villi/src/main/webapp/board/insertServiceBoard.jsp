@@ -177,19 +177,13 @@ nav {
 					<select class="form-select form-select-lg mb-3 w-75" name="cate2"
 						aria-label=".form-select-lg example">
 						<option selected>카테고리</option>
-						<option value="디지털기기">디지털기기</option>
-						<option value="공구용품">공구용품</option>
-						<option value="여성의류">여성의류</option>
-						<option value="남성의류">남성의류</option>
-						<option value="주방/화장실용품">주방/화장실용품</option>
-						<option value="행사용품/캠핑용품">행사용품/캠핑용품</option>
-						<option value="반려동물용품">반려동물용품</option>
-						<option value="취미/게임/음반">취미/게임/음반</option>
-						<option value="가구/인테리어">가구/인테리어</option>
-						<option value="뷰티/미용용품">뷰티/미용용품</option>
-						<option value="스포츠/레저">스포츠/레저</option>
-						<option value="육아물품">육아물품</option>
-						<option value="도서">도서</option>
+						<option value="조립/설치/운반">조립/설치/운반</option>
+						<option value="동행돌봄">동행돌봄</option>
+						<option value="역할대행">역할대행</option>
+						<option value="과외/알바">과외/알바</option>
+						<option value="청소/정리">청소/정리</option>
+						<option value="벌레/쥐 잡기">벌레/쥐 잡기</option>
+						<option value="운전 카풀">운전 카풀</option>
 						<option value="기타">기타</option>
 					</select>
 				</div>
