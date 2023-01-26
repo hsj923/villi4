@@ -45,6 +45,7 @@ body {
 nav {
 	background-color: #FFFAFA;
 }
+
 </style>
 </head>
 <body>
@@ -82,13 +83,16 @@ nav {
 											</ul>
 										</div>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getQuestionList.do">우리동네질문</a></li>
+										aria-current="page" href="../getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getLostList.do">동네분실센터</a></li>
+										aria-current="page" href="../getLostList.do">분실센터</a></li>
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="../getMeetingList.do">동네모임</a></li>
+									<li class="nav-item"><a class="nav-link" href="">동네투표</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="">동네투표</a></li>
+										aria-current="page" href="../getDemandList.do">빌리요청</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="../getGroupBuyingList.do">공동구매</a></li>
 								</ul>
 								<form action="getVoteList.do" method="post" id="voteForm">
 									<input type="hidden" id="curPage" name="curPage"
@@ -126,15 +130,35 @@ nav {
 		</div>
 	</nav>
 
-
-	<!--==============================게시물 제목===============================   -->
+<!-- 	<!--==============================게시물 제목===============================   --> 
 	<div class="container">
-		<div class="row my-3">
-			<div class="col-12">
+		<div class="row">
+			<div class="col">
 				<h4>${ vote.title }</h4>
 			</div>
 		</div>
 
+
+
+			<!-- 이미지 -->
+			<!--              <div class="card" style="width: 18rem;"> -->
+			<%-- 				   <img src="resources/images/${ vote.v_item1Pic }" class="card-img-top" alt="img"> --%>
+			<!-- 			 </div> -->
+
+			<!--==============================차트생성===============================   -->
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<canvas id="myChart1"></canvas>
+						</div>
+						<div class="card-footer text-center text-dark">
+							<h3>${ vote.content }</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!--==============================체크박스===============================   -->
 		<div class="container mt-3">
@@ -174,27 +198,6 @@ nav {
 					</label>
 				</div>
 			</c:if>
-
-			<!-- 이미지 -->
-			<!--              <div class="card" style="width: 18rem;"> -->
-			<%-- 				   <img src="resources/images/${ vote.v_item1Pic }" class="card-img-top" alt="img"> --%>
-			<!-- 			 </div> -->
-
-			<!--==============================차트생성===============================   -->
-			<div class="row my-2">
-				<div class="col-lg-6">
-					<div class="card">
-						<div class="card-body">
-							<canvas id="myChart1"></canvas>
-						</div>
-						<div class="card-footer text-center text-dark">
-							<h3>${ vote.content }</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<!-- ==================부트스트랩====================== -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -251,16 +254,14 @@ nav {
 		<!-- 체크된 값 -->
 		<form action="updateVote.do" method="post">
 			<hr>
-			<input name="seq" type="hidden" value="${vote.seq}" /> <input name="itemcnt1"
-				type="number" value="${vote.itemcnt1}" /> <input name="itemcnt2"
-				type="number" value="${vote.itemcnt2}" /> <input name="itemcnt3"
-				type="number" value="${vote.itemcnt3}" /> <input name="itemcnt4"
-				type="number" value="${vote.itemcnt4}" /> 
-				<input type="submit" id="sumtext" value="체크하시오" name=""> 
-				<input type="submit" id="vote" class="btn btn-success" value="투표하기" />
-
+			<input name="seq" type="hidden" value="${vote.seq}" /> <input
+				name="itemcnt1" type="text" value="${vote.itemcnt1}" /> <input
+				name="itemcnt2" type="text" value="${vote.itemcnt2}" /> <input
+				name="itemcnt3" type="text" value="${vote.itemcnt3}" /> <input
+				name="itemcnt4" type="text" value="${vote.itemcnt4}" /> <input
+				type="submit" id="sumtext" value="체크하시오" name=""> <input
+				type="submit" id="vote" class="btn btn-success" value="투표하기" />
 		</form>
-
 	</div>
 	<div class="container mt-5" align="center">
 		<a href="vote/vote_insert.jsp" class="btn btn-primary">글등록</a><a

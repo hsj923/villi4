@@ -68,9 +68,9 @@ nav {
 									</li>
 											
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getVoteList.do">우리동네질문</a></li>
+											aria-current="page" href="getVoteList.do">동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getLostList.do">동네분실센터</a></li>
+											aria-current="page" href="getLostList.do">분실센터</a></li>
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getMeetingList.do">동네모임</a></li>
 										<li class="nav-item"><a class="nav-link"

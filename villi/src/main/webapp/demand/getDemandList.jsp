@@ -68,9 +68,9 @@ nav {
 									</li>
 											
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getQuestionList.do">우리동네질문</a></li>
+											aria-current="page" href="getQuestionList.do">동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getLostList.do">동네분실센터</a></li>
+											aria-current="page" href="getLostList.do">분실센터</a></li>
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getMeetingList.do">동네모임</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -80,7 +80,7 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 									</ul>
-									<form action="getBoardList.do" method="post" id="boardForm">
+									<form action="getDemandList.do" method="post" id="demandForm">
 										<input type="hidden" id="curPage" name="curPage"
 											value="${searchVO.getCurPage()}"> <input
 											type="hidden" id="rowSizePerPage" name="rowSizePerPage"
@@ -163,25 +163,25 @@ nav {
 
 			<c:if test="${ fp != 1 }">
 				<li class="page-item"><a
-					href="getBoardList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getDemandList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-fast-backward"></i></a></li>
 				<li class="page-item"><a
-					href="getBoardList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getDemandList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-backward"></i></a></li>
 			</c:if>
 
 			<c:forEach var="page" begin="${fp}" end="${lp}">
 				<li class="page-item ${cp==page ? 'active' : ''}"><a
-					href="getBoardList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getDemandList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link">${page}</a></li>
 			</c:forEach>
 
 			<c:if test="${ lp < tp }">
 				<li class="page-item"><a
-					href="getBoardList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getDemandList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-forward"></i></a></li>
 				<li class="page-item"><a
-					href="getBoardList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getDemandList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-fast-forward"></i></a></li>
 			</c:if>
 		</ul>
@@ -212,22 +212,22 @@ nav {
 			$('#rowPerPage').change(function(e) {
 				$('#curPage').val(1);
 				$('#rowSizePerPage').val($(this).val());
-				$('#boardForm').submit();
+				$('#demandForm').submit();
 			}); //#rowPerPage
 
 			// 초기화 버튼 클릭
 			$('#btnReset').click(
 					function() {
 						$('#curPage').val(1);
-						$('#boardForm').find(
+						$('#demandForm').find(
 								"select[name='searchCategory'] option:eq(0)")
 								.attr("selected", "selected");
-						$('#boardForm').find(
+						$('#demandForm').find(
 								"select[name='searchType'] option:eq(0)").attr(
 								"selected", "selected");
-						$('#boardForm').find("input[name='searchWord']")
+						$('#demandForm').find("input[name='searchWord']")
 								.val("");
-						$('#boardForm').submit();
+						$('#demandForm').submit();
 					}); // #id_btn_reset.cli			
 
 		})

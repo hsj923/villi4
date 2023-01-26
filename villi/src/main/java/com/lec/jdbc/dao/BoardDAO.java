@@ -119,7 +119,5 @@ public class BoardDAO {
 	
 	public void updateCount(BoardVO board) {
 		jdbcTemplate.update(updateCount,  board.getSeq());
-	}
-	
-	
+	}	
 }

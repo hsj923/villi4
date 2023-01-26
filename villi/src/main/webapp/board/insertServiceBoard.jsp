@@ -108,9 +108,9 @@ nav {
 												</ul>
 											</div>
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="../getQuestionList.do">우리동네질문</a></li>
+											aria-current="page" href="../getQuestionList.do">동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="../getLostList.do">동네분실센터</a></li>
+											aria-current="page" href="../getLostList.do">분실센터</a></li>
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="../getMeetingList.do">동네모임</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -190,11 +190,11 @@ nav {
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="writer" id="writer"
-					placeholder="글 작성자....">
+					placeholder="글 작성자">
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="title" id="title"
-					placeholder="글 제목....">
+					placeholder="글 제목">
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="price" id="price"
@@ -217,11 +217,11 @@ nav {
 			</div>
 			<div class="input-group mb-3 w-75">
 				<textarea class="form-control" name="content" id="content" rows="20"
-					placeholder="글 상세내용...."></textarea>
+					placeholder="게시글 내용을 작성해주세요"></textarea>
 			</div>
-			<!-- 파일첨부 -->
+		<!-- 파일첨부 -->
 			
-								<label for="formFile" class="form-label">사진은 최대 3장까지 등록가능합니다</label>	
+			<label for="formFile" class="form-label">사진은 최대 3장까지 등록가능합니다</label>	
 			<div class="input-group mb-3 w-75">
 
 				<input type="file" class="form-control" name="uploadFile1"
@@ -233,9 +233,9 @@ nav {
 			</div>
 			<input type="hidden" name="fileName" value="" />
 			<div class="input-group input-group-lg mb-5 w-75">
-				<input type="button" class="form-control btn btn-outline-success" OnClick="checkform()"
+				<input type="button" class="form-control btn btn-dark" OnClick="checkform()"
 					aria-label="Sizing example input"
-					aria-describedby="inputGroup-sizing-lg" id="click"  value="작성">
+					aria-describedby="inputGroup-sizing-sm" id="click"  value="글작성">
 			</div>
 		</form>
 	</div>

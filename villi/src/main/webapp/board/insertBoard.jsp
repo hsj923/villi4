@@ -62,18 +62,16 @@
 	font-weight: 400;
 	font-style: normal;
 }
-
 body {
 	font-family: 'Pretendard-Regular';
 }
-
 nav {
 	background-color: #FFFAFA;
 }
 </style>
 </head>
 <body>
-		<!-- ============search=============== -->
+	<!-- ============search=============== -->
 		<nav class="border-bottom border-dark sticky-top z-index-10">
 			<div class="container" align="center">
 				<div class="row p-3">
@@ -102,15 +100,15 @@ nav {
 												<ul class="dropdown-menu dropdown-menu-dark"
 													aria-labelledby="dropdownMenuButton2">
 													<li><a class="dropdown-item"
-														href="insertBoard.jsp">상품</a></li>
+														href="">상품</a></li>
 													<li><a class="dropdown-item"
 														href="insertServiceBoard.jsp">서비스</a></li>
 												</ul>
 											</div>
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="../getQuestionList.do">우리동네질문</a></li>
+											aria-current="page" href="../getQuestionList.do">동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="../getLostList.do">동네분실센터</a></li>
+											aria-current="page" href="../getLostList.do">분실센터</a></li>
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="../getMeetingList.do">동네모임</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -163,7 +161,7 @@ nav {
 
 	<!-- 카테고리 -->
 	<div class="container mt-3" align="center">
-		<form id="frm" action="insertServiceBoard.do" method="post" onsubmit="return formCheck();" name="frm"
+		<form id="frm" action="insertBoard.do" method="post" onsubmit="return formCheck();" name="frm"
 			enctype="multipart/form-data">
 			<div class="row">
 <!-- 				<div class="col"> -->
@@ -196,11 +194,11 @@ nav {
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="writer" id="writer"
-					placeholder="글 작성자....">
+					placeholder="글 작성자">
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="title" id="title"
-					placeholder="글 제목....">
+					placeholder="글 제목">
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="price" id="price"
@@ -209,12 +207,10 @@ nav {
 					 function inputNumberFormat(obj) {
 					     obj.value = comma(uncomma(obj.value));
 					 }
-
 					 function comma(str) {
 					     str = String(str);
 					     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 					 }
-
 					 function uncomma(str) {
 					     str = String(str);
 					     return str.replace(/[^\d]+/g, '');
@@ -222,12 +218,12 @@ nav {
 					</script>
 			</div>
 			<div class="input-group mb-3 w-75">
-				<textarea class="form-control" name="content" id="content" rows="20"
-					placeholder="글 상세내용...."></textarea>
+				<textarea class="form-control" name="content" id="content" rows="20" placeholder="게시글 내용을 작성해주세요."></textarea>
 			</div>
+			
 			<!-- 파일첨부 -->
 			
-								<label for="formFile" class="form-label">사진은 최대 3장까지 등록가능합니다</label>	
+			<label for="formFile" class="form-label">사진은 최대 3장까지 등록가능합니다</label>	
 			<div class="input-group mb-3 w-75">
 
 				<input type="file" class="form-control" name="uploadFile1"
@@ -239,9 +235,9 @@ nav {
 			</div>
 			<input type="hidden" name="fileName" value="" />
 			<div class="input-group input-group-lg mb-5 w-75">
-				<input type="button" class="form-control btn btn-outline-success" OnClick="checkform()"
+				<input type="button" class="form-control btn btn-dark" OnClick="checkform()"
 					aria-label="Sizing example input"
-					aria-describedby="inputGroup-sizing-lg" id="click"  value="작성">
+					aria-describedby="inputGroup-sizing-sm" id="click"  value="글작성">
 			</div>
 		</form>
 	</div>

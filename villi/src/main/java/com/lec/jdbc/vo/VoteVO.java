@@ -16,10 +16,10 @@ public class VoteVO {
 	private String itemlist2;
 	private String itemlist3;
 	private String itemlist4;
-	private int itemcnt1;
-	private int itemcnt2;
-	private int itemcnt3;
-	private int itemcnt4;
+	private String itemcnt1;
+	private String itemcnt2;
+	private String itemcnt3;
+	private String itemcnt4;
 	private String fileName1; 
 	private String fileName2; 
 	private String fileName3; 
@@ -39,6 +39,39 @@ public class VoteVO {
 				+ ", uploadFile2=" + uploadFile2 + ", uploadFile3=" + uploadFile3 + ", uploadFile4=" + uploadFile4
 				+ "]";
 	}
+	
+	public String getItemcnt1() {
+		return itemcnt1;
+	}
+
+	public void setItemcnt1(String itemcnt1) {
+		this.itemcnt1 = itemcnt1;
+	}
+
+	public String getItemcnt2() {
+		return itemcnt2;
+	}
+
+	public void setItemcnt2(String itemcnt2) {
+		this.itemcnt2 = itemcnt2;
+	}
+
+	public String getItemcnt3() {
+		return itemcnt3;
+	}
+
+	public void setItemcnt3(String itemcnt3) {
+		this.itemcnt3 = itemcnt3;
+	}
+
+	public String getItemcnt4() {
+		return itemcnt4;
+	}
+
+	public void setItemcnt4(String itemcnt4) {
+		this.itemcnt4 = itemcnt4;
+	}
+
 	public String getItemlist1() {
 		return itemlist1;
 	}
@@ -63,30 +96,7 @@ public class VoteVO {
 	public void setItemlist4(String itemlist4) {
 		this.itemlist4 = itemlist4;
 	}
-	public int getItemcnt1() {
-		return itemcnt1;
-	}
-	public void setItemcnt1(int itemcnt1) {
-		this.itemcnt1 = itemcnt1;
-	}
-	public int getItemcnt2() {
-		return itemcnt2;
-	}
-	public void setItemcnt2(int itemcnt2) {
-		this.itemcnt2 = itemcnt2;
-	}
-	public int getItemcnt3() {
-		return itemcnt3;
-	}
-	public void setItemcnt3(int itemcnt3) {
-		this.itemcnt3 = itemcnt3;
-	}
-	public int getItemcnt4() {
-		return itemcnt4;
-	}
-	public void setItemcnt4(int itemcnt4) {
-		this.itemcnt4 = itemcnt4;
-	}
+
 	public String getFileName4() {
 		return fileName4;
 	}
