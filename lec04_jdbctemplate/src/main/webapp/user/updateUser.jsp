@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Spring Framework</title>
+	<title>Notice</title>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
@@ -12,8 +12,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
 	
-	<style>
-	@font-face {
+<style>
+	
+@font-face {
 	font-family: 'Pretendard-Regular';
 	src:
 		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
@@ -26,7 +27,7 @@ body {
 	font-family: 'Pretendard-Regular';
 }
 	
-	</style>
+</style>
 	
 	<!-- 비밀번호 확인 스크립트 -->
 	<script type="text/javascript">
@@ -66,6 +67,8 @@ body {
 
 
 </script>
+
+
 <style type="text/css">
 
 /* Header */
@@ -88,11 +91,15 @@ border-radius:1.5em;
 
 }
 
+
 </style>
 </head>
+
+
 <body>
 
 	<!-- ===========header================ -->
+	
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
@@ -112,6 +119,7 @@ border-radius:1.5em;
 			</div>
 		</div>
 	</header>
+	
 	<!------------------ 본문 --------------------->
 	
 	<div class="container col-5 mt-4">
@@ -129,33 +137,36 @@ border-radius:1.5em;
 		 
 		 
 		 <!-- 프로필 사진 수정 -->
-		 <label for="inputProfile">프로필 사진</label>
+		 
+		 <label for="inputProfile">* 프로필 사진</label>
 		  <div class="col-2 input-group mb-3 mt-2"> 
 		  
-		  <!--!!!!! DB에 사용자 프로필 이미지 컬럼 넣어야 함   -->
-		 <%--  <c:if test="${ !empty  board.fileName5}">
-			<img src="resources/images/${ board.fileName5 }" class="d-block w-75 card-img-top embed-responsive-item" alt="img">
+		   <c:if test="${ !empty  user.fileName}">
+			<img src="resources/images/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
-		  <c:if test="${ empty  board.fileName5}">
-			<img src="resources/images/noimg.png" class="d-block w-75 card-img-top embed-responsive-item" alt="img">
+		  <c:if test="${ empty  user.fileName}">
+			<img src="resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
 		  
-		  <input type="file" class="form-control" name="uploadFile5"
-					id="uploadFile5" aria-describedby="uploadFile" aria-label="Upload">
-		 --%>
+		 
 		  </div>
 		  
+		  <input type="file" class="form-control mb-3" name="uploadFile"
+					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">
+		 
 			 
 			 
 		  <!--  아이디 입력칸, 변경불가  : 아마도 이메일로 바뀜  -->
-			<label for="inputEmail">이메일주소</label>
+		  
+			<label for="inputEmail">* 이메일 주소</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
 				<input type="text" name="id" class="form-control" value="${ user.getId() }" disabled>
 			</div>
 
 			<!-- 이름(닉네임) 변경  --> 
-			<label for="inputName">닉네임</label>
+			
+			<label for="inputName">* 닉네임</label>
 			
 			<div class="col-2 input-group mb-3 mt-2">
 				<input type="text" name="name" class="form-control" value="${ user.getName() }">
@@ -163,14 +174,16 @@ border-radius:1.5em;
 			
 			
 			<!--  비밀번호 변경 1 -->
-			<label for="inputPassword">비밀번호</label>
+			
+			<label for="inputPassword">* 비밀번호</label>
 			
 			<div class="col-2 input-group mb-3 mt-2">
 				<input type="password" name="password"  id="password" class="form-control " placeholder="비밀번호" required >
 			</div>
 			
 			<!--  비밀번호 변경 2 -->
-			<label for="inputPassword">비밀번호 확인</label>
+			
+			<label for="inputPassword">* 비밀번호 확인</label>
 			
 			<div class="col-2 input-group mb-3 mt-2">
 				<input type="password"  id="passwordCheck" class="form-control" placeholder="비밀번호 확인" onkeyup="passConfirm();" check_pw="fail" required >
@@ -188,7 +201,7 @@ border-radius:1.5em;
 			<div class="container btn_box mt-5" align="center">
 				
 				<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기" onClick="location.href='user/mypage.jsp'"/>
-				<a href="logout.do" class="btn btn-dark mx-4 btn_radius">로그아웃</a>
+			<!-- 	<a href="logout.do" class="btn btn-dark mx-4 btn_radius">로그아웃</a> -->
 						
 			</div>	
 			

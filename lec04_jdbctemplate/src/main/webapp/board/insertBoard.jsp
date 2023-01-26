@@ -151,7 +151,6 @@ nav {
 	</nav>
 
 
-<!--뭐해 -->
 
 	<!-- 카테고리 -->
 	<div class="container mt-3" align="center">
@@ -211,7 +210,7 @@ nav {
 					     str = String(str);
 					     return str.replace(/[^\d]+/g, '');
 					 }
-					</script>
+				</script>
 			</div>
 			<div class="input-group mb-3 w-75">
 				<textarea class="form-control" name="content" id="content" rows="20"

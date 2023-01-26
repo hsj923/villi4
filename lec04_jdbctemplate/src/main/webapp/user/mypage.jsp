@@ -122,7 +122,7 @@ color:#23dbc9
        </div>
        <div class="container mt-3" align="left">
        <ul class="list-group list-group-flush">
-          <a href="#" li class="list-group-item">공지사항</a>
+          <a href="../getNoticeList.do" li class="list-group-item">공지사항</a>
           <a href="service/service_list.jsp" li class="list-group-item">고객센터</a>
        </ul>
        </div>

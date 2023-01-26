@@ -38,11 +38,11 @@ body {
 }
 
 header {
-	background-color: #FFFAFA;
+	background-color: #FFF;
 }
 
 nav {
-	background-color: #FFFAFA;
+	background-color: #FFF;
 }
 
 #banner2 {
@@ -69,6 +69,11 @@ nav {
 .card-mtext {width =10px;height =10px;
 	
 }
+
+.r_menu a:hover {
+color:#23dbc9
+}
+
 </style>
 </head>
 <body>
