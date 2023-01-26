@@ -24,14 +24,22 @@
 	crossorigin="anonymous"></script>
 
 <style>
-#body {
+
+
+   
+   @font-face {
 	font-family: 'Pretendard-Regular';
 	src:
 		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
 		format('woff');
 	font-weight: 400;
 	font-style: normal;
+   }
+
+body {
+	font-family: 'Pretendard-Regular';
 }
+
 
 header {
 	background-color: #FFFAFA;
@@ -49,6 +57,10 @@ nav {
 	height: 600px;
 	object-fit: fill;
 }
+
+a { text-decoration:none }
+
+
 </style>
 <body>
 	<!-- ============search=============== -->
@@ -115,7 +127,7 @@ nav {
 												<input class="form-control" name="searchWord" type="text" />
 											</div>
 											<div class="col col-lg-2">
-												<button class="btn btn-outline-success" type="submit">Search</button>
+												<button class="btn btn-outline-dark" type="submit">Search</button>
 											</div>
 										</div>
 									</div>
@@ -175,12 +187,12 @@ nav {
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName2}">
 							<img src="resources/images/${ board.fileName2 }"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName2}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
@@ -189,12 +201,12 @@ nav {
 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg">
 						<c:if test="${ !empty  board.fileName3}">
 							<img src="resources/images/${ board.fileName3 }"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName3}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
@@ -256,29 +268,24 @@ nav {
 						<p class="fs-6 fst-italic">${ board.cate2 }·${board.regDate}</p> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ board.cnt }</p></li>
-					<li class="list-group-item text-start"><a
-						href="report/report_insert.jsp" class="btn btn-danger">이 게시글
-							신고하기</a></li>
+					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
 				</ul>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-							<span class="fs-4 mx-3"><i
-								class="bi bi-heart-fill text-danger"> </i></span> <span class="fs-5">${ board.price }₩</span>
+							<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span> <span class="fs-5">${ board.price }₩</span>
 						</div>
 						<div class="col-8 text-end">
-							<a href="#" class="btn boarder border-dark fs-4 fw-bold">채팅하기</a>
+							<a href="#" class="btn ps-6 text-white rounded-pill" style="background-color: #72CCD2;">채팅하기</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</form>
-		<div class="container" align="center">
-			<a href="logout.do" class="btn btn-primary my-3">logout</a> <input
-				type="submit" class="btn btn-primary my-3" value="게시글수정" /> <a
-				href="deleteBoard.do?seq=${board.getSeq()}"
-				class="btn btn-primary my-3">게시글삭제</a> <a href="getBoardList.do"
-				class="btn btn-primary my-3">게시글목록</a>
+		<div class="container row-3" align="center">
+			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
+			<a href="deleteBoard.do?seq=${board.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
+			<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 		</div>
 	</div>
 	<!-- 삭제시 confirm -->
@@ -355,7 +362,7 @@ nav {
 						src="resources/images/img-trust-3.png">
 				</div>
 				<div class="col align-self-center">
-					<h2 class="home-main-title fw-bold">당신 근처에서 만나서 거래해요</h2>
+					<h2 class="home-main-title fw-bold">근처에서 만나서 거래해요</h2>
 					<p class="text-m">중고거래 사기의 대부분은 택배거래에서 발생한다는 사실, 알고 계셨나요? 빌리에서는
 						택배거래보다 직거래를 권장해요. 만나서 거래할 때는 누구나 찾기 쉽고 안전한 공공장소가 좋아요. 빌리에서 가까운 이웃과
 						따뜻하게 거래하세요.</p>

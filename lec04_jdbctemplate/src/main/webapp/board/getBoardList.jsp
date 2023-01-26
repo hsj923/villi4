@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Spring Framework</title>
+<title>Villi</title>
+<link rel="icon" href="resources/images/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -38,11 +39,11 @@ body {
 }
 
 header {
-	background-color: #FFFAFA;
+	background-color: #FFF;
 }
 
 nav {
-	background-color: #FFFAFA;
+	background-color: #FFF;
 }
 
 #banner2 {
@@ -69,6 +70,12 @@ nav {
 .card-mtext {width =10px;height =10px;
 	
 }
+
+.r_menu a:hover{
+color:#23dbc9
+}
+
+
 </style>
 </head>
 <body>
@@ -86,9 +93,9 @@ nav {
 					</div>
 
 					<div class="col mt-3 text-end r_menu">
-					  <span class= mx-2><a href="#">좋아요</a> </span>
-					  <span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
-					  <span class="mx-2">${ sessionScope.user.getName() }님</span>	
+					  <span class= "mx-2"><a href="#">좋아요</a> </span>
+					  <span class= "mx-1"><a href="user/mypage.jsp">마이페이지</a></span>
+					  <span class= "mx-2" >${ sessionScope.user.getName() }님</span>	
 					</div>
 				</div>
 			</div>
@@ -206,7 +213,7 @@ nav {
 														placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
 												</div>
 												<div class="col col-lg-2">
-													<button class="btn btn-outline-success" type="submit">Search</button>
+													<button class="btn text-white "  style="background-color: #72CCD2;" type="submit">Search</button>
 												</div>
 											</div>
 										</div>
@@ -238,13 +245,13 @@ nav {
 
 									<c:choose>
 										<c:when test="${board.status eq '대기중'}">
-											<span class="card-text bg-success text-white fs-6">${board.status}</span>
+											<span class="badge bg-success text-white rounded-pill ">${board.status}</span>
 										</c:when>
 										<c:when test="${board.status eq '예약중'}">
-											<span class="card-text bg-warning text-white fs-6">${board.status}</span>
+											<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
 											</c:when>
 										<c:when test="${board.status eq '대여중'}">
-											<span class="card-text bg-danger text-white fs-6">${board.status}</span>
+											<span class="badge bg-danger text-white rounded-pill ">${board.status}</span>
 											</c:when>
 									</c:choose>					
 									<c:if test="${ !empty  board.price}">
