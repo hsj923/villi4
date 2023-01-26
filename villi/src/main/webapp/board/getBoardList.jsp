@@ -86,12 +86,15 @@ nav {
 					</div>
 
 					<div class="col mt-3 text-end r_menu">
-						<a href="#">좋아요</a> <span class="mx-4"> <a
-							href="getUserList.do">마이페이지</a></span> <span>
+					  <span class= mx-2><a href="#">좋아요</a> </span>
+					  <span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
+					  <span class="mx-2">${ sessionScope.user.getName() }님</span>	
 					</div>
 				</div>
 			</div>
 		</header>
+		
+		
 		<!-- ============banner=============== -->
 
 		<div id="carouselExampleControls"
@@ -176,9 +179,11 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getMeetingList.do">동네모임</a></li>
 										<li class="nav-item"><a class="nav-link"
-											href="getVoteList.do">동네투표</a></li>
+											aria-current="page" href="getVoteList.do">동네투표</a></li>
 										<li class="nav-item"><a class="nav-link"
-											href="getWantBoardList.do">빌리요청</a></li>
+											aria-current="page" href="getDemandList.do">빌리요청</a></li>
+										<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 									</ul>
 									<form action="getBoardList.do" method="post" id="boardForm">
 										<input type="hidden" id="curPage" name="curPage"

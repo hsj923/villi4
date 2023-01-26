@@ -23,18 +23,28 @@
 		<br>
 		
 		<form action="login.do" method="post">
+		
 			<div class="row justify-content-md-center">
 				<input type="text" class="col-2 input-group-text me-3" name="id" value="admin@gmail.com">
 				<input type="password" class="col-2 input-group-text me-3" name="password" value="12345">
+				
+				
+				
 				<c:if test="${ sessionScope.user.getId() == null }">
 					<input type="submit" class="col-1 btn btn-primary" value="login">
 				</c:if>
+				
+				
+				
 				<c:if test="${ sessionScope.user.getId() != null }">
 					<a href="logout.do" class="col-1 btn btn-primary">logout</a>
 				</c:if>
+				
+				
+				
 			</div>	
 		</form>
 		
 	</div>
 </body>
-</html>		
+</html>	

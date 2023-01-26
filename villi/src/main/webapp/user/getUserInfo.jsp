@@ -25,18 +25,22 @@
 	
 	<div class="container col-3 mt-4">
 		<form>
+		
 			<div class="col-2 input-group mb-3">
 				<div class="input-group-text"><i class="fas fa-user"></i></div>
 				<input type="text" name="id" class="form-control" value="${ sessionScope.user.getId() }" disabled>
 			</div>
+			
 			<div class="col-2 input-group mb-3">
 				<div class="input-group-text"><i class="fas fa-address-book"></i></div>
 				<input type="text" name="name" class="form-control" value="${ sessionScope.user.getName() }" disabled>
 			</div>
+			
 			<div class="col-2 mb-3 form-check start-0">
 			    <input type="checkbox" class="form-check-input" name="role" ${ sessionScope.user.getRole().toUpperCase() == "ADMIN" ? "checked" : "" } disabled>
 			    <label class="form-check-label" for="role">Administrator</label>
 			</div>
+			
 		</form>			
 	</div>	
 		
