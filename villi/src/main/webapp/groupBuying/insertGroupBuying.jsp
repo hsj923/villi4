@@ -126,17 +126,17 @@ nav {
 			<div class="input-group mb-3">
 				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
 					type="text" class="form-control" name="writer" id="writer"
-					placeholder="분실센터글 작성자....">
+					placeholder="공구글 작성자....">
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
 				<input type="text" class="form-control" name="title" id="title"
-					placeholder="동네질문글 제목....">
+					placeholder="공구글 제목....">
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
 				<textarea class="form-control" name="content" id="content" rows="20"
-					placeholder="동네질문글 상세내용...."></textarea>
+					placeholder="공구글 상세내용...."></textarea>
 			</div>
 
 
