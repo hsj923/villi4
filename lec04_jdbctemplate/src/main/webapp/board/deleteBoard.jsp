@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>글삭제</title>
+<title>Villi : 글삭제</title>
+<link rel="icon" href="../resources/images/favicon.png">
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 

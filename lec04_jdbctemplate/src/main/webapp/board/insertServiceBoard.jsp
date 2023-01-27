@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>상품빌리 글쓰기</title>
+<title>Villi : 신고)글쓰기</title>
+<link rel="icon" href="../resources/images/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"

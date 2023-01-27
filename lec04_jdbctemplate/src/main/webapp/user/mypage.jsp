@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Spring Framework</title>
+  <title>Villi : 마이페이지</title>
+<link rel="icon" href="../resources/images/favicon.png">
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">   
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
@@ -80,13 +81,13 @@ color:#23dbc9
 					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
 				</div>
 				<div class="col" align="center">
-					<a href="getBoardList.do"><img src="../resources/images/test.png"
+					<a href="../getBoardList.do"><img src="../resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
 					<span class= mx-2><a href="#">좋아요</a> </span>
-					<span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
+					<span class= mx-1><a href="../user/mypage.jsp">마이페이지</a></span>
 					<span class="mx-2">${ sessionScope.user.getName() }님</span>
 					
 				</div>
@@ -122,7 +123,7 @@ color:#23dbc9
        </div>
        <div class="container mt-3" align="left">
        <ul class="list-group list-group-flush">
-          <a href="#" li class="list-group-item">공지사항</a>
+          <a href="../getNoticeList.do" li class="list-group-item">공지사항</a>
           <a href="service/service_list.jsp" li class="list-group-item">고객센터</a>
        </ul>
        </div>

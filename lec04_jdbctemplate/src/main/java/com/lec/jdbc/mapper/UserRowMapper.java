@@ -16,6 +16,7 @@ public class UserRowMapper implements RowMapper<UserVO> {
 		user.setName(rs.getString("name"));
 		user.setPassword(rs.getString("password"));
 		user.setRole(rs.getString("role"));
+		user.setFileName(rs.getString("filename"));
 		return user;
 	}
 }

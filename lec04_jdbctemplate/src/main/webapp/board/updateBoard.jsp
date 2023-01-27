@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>게시글 상세보기</title>
+<title>Villi : 게시글</title>
+<link rel="icon" href="../resources/images/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -250,7 +251,9 @@ a { text-decoration:none }
 	<!-- form -->
 	<div class="container-sm" align="center">
 		<form action="updateBoard.do" method="post">
+		
 			<div class="card">
+			
 				<div class="card-body">
 					<h5 class="card-title text-start">
 						<img src="resources/images/noimg.png"
@@ -258,11 +261,11 @@ a { text-decoration:none }
 							height="75"> <span class="col-md-auto text-success fw-bold">
 							${board.status} </span> <span>${ board.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
-
 						<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
 					</h5>
-
 				</div>
+				
+				
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start"><p class="fs-4 fw-bold">(${ board.cate })${ board.title }</p>
 						<p class="fs-6 fst-italic">${ board.cate2 }·${board.regDate}</p> <br>
@@ -270,6 +273,7 @@ a { text-decoration:none }
 						<p class="mt-4">조회 : ${ board.cnt }</p></li>
 					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
 				</ul>
+				
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
@@ -280,14 +284,20 @@ a { text-decoration:none }
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</form>
+		
 		<div class="container row-3" align="center">
 			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
 			<a href="deleteBoard.do?seq=${board.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
 			<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 		</div>
+		
+		
 	</div>
+	
+	
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteBoard() {

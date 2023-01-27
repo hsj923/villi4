@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Spring Framework</title>
+<title>Villi : 동네설정</title>
+<link rel="icon" href="../resources/images/favicon.png">
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
@@ -61,6 +62,7 @@ color:#23dbc9;
 <body>
 
 <!-- ===========header================ -->
+
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
@@ -75,15 +77,17 @@ color:#23dbc9;
 				<div class="col mt-3 text-end r_menu">
 					<span class= mx-2><a href="#">좋아요</a> </span>
 					<span class= mx-1><a href="mypage.jsp">마이페이지</a></span>
-		           <span class="mx-2">${ sessionScope.user.getName() }님</span>
-					
-					
-					
+		            <span class="mx-2">${ sessionScope.user.getName() }님</span>
 				</div>
+				
 			</div>
 		</div>
 	</header>
 
+	<div class="container col-5 mt-4"  align="center">
+	 	<h3 class="fw-bold">내 동네 설정</h3>
+	</div>
+	 	<hr>
 
 <div class="map_wrap container">
     <div id="map"  style="width:100%;height:100%;position:relative;overflow:hidden;boarder-radius:5px;"></div>

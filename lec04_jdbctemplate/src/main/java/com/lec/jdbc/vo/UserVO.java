@@ -10,6 +10,8 @@ public class UserVO {
 	private String password;
 	private String name;
 	private String role;
+	private String fileName;
+	private MultipartFile uploadFile;
 	
 	public String getId() {
 		return id;
@@ -35,6 +37,24 @@ public class UserVO {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	
+	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "UserVO [id=" + id + ", password=" + password + ", name=" + name + ", role=" + role + "]";

@@ -76,6 +76,27 @@ color:#23dbc9
 }
 
 
+/* ----------------------------------------------------------- */
+
+.page-link {
+    position: relative;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+}
+
+
+
 </style>
 </head>
 <body>
@@ -291,8 +312,8 @@ color:#23dbc9
 		</div>
 		<!-- 게시판 -->
 
-		<div class="row align-items-start mt-3">
-			<ul class="col pagination justify-content-center">
+		<div class="row align-items-start mt-3 " >
+			<ul class="col pagination justify-content-center ">
 
 				<c:set var="cp" value="${searchVO.getCurPage()}" />
 				<c:set var="rp" value="${searchVO.getRowSizePerPage()}" />
@@ -307,7 +328,7 @@ color:#23dbc9
 				<c:if test="${ fp != 1 }">
 					<li class="page-item"><a
 						href="getBoardList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
-						class="page-link"><i class="fas fa-fast-backward"></i></a></li>
+						class="page-link" ><i class="fas fa-fast-backward"></i></a></li>
 					<li class="page-item"><a
 						href="getBoardList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 						class="page-link"><i class="fas fa-backward"></i></a></li>
