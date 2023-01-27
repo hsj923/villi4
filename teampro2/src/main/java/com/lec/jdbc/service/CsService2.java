@@ -17,7 +17,7 @@ public interface CsService2 {
 	int insertCsitem(CsVO2 csitem);
 	int updateCsitem(CsVO2 csitem);
 	int deleteCsitem(CsVO2 csitem);
-	
+	int replyCsitem(CsVO2 csitem);
 	List<CsVO2> getCsitemList(SearchVO searchVO);
 	int getTotalRowCount(SearchVO searchVO);
 }

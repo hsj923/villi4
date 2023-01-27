@@ -34,8 +34,8 @@ public class CsServiceImpl2 implements CsService2{
 	}
 
 	@Override
-	public int insertCsitem(CsVO2 cs) {
-		return CsDAO2.insertCsitem(cs);
+	public int insertCsitem(CsVO2 csitem) {
+		return CsDAO2.insertCsitem(csitem);
 	}
 
 	@Override
@@ -47,6 +47,10 @@ public class CsServiceImpl2 implements CsService2{
 	public int deleteCsitem(CsVO2 cs) {
 		return CsDAO2.deleteCsitem(cs);
 	}
+	@Override
+	public int replyCsitem(CsVO2 csitem) {
+		return CsDAO2.insertReplyCsitem(csitem);
+	}
 
 	@Override
 	public List<CsVO2> getCsitemList(SearchVO searchVO) {
@@ -57,5 +61,6 @@ public class CsServiceImpl2 implements CsService2{
 	public int getTotalRowCount(SearchVO searchVO) {
 		return CsDAO2.getTotalRowCount(searchVO);
 	}
+
 
 }

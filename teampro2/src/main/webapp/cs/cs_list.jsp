@@ -124,6 +124,16 @@ border : 1px solid black;
 				
 				<tbody>
 				<c:forEach var="csitem" items="${ csitemList }">
+				<tr>
+					<td>${csitem.getCs_num()}</td>
+					<td>
+						<c:if test="${csitem.getCs_re_lev() !=0 }" >
+							┗
+							<c:forEach var="i" begin="1" end="${csitem.getCs_re_lev()}">
+								━
+							</c:forEach>
+							[RE]
+						</c:if>
 					<tr>
 						<td scope="row">${csitem.cs_num }</td>
 						<td align="left"><a href="getCsitem.do?cs_num=${ csitem.cs_num}">${csitem.cs_subject }</a></td>

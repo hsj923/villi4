@@ -75,7 +75,13 @@ public class CsController2 {
 	@RequestMapping("/deleteCsitem.do")
 	public String deleteCsitem(CsVO2 csitem) {
 		csService.deleteCsitem(csitem);
-		return "redirect:/getNoticeList.do";	
+		return "redirect:/getCsitemList.do";	
+	}
+	
+	@RequestMapping("/ReplyCsitem.do")
+	public String replyCsitem(CsVO2 csitem) {
+		csService.replyCsitem(csitem);
+		return "redirect:/getCsitemList.do";
 	}
 
 }

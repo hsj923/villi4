@@ -1,4 +1,4 @@
-package com.lec.controller;
+/*package com.lec.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -49,7 +49,7 @@ public class CsController {
 		return "cs/cs_detail.jsp"; 
 	}	
 	
-	@RequestMapping("*/insertCs.do")
+	@RequestMapping("insertCs.do")
 	public String insertCsitem(CsVO cs) throws IOException {
 		csService.insertCsitem(cs);
 		return "redirect:/getCsList.do";
@@ -111,3 +111,4 @@ public class CsController {
 	}			
 }
 
+*/
