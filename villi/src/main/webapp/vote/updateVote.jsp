@@ -254,12 +254,17 @@ nav {
 		<!-- 체크된 값 -->
 		<form action="updateVote.do" method="post">
 			<hr>
-			<input name="seq" type="hidden" value="${vote.seq}" /> <input
-				name="itemcnt1" type="text" value="${vote.itemcnt1}" /> <input
-				name="itemcnt2" type="text" value="${vote.itemcnt2}" /> <input
-				name="itemcnt3" type="text" value="${vote.itemcnt3}" /> <input
-				name="itemcnt4" type="text" value="${vote.itemcnt4}" /> <input
-				type="submit" id="sumtext" value="체크하시오" name=""> <input
+<%-- 			<input name="seq" type="hidden" value="${vote.seq}" /> <input --%>
+<%-- 				name="itemcnt1" type="text" value="${vote.itemcnt1}" /> <input --%>
+<%-- 				name="itemcnt2" type="text" value="${vote.itemcnt2}" /> <input --%>
+<%-- 				name="itemcnt1" type="text" value="${vote.itemcnt1}" /> <input --%>
+<%-- 				name="itemcnt2" type="text" value="${vote.itemcnt2}" /> <input --%>
+<%-- 				name="itemcnt3" type="text" value="${vote.itemcnt3}" /> <input --%>
+<%-- 				name="itemcnt4" type="text" value="${vote.itemcnt4}" />  --%>
+	<input name="content" type="text" value="${vote.content}" />
+				<input type="submit" id="sumtext" value="체크하시오" name=""> 
+			
+				<input
 				type="submit" id="vote" class="btn btn-success" value="투표하기" />
 		</form>
 	</div>

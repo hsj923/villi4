@@ -80,7 +80,7 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 									</ul>
-									<form action="getBoardList.do" method="post" id="boardForm">
+									<form action="getQuestionList.do" method="post" id="questionForm">
 										<input type="hidden" id="curPage" name="curPage"
 											value="${searchVO.getCurPage()}"> <input
 											type="hidden" id="rowSizePerPage" name="rowSizePerPage"

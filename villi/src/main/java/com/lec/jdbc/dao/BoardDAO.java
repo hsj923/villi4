@@ -115,7 +115,7 @@ public class BoardDAO {
 
 	public int updateBoard(BoardVO board) {
 		return jdbcTemplate.update(updateBoard, board.getTitle(), board.getContent(), board.getSeq());
-	}
+	} 
 	
 	public void updateCount(BoardVO board) {
 		jdbcTemplate.update(updateCount,  board.getSeq());

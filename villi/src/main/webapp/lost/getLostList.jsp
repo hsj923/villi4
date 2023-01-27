@@ -78,9 +78,9 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getDemandList.do">빌리요청</a></li>
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="../getGroupBuyingList.do">공동구매</a></li>
+											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 									</ul>
-									<form action="getBoardList.do" method="post" id="boardForm">
+									<form action="getLostList.do" method="post" id="lostForm">
 										<input type="hidden" id="curPage" name="curPage"
 											value="${searchVO.getCurPage()}"> <input
 											type="hidden" id="rowSizePerPage" name="rowSizePerPage"

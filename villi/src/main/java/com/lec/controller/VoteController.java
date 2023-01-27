@@ -58,7 +58,7 @@ public class VoteController {
 		model.addAttribute("voteList", voteList);		
 		return "vote/getVoteList.jsp";
 	}
-	
+
 	@RequestMapping("*/insertVote.do")
 	public String insertVote(VoteVO vote) throws IOException {
 		MultipartFile uploadFile1 = vote.getUploadFile1();

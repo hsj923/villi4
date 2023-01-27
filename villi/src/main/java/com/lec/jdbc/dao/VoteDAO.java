@@ -108,7 +108,7 @@ public class VoteDAO {
 	}
 
 	public int updateVote(VoteVO vote) {
-		return jdbcTemplate.update(updateVote, vote.getSeq(), vote.getItemcnt1(), vote.getItemcnt2(), vote.getItemcnt3(), vote.getItemcnt4());
+		return jdbcTemplate.update(updateVote, vote.getContent(), vote.getSeq());
 	}
 	
 	public void updateCount(VoteVO vote) {

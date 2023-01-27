@@ -113,28 +113,28 @@ nav {
 					<ul class="list-unstyled">
 						<li class="home-story-list-item1">
 							<div class="text-s text-bold mt-3 mb-2">
-								<a href="../getQuestionList.do"
+								<a href="getQuestionList.do"
 									class="btn btn-secondary rounded-pill">우리동네질문</a>
 							</div>
 							<div class="text-xs">궁금한 게 있을 땐 이웃에게 물어보세요.</div>
 						</li>
 						<li class="home-story-list-item2">
 							<div class="text-s text-bold mt-3 mb-2">
-								<a href="../getLostList.do"
+								<a href="getLostList.do"
 									class="btn btn-secondary rounded-pill">동네분실센터</a>
 							</div>
 							<div class="text-xs">무언가를 잃어버렸을 때, 함께 찾을 수 있어요.</div>
 						</li>
 						<li class="home-story-list-item3">
 							<div class="text-s text-bold mt-3 mb-2">
-								<a href="../getMeetingList.do"
+								<a href="getMeetingList.do"
 									class="btn btn-secondary rounded-pill">동네모임</a>
 							</div>
 							<div class="text-xs">관심사가 비슷한 이웃과 온오프라인으로 만나요.</div>
 						</li>
 						<li class="home-story-list-item4">
 							<div class="text-s text-bold mt-3 mb-2">
-								<a href="../getVoteList.do"
+								<a href="getVoteList.do"
 									class="btn btn-secondary rounded-pill">동네투표</a>
 							</div>
 							<div class="text-xs">동네 이웃들에게 물어보세요.</div>

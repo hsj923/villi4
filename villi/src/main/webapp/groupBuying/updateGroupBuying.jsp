@@ -163,13 +163,20 @@ nav {
 						<p class="mt-4">조회 : ${ groupBuying.cnt }</p></li>
 					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
 				</ul>
+
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-							<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span> <span class="fs-5">${ groupBuying.price }원</span>
+							<c:if test="${ !empty  groupBuying.price}">
+								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">${ groupBuying.price }원</span>
+							</c:if>
+							<c:if test="${ empty  groupBuying.price}">
+								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">가격협의</span>
+							</c:if>
 						</div>
 						<div class="col-8 text-end">
-							<a href="#" class="btn ps-6 text-white rounded-pill" style="background-color: #72CCD2;">채팅하기</a>
+							<a href="#" class="btn ps-6 text-white rounded-pill"
+								style="background-color: #72CCD2;">채팅하기</a>
 						</div>
 					</div>
 				</div>
