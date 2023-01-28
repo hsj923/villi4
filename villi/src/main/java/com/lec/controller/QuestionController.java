@@ -85,7 +85,7 @@ public class QuestionController {
 	
 	@RequestMapping(value="/updateQuestion.do", method=RequestMethod.GET)
 	public String updateQuestion(Model model, QuestionVO question, SearchVO searchVO) {
-		questionService.updateCount(question);
+		questionService.updateQuestionCount(question);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("question", questionService.getQuestion(question));
 		return "question/updateQuestion.jsp";

@@ -49,8 +49,8 @@ public class LostServiceImpl implements LostService {
 	}
 	
 	@Override
-	public void updateCount(LostVO lost) {
-		lostDAO.updateCount(lost);
+	public void updateLostCount(LostVO lost) {
+		lostDAO.updateLostCount(lost);
 	}
 
 	

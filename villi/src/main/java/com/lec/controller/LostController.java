@@ -85,7 +85,7 @@ public class LostController {
 	
 	@RequestMapping(value="/updateLost.do", method=RequestMethod.GET)
 	public String updateLost(Model model, LostVO lost, SearchVO searchVO) {
-		lostService.updateCount(lost);
+		lostService.updateLostCount(lost);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("lost", lostService.getLost(lost));
 		return "lost/updateLost.jsp";

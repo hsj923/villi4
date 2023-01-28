@@ -30,7 +30,7 @@ public class LostDAO {
 	private String insertLost = "";
 	private String deleteLost = "";
 	private String updateLost = "";
-	private String updateCount = "";
+	private String updateLostCount = "";
 	private String selectLostList = "";
 	private String selectLostListByTitle = ""; 
 	private String selectLostListByWriter = ""; 
@@ -43,7 +43,7 @@ public class LostDAO {
 		insertLost              = environment.getProperty("insertLost");
 		deleteLost              = environment.getProperty("deleteLost");
 		updateLost              = environment.getProperty("updateLost");
-		updateCount              = environment.getProperty("updateCount");
+		updateLostCount              = environment.getProperty("updateLostCount");
 		selectLostList          = environment.getProperty("selectLostList");
 		selectLostListByTitle   = environment.getProperty("selectLostListByTitle");
 		selectLostListByWriter  = environment.getProperty("selectLostListByWriter");
@@ -111,8 +111,8 @@ public class LostDAO {
 		return jdbcTemplate.update(updateLost, lost.getTitle(), lost.getContent(), lost.getSeq());
 	}
 	
-	public void updateCount(LostVO lost) {
-		jdbcTemplate.update(updateCount,  lost.getSeq());
+	public void updateLostCount(LostVO lost) {
+		jdbcTemplate.update(updateLostCount,  lost.getSeq());
 	}
 	
 	

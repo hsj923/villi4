@@ -30,7 +30,7 @@ public class DemandDAO {
 	private String insertDemand = "";
 	private String deleteDemand = "";
 	private String updateDemand = "";
-	private String updateCount = "";
+	private String updateDemandCount = "";
 	private String selectDemandList = "";
 	private String selectDemandListByTitle = ""; 
 	private String selectDemandListByWriter = ""; 
@@ -43,7 +43,7 @@ public class DemandDAO {
 		insertDemand              = environment.getProperty("insertDemand");
 		deleteDemand              = environment.getProperty("deleteDemand");
 		updateDemand              = environment.getProperty("updateDemand");
-		updateCount              = environment.getProperty("updateCount");
+		updateDemandCount              = environment.getProperty("updateDemandCount");
 		selectDemandList          = environment.getProperty("selectDemandList");
 		selectDemandListByTitle   = environment.getProperty("selectDemandListByTitle");
 		selectDemandListByWriter  = environment.getProperty("selectDemandListByWriter");
@@ -111,8 +111,8 @@ public class DemandDAO {
 		return jdbcTemplate.update(updateDemand, demand.getTitle(), demand.getContent(), demand.getSeq());
 	}
 	
-	public void updateCount(DemandVO demand) {
-		jdbcTemplate.update(updateCount,  demand.getSeq());
+	public void updateDemandCount(DemandVO demand) {
+		jdbcTemplate.update(updateDemandCount,  demand.getSeq());
 	}
 	
 	

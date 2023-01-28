@@ -13,5 +13,5 @@ public interface LostService {
 	LostVO insertLost(LostVO lost);
 	int deleteLost(LostVO lost);
 	int updateLost(LostVO lost);
-	void updateCount(LostVO lost);
+	void updateLostCount(LostVO lost);
 }

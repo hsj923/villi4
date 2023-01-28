@@ -13,5 +13,5 @@ public interface QuestionService {
 	QuestionVO insertQuestion(QuestionVO question);
 	int deleteQuestion(QuestionVO question);
 	int updateQuestion(QuestionVO question);
-	void updateCount(QuestionVO question);
+	void updateQuestionCount(QuestionVO question);
 }

@@ -49,8 +49,8 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 	
 	@Override
-	public void updateCount(QuestionVO question) {
-		questionDAO.updateCount(question);
+	public void updateQuestionCount(QuestionVO question) {
+		questionDAO.updateQuestionCount(question);
 	}
 
 	

@@ -13,5 +13,5 @@ public interface GroupBuyingService {
 	GroupBuyingVO insertGroupBuying(GroupBuyingVO groupBuying);
 	int deleteGroupBuying(GroupBuyingVO groupBuying);
 	int updateGroupBuying(GroupBuyingVO groupBuying);
-	void updateCount(GroupBuyingVO groupBuying);
+	void updateGroupBuyingCount(GroupBuyingVO groupBuying);
 }

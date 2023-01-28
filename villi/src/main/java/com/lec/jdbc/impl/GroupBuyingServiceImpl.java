@@ -49,8 +49,8 @@ public class GroupBuyingServiceImpl implements GroupBuyingService {
 	}
 	
 	@Override
-	public void updateCount(GroupBuyingVO groupBuying) {
-		groupBuyingDAO.updateCount(groupBuying);
+	public void updateGroupBuyingCount(GroupBuyingVO groupBuying) {
+		groupBuyingDAO.updateGroupBuyingCount(groupBuying);
 	}
 
 	

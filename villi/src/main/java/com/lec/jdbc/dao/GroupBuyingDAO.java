@@ -30,7 +30,7 @@ public class GroupBuyingDAO {
 	private String insertGroupBuying = "";
 	private String deleteGroupBuying = "";
 	private String updateGroupBuying = "";
-	private String updateCount = "";
+	private String updateGroupBuyingCount = "";
 	private String selectGroupBuyingList = "";
 	private String selectGroupBuyingListByTitle = ""; 
 	private String selectGroupBuyingListByWriter = ""; 
@@ -43,7 +43,7 @@ public class GroupBuyingDAO {
 		insertGroupBuying              = environment.getProperty("insertGroupBuying");
 		deleteGroupBuying              = environment.getProperty("deleteGroupBuying");
 		updateGroupBuying              = environment.getProperty("updateGroupBuying");
-		updateCount              = environment.getProperty("updateCount");
+		updateGroupBuyingCount              = environment.getProperty("updateGroupBuyingCount");
 		selectGroupBuyingList          = environment.getProperty("selectGroupBuyingList");
 		selectGroupBuyingListByTitle   = environment.getProperty("selectGroupBuyingListByTitle");
 		selectGroupBuyingListByWriter  = environment.getProperty("selectGroupBuyingListByWriter");
@@ -111,8 +111,8 @@ public class GroupBuyingDAO {
 		return jdbcTemplate.update(updateGroupBuying, groupBuying.getTitle(), groupBuying.getContent(), groupBuying.getSeq());
 	}
 	
-	public void updateCount(GroupBuyingVO groupBuying) {
-		jdbcTemplate.update(updateCount,  groupBuying.getSeq());
+	public void updateGroupBuyingCount(GroupBuyingVO groupBuying) {
+		jdbcTemplate.update(updateGroupBuyingCount,  groupBuying.getSeq());
 	}
 	
 	

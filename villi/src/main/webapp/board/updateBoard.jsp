@@ -259,7 +259,8 @@ a {
 					<h5 class="card-title text-start">
 						<img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
-							height="75"> <span>${ board.writer }</span> <span
+							height="75">
+							 <span>${ board.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
 
 						<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->

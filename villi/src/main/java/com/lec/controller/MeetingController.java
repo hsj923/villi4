@@ -85,7 +85,7 @@ public class MeetingController {
 	
 	@RequestMapping(value="/updateMeeting.do", method=RequestMethod.GET)
 	public String updateMeeting(Model model, MeetingVO meeting, SearchVO searchVO) {
-		meetingService.updateCount(meeting);
+		meetingService.updateMeetingCount(meeting);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("meeting", meetingService.getMeeting(meeting));
 		return "meeting/updateMeeting.jsp";

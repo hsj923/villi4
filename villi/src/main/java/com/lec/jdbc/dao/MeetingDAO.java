@@ -30,7 +30,7 @@ public class MeetingDAO {
 	private String insertMeeting = "";
 	private String deleteMeeting = "";
 	private String updateMeeting = "";
-	private String updateCount = "";
+	private String updateMeetingCount = "";
 	private String selectMeetingList = "";
 	private String selectMeetingListByTitle = ""; 
 	private String selectMeetingListByWriter = ""; 
@@ -43,7 +43,7 @@ public class MeetingDAO {
 		insertMeeting              = environment.getProperty("insertMeeting");
 		deleteMeeting              = environment.getProperty("deleteMeeting");
 		updateMeeting              = environment.getProperty("updateMeeting");
-		updateCount              = environment.getProperty("updateCount");
+		updateMeetingCount              = environment.getProperty("updateMeetingCount");
 		selectMeetingList          = environment.getProperty("selectMeetingList");
 		selectMeetingListByTitle   = environment.getProperty("selectMeetingListByTitle");
 		selectMeetingListByWriter  = environment.getProperty("selectMeetingListByWriter");
@@ -111,8 +111,8 @@ public class MeetingDAO {
 		return jdbcTemplate.update(updateMeeting, meeting.getTitle(), meeting.getContent(), meeting.getSeq());
 	}
 	
-	public void updateCount(MeetingVO meeting) {
-		jdbcTemplate.update(updateCount,  meeting.getSeq());
+	public void updateMeetingCount(MeetingVO meeting) {
+		jdbcTemplate.update(updateMeetingCount,  meeting.getSeq());
 	}
 	
 	

@@ -49,8 +49,8 @@ public class DemandServiceImpl implements DemandService {
 	}
 	
 	@Override
-	public void updateCount(DemandVO demand) {
-		demandDAO.updateCount(demand);
+	public void updateDemandCount(DemandVO demand) {
+		demandDAO.updateDemandCount(demand);
 	}
 
 	

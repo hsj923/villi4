@@ -13,5 +13,5 @@ public interface DemandService {
 	DemandVO insertDemand(DemandVO demand);
 	int deleteDemand(DemandVO demand);
 	int updateDemand(DemandVO demand);
-	void updateCount(DemandVO demand);
+	void updateDemandCount(DemandVO demand);
 }

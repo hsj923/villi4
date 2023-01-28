@@ -45,7 +45,6 @@ body {
 nav {
 	background-color: #FFFAFA;
 }
-
 </style>
 </head>
 <body>
@@ -130,7 +129,7 @@ nav {
 		</div>
 	</nav>
 
-<!-- 	<!--==============================게시물 제목===============================   --> 
+	<!-- 	<!--==============================게시물 제목===============================   -->
 	<div class="container">
 		<div class="row">
 			<div class="col">
@@ -140,64 +139,62 @@ nav {
 
 
 
-			<!-- 이미지 -->
-			<!--              <div class="card" style="width: 18rem;"> -->
-			<%-- 				   <img src="resources/images/${ vote.v_item1Pic }" class="card-img-top" alt="img"> --%>
-			<!-- 			 </div> -->
+		<!-- 이미지 -->
+		<!--              <div class="card" style="width: 18rem;"> -->
+		<%-- 				   <img src="resources/images/${ vote.v_item1Pic }" class="card-img-top" alt="img"> --%>
+		<!-- 			 </div> -->
 
-			<!--==============================차트생성===============================   -->
-			<div class="row">
-				<div class="col">
-					<div class="card">
-						<div class="card-body">
-							<canvas id="myChart1"></canvas>
-						</div>
-						<div class="card-footer text-center text-dark">
-							<h3>${ vote.content }</h3>
-						</div>
+		<!--==============================차트생성===============================   -->
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<canvas id="myChart1"></canvas>
+					</div>
+					<div class="card-footer text-center text-dark">
+						<h3>${ vote.content }</h3>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!--==============================체크박스===============================   -->
-		<div class="container mt-3">
+	<!--==============================체크박스===============================   -->
+	<div class="container mt-3">
 
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="flexRadioDefault"
+				id="flexRadioDefault1" value="${ vote.itemcnt1 }"
+				onclick="calculate(this)"> <label class="form-check-label"
+				for="flexRadioDefault1"> ${ vote.itemlist1 } </label>
+		</div>
+
+
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="flexRadioDefault"
+				id="flexRadioDefault2" value="${ vote.itemcnt2 }"
+				onclick="calculate(this)"> <label class="form-check-label"
+				for="flexRadioDefault2"> ${ vote.itemlist2 } </label>
+		</div>
+
+
+		<c:if test="${ !empty  vote.itemlist3}">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault1" value="${ vote.itemcnt1 }"
+					id="flexRadioDefault3" value="${ vote.itemcnt3 }"
 					onclick="calculate(this)"> <label class="form-check-label"
-					for="flexRadioDefault1"> ${ vote.itemlist1 } </label>
+					for="flexRadioDefault3"> ${ vote.itemlist3 } </label>
 			</div>
+		</c:if>
 
-
+		<c:if test="${ !empty  vote.itemlist4}">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault2" value="${ vote.itemcnt2 }"
+					id="flexRadioDefault4" value="${ vote.itemcnt4 }"
 					onclick="calculate(this)"> <label class="form-check-label"
-					for="flexRadioDefault2"> ${ vote.itemlist2 } </label>
+					for="flexRadioDefault4"> ${ vote.itemlist4 } </label>
 			</div>
-
-
-			<c:if test="${ !empty  vote.itemlist3}">
-				<div class="form-check">
-					<input class="form-check-input" type="radio"
-						name="flexRadioDefault" id="flexRadioDefault3"
-						value="${ vote.itemcnt3 }" onclick="calculate(this)"> <label
-						class="form-check-label" for="flexRadioDefault3"> ${ vote.itemlist3 }
-					</label>
-				</div>
-			</c:if>
-
-			<c:if test="${ !empty  vote.itemlist4}">
-				<div class="form-check">
-					<input class="form-check-input" type="radio"
-						name="flexRadioDefault" id="flexRadioDefault4"
-						value="${ vote.itemcnt4 }" onclick="calculate(this)"> <label
-						class="form-check-label" for="flexRadioDefault4"> ${ vote.itemlist4 }
-					</label>
-				</div>
-			</c:if>
+		</c:if>
 		<!-- ==================부트스트랩====================== -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -245,8 +242,21 @@ nav {
 			//체크박스 체크시 체크된 값 출력
 			function calculate(box) {
 				if (box.checked) // 체크가 되면 checed==true라는 값을 전달받는다. 
-					(box.value); //value속성을 이용
-				document.getElementById("sumtext").value = parseInt(box.value) + 1; //getElementById메소드 이용&value속성 변경
+					(box.value) //value속성을 이용		\
+					
+				 if (box.checked) {
+					if (box.value == count1)
+						document.getElementById("sumcnt1").value = parseInt(box.value) + 1; //getElementById메소드 이용&value속성 변경
+				} else if (box.value == count2) {
+					document.getElementById("sumcnt2").value = parseInt(box.value) + 1;
+				} else if (box.value == count3) {
+					document.getElementById("sumcnt3").value = parseInt(box.value) + 1;
+				} else if (box.value == count4) {
+					document.getElementById("sumcnt4").value = parseInt(box.value) + 1;
+				} else
+				  {
+					document.getElementById("sumcnt1").value = parseInt(box.value) + 5;
+				  }
 			}
 		</script>
 
@@ -254,18 +264,20 @@ nav {
 		<!-- 체크된 값 -->
 		<form action="updateVote.do" method="post">
 			<hr>
-<%-- 			<input name="seq" type="hidden" value="${vote.seq}" /> <input --%>
-<%-- 				name="itemcnt1" type="text" value="${vote.itemcnt1}" /> <input --%>
-<%-- 				name="itemcnt2" type="text" value="${vote.itemcnt2}" /> <input --%>
-<%-- 				name="itemcnt1" type="text" value="${vote.itemcnt1}" /> <input --%>
-<%-- 				name="itemcnt2" type="text" value="${vote.itemcnt2}" /> <input --%>
-<%-- 				name="itemcnt3" type="text" value="${vote.itemcnt3}" /> <input --%>
-<%-- 				name="itemcnt4" type="text" value="${vote.itemcnt4}" />  --%>
-	<input name="content" type="text" value="${vote.content}" />
-				<input type="submit" id="sumtext" value="체크하시오" name=""> 
-			
-				<input
-				type="submit" id="vote" class="btn btn-success" value="투표하기" />
+			<input name="seq" type="hidden" value="${vote.seq}" /> <input
+				name="itemcnt1" type="text" value="${vote.itemcnt1}" id="sumcnt1" />
+			<input name="itemcnt2" type="text" value="${vote.itemcnt2}"
+				id="sumcnt2" />
+			<c:if test="${ !empty  vote.itemcnt3}">
+				<input name="itemcnt3" type="text" value="${vote.itemcnt3}"
+					id="sumcnt3" />
+			</c:if>
+			<c:if test="${ !empty  vote.itemcnt4}">
+				<input name="itemcnt4" type="text" value="${vote.itemcnt4}"
+					id="sumcnt4" />
+			</c:if>
+
+			<input type="submit" id="vote" class="btn btn-success" value="투표하기" />
 		</form>
 	</div>
 	<div class="container mt-5" align="center">

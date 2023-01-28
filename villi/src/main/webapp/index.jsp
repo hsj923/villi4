@@ -15,7 +15,7 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
-	
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -26,6 +26,12 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
 
 <style>
 @font-face {
@@ -41,9 +47,6 @@ body {
 	font-family: 'Pretendard-Regular';
 }
 
-nav {
-	background-color: #FFFAFA;
-}
 
 #section1 {
 	background-color: #ECECEC;
@@ -56,6 +59,10 @@ nav {
 #section3 {
 	background-color: #F6FAF3;
 }
+#section4 {
+	background-color:#F5DEB3;
+}
+
 
 .r_menu a {
 	text-decoration: none;
@@ -71,6 +78,9 @@ nav {
 .card-mtext {width =10px;height =10px;
 	
 }
+
+/*==================== Footer  ==================*/
+
 </style>
 </head>
 <body>
@@ -120,8 +130,7 @@ nav {
 						</li>
 						<li class="home-story-list-item2">
 							<div class="text-s text-bold mt-3 mb-2">
-								<a href="getLostList.do"
-									class="btn btn-secondary rounded-pill">동네분실센터</a>
+								<a href="getLostList.do" class="btn btn-secondary rounded-pill">동네분실센터</a>
 							</div>
 							<div class="text-xs">무언가를 잃어버렸을 때, 함께 찾을 수 있어요.</div>
 						</li>
@@ -134,8 +143,7 @@ nav {
 						</li>
 						<li class="home-story-list-item4">
 							<div class="text-s text-bold mt-3 mb-2">
-								<a href="getVoteList.do"
-									class="btn btn-secondary rounded-pill">동네투표</a>
+								<a href="getVoteList.do" class="btn btn-secondary rounded-pill">동네투표</a>
 							</div>
 							<div class="text-xs">동네 이웃들에게 물어보세요.</div>
 						</li>
@@ -166,5 +174,27 @@ nav {
 			</div>
 		</div>
 	</section>
+	<section class="home-main-section" id="section4">
+		<div class="container">
+			<div class="row">
+				<img src="resources/images/index-logo.png" class="img-responsive center-block"
+							alt="" height="900">
+							<div class="col">
+				<h1 class="fw-bold text-center my-5">빌리 앱 설치하기</h1>
+				<p class="text-center mb-5">
+					<a href="set.jsp"> <img width="200" height="59"
+						src="https://blisgo.com/wp-content/uploads/2022/02/Available_on_the_App_Store.png"
+						alt="">
+					</a> <a href="set.jsp"> <img width="200" height="59"
+						src="https://blisgo.com/wp-content/uploads/2022/02/Google_Play_Store.png"
+						alt="">
+					</a>
+				</p>
+			</div>
+			</div>
+		</div>
+	</section>
+
+
 </body>
 </html>

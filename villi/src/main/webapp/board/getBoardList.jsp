@@ -33,68 +33,77 @@
 	font-weight: 400;
 	font-style: normal;
 }
+
 body {
 	font-family: 'Pretendard-Regular';
-	background-color: 	#C0C0C0;
+	background-color: #C0C0C0;
 }
+
 header {
 	background-color: #FFF;
 	height: 90px;
 }
+
 nav {
 	background-color: #FFF;
 }
+
 #banner2 {
 	background-color: #ebecf0;
 }
+
 #banner img {
 	width: 100%;
 	height: 650px;
 	object-fit: cover;
 }
-.r_menu a {
-	text-decoration: none;
-	color: black;
-	.
-	card
-	{
-	margin-bottom
-	:
-	1rem;
-}
+
+
 .card-mtext {width =10px;height =10px;
 	
 }
-.r_menu a:hover{
-color:#23dbc9
+
+.r_menu a:hover {
+	color: #23dbc9
 }
+
+.pagination li a {
+	border-radius: 0 !important;
+	color: #333 !important;
+}
+
+.pagination li.active a {
+	color: #fff !important;
+	background: #444 !important;
+	border-color: #444 !important;
+}
+
 </style>
 </head>
 <body>
 	<div>
-<!-- ===========header================ -->
-	<header class="border-bottom border-white">
-		<div class="container">
-			<div class="row align-items-start p-3">
-				<div class="col mt-3">
-					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
-				</div>
-				<div class="col" align="center">
-					<a href="getBoardList.do"><img src="resources/images/test.png"
-						alt="logo" width=70px height=70px></a>
-				</div>
+		<!-- ===========header================ -->
+		<header class="border-bottom border-white">
+			<div class="container">
+				<div class="row align-items-start p-3">
+					<div class="col mt-3">
+						<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
+					</div>
+					<div class="col" align="center">
+						<a href="getBoardList.do"><img src="resources/images/test.png"
+							alt="logo" width=70px height=70px></a>
+					</div>
 
-				<div class="col mt-3 text-end r_menu">
-					<span class= mx-2><a href="#">좋아요</a> </span>
-					<span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
-					<span class="mx-2">${ sessionScope.user.getName() }님</span>
-					
+					<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> <span class=mx-1><a
+							href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> <span class="mx-2">${ sessionScope.user.getName() }님</span>
+
+					</div>
 				</div>
 			</div>
-		</div>
-	</header>
-		
-		
+		</header>
+
+
 		<!-- ============banner=============== -->
 
 		<div id="carouselExampleControls"
@@ -210,7 +219,8 @@ color:#23dbc9
 														placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
 												</div>
 												<div class="col col-lg-2">
-													<button class="btn text-white "  style="background-color: #72CCD2;" type="submit">Search</button>
+													<button class="btn text-white "
+														style="background-color: #72CCD2;" type="submit">Search</button>
 												</div>
 											</div>
 										</div>
@@ -232,9 +242,11 @@ color:#23dbc9
 				<c:forEach items="${boardList}" var="board">
 					<div class="col-12 col-md-6 col-lg-3 mt-5">
 						<div class="card">
-							<a href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
-								style="text-decoration: none"><img class="card-img-top" width="450" height="250"
-								src="resources/images/${ board.fileName1 }" alt="image"></a>
+							<span class="border border-dark"> <a
+								href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
+								style="text-decoration: none"><img class="card-img-top"
+									width="450" height="250"
+									src="resources/images/${ board.fileName1 }" alt="image"></a></span>
 							<div class="card-body">
 								<h6 class="card-title fw-bold">${board.title}</h6>
 								<p class="card-text">
@@ -246,11 +258,11 @@ color:#23dbc9
 										</c:when>
 										<c:when test="${board.status eq '예약중'}">
 											<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
-											</c:when>
+										</c:when>
 										<c:when test="${board.status eq '대여중'}">
 											<span class="badge bg-danger text-white rounded-pill ">${board.status}</span>
-											</c:when>
-									</c:choose>					
+										</c:when>
+									</c:choose>
 									<c:if test="${ !empty  board.price}">
 										<span>${ board.price }원</span>
 									</c:if>
@@ -269,7 +281,7 @@ color:#23dbc9
   <path
 											d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
 </svg>
-									6
+									${ board.cnt }
 									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
 										fill="currentColor" class="bi bi-chat-square-dots"
 										viewBox="0 0 16 16">
@@ -289,7 +301,7 @@ color:#23dbc9
 		<!-- 게시판 -->
 
 		<div class="row align-items-start mt-3">
-			<ul class="col pagination justify-content-center">
+			<ul class="pagination justify-content-center">
 
 				<c:set var="cp" value="${searchVO.getCurPage()}" />
 				<c:set var="rp" value="${searchVO.getRowSizePerPage()}" />

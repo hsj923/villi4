@@ -73,7 +73,7 @@ public class GroupBuyingController {
 	
 	@RequestMapping(value="/updateGroupBuying.do", method=RequestMethod.GET)
 	public String updateGroupBuying(Model model, GroupBuyingVO groupBuying, SearchVO searchVO) {
-		groupBuyingService.updateCount(groupBuying);
+		groupBuyingService.updateGroupBuyingCount(groupBuying);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("groupBuying", groupBuyingService.getGroupBuying(groupBuying));
 		return "groupBuying/updateGroupBuying.jsp";

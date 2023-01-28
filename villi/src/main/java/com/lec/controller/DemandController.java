@@ -73,7 +73,7 @@ public class DemandController {
 	
 	@RequestMapping(value="/updateDemand.do", method=RequestMethod.GET)
 	public String updateDemand(Model model, DemandVO demand, SearchVO searchVO) {
-		demandService.updateCount(demand);
+		demandService.updateDemandCount(demand);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("demand", demandService.getDemand(demand));
 		return "demand/updateDemand.jsp";

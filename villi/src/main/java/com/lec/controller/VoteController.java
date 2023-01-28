@@ -91,7 +91,7 @@ public class VoteController {
 	
 	@RequestMapping(value="/updateVote.do", method=RequestMethod.GET)
 	public String updateVote(Model model, VoteVO vote, SearchVO searchVO) {
-		voteService.updateCount(vote);
+		voteService.updateVoteCount(vote);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("vote", voteService.getVote(vote));
 		return "vote/updateVote.jsp";

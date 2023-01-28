@@ -30,7 +30,7 @@ public class QuestionDAO {
 	private String insertQuestion = "";
 	private String deleteQuestion = "";
 	private String updateQuestion = "";
-	private String updateCount = "";
+	private String updateQuestionCount = "";
 	private String selectQuestionList = "";
 	private String selectQuestionListByTitle = ""; 
 	private String selectQuestionListByWriter = ""; 
@@ -43,7 +43,7 @@ public class QuestionDAO {
 		insertQuestion              = environment.getProperty("insertQuestion");
 		deleteQuestion              = environment.getProperty("deleteQuestion");
 		updateQuestion              = environment.getProperty("updateQuestion");
-		updateCount              = environment.getProperty("updateCount");
+		updateQuestionCount              = environment.getProperty("updateQuestionCount");
 		selectQuestionList          = environment.getProperty("selectQuestionList");
 		selectQuestionListByTitle   = environment.getProperty("selectQuestionListByTitle");
 		selectQuestionListByWriter  = environment.getProperty("selectQuestionListByWriter");
@@ -111,8 +111,8 @@ public class QuestionDAO {
 		return jdbcTemplate.update(updateQuestion, question.getTitle(), question.getContent(), question.getSeq());
 	}
 	
-	public void updateCount(QuestionVO question) {
-		jdbcTemplate.update(updateCount,  question.getSeq());
+	public void updateQuestionCount(QuestionVO question) {
+		jdbcTemplate.update(updateQuestionCount,  question.getSeq());
 	}
 	
 	

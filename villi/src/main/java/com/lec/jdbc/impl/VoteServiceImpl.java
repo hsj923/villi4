@@ -49,8 +49,8 @@ public class VoteServiceImpl implements VoteService {
 	}
 	
 	@Override
-	public void updateCount(VoteVO vote) {
-		voteDAO.updateCount(vote);
+	public void updateVoteCount(VoteVO vote) {
+		voteDAO.updateVoteCount(vote);
 	}
 
 	

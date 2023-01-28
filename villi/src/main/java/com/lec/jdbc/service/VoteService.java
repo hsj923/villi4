@@ -13,5 +13,5 @@ public interface VoteService {
 	VoteVO insertVote(VoteVO vote);
 	int deleteVote(VoteVO vote);
 	int updateVote(VoteVO vote);
-	void updateCount(VoteVO vote);
+	void updateVoteCount(VoteVO vote);
 }

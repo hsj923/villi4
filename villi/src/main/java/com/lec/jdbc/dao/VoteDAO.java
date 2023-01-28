@@ -30,7 +30,7 @@ public class VoteDAO {
 	private String insertVote = "";
 	private String deleteVote = "";
 	private String updateVote = "";
-	private String updateCount = "";
+	private String updateVoteCount = "";
 	private String selectVoteList = "";
 	private String selectVoteListByTitle = ""; 
 	private String selectVoteListByWriter = ""; 
@@ -43,7 +43,7 @@ public class VoteDAO {
 		insertVote              = environment.getProperty("insertVote");
 		deleteVote              = environment.getProperty("deleteVote");
 		updateVote              = environment.getProperty("updateVote");
-		updateCount              = environment.getProperty("updateCount");
+		updateVoteCount              = environment.getProperty("updateVoteCount");
 		selectVoteList          = environment.getProperty("selectVoteList");
 		selectVoteListByTitle   = environment.getProperty("selectVoteListByTitle");
 		selectVoteListByWriter  = environment.getProperty("selectVoteListByWriter");
@@ -108,11 +108,11 @@ public class VoteDAO {
 	}
 
 	public int updateVote(VoteVO vote) {
-		return jdbcTemplate.update(updateVote, vote.getContent(), vote.getSeq());
+		return jdbcTemplate.update(updateVote, vote.getItemcnt1(), vote.getItemcnt2(), vote.getItemcnt3(), vote.getItemcnt4(), vote.getSeq());
 	}
 	
-	public void updateCount(VoteVO vote) {
-		jdbcTemplate.update(updateCount,  vote.getSeq());
+	public void updateVoteCount(VoteVO vote) {
+		jdbcTemplate.update(updateVoteCount,  vote.getSeq());
 	}
 	
 	

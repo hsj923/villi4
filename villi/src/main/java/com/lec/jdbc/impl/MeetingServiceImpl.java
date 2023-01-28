@@ -49,8 +49,8 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 	
 	@Override
-	public void updateCount(MeetingVO meeting) {
-		meetingDAO.updateCount(meeting);
+	public void updateMeetingCount(MeetingVO meeting) {
+		meetingDAO.updateMeetingCount(meeting);
 	}
 
 	

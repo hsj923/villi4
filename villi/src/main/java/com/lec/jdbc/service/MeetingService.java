@@ -13,5 +13,5 @@ public interface MeetingService {
 	MeetingVO insertMeeting(MeetingVO meeting);
 	int deleteMeeting(MeetingVO meeting);
 	int updateMeeting(MeetingVO meeting);
-	void updateCount(MeetingVO meeting);
+	void updateMeetingCount(MeetingVO meeting);
 }
