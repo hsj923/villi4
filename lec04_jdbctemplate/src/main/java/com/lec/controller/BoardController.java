@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -20,10 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.lec.jdbc.common.SearchVO;
+import com.lec.jdbc.impl.UserServiceImpl;
 import com.lec.jdbc.service.BoardService;
+import com.lec.jdbc.service.UserService;
 import com.lec.jdbc.vo.BoardVO;
+import com.lec.jdbc.vo.UserVO;
 
 @Controller
 @PropertySource("classpath:config/uploadpath.properties")
@@ -31,6 +36,9 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	UserServiceImpl userService;
 	
 	@Autowired
 	Environment environment;
@@ -64,6 +72,40 @@ public class BoardController {
 		return "board/getBoardList.jsp";
 	}
 	
+	
+	
+	@RequestMapping("getMyBoardList.do")
+	public String getMyBoardList(Model model, UserVO vo, HttpSession sess ,SearchVO searchVO,
+	
+	
+			@RequestParam(defaultValue="1") int curPage,
+			@RequestParam(defaultValue="20") int rowSizePerPage,
+			@RequestParam(defaultValue="") String searchCategory,
+			@RequestParam(defaultValue="") String searchType,
+			@RequestParam(defaultValue="") String searchWord) {
+		
+		
+		UserVO user = userService.getUser(vo);
+		sess.setAttribute("user", user);
+		
+		searchVO.setTotalRowCount(boardService.getTotalRowCount(searchVO));
+		searchVO.setCurPage(curPage);
+		searchVO.setRowSizePerPage(rowSizePerPage);
+		searchVO.setSearchCategory(searchCategory);
+		searchVO.setSearchType(searchType);
+		searchVO.setSearchWord(searchWord);
+		searchVO.pageSetting();
+		
+	
+		List<BoardVO> myboardList = boardService.getMyBoardList(searchVO);
+	
+		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("myboardList", myboardList);		
+		
+		return "board/getMyBoardList.jsp";
+	}
+	
+	
 	@RequestMapping("*/insertBoard.do")
 	public String insertBoard(BoardVO board) throws IOException {
 		MultipartFile uploadFile1 = board.getUploadFile1();
@@ -87,6 +129,8 @@ public class BoardController {
 		boardService.insertBoard(board);
 		return "redirect:/getBoardList.do";
 	}	
+	
+	
 	@RequestMapping("*/insertServiceBoard.do")
 	public String insertServiceBoard(BoardVO board) throws IOException {
 		MultipartFile uploadFile1 = board.getUploadFile1();

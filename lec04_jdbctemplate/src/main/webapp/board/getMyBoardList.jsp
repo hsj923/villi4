@@ -190,7 +190,9 @@ color:#23dbc9
 										<li class="nav-item"><a class="nav-link"
 											href="getWantBoardList.do">빌리요청</a></li>
 									</ul>
-									<form action="getBoardList.do" method="post" id="boardForm">
+									
+									
+									<form action="getMyBoardList.do" method="post" id="boardForm">
 										<input type="hidden" id="curPage" name="curPage"
 											value="${searchVO.getCurPage()}"> <input
 											type="hidden" id="rowSizePerPage" name="rowSizePerPage"
@@ -234,7 +236,7 @@ color:#23dbc9
 
 		<div class="container grid-container">
 			<div class="row">
-				<c:forEach items="${boardList}" var="board">
+				<c:forEach items="${ myboardList}" var="mysboard">
 					<div class="col-12 col-md-6 col-lg-3 mt-5">
 						<div class="card">
 							<a href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
@@ -309,7 +311,7 @@ color:#23dbc9
 
 				<c:if test="${ fp != 1 }">
 					<li class="page-item"><a
-						href="getBoardList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+						href="getMyBoardList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 						class="page-link"><i class="fas fa-fast-backward"></i></a></li>
 					<li class="page-item"><a
 						href="getBoardList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
@@ -318,16 +320,16 @@ color:#23dbc9
 
 				<c:forEach var="page" begin="${fp}" end="${lp}">
 					<li class="page-item ${cp==page ? 'active' : ''}"><a
-						href="getBoardList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+						href="getMyBoardList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 						class="page-link">${page}</a></li>
 				</c:forEach>
 
 				<c:if test="${ lp < tp }">
 					<li class="page-item"><a
-						href="getBoardList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+						href="getMyBoardList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 						class="page-link"><i class="fas fa-forward"></i></a></li>
 					<li class="page-item"><a
-						href="getBoardList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+						href="getMyBoardList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 						class="page-link"><i class="fas fa-fast-forward"></i></a></li>
 				</c:if>
 			</ul>

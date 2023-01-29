@@ -32,7 +32,12 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> getBoardList(SearchVO searchVO) {
 		return boardDAO.getBoardList(searchVO);
 	}
-
+	
+	@Override
+	public List<BoardVO> getMyBoardList(SearchVO searchVO){
+		return boardDAO.getMyBoardList(searchVO);
+	}
+	
 	@Override
 	public BoardVO insertBoard(BoardVO board) {
 		return boardDAO.insertBoard(board);
