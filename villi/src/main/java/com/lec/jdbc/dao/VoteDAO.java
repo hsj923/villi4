@@ -95,7 +95,7 @@ public class VoteDAO {
 	}
 	
 	public VoteVO insertVote(VoteVO vote) {
-		jdbcTemplate.update(insertVote, vote.getTitle(), vote.getWriter(), vote.getContent(), vote.getItemcnt1(), vote.getItemcnt2(), vote.getItemcnt3(), vote.getItemcnt4(), vote.getItemlist1(), vote.getItemlist2(), vote.getItemlist3(), vote.getItemlist4(), vote.getFileName1(), vote.getFileName2(), vote.getFileName3(), vote.getFileName4());
+		jdbcTemplate.update(insertVote, vote.getTitle(), vote.getWriter(), vote.getContent(), vote.getItemlist1(), vote.getItemlist2(), vote.getItemlist3(), vote.getItemlist4());
 		return vote;
 	}	
 

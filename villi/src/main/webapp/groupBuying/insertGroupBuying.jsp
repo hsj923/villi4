@@ -117,23 +117,46 @@ nav {
 
 
 	<!--=============================================================================================== -->
-	<div class="container">
-		<div class="mt-4 p-3">
-			<h3>게시물작성</h3>
-		</div>
-	</div>
+	<form action="insertGroupBuying.do" method="post">
 		<div class="container mt-3" align="center">
-			<div class="input-group mb-3">
+			<div class="input-group mb-3 w-75">
 				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
 					type="text" class="form-control" name="writer" id="writer"
 					placeholder="공구글 작성자....">
 			</div>
-			<div class="input-group mb-3">
+			<div class="input-group mb-3 w-75">
+				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				<input type="number" class="form-control" name="per" id="per"
+					placeholder="모집인원">
+			</div>
+			<div class="input-group mb-3 w-75">
 				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
 				<input type="text" class="form-control" name="title" id="title"
 					placeholder="공구글 제목....">
 			</div>
-			<div class="input-group mb-3">
+		<div class="input-group mb-3 w-75">
+				<input type="text" class="form-control" name="price" id="price"
+					onkeyup="inputNumberFormat(this)" placeholder="가격">
+				<script>
+					 function inputNumberFormat(obj) {
+					     obj.value = comma(uncomma(obj.value));
+					 }
+					 function comma(str) {
+					     str = String(str);
+					     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+					 }
+					 function uncomma(str) {
+					     str = String(str);
+					     return str.replace(/[^\d]+/g, '');
+					 }
+					</script>
+			</div>
+			<div class="input-group mb-3 w-75">
+				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				<input type="date" class="form-control" name="buying_date" id="buying_date"
+					placeholder="공구 날짜">
+			</div>
+			<div class="input-group mb-3 w-75">
 				<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
 				<textarea class="form-control" name="content" id="content" rows="20"
 					placeholder="공구글 상세내용...."></textarea>
@@ -141,29 +164,22 @@ nav {
 
 
 			<!-- 파일첨부 -->
-			<div class="input-group mb-3">
+		<label for="formFile" class="form-label">사진은 최대 3장까지 등록가능합니다</label>	
+			<div class="input-group mb-3 w-75">
 				<label class="input-group-text" for="uploadFile1"><i
 					class="fas fa-file"></i></label> <input type="file" class="form-control"
 					name="uploadFile1" id="uploadFile1" aria-describedby="uploadFile"
-					aria-label="Upload"> <label class="input-group-text"
-					for="uploadFile2"><i class="fas fa-file"></i></label> <input
-					type="file" class="form-control" name="uploadFile2"
-					id="uploadFile2" aria-describedby="uploadFile" aria-label="Upload">
-
-
-				<label class="input-group-text" for="uploadFile4"><i
-					class="fas fa-file"></i></label> <input type="file" class="form-control"
-					name="uploadFile3" id="uploadFile3" aria-describedby="uploadFile"
-					aria-label="Upload">
+					aria-label="Upload"> 
 			</div>
 			<input type="hidden" name="fileName" value="" />
 
 
 
-			<div class="input-group input-group-lg mb-5">
-				<input type="submit" class="form-control btn btn-primary"
+			<div class="input-group input-group-lg mb-5 w-75">
+				<input type="submit" class="form-control btn btn-dark"
 					aria-label="Sizing example input"
 					aria-describedby="inputGroup-sizing-lg" value=" 작성 ">
+
 			</div>
 
 

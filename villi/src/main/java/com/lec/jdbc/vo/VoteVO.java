@@ -16,62 +16,44 @@ public class VoteVO {
 	private String itemlist2;
 	private String itemlist3;
 	private String itemlist4;
-	private String itemcnt1;
-	private String itemcnt2;
-	private String itemcnt3;
-	private String itemcnt4;
-	private String fileName1; 
-	private String fileName2; 
-	private String fileName3; 
-	private String fileName4; 
-	private MultipartFile uploadFile1;
-	private MultipartFile uploadFile2;
-	private MultipartFile uploadFile3;
-	private MultipartFile uploadFile4;
+	private int itemcnt1;
+	private int itemcnt2;
+	private int itemcnt3;
+	private int itemcnt4;
 	
+	
+
 	@Override
 	public String toString() {
 		return "VoteVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
 				+ regDate + ", cnt=" + cnt + ", itemlist1=" + itemlist1 + ", itemlist2=" + itemlist2 + ", itemlist3="
 				+ itemlist3 + ", itemlist4=" + itemlist4 + ", itemcnt1=" + itemcnt1 + ", itemcnt2=" + itemcnt2
-				+ ", itemcnt3=" + itemcnt3 + ", itemcnt4=" + itemcnt4 + ", fileName1=" + fileName1 + ", fileName2="
-				+ fileName2 + ", fileName3=" + fileName3 + ", fileName4=" + fileName4 + ", uploadFile1=" + uploadFile1
-				+ ", uploadFile2=" + uploadFile2 + ", uploadFile3=" + uploadFile3 + ", uploadFile4=" + uploadFile4
-				+ "]";
+				+ ", itemcnt3=" + itemcnt3 + ", itemcnt4=" + itemcnt4 + "]";
 	}
-	
-	public String getItemcnt1() {
+	public int getItemcnt1() {
 		return itemcnt1;
 	}
-
-	public void setItemcnt1(String itemcnt1) {
+	public void setItemcnt1(int itemcnt1) {
 		this.itemcnt1 = itemcnt1;
 	}
-
-	public String getItemcnt2() {
+	public int getItemcnt2() {
 		return itemcnt2;
 	}
-
-	public void setItemcnt2(String itemcnt2) {
+	public void setItemcnt2(int itemcnt2) {
 		this.itemcnt2 = itemcnt2;
 	}
-
-	public String getItemcnt3() {
+	public int getItemcnt3() {
 		return itemcnt3;
 	}
-
-	public void setItemcnt3(String itemcnt3) {
+	public void setItemcnt3(int itemcnt3) {
 		this.itemcnt3 = itemcnt3;
 	}
-
-	public String getItemcnt4() {
+	public int getItemcnt4() {
 		return itemcnt4;
 	}
-
-	public void setItemcnt4(String itemcnt4) {
+	public void setItemcnt4(int itemcnt4) {
 		this.itemcnt4 = itemcnt4;
 	}
-
 	public String getItemlist1() {
 		return itemlist1;
 	}
@@ -95,19 +77,6 @@ public class VoteVO {
 	}
 	public void setItemlist4(String itemlist4) {
 		this.itemlist4 = itemlist4;
-	}
-
-	public String getFileName4() {
-		return fileName4;
-	}
-	public void setFileName4(String fileName4) {
-		this.fileName4 = fileName4;
-	}
-	public MultipartFile getUploadFile4() {
-		return uploadFile4;
-	}
-	public void setUploadFile4(MultipartFile uploadFile4) {
-		this.uploadFile4 = uploadFile4;
 	}
 	public int getSeq() {
 		return seq;
@@ -145,43 +114,5 @@ public class VoteVO {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	public String getFileName1() {
-		return fileName1;
-	}
-	public void setFileName1(String fileName1) {
-		this.fileName1 = fileName1;
-	}
-	public String getFileName2() {
-		return fileName2;
-	}
-	public void setFileName2(String fileName2) {
-		this.fileName2 = fileName2;
-	}
-	public String getFileName3() {
-		return fileName3;
-	}
-	public void setFileName3(String fileName3) {
-		this.fileName3 = fileName3;
-	}
-
-	public MultipartFile getUploadFile1() {
-		return uploadFile1;
-	}
-	public void setUploadFile1(MultipartFile uploadFile1) {
-		this.uploadFile1 = uploadFile1;
-	}
-	public MultipartFile getUploadFile2() {
-		return uploadFile2;
-	}
-	public void setUploadFile2(MultipartFile uploadFile2) {
-		this.uploadFile2 = uploadFile2;
-	}
-	public MultipartFile getUploadFile3() {
-		return uploadFile3;
-	}
-	public void setUploadFile3(MultipartFile uploadFile3) {
-		this.uploadFile3 = uploadFile3;
-	}
-
 	
 }

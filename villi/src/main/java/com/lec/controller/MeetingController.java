@@ -61,24 +61,6 @@ public class MeetingController {
 	
 	@RequestMapping("*/insertMeeting.do")
 	public String insertMeeting(MeetingVO meeting) throws IOException {
-		MultipartFile uploadFile1 = meeting.getUploadFile1();
-		if (!uploadFile1.isEmpty()) {
-			String fileName = uploadFile1.getOriginalFilename();
-			uploadFile1.transferTo(new File(uploadFolder + fileName));
-			meeting.setFileName1(fileName);
-		}	
-		MultipartFile uploadFile2 = meeting.getUploadFile2();
-		if (!uploadFile2.isEmpty()) {
-			String fileName = uploadFile2.getOriginalFilename();
-			uploadFile2.transferTo(new File(uploadFolder + fileName));
-			meeting.setFileName2(fileName);
-		}	
-		MultipartFile uploadFile3 = meeting.getUploadFile3();
-		if (!uploadFile3.isEmpty()) {
-			String fileName = uploadFile3.getOriginalFilename();
-			uploadFile3.transferTo(new File(uploadFolder + fileName));
-			meeting.setFileName3(fileName);
-		}	
 		meetingService.insertMeeting(meeting);
 		return "redirect:/getMeetingList.do";
 	}	

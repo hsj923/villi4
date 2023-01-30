@@ -117,51 +117,49 @@ nav {
 
 
 	<!--=============================================================================================== -->
-	<div class="container">
-		<div class="mt-4 p-3">
-			<h3>게시물작성</h3>
-		</div>
-	</div>
-		<div class="container mt-3" align="center">
-			<div class="input-group mb-3">
+
+	<form action="insertMeeting.do" method="post">
+		<div class="container mt-3 w-75" align="center">
+			<div class="input-group mb-3 w-75">
 				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
 					type="text" class="form-control" name="writer" id="writer"
 					placeholder="동네모임글 작성자....">
 			</div>
-			<div class="input-group mb-3">
+			<div class="input-group mb-3 w-75">
 				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
 				<input type="text" class="form-control" name="title" id="title"
 					placeholder="동네모임글 제목....">
 			</div>
-			<div class="input-group mb-3">
+			<div class="input-group mb-3 w-75">
+				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				<input type="number" class="form-control" name="per" id="per"
+					placeholder="인원">
+			</div>
+			<div class="input-group mb-3 w-75">
+				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				<input type="date" class="form-control" name="meet_date" id="meet_date">
+			</div>
+			<div class="input-group mb-3 w-75">
+				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				<input type="text" class="form-control" name="place" id="place"
+					placeholder="장소">
+			</div>
+
+
+
+
+       
+			<div class="input-group mb-3 w-75">
 				<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
 				<textarea class="form-control" name="content" id="content" rows="20"
 					placeholder="동네모임글 상세내용...."></textarea>
 			</div>
 
 
-			<!-- 파일첨부 -->
-			<div class="input-group mb-3">
-				<label class="input-group-text" for="uploadFile1"><i
-					class="fas fa-file"></i></label> <input type="file" class="form-control"
-					name="uploadFile1" id="uploadFile1" aria-describedby="uploadFile"
-					aria-label="Upload"> <label class="input-group-text"
-					for="uploadFile2"><i class="fas fa-file"></i></label> <input
-					type="file" class="form-control" name="uploadFile2"
-					id="uploadFile2" aria-describedby="uploadFile" aria-label="Upload">
 
 
-				<label class="input-group-text" for="uploadFile4"><i
-					class="fas fa-file"></i></label> <input type="file" class="form-control"
-					name="uploadFile3" id="uploadFile3" aria-describedby="uploadFile"
-					aria-label="Upload">
-			</div>
-			<input type="hidden" name="fileName" value="" />
-
-
-
-			<div class="input-group input-group-lg mb-5">
-				<input type="submit" class="form-control btn btn-primary"
+			<div class="input-group input-group-lg mb-5 w-75">
+				<input type="submit" class="form-control btn btn-dark"
 					aria-label="Sizing example input"
 					aria-describedby="inputGroup-sizing-lg" value=" 작성 ">
 			</div>

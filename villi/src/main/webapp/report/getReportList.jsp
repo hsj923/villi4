@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>동네모임게시판</title>
+<title>신고게시판</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -136,26 +136,24 @@ nav {
 			<table class="table table-hover table-bordered">
 				<thead class="table-dark">
 					<th scope="col">글번호</th>
-					<th scope="col">제목</th>
-					<th scope="col">내용</th>
-					<th scope="col">모임인원</th>
-					<th scope="col">모임장소</th>
-					<th scope="col">모임시간</th>
-					<th scope="col">현재상태</th>
-					<th scope="col">작성일</th>
+					<th scope="col">작성자</th>
+					<th scope="col">신고이유</th>
+					<th scope="col">처리여부</th>
+					<th scope="col">처리시간</th>
+					<th scope="col">작성시간</th>
+	
 				</thead>
 				<tbody>
-					<c:forEach var="meeting" items="${ meetingList }">
+					<c:forEach var="report" items="${ reportList }">
 						<tr>
-						   	<td><a href="updateMeeting.do?seq=${meeting.getSeq()}"
-								style="text-decoration: none">${ meeting.seq }</a></td>
-							<td>${ meeting.title }</td>
-							<td>${ meeting.content }</td>
-							<td>${ meeting.per }</td>
-							<td>${ meeting.place }</td>
-							<td>${ meeting.meet_date }</td>
-							<td>${ meeting.status }</td>
-							<td>${ meeting.regDate }</td>
+						   	<td><a href="updateReport.do?seq=${report.getSeq()}"
+								style="text-decoration: none">${ report.seq }</a></td>
+							<td>${ report.seq }</td>
+							<td>${ report.name }</td>
+							<td>${ report.r_rs1 }</td>
+							<td>${ report.r_status }</td>
+							<td>${ report.r_etimr }</td>
+							<td>${ report.r_time }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -180,25 +178,25 @@ nav {
 
 			<c:if test="${ fp != 1 }">
 				<li class="page-item"><a
-					href="getMeetingList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-fast-backward"></i></a></li>
 				<li class="page-item"><a
-					href="getMeetingList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-backward"></i></a></li>
 			</c:if>
 
 			<c:forEach var="page" begin="${fp}" end="${lp}">
 				<li class="page-item ${cp==page ? 'active' : ''}"><a
-					href="getMeetingList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link">${page}</a></li>
 			</c:forEach>
 
 			<c:if test="${ lp < tp }">
 				<li class="page-item"><a
-					href="getMeetingList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-forward"></i></a></li>
 				<li class="page-item"><a
-					href="getMeetingList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-fast-forward"></i></a></li>
 			</c:if>
 		</ul>
@@ -229,22 +227,22 @@ nav {
 			$('#rowPerPage').change(function(e) {
 				$('#curPage').val(1);
 				$('#rowSizePerPage').val($(this).val());
-				$('#boardForm').submit();
+				$('#reportForm').submit();
 			}); //#rowPerPage
 
 			// 초기화 버튼 클릭
 			$('#btnReset').click(
 					function() {
 						$('#curPage').val(1);
-						$('#boardForm').find(
+						$('#reportForm').find(
 								"select[name='searchCategory'] option:eq(0)")
 								.attr("selected", "selected");
-						$('#boardForm').find(
+						$('#reportForm').find(
 								"select[name='searchType'] option:eq(0)").attr(
 								"selected", "selected");
-						$('#boardForm').find("input[name='searchWord']")
+						$('#reportForm').find("input[name='searchWord']")
 								.val("");
-						$('#boardForm').submit();
+						$('#reportForm').submit();
 					}); // #id_btn_reset.cli			
 
 		})

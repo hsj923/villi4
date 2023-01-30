@@ -10,26 +10,21 @@ public class GroupBuyingVO {
 	private String title;
 	private String writer;
 	private String content;
-	private String place;
 	private String status;
 	private String price;
-	private Date buying_date;
+	private String buying_date;
 	private Date regDate;
 	private int cnt;
 	private int per;
 	private String fileName1;  
 	private MultipartFile uploadFile1;
 
-	
 
-	
-	
 	@Override
 	public String toString() {
 		return "GroupBuyingVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content
-				+ ", place=" + place + ", status=" + status + ", price=" + price + ", buying_date=" + buying_date
-				+ ", regDate=" + regDate + ", cnt=" + cnt + ", per=" + per + ", fileName1=" + fileName1
-				+ ", uploadFile1=" + uploadFile1 + "]";
+				+ ", status=" + status + ", price=" + price + ", buying_date=" + buying_date + ", regDate=" + regDate
+				+ ", cnt=" + cnt + ", per=" + per + ", fileName1=" + fileName1 + ", uploadFile1=" + uploadFile1 + "]";
 	}
 	public String getPrice() {
 		return price;
@@ -86,22 +81,17 @@ public class GroupBuyingVO {
 	public void setUploadFile1(MultipartFile uploadFile1) {
 		this.uploadFile1 = uploadFile1;
 	}
-	public String getPlace() {
-		return place;
-	}
-	public void setPlace(String place) {
-		this.place = place;
-	}
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getBuying_date() {
+
+	public String getBuying_date() {
 		return buying_date;
 	}
-	public void setBuying_date(Date buying_date) {
+	public void setBuying_date(String buying_date) {
 		this.buying_date = buying_date;
 	}
 	public int getPer() {

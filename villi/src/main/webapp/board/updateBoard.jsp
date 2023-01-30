@@ -277,7 +277,7 @@ a {
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ board.cnt }</p></li>
 					<li class="list-group-item text-end "><a
-						href="report/report_insert.jsp" class="stretched-link text-danger">이
+						href="report/insertReport.jsp" class="stretched-link text-danger">이
 							게시글 신고하기</a></li>
 				</ul>
 				<div class="card-body">

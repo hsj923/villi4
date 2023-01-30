@@ -1,7 +1,6 @@
 package com.lec.jdbc.vo;
 
 import java.util.Date;
-
 import org.springframework.web.multipart.MultipartFile;
 
 public class MeetingVO {
@@ -13,17 +12,9 @@ public class MeetingVO {
 	private Date regDate;
 	private int cnt; 
 	private int per; 
-	private Date meet_date; 
+	private String meet_date; 
 	private String place; 
 	private String status; 
-	private String fileName1; 
-	private String fileName2; 
-	private String fileName3; 
-	private MultipartFile uploadFile1;
-	private MultipartFile uploadFile2;
-	private MultipartFile uploadFile3;
-	
-
 
 
 
@@ -31,9 +22,7 @@ public class MeetingVO {
 	public String toString() {
 		return "MeetingVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content
 				+ ", regDate=" + regDate + ", cnt=" + cnt + ", per=" + per + ", meet_date=" + meet_date + ", place="
-				+ place + ", status=" + status + ", fileName1=" + fileName1 + ", fileName2=" + fileName2
-				+ ", fileName3=" + fileName3 + ", uploadFile1=" + uploadFile1 + ", uploadFile2=" + uploadFile2
-				+ ", uploadFile3=" + uploadFile3 + "]";
+				+ place + ", status=" + status + "]";
 	}
 	public int getPer() {
 		return per;
@@ -41,10 +30,12 @@ public class MeetingVO {
 	public void setPer(int per) {
 		this.per = per;
 	}
-	public Date getMeet_date() {
+
+
+	public String getMeet_date() {
 		return meet_date;
 	}
-	public void setMeet_date(Date meet_date) {
+	public void setMeet_date(String meet_date) {
 		this.meet_date = meet_date;
 	}
 	public String getPlace() {
@@ -95,43 +86,5 @@ public class MeetingVO {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	public String getFileName1() {
-		return fileName1;
-	}
-	public void setFileName1(String fileName1) {
-		this.fileName1 = fileName1;
-	}
-	public String getFileName2() {
-		return fileName2;
-	}
-	public void setFileName2(String fileName2) {
-		this.fileName2 = fileName2;
-	}
-	public String getFileName3() {
-		return fileName3;
-	}
-	public void setFileName3(String fileName3) {
-		this.fileName3 = fileName3;
-	}
 
-	public MultipartFile getUploadFile1() {
-		return uploadFile1;
-	}
-	public void setUploadFile1(MultipartFile uploadFile1) {
-		this.uploadFile1 = uploadFile1;
-	}
-	public MultipartFile getUploadFile2() {
-		return uploadFile2;
-	}
-	public void setUploadFile2(MultipartFile uploadFile2) {
-		this.uploadFile2 = uploadFile2;
-	}
-	public MultipartFile getUploadFile3() {
-		return uploadFile3;
-	}
-	public void setUploadFile3(MultipartFile uploadFile3) {
-		this.uploadFile3 = uploadFile3;
-	}
-
-	
 }

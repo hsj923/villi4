@@ -164,16 +164,16 @@ nav {
 
 		<div class="form-check">
 			<input class="form-check-input" type="radio" name="flexRadioDefault"
-				id="flexRadioDefault1" value="${ vote.itemcnt1 }"
-				onclick="calculate(this)"> <label class="form-check-label"
+				id="check1" value="${ vote.itemcnt1 }"
+				onchange="checkBox(this)"> <label class="form-check-label"
 				for="flexRadioDefault1"> ${ vote.itemlist1 } </label>
 		</div>
 
 
 		<div class="form-check">
 			<input class="form-check-input" type="radio" name="flexRadioDefault"
-				id="flexRadioDefault2" value="${ vote.itemcnt2 }"
-				onclick="calculate(this)"> <label class="form-check-label"
+				id="check2" value="${ vote.itemcnt2 }"
+				onchange="checkBox(this)"> <label class="form-check-label"
 				for="flexRadioDefault2"> ${ vote.itemlist2 } </label>
 		</div>
 
@@ -181,8 +181,8 @@ nav {
 		<c:if test="${ !empty  vote.itemlist3}">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault3" value="${ vote.itemcnt3 }"
-					onclick="calculate(this)"> <label class="form-check-label"
+					id="check3" value="${ vote.itemcnt3 }"
+					onchange="checkBox(this)"> <label class="form-check-label"
 					for="flexRadioDefault3"> ${ vote.itemlist3 } </label>
 			</div>
 		</c:if>
@@ -190,8 +190,8 @@ nav {
 		<c:if test="${ !empty  vote.itemlist4}">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault4" value="${ vote.itemcnt4 }"
-					onclick="calculate(this)"> <label class="form-check-label"
+					id="check4" value="${ vote.itemcnt4 }"
+					onchange="checkBox(this)"> <label class="form-check-label"
 					for="flexRadioDefault4"> ${ vote.itemlist4 } </label>
 			</div>
 		</c:if>
@@ -240,24 +240,26 @@ nav {
 			});
 
 			//체크박스 체크시 체크된 값 출력
-			function calculate(box) {
-				if (box.checked) // 체크가 되면 checed==true라는 값을 전달받는다. 
-					(box.value) //value속성을 이용		\
-					
-				 if (box.checked) {
-					if (box.value == count1)
+			function checkBox(box) {
+				var obj_length = document.getElementsByName("flexRadioDefault").length;
+				
+				   for (var i=0; i<obj_length; i++) {
+				if (box.checked==true) { // 체크가 되면 checed==true라는 값을 전달받는다. 
+					if (check1.checked)
 						document.getElementById("sumcnt1").value = parseInt(box.value) + 1; //getElementById메소드 이용&value속성 변경
-				} else if (box.value == count2) {
-					document.getElementById("sumcnt2").value = parseInt(box.value) + 1;
-				} else if (box.value == count3) {
-					document.getElementById("sumcnt3").value = parseInt(box.value) + 1;
-				} else if (box.value == count4) {
-					document.getElementById("sumcnt4").value = parseInt(box.value) + 1;
-				} else
-				  {
-					document.getElementById("sumcnt1").value = parseInt(box.value) + 5;
-				  }
+					else if (check2.checked) {
+						document.getElementById("sumcnt2").value = parseInt(box.value) + 1;
+					} else if (check3.checked) {
+						document.getElementById("sumcnt3").value = parseInt(box.value) + 1;
+					} else if (check4.checked) {
+						document.getElementById("sumcnt4").value = parseInt(box.value) + 1;
+					} 
+				}
 			}
+		}		   
+			
+
+
 		</script>
 
 		<!-- ================================투표하기 버튼=============================== -->
@@ -265,19 +267,26 @@ nav {
 		<form action="updateVote.do" method="post">
 			<hr>
 			<input name="seq" type="hidden" value="${vote.seq}" /> <input
-				name="itemcnt1" type="text" value="${vote.itemcnt1}" id="sumcnt1" />
-			<input name="itemcnt2" type="text" value="${vote.itemcnt2}"
+				name="itemcnt1" type="hidden" value="${vote.itemcnt1}" id="sumcnt1" />
+			<input name="itemcnt2" type="hidden" value="${vote.itemcnt2}"
 				id="sumcnt2" />
 			<c:if test="${ !empty  vote.itemcnt3}">
-				<input name="itemcnt3" type="text" value="${vote.itemcnt3}"
+				<input name="itemcnt3" type="hidden" value="${vote.itemcnt3}"
 					id="sumcnt3" />
 			</c:if>
 			<c:if test="${ !empty  vote.itemcnt4}">
-				<input name="itemcnt4" type="text" value="${vote.itemcnt4}"
+				<input name="itemcnt4" type="hidden" value="${vote.itemcnt4}"
 					id="sumcnt4" />
 			</c:if>
 
-			<input type="submit" id="vote" class="btn btn-success" value="투표하기" />
+			<input type="submit" id="vote" class="btn btn-success" onclick="voteconfirm()" value="투표하기" />
+
+   
+<script>
+    function voteconfirm() {
+        alert("투표가 성공적으로 완료되었습니다");
+    }
+</script>
 		</form>
 	</div>
 	<div class="container mt-5" align="center">

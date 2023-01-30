@@ -13,10 +13,9 @@ public class GroupBuyingRowMapper implements RowMapper<GroupBuyingVO> {
 		groupBuying.setTitle(rs.getString("TITLE"));
 		groupBuying.setWriter(rs.getString("WRITER"));
 		groupBuying.setContent(rs.getString("CONTENT"));
-		groupBuying.setPlace(rs.getString("PLACE"));
 		groupBuying.setStatus(rs.getString("STATUS"));
 		groupBuying.setRegDate(rs.getDate("REGDATE"));
-		groupBuying.setBuying_date(rs.getDate("BUYING_DATE"));
+		groupBuying.setBuying_date(rs.getString("BUYING_DATE"));
 		groupBuying.setCnt(rs.getInt("CNT"));
 		groupBuying.setPer(rs.getInt("PER"));
 		groupBuying.setPrice(rs.getString("PRICE"));

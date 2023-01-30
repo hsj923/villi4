@@ -95,7 +95,7 @@ public class MeetingDAO {
 	}
 	
 	public MeetingVO insertMeeting(MeetingVO meeting) {
-		jdbcTemplate.update(insertMeeting, meeting.getTitle(), meeting.getWriter(), meeting.getContent(), meeting.getPer(), meeting.getPlace(), meeting.getMeet_date(), meeting.getFileName1(), meeting.getFileName2(), meeting.getFileName3());
+		jdbcTemplate.update(insertMeeting, meeting.getTitle(), meeting.getWriter(), meeting.getContent(), meeting.getPer(), meeting.getPlace(), meeting.getMeet_date());
 		return meeting;
 	}	
 

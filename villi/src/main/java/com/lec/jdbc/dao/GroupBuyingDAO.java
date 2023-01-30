@@ -95,7 +95,7 @@ public class GroupBuyingDAO {
 	}
 	
 	public GroupBuyingVO insertGroupBuying(GroupBuyingVO groupBuying) {
-		jdbcTemplate.update(insertGroupBuying, groupBuying.getTitle(), groupBuying.getWriter(), groupBuying.getContent(), groupBuying.getFileName1(), groupBuying.getPer(), groupBuying.getPlace(), groupBuying.getBuying_date(), groupBuying.getPrice());
+		jdbcTemplate.update(insertGroupBuying, groupBuying.getTitle(), groupBuying.getWriter(), groupBuying.getContent(), groupBuying.getFileName1(), groupBuying.getPer(), groupBuying.getBuying_date(), groupBuying.getPrice());
 		return groupBuying;
 	}	
 

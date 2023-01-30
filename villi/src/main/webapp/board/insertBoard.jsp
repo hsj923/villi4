@@ -172,8 +172,8 @@ nav {
 <!-- 					</select> -->
 <!-- 				</div> -->
 				<div class="col">
-					<select class="form-select form-select-lg mb-3 w-75" name="cate2"
-						aria-label=".form-select-lg example">
+					<select class="form-select form-select mb-3 w-75" name="cate2"
+						aria-label=".form-select example">
 						<option selected>카테고리</option>
 						<option value="디지털기기">디지털기기</option>
 						<option value="공구용품">공구용품</option>

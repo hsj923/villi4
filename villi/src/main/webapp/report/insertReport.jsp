@@ -76,7 +76,7 @@ nav {
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="../getGroupBuyingList.do">공동구매</a></li>
 								</ul>
-								<form action="getBoardList.do" method="post" id="boardForm">
+								<form action="getReportList.do" method="post" id="reportForm">
 									<input type="hidden" id="curPage" name="curPage"
 										value="${searchVO.getCurPage()}"> <input type="hidden"
 										id="rowSizePerPage" name="rowSizePerPage"
@@ -117,44 +117,34 @@ nav {
 
 	<!--=============================================================================================== -->
 
-	<form action="insertVote.do" method="post">
+	<form action="insertReport.do" method="post">
 		<div class="container mt-3 w-75" align="center">
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
-					type="text" class="form-control" name="writer" id="writer"
-					placeholder="동네투표글 작성자....">
-			</div>
-			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
-				<input type="text" class="form-control" name="title" id="title"
-					placeholder="동네투표글 제목....">
+				<input type="text" class="form-control" name="name" id="name"
+					placeholder="${ sessionScope.user.getName() }" disabled>
 			</div>
 
+
+			<select class="form-select form-select mb-3 w-75" name="r_rs1"
+				aria-label=".form-select example">
+				<option selected>신고이유</option>
+				<option value="디지털기기">판매가 금지된 물품을 거래합니다</option>
+				<option value="공구용품">동네 이웃 주민이 아닌것 같습니다</option>
+				<option value="여성의류">사기 글입니다</option>
+				<option value="남성의류">중복 게시글입니다</option>
+				<option value="주방/화장실용품">거래/환불분쟁</option>
+				<option value="행사용품/캠핑용품">금전 요구를 합니다</option>
+				<option value="반려동물용품">성희롱을 합니다</option>
+				<option value="취미/게임/음반">욕설을 합니다</option>
+				<option value="가구/인테리어">비매너 사용자입니다</option>
+				<option value="뷰티/미용용품">기타 다른 문제가 있습니다</option>
+			</select>
+
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
-				<textarea class="form-control" name="content" id="content" rows="20"
-					placeholder="동네투표글 내용"></textarea>
+				<textarea class="form-control" name="r_con" id=" r_con" rows="20"
+					placeholder="동네모임글 상세내용...."></textarea>
 			</div>
-			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
-				<input type="text" class="form-control" name="itemlist1" id="itemlist1"
-					placeholder="항목1">
-			</div>
-			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
-				<input type="text" class="form-control" name="itemlist2" id="itemlist2"
-					placeholder="항목2">
-			</div>
-			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
-				<input type="text" class="form-control" name="itemlist3" id="itemlist3"
-					placeholder="항목3">
-			</div>
-			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
-				<input type="text" class="form-control" name="itemlist4" id="itemlist4"
-					placeholder="항목4">
-			</div>
+
 
 
 

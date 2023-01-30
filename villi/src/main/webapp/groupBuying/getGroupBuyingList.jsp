@@ -139,7 +139,6 @@ nav {
 					<th scope="col">제목</th>
 					<th scope="col">내용</th>
 					<th scope="col">모집인원</th>
-					<th scope="col">장소</th>
 					<th scope="col">모집상태</th>
 					<th scope="col">가격</th>
 					<th scope="col">작성일</th>
@@ -152,7 +151,6 @@ nav {
 							<td>${ groupBuying.title }</td>
 							<td>${ groupBuying.content }</td>
 							<td>${ groupBuying.per }</td>
-							<td>${ groupBuying.place }</td>
 							<td>${ groupBuying.status }</td>
 							<td>${ groupBuying.price }</td>
 							<td>${ groupBuying.regDate }</td>

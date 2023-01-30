@@ -18,10 +18,7 @@ public class MeetingRowMapper implements RowMapper<MeetingVO> {
 		meeting.setPer(rs.getInt("PER"));
 		meeting.setPlace(rs.getString("PLACE"));
 		meeting.setStatus(rs.getString("STATUS"));
-		meeting.setMeet_date(rs.getDate("MEET_DATE"));
-		meeting.setFileName1(rs.getString("FILENAME1"));
-		meeting.setFileName2(rs.getString("FILENAME2"));
-		meeting.setFileName3(rs.getString("FILENAME3"));
+		meeting.setMeet_date(rs.getString("MEET_DATE"));
 		return meeting;
 	}
 }

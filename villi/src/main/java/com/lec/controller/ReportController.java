@@ -14,18 +14,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import com.lec.jdbc.common.SearchVO;
-import com.lec.jdbc.service.VoteService;
-import com.lec.jdbc.vo.VoteVO;
+import com.lec.jdbc.service.ReportService;
+import com.lec.jdbc.vo.BoardVO;
+import com.lec.jdbc.vo.ReportVO;
 
 @Controller
 @PropertySource("classpath:config/uploadpath.properties")
-public class VoteController {
+public class ReportController {
 
 	@Autowired
-	VoteService voteService;
+	ReportService reportService;
 	
 	@Autowired
 	Environment environment;
@@ -37,15 +38,15 @@ public class VoteController {
 		uploadFolder = environment.getProperty("uploadFolder");
 	}
 	
-	@RequestMapping("getVoteList.do")
-	public String getVoteList(Model model, SearchVO searchVO,
+	@RequestMapping("getReportList.do")
+	public String getReportList(Model model, SearchVO searchVO,
 			@RequestParam(defaultValue="1") int curPage,
 			@RequestParam(defaultValue="20") int rowSizePerPage,
 			@RequestParam(defaultValue="") String searchCategory,
 			@RequestParam(defaultValue="") String searchType,
 			@RequestParam(defaultValue="") String searchWord) {
 		
-		searchVO.setTotalRowCount(voteService.getTotalRowCount(searchVO));
+		searchVO.setTotalRowCount(reportService.getTotalRowCount(searchVO));
 		searchVO.setCurPage(curPage);
 		searchVO.setRowSizePerPage(rowSizePerPage);
 		searchVO.setSearchCategory(searchCategory);
@@ -53,47 +54,47 @@ public class VoteController {
 		searchVO.setSearchWord(searchWord);
 		searchVO.pageSetting();
 	
-		List<VoteVO> voteList = voteService.getVoteList(searchVO);
+		List<ReportVO> reportList = reportService.getReportList(searchVO);
 		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("voteList", voteList);		
-		return "vote/getVoteList.jsp";
+		model.addAttribute("reportList", reportList);		
+		return "report/getReportList.jsp";
 	}
-
-	@RequestMapping("*/insertVote.do")
-	public String insertVote(VoteVO vote) throws IOException {
-		voteService.insertVote(vote);
-		return "redirect:/getVoteList.do";
+	
+	@RequestMapping("*/insertReport.do")
+	public String insertReport(ReportVO report) throws IOException {
+		reportService.insertReport(report);
+		return "redirect:/getReportList.do";
 	}	
 	
-	@RequestMapping(value="/updateVote.do", method=RequestMethod.GET)
-	public String updateVote(Model model, VoteVO vote, SearchVO searchVO) {
-		voteService.updateVoteCount(vote);
+
+	
+	
+	
+	@RequestMapping(value="/updateReport.do", method=RequestMethod.GET)
+	public String updateReport(Model model, ReportVO report, SearchVO searchVO) {
 		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("vote", voteService.getVote(vote));
-		return "vote/updateVote.jsp";
+		model.addAttribute("report", reportService.getReport(report));
+		return "report/updateReport.jsp";
 	}
 	
-	@RequestMapping(value="/updateVote.do", method=RequestMethod.POST)
-	public String updateVote(VoteVO vote) {
-		voteService.updateVote(vote);
-		return "getVoteList.do";
+	@RequestMapping(value="/updateReport.do", method=RequestMethod.POST)
+	public String updateReport(ReportVO report) {
+		reportService.updateReport(report);
+		return "getReportList.do";
 	}	
 
-
-	
-	
-	@RequestMapping(value="/deleteVote.do", method=RequestMethod.GET)
-	public String deleteVote(Model model, VoteVO vote, SearchVO searchVO, @RequestParam int seq) {
-		vote.setSeq(seq);
+	@RequestMapping(value="/deleteReport.do", method=RequestMethod.GET)
+	public String deleteReport(Model model, ReportVO report, SearchVO searchVO, @RequestParam int seq) {
+		report.setSeq(seq);
 		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("vote", voteService.getVote(vote));
-		return "vote/deleteVote.jsp";
+		model.addAttribute("report", reportService.getReport(report));
+		return "report/deleteReport.jsp";
 	}
 	
-	@RequestMapping(value="/deleteVote.do", method=RequestMethod.POST)
-	public String deleteVote(VoteVO vote) {
-		voteService.deleteVote(vote);
-		return "getVoteList.do";
+	@RequestMapping(value="/deleteReport.do", method=RequestMethod.POST)
+	public String deleteReport(ReportVO report) {
+		reportService.deleteReport(report);
+		return "getReportList.do";
 	}	
 	
 }

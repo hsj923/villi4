@@ -174,8 +174,8 @@ nav {
 <!-- 					</select> -->
 <!-- 				</div> -->
 				<div class="col">
-					<select class="form-select form-select-lg mb-3 w-75" name="cate2"
-						aria-label=".form-select-lg example">
+					<select class="form-select form-select mb-3 w-75" name="cate2"
+						aria-label=".form-select example">
 						<option selected>카테고리</option>
 						<option value="조립/설치/운반">조립/설치/운반</option>
 						<option value="동행돌봄">동행돌봄</option>
