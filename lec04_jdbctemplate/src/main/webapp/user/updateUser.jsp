@@ -115,7 +115,7 @@ border-radius:1.5em;
 				<div class="col mt-3 text-end r_menu">
 					<span class= mx-2><a href="#">좋아요</a> </span>
 					<span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
-					<span class="mx-2">${ sessionScope.user.getName() }님</span>
+					<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 				</div>
 			</div>
 		</div>
@@ -129,7 +129,7 @@ border-radius:1.5em;
 		<form role="form" action="updateUser.do" method="post" onSubmit="return checkResult();" >
 			
 			
-			<input type="hidden" name="id" value="${user.getId()}">
+			<input type="hidden" name="email" value="${user.getEmail()}">
 			<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
 			<input type="hidden" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 			<input type="hidden" name="searchCategory" value="${searchVO.getSearchCategory()}">
@@ -162,15 +162,23 @@ border-radius:1.5em;
 			<label for="inputEmail" class="mt-2">* 이메일 주소</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
-				<input type="text" name="id" class="form-control" value="${ user.getId() }" disabled>
+				<input type="text" name="email" class="form-control" value="${ user.getEmail() }" disabled>
 			</div>
 
-			<!-- 이름(닉네임) 변경  --> 
+		  <!-- 이름 변경 불가 -->
+
+			<label for="inputEmail" class="mt-2">* 이름</label>
+			    
+			<div class="col-2 input-group mb-3 mt-2" >
+				<input type="text" name="email" class="form-control" value="${ user.getName() }" disabled>
+			</div>
+
+			<!-- 닉네임 변경  --> 
 			
 			<label for="inputName" class="mt-2">* 닉네임</label>
 			
 			<div class="col-2 input-group mb-3 mt-2">
-				<input type="text" name="name" class="form-control" value="${ user.getName() }">
+				<input type="text" name="nickname" class="form-control" value="${ user.getNickname() }">
 			</div>
 			
 			

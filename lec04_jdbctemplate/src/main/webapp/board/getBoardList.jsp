@@ -33,70 +33,42 @@
 	font-weight: 400;
 	font-style: normal;
 }
-
 body {
 	font-family: 'Pretendard-Regular';
 }
-
 header {
 	background-color: #FFF;
+	height: 90px;
 }
+
+
 
 nav {
 	background-color: #FFF;
 }
-
 #banner2 {
 	background-color: #ebecf0;
 }
-
 #banner img {
 	width: 100%;
 	height: 650px;
 	object-fit: cover;
 }
-
-.r_menu a {
-	text-decoration: none;
-	color: black;
-	.
-	card
-	{
-	margin-bottom
-	:
-	1rem;
-}
-
 .card-mtext {width =10px;height =10px;
 	
 }
-
-.r_menu a:hover{
-color:#23dbc9
+.r_menu a:hover {
+	color: #23dbc9
 }
-
-
-/* ----------------------------------------------------------- */
-
-.page-link {
-    position: relative;
-    display: block;
-    color: #000;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+.pagination li a {
+	border-radius: 0 !important;
+	color: #333 !important;
 }
-
-.page-item.active .page-link {
-    z-index: 3;
-    color: #fff;
-    background-color: #000;
-    border-color: #000;
+.pagination li.active a {
+	color: #fff !important;
+	background: #444 !important;
+	border-color: #444 !important;
 }
-
-
-
 </style>
 </head>
 <body>
@@ -114,9 +86,10 @@ color:#23dbc9
 					</div>
 
 					<div class="col mt-3 text-end r_menu">
-					  <span class= "mx-2"><a href="#">좋아요</a> </span>
-					  <span class= "mx-1"><a href="user/mypage.jsp">마이페이지</a></span>
-					  <span class= "mx-2" >${ sessionScope.user.getName() }님</span>	
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
+						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+
 					</div>
 				</div>
 			</div>
@@ -207,7 +180,7 @@ color:#23dbc9
 										<li class="nav-item"><a class="nav-link"
 											href="getVoteList.do">동네투표</a></li>
 										<li class="nav-item"><a class="nav-link"
-											href="getWantBoardList.do">빌리요청</a></li>
+											href="getDemandList.do">빌리요청</a></li>
 									</ul>
 									<form action="getBoardList.do" method="post" id="boardForm">
 										<input type="hidden" id="curPage" name="curPage"
@@ -313,7 +286,7 @@ color:#23dbc9
 		<!-- 게시판 -->
 
 		<div class="row align-items-start mt-3 " >
-			<ul class="col pagination justify-content-center ">
+			<ul class="pagination justify-content-center ">
 
 				<c:set var="cp" value="${searchVO.getCurPage()}" />
 				<c:set var="rp" value="${searchVO.getRowSizePerPage()}" />

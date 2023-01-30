@@ -16,12 +16,10 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
 </head>
 <style>
+
    *{margin: 0; padding: 0;}
    hr { margin : 0; }
-   .admin_my{ display : inline-block; width : 100%; padding-top : 20px; }
-   #admin_img{ background-color : gray; margin-left : 300px; margin-top : 5px; position: absolute ;}
-   #mem_info { margin-left : 420px; width : 500px; position: relative;}
-   #bg_admin{ margin-left : 15px; }
+
    .list-group-item { padding-bottom : 20px; padding-top : 20px;}
    
    
@@ -88,32 +86,44 @@ color:#23dbc9
 				<div class="col mt-3 text-end r_menu">
 					<span class= mx-2><a href="#">좋아요</a> </span>
 					<span class= mx-1><a href="../user/mypage.jsp">마이페이지</a></span>
-					<span class="mx-2">${ sessionScope.user.getName() }님</span>
+					<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 					
 				</div>
 			</div>
 		</div>
 	</header>
 	
-      <div class="admin_my">
-      <div class="admin_img">
-      <img src="resources/images/logo.png" class="rounded-circle" id="admin_img" alt="" width="100px" height="100px">
-      </div>
-      <div class="container mt-3" id="mem_info">
-      <h3>${sessionScope.user.getName()}님</h3>
+
+        <!------------- 프로필 이미지, oo님 ---------------->
+        
+  		<div class="container-sm mt-5" align="left" >
+     	
+     	<div class="row mt-2"> 
+     	
+     	<div class="col-2">  	
+    	  <c:if test="${ !empty  sessionScope.user.fileName}">
+			<img src="../resources/images/${ sessionScope.user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+		  </c:if>
+		  <c:if test="${ empty  sessionScope.user.fileName}">
+			<img src="../resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+		  </c:if>
+		  </div>   
+	   <div class="col mt-4">
+     	 <h4>${sessionScope.user.getNickname()}님</h4>
+       </div>
   
-  
-  			
+    	</div>
+  	</div>
 					
-					
-        </div>
-      <br />
-      </div>
+				
       <br />
       <br />
-      <div class="container mt-3" align="left">
-        <ul class="list-group list-group-flush">			
-  	     <a href="../updateUser.do?id=${ user.getId() }" class="list-group-item">프로필 수정</a>
+      <br />
+      <div class="container " align="left">
+        <ul class="list-group list-group-flush">	
+        
+        		
+  	     <a href="../updateUser.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
          <a href="location.jsp" class="list-group-item">동네설정</a>
           <a href="#" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>
@@ -133,7 +143,7 @@ color:#23dbc9
    <br />
    <br />
    <br />
-      <a href="logout.do" class="badge rounded-pill bg-secondary logout_btn">로그아웃</a>
+      <a href="../logout.do" class="badge rounded-pill bg-secondary logout_btn">로그아웃</a>
    </div>
 </footer>
 </html>

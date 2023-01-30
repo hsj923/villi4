@@ -73,7 +73,7 @@ pre { white-space: pre-wrap;
             <div class="col mt-3 text-end r_menu">
                <span class= mx-2><a href="#">좋아요</a> </span>
                <span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
-               <span class="mx-2">${ sessionScope.user.getName() }님</span>
+               <span class="mx-2">${ sessionScope.user.getNickname() }님</span>
             </div>
          </div>
       </div>

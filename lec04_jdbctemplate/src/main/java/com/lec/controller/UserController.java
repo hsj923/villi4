@@ -97,8 +97,8 @@ public class UserController {
 	}	
 
 	@RequestMapping(value="/deleteUser.do", method=RequestMethod.GET)
-	public String deleteUser(Model model, UserVO user, SearchVO searchVO, @RequestParam String id) {
-		user.setId(id);
+	public String deleteUser(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
+		user.setEmail(email);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("user", userService.getUser(user));
 		return "user/deleteUser.jsp";
