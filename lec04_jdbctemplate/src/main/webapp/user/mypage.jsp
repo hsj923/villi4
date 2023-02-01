@@ -127,14 +127,14 @@ color:#23dbc9
          <a href="location.jsp" class="list-group-item">동네설정</a>
           <a href="#" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>
-          <a href="#" class="list-group-item">내가 쓴 글 목록</a>
+          <a href="# class="list-group-item">내가 쓴 글 목록</a>
        </ul>
        <hr />
        </div>
        <div class="container mt-3" align="left">
        <ul class="list-group list-group-flush">
           <a href="../getNoticeList.do" li class="list-group-item">공지사항</a>
-          <a href="service/service_list.jsp" li class="list-group-item">고객센터</a>
+          <a href="../getCsList.do" li class="list-group-item">고객센터</a>
        </ul>
        </div>
 </body>

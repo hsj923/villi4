@@ -153,11 +153,15 @@ nav {
 									aria-label="Toggle navigation">
 									<span class="navbar-toggler-icon"></span>
 								</button>
+								
+								
 								<!--================ nav bar ===================-->
 								<div class="collapse navbar-collapse"
 									id="navbarSupportedContent">
+									
 									<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 										<li class="nav-item">
+											
 											<!-- ================글작성버튼============= -->
 											<div class="dropdown">
 												<button class="btn dropdown-toggle" type="button"
@@ -171,6 +175,9 @@ nav {
 														href="board/insertServiceBoard.jsp">서비스</a></li>
 												</ul>
 											</div>
+											
+											
+											
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getQuestionList.do">우리동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -182,6 +189,9 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 											href="getDemandList.do">빌리요청</a></li>
 									</ul>
+									
+									
+									<!-- ==================== 검색 ==================== -->
 									<form action="getBoardList.do" method="post" id="boardForm">
 										<input type="hidden" id="curPage" name="curPage"
 											value="${searchVO.getCurPage()}"> <input
@@ -226,6 +236,7 @@ nav {
 
 		<div class="container grid-container">
 			<div class="row">
+			
 				<c:forEach items="${boardList}" var="board">
 					<div class="col-12 col-md-6 col-lg-3 mt-5">
 						<div class="card">
@@ -281,6 +292,8 @@ nav {
 						</div>
 					</div>
 				</c:forEach>
+				
+				
 			</div>
 		</div>
 		<!-- 게시판 -->

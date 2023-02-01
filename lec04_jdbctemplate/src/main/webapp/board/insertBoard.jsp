@@ -192,7 +192,7 @@ nav {
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="writer" id="writer"
-					placeholder="글 작성자">
+					value=${ sessionScope.user.getNickname() } disabled>
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="title" id="title"

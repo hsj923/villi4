@@ -89,7 +89,7 @@ public class BoardDAO {
 			} else if(searchVO.getSearchType().equalsIgnoreCase("Cate2")) {
 				sql = selectBoardListByCate2;
 			} 					
-		}
+		}	
 		
 		String searchWord = "%" + searchVO.getSearchWord() + "%";					
 		Object[] args = {searchWord, searchVO.getFirstRow(), searchVO.getRowSizePerPage()};
@@ -97,12 +97,12 @@ public class BoardDAO {
 	}
 	
 	public BoardVO insertBoard(BoardVO board) {
-		jdbcTemplate.update(insertBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3(), board.getFileName4(), board.getFileName5());
+		jdbcTemplate.update(insertBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3());
 		return board;
 	}	
 	
 	public BoardVO insertServiceBoard(BoardVO board) {
-		jdbcTemplate.update(insertServiceBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3(), board.getFileName4(), board.getFileName5());
+		jdbcTemplate.update(insertServiceBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3());
 		return board;
 	}	
 	
