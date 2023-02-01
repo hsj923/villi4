@@ -158,7 +158,6 @@ nav {
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
 	</div>
 
 
@@ -216,7 +215,7 @@ nav {
 		<!-- rowSizePerPage -->
 	</div>
 	<!-- 페이징 -->
-	</div>
+  </div>
 	<!-- main  -->
 
 

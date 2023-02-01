@@ -11,7 +11,7 @@ public class BoardVO {
 	private String writer;
 	private String content;
 	private String status;
-	private Date regDate;
+	private String regDate;
 	private int cnt;
 	private String fileName1; 
 	private String fileName2; 
@@ -26,8 +26,8 @@ public class BoardVO {
 	private String cate;
 	private String cate2;
 	private String price;
-	private Date usedate;
-	private Date duedate;
+	private String usedate;
+	private String duedate;
 	
 
 	@Override
@@ -39,16 +39,16 @@ public class BoardVO {
 				+ ", uploadFile4=" + uploadFile4 + ", uploadFile5=" + uploadFile5 + ", cate=" + cate + ", cate2="
 				+ cate2 + ", price=" + price + ", usedate=" + usedate + ", duedate=" + duedate + "]";
 	}
-	public Date getDuedate() {
+	public String getDuedate() {
 		return duedate;
 	}
-	public void setDuedate(Date duedate) {
+	public void setDuedate(String duedate) {
 		this.duedate = duedate;
 	}
-	public Date getUsedate() {
+	public String getUsedate() {
 		return usedate;
 	}
-	public void setUsedate(Date usedate) {
+	public void setUsedate(String usedate) {
 		this.usedate = usedate;
 	}
 	public String getPrice() {
@@ -99,10 +99,10 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 	public int getCnt() {

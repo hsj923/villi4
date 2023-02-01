@@ -153,7 +153,6 @@ nav {
 				</tbody>
 			</table>
 		</div>
-	</div>
 
 
 	<!-- =======================LIST 끝========================== -->
@@ -207,12 +206,8 @@ nav {
 				</select>
 			</div>
 		</div>
-		<!-- rowSizePerPage -->
 	</div>
-	<!-- 페이징 -->
-	</div>
-	<!-- main  -->
-
+</div>
 
 	<script>
 		$(function() {

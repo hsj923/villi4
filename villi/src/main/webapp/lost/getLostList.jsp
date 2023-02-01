@@ -41,6 +41,7 @@ body {
 nav {
 	background-color: #FFFAFA;
 }
+
 .pagination li a {
 	border-radius: 0 !important;
 	color: #333 !important;
@@ -55,78 +56,77 @@ nav {
 </head>
 <body>
 	<!-- ============search=============== -->
-		<nav class="border-bottom border-dark sticky-top z-index-10">
-			<div class="container" align="center">
-				<div class="row p-3">
-					<div class="col">
+	<nav class="border-bottom border-dark sticky-top z-index-10">
+		<div class="container" align="center">
+			<div class="row p-3">
+				<div class="col">
 
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<div class="container-fluid">
-								<a class="navbar-brand" href="getBoardList.do">Villi</a>
-								<button class="navbar-toggler" type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#navbarSupportedContent"
-									aria-controls="navbarSupportedContent" aria-expanded="false"
-									aria-label="Toggle navigation">
-									<span class="navbar-toggler-icon"></span>
-								</button>
-								<!--================ nav bar ===================-->
-								<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<div class="container-fluid">
+							<a class="navbar-brand" href="getBoardList.do">Villi</a>
+							<button class="navbar-toggler" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarSupportedContent"
+								aria-controls="navbarSupportedContent" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<!--================ nav bar ===================-->
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="lost/insertLost.jsp">글작성</a>
-									</li>
-											
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getQuestionList.do">동네질문</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getLostList.do">분실센터</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getMeetingList.do">동네모임</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getVoteList.do">동네투표</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getDemandList.do">빌리요청</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
-									</ul>
-									<form action="getLostList.do" method="post" id="lostForm">
-										<input type="hidden" id="curPage" name="curPage"
-											value="${searchVO.getCurPage()}"> <input
-											type="hidden" id="rowSizePerPage" name="rowSizePerPage"
-											value="${searchVO.getRowSizePerPage()}">
-										<div class="container">
-											<div class="row justify-content-md">
-												<div class="col-md-auto">
+										aria-current="page" href="lost/insertLost.jsp">글작성</a></li>
 
-													<select class="form-select" id="searchType"
-														name="searchType">
-														<option value="">검색</option>
-														<option value="title"
-															${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-														<option value="writer"
-															${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
-														<option value="cate2"
-															${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
-													</select>
-												</div>
-												<div class="col col-lg-6">
-													<input class="form-control" name="searchWord" type="text"
-														placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
-												</div>
-												<div class="col col-lg-2">
-													<button class="btn btn-outline-success" type="submit">Search</button>
-												</div>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getQuestionList.do">동네질문</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getLostList.do">분실센터</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getMeetingList.do">동네모임</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getVoteList.do">동네투표</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getDemandList.do">빌리요청</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
+								</ul>
+								<form action="getLostList.do" method="post" id="lostForm">
+									<input type="hidden" id="curPage" name="curPage"
+										value="${searchVO.getCurPage()}"> <input type="hidden"
+										id="rowSizePerPage" name="rowSizePerPage"
+										value="${searchVO.getRowSizePerPage()}">
+									<div class="container">
+										<div class="row justify-content-md">
+											<div class="col-md-auto">
+
+												<select class="form-select" id="searchType"
+													name="searchType">
+													<option value="">검색</option>
+													<option value="title"
+														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
+													<option value="writer"
+														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
+													<option value="cate2"
+														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
+												</select>
+											</div>
+											<div class="col col-lg-6">
+												<input class="form-control" name="searchWord" type="text"
+													placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
+											</div>
+											<div class="col col-lg-2">
+												<button class="btn btn-outline-success" type="submit">Search</button>
 											</div>
 										</div>
-									</form>
-								</div>
+									</div>
+								</form>
 							</div>
-						</nav>
-					</div>
+						</div>
+					</nav>
 				</div>
 			</div>
-		</nav>
+		</div>
+	</nav>
 	<!-- =========상품보기=============== -->
 	<!-- ======================LIST========================= -->
 
@@ -142,7 +142,7 @@ nav {
 				<tbody>
 					<c:forEach var="lost" items="${ lostList }">
 						<tr>
-						   	<td><a href="updateLost.do?seq=${lost.getSeq()}"
+							<td><a href="updateLost.do?seq=${lost.getSeq()}"
 								style="text-decoration: none">${ lost.seq }</a></td>
 							<td>${ lost.title }</td>
 							<td>${ lost.content }</td>
@@ -151,92 +151,73 @@ nav {
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
-	</div>
 
 
-	<!-- =======================LIST 끝========================== -->
-	<div class="row align-items-start mt-3">
-		<ul class="col pagination justify-content-center">
 
-			<c:set var="cp" value="${searchVO.getCurPage()}" />
-			<c:set var="rp" value="${searchVO.getRowSizePerPage()}" />
-			<c:set var="fp" value="${searchVO.getFirstPage()}" />
-			<c:set var="lp" value="${searchVO.getLastPage()}" />
-			<c:set var="ps" value="${searchVO.getPageSize()}" />
-			<c:set var="tp" value="${searchVO.getTotalPageCount()}" />
-			<c:set var="sc" value="${searchVO.getSearchCategory()}" />
-			<c:set var="st" value="${searchVO.getSearchType()}" />
-			<c:set var="sw" value="${searchVO.getSearchWord()}" />
+			<!-- =======================LIST 끝========================== -->
+			<div class="row align-items-start mt-3">
+				<ul class="col pagination justify-content-center">
 
-			<c:if test="${ fp != 1 }">
-				<li class="page-item"><a
-					href="getBoardList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
-					class="page-link"><i class="fas fa-fast-backward"></i></a></li>
-				<li class="page-item"><a
-					href="getBoardList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
-					class="page-link"><i class="fas fa-backward"></i></a></li>
-			</c:if>
+					<c:set var="cp" value="${searchVO.getCurPage()}" />
+					<c:set var="rp" value="${searchVO.getRowSizePerPage()}" />
+					<c:set var="fp" value="${searchVO.getFirstPage()}" />
+					<c:set var="lp" value="${searchVO.getLastPage()}" />
+					<c:set var="ps" value="${searchVO.getPageSize()}" />
+					<c:set var="tp" value="${searchVO.getTotalPageCount()}" />
+					<c:set var="sc" value="${searchVO.getSearchCategory()}" />
+					<c:set var="st" value="${searchVO.getSearchType()}" />
+					<c:set var="sw" value="${searchVO.getSearchWord()}" />
 
-			<c:forEach var="page" begin="${fp}" end="${lp}">
-				<li class="page-item ${cp==page ? 'active' : ''}"><a
-					href="getBoardList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
-					class="page-link">${page}</a></li>
-			</c:forEach>
+					<c:if test="${ fp != 1 }">
+						<li class="page-item"><a
+							href="getLostList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+							class="page-link"><i class="fas fa-fast-backward"></i></a></li>
+						<li class="page-item"><a
+							href="getLostList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+							class="page-link"><i class="fas fa-backward"></i></a></li>
+					</c:if>
 
-			<c:if test="${ lp < tp }">
-				<li class="page-item"><a
-					href="getBoardList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
-					class="page-link"><i class="fas fa-forward"></i></a></li>
-				<li class="page-item"><a
-					href="getBoardList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
-					class="page-link"><i class="fas fa-fast-forward"></i></a></li>
-			</c:if>
-		</ul>
-		<!-- pagination -->
+					<c:forEach var="page" begin="${fp}" end="${lp}">
+						<li class="page-item ${cp==page ? 'active' : ''}"><a
+							href="getLostList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+							class="page-link">${page}</a></li>
+					</c:forEach>
 
-		<div class="col-auto me-1">
-			<div class="input-group mb-3">
-				<span class="input-group-text"><i class="fas fa-list"></i></span> <select
-					class="col-auto form-select" id="rowPerPage" name="rowPerPage">
-					<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
-					<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
-					<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
-					<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
-				</select>
+					<c:if test="${ lp < tp }">
+						<li class="page-item"><a
+							href="getLostList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+							class="page-link"><i class="fas fa-forward"></i></a></li>
+						<li class="page-item"><a
+							href="getLostList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+							class="page-link"><i class="fas fa-fast-forward"></i></a></li>
+					</c:if>
+				</ul>
+				<!-- pagination -->
+
+				<div class="col-auto me-1">
+					<div class="input-group mb-3">
+						<span class="input-group-text"><i class="fas fa-list"></i></span>
+						<select class="col-auto form-select" id="rowPerPage"
+							name="rowPerPage">
+							<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
+							<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
+							<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
+							<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
+						</select>
+					</div>
+				</div>
 			</div>
 		</div>
-		<!-- rowSizePerPage -->
 	</div>
-	<!-- 페이징 -->
-	</div>
-	<!-- main  -->
-
 
 	<script>
 		$(function() {
-
 			// 목록 갯수 변경
 			$('#rowPerPage').change(function(e) {
 				$('#curPage').val(1);
 				$('#rowSizePerPage').val($(this).val());
-				$('#boardForm').submit();
-			}); //#rowPerPage
-
-			// 초기화 버튼 클릭
-			$('#btnReset').click(
-					function() {
-						$('#curPage').val(1);
-						$('#boardForm').find(
-								"select[name='searchCategory'] option:eq(0)")
-								.attr("selected", "selected");
-						$('#boardForm').find(
-								"select[name='searchType'] option:eq(0)").attr(
-								"selected", "selected");
-						$('#boardForm').find("input[name='searchWord']")
-								.val("");
-						$('#boardForm').submit();
-					}); // #id_btn_reset.cli			
+				$('#lostForm').submit();
+			}); //#rowPerPage		
 
 		})
 	</script>

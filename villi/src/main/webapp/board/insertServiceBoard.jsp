@@ -215,13 +215,16 @@ nav {
 					 }
 					</script>
 			</div>
-			<div class="input-group mb-3 w-75">
-				<input type="date" class="form-control" name="usedate" id="usedate" placeholder="대여날짜(선택사항)">
-				<input type="date" class="form-control" name="duedate" id="duedate" placeholder="마감날짜(선택사항)">
-			</div>
+
 			<div class="input-group mb-3 w-75">
 				<textarea class="form-control" name="content" id="content" rows="20"
 					placeholder="게시글 내용을 작성해주세요"></textarea>
+			</div>
+			
+			<label for="form-control" class="form-control-label">대여날짜와 마감날짜(선택사항)를 정해주세요</label>	
+						<div class="input-group mb-3 w-75">
+				<input type="date" class="form-control" name="usedate" id="usedate" placeholder="대여날짜(선택사항)">
+				<input type="date" class="form-control" name="duedate" id="duedate" placeholder="마감날짜(선택사항)">
 			</div>
 		<!-- 파일첨부 -->
 			

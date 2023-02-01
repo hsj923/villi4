@@ -229,16 +229,21 @@ a {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
+						
 						<img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"> <span>${ board.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
 
-						<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
+
 					</h5>
+					<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
+
 
 				</div>
 				<ul class="list-group list-group-flush">
+
+
 
 
 					<li class="list-group-item text-start"><span
@@ -252,14 +257,14 @@ a {
 								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
   <path
 								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-</svg>
-                                    <c:if test="${ !empty  board.usedate}">
-										<span class="fs-6 ms-2">${ board.usedate } ~ ${ board.duedate } </span><br>
-									</c:if>
-									<c:if test="${ empty  board.usedate}">
-										<span>날짜상의</span><br>
-									</c:if>
-						<br> <br>
+</svg> <c:if test="${ !empty  board.usedate}">
+							<span class="fs-6 ms-2">대여가능일 : ${ board.usedate } ~ ${ board.duedate }
+							</span>
+							<br>
+						</c:if> <c:if test="${ empty  board.usedate}">
+							<span>날짜상의</span>
+							<br>
+						</c:if> <br> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ board.cnt }</p></li>
 					<li class="list-group-item text-end "><a

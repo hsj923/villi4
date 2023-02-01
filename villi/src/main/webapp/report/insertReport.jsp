@@ -41,6 +41,7 @@ nav {
 </style>
 </head>
 <body>
+
 	<!-- ============search=============== -->
 	<nav class="border-bottom border-dark sticky-top z-index-10">
 		<div class="container" align="center">
@@ -121,7 +122,7 @@ nav {
 		<div class="container mt-3 w-75" align="center">
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="name" id="name"
-					placeholder="${ sessionScope.user.getName() }" disabled>
+					placeholder="${ sessionScope.user.getNickname() }" disabled>
 			</div>
 
 
