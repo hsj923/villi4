@@ -138,9 +138,9 @@ nav {
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
 				<span class="fs-4 fw-bold">${ question.title }</span>
-						<p class="fs-6 fst-italic">${question.regDate}</p>
+						<p class="text-muted fs-6 fst-italic">${question.regDate}</p>
 							<br><br>
-							<p class="fs-5">${ question.content }</p>	
+							<p class="text-muted fs-5">${ question.content }</p>	
 	              <c:if test="${ !empty  question.fileName1}">
 							<img class="rounded mx-auto d-block" src="resources/images/${ question.fileName1 }"
 							   	height="600px" alt="img"/>

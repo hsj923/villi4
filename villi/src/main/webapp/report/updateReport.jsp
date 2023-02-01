@@ -166,11 +166,11 @@ nav {
 								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
   <path
 								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-</svg><span class="fs-6 ms-2">${ report.meet_date }</span> <br>
+</svg><span class="text-muted fs-6 ms-2">${ report.meet_date }</span> <br>
 					<br>
 
 
-						<p class="fs-5">${ report.content }</p> <br> <br> <br>
+						<p class="text-muted fs-5">${ report.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ report.cnt }</p></li>
 					<li class="list-group-item text-end "><a
 						href="report/report_insert.jsp" class="stretched-link text-danger">이

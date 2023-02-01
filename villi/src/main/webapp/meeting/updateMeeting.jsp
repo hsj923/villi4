@@ -144,7 +144,7 @@ nav {
 								<span class="badge bg-danger text-white rounded-pill ">${meeting.status}</span>
 							</c:when>
 						</c:choose> <span class="fs-4 fw-bold">${ meeting.title }</span>
-						<p class="fs-6 fst-italic">${meeting.regDate}</p> <svg
+						<p class="text-muted fs-6 fst-italic">${meeting.regDate}</p> <svg
 							xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 							fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
   <path
@@ -170,7 +170,7 @@ nav {
 					<br>
 
 
-						<p class="fs-5">${ meeting.content }</p> <br> <br> <br>
+						<p class="text-muted fs-5">${ meeting.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ meeting.cnt }</p></li>
 					<li class="list-group-item text-end "><a
 						href="report/report_insert.jsp" class="stretched-link text-danger">이

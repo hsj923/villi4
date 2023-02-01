@@ -140,7 +140,7 @@ nav {
 					<li class="list-group-item text-start">
 					<span class="badge bg-success text-white rounded-pill">
 							${groupBuying.status} </span> <span class="fs-4 fw-bold">${ groupBuying.title }</span>
-						<p class="fs-6 fst-italic">${groupBuying.regDate}</p>
+						<p class="text-muted fs-6 fst-italic">${groupBuying.regDate}</p>
 						
 					
 						
@@ -155,7 +155,7 @@ nav {
 						<br><br>
 						
 						
-						<p class="fs-5">${ groupBuying.content }</p>									
+						<p class="text-muted fs-5">${ groupBuying.content }</p>									
 						 <br> <br> <br>
 						<p class="mt-4">조회 : ${ groupBuying.cnt }</p></li>
 					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>

@@ -26,6 +26,8 @@ public class BoardVO {
 	private String cate;
 	private String cate2;
 	private String price;
+	private Date usedate;
+	private Date duedate;
 	
 
 	@Override
@@ -35,7 +37,19 @@ public class BoardVO {
 				+ fileName2 + ", fileName3=" + fileName3 + ", fileName4=" + fileName4 + ", fileName5=" + fileName5
 				+ ", uploadFile1=" + uploadFile1 + ", uploadFile2=" + uploadFile2 + ", uploadFile3=" + uploadFile3
 				+ ", uploadFile4=" + uploadFile4 + ", uploadFile5=" + uploadFile5 + ", cate=" + cate + ", cate2="
-				+ cate2 + ", price=" + price + "]";
+				+ cate2 + ", price=" + price + ", usedate=" + usedate + ", duedate=" + duedate + "]";
+	}
+	public Date getDuedate() {
+		return duedate;
+	}
+	public void setDuedate(Date duedate) {
+		this.duedate = duedate;
+	}
+	public Date getUsedate() {
+		return usedate;
+	}
+	public void setUsedate(Date usedate) {
+		this.usedate = usedate;
 	}
 	public String getPrice() {
 		return price;

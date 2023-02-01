@@ -217,34 +217,6 @@ a {
 
 
 
-					<!-- 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg"> -->
-					<%-- 						<c:if test="${ !empty  board.fileName4}"> --%>
-					<%-- 							<img src="resources/images/${ board.fileName4}" --%>
-					<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
-					<!-- 								alt="img"> -->
-					<%-- 						</c:if> --%>
-					<%-- 						<c:if test="${ empty  board.fileName4}"> --%>
-					<!-- 							<img src="resources/images/noimg.png" -->
-					<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
-					<!-- 								alt="img"> -->
-					<%-- 						</c:if> --%>
-					<!-- 					</div> -->
-
-
-					<!-- 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg"> -->
-					<%-- 						<c:if test="${ !empty  board.fileName5}"> --%>
-					<%-- 							<img src="resources/images/${ board.fileName5}" --%>
-					<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
-					<!-- 								alt="img"> -->
-					<%-- 						</c:if> --%>
-					<%-- 						<c:if test="${ empty  board.fileName5}"> --%>
-					<!-- 							<img src="resources/images/noimg.png" -->
-					<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
-					<!-- 								alt="img"> -->
-					<%-- 						</c:if> --%>
-					<!-- 					</div> -->
-
-
 				</div>
 
 			</div>
@@ -259,8 +231,7 @@ a {
 					<h5 class="card-title text-start">
 						<img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
-							height="75">
-							 <span>${ board.writer }</span> <span
+							height="75"> <span>${ board.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
 
 						<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
@@ -273,7 +244,22 @@ a {
 					<li class="list-group-item text-start"><span
 						class="badge bg-success text-white rounded-pill">
 							${board.status} </span> <span class="fs-4 fw-bold">${ board.title }</span>
-						<p class="fs-6 fst-italic">${ board.cate2 }·${board.regDate}</p> <br>
+						<p class="fs-6 fst-italic 	text-decoration-underline">${ board.cate2 }·${board.regDate}</p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-calendar-check"
+							viewBox="0 0 16 16">
+  <path
+								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+  <path
+								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+</svg>
+                                    <c:if test="${ !empty  board.usedate}">
+										<span class="fs-6 ms-2">${ board.usedate } ~ ${ board.duedate } </span><br>
+									</c:if>
+									<c:if test="${ empty  board.usedate}">
+										<span>날짜상의</span><br>
+									</c:if>
+						<br> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ board.cnt }</p></li>
 					<li class="list-group-item text-end "><a
@@ -302,12 +288,7 @@ a {
 				</div>
 			</div>
 		</form>
-		<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
-			<a href="deleteBoard.do?seq=${board.getSeq()}"
-				class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getBoardList.do"
-				class="btn btn-dark my-5 mx-4">게시글목록</a>
-		</div>
+
 	</div>
 	<!-- 삭제시 confirm -->
 	<script>
@@ -400,8 +381,12 @@ a {
 
 			</div>
 		</div>
-
-		</div>
 	</section>
+	<div class="container row-3" align="center">
+		<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+		<a href="deleteBoard.do?seq=${board.getSeq()}"
+			class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getBoardList.do"
+			class="btn btn-dark my-5 mx-4">게시글목록</a>
+	</div>
 </body>
 </html>

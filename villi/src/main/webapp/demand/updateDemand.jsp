@@ -147,7 +147,7 @@ nav {
 								<span class="badge bg-danger text-white rounded-pill ">${demand.status}</span>
 							</c:when>
 						</c:choose> <span class="fs-4 fw-bold">${ demand.title }</span>
-						<p class="fs-6 fst-italic">${demand.regDate}</p> <br>
+						<p class="text-muted fs-6 fst-italic">${demand.regDate}</p> <br>
 					<br>
 
 
@@ -157,7 +157,7 @@ nav {
 
 
 
-						<p class="fs-5">${ demand.content }</p> <br> <br> <br>
+						<p class="text-muted fs-5">${ demand.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ demand.cnt }</p></li>
 					<li class="list-group-item text-end "><a
 						href="report/report_insert.jsp" class="stretched-link text-danger">이

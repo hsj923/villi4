@@ -138,9 +138,9 @@ nav {
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
 				<span class="fs-4 fw-bold">${ lost.title }</span>
-						<p class="fs-6 fst-italic">${lost.regDate}</p>
+						<p class="text-muted fs-6 fst-italic">${lost.regDate}</p>
 							<br><br>
-							<p class="fs-5">${ lost.content }</p>	
+							<p class="text-muted fs-5">${ lost.content }</p>	
 	              <c:if test="${ !empty  lost.fileName1}">
 							<img class="rounded mx-auto d-block" src="resources/images/${ lost.fileName1 }"
 							   	height="600px" alt="img"/>

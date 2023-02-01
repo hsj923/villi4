@@ -70,7 +70,7 @@ nav {
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="../getMeetingList.do">동네모임</a></li>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getVoteList.do">동네투표</a></li>
+										aria-current="page" href="">동네투표</a></li>
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="../getDemandList.do">빌리요청</a></li>
 									<li class="nav-item"><a class="nav-link"

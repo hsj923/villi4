@@ -25,6 +25,8 @@ public class BoardRowMapper implements RowMapper<BoardVO> {
 		board.setCate(rs.getString("CATE"));
 		board.setCate2(rs.getString("CATE2"));
 		board.setPrice(rs.getString("PRICE"));
+		board.setUsedate(rs.getDate("USEDATE"));
+		board.setDuedate(rs.getDate("DUEDATE"));
 		// board.setUploadFile(rs.getString("FILE"));
 		return board;
 	}

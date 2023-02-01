@@ -97,12 +97,12 @@ public class BoardDAO {
 	}
 	
 	public BoardVO insertBoard(BoardVO board) {
-		jdbcTemplate.update(insertBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3());
+		jdbcTemplate.update(insertBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getUsedate(), board.getDuedate(), board.getFileName1(), board.getFileName2(), board.getFileName3());
 		return board;
 	}	
 	
 	public BoardVO insertServiceBoard(BoardVO board) {
-		jdbcTemplate.update(insertServiceBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3());
+		jdbcTemplate.update(insertServiceBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getUsedate(), board.getDuedate(), board.getFileName1(), board.getFileName2(), board.getFileName3());
 		return board;
 	}	
 	
