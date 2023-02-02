@@ -64,8 +64,18 @@ nav {
 							<div class="navbar-collapse collapse show" id="navbarSupportedContent" style="">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-										<!-- ================글작성버튼============= -->
-										<a class="nav-link active" aria-current="page" href="">글작성</a></li>
+									
+									
+									<!-- ================글작성버튼, 로그인============= --> <c:if
+											test="${ sessionScope.user.getNickname() == null }">
+											<a class="nav-link active" aria-current="page"
+												href="index.jsp">로그인</a>
+										</c:if> 
+										<c:if test="${ sessionScope.user.getNickname() != null }">
+											<a class="nav-link active" aria-current="page" href="">글작성</a>
+										</c:if>
+									</li>
+										
 
 									<li class="nav-item"><a class="nav-link" aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link" aria-current="page" href="getLostList.do">분실센터</a></li>

@@ -121,6 +121,10 @@ nav {
 	<form action="insertReport.do" method="post">
 		<div class="container mt-3 w-75" align="center">
 			<div class="input-group mb-3 w-75">
+				<input type="text" class="form-control" name="seq" id="seq"
+					placeholder="${ board. }" disabled>
+			</div>
+			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="name" id="name"
 					placeholder="${ sessionScope.user.getNickname() }" disabled>
 			</div>

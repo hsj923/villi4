@@ -74,9 +74,26 @@ nav {
 								<!--================ nav bar ===================-->
 								<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="demand/insertDemand.jsp">글작성</a>
-									</li>
+									<li class="nav-item">
+									<!-- ================글작성버튼, 로그인============= -->		
+				<c:if test="${ sessionScope.user.getNickname() == null }">
+					<a class="nav-link active" aria-current="page"
+												href="index.jsp">로그인</a>
+				</c:if>
+				<c:if test="${ sessionScope.user.getNickname() != null }">		
+											<div class="dropdown">						
+												<button class="btn dropdown-toggle" type="button"
+													id="dropdownMenuButton2" data-bs-toggle="dropdown"
+													aria-expanded="false">글작성</button>
+												<ul class="dropdown-menu dropdown-menu-dark"
+													aria-labelledby="dropdownMenuButton2">
+													<li><a class="dropdown-item"
+														href="board/insertBoard.jsp">상품</a></li>
+													<li><a class="dropdown-item"
+														href="board/insertServiceBoard.jsp">서비스</a></li>
+												</ul>
+											</div>
+				</c:if>
 											
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getQuestionList.do">동네질문</a></li>

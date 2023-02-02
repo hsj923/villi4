@@ -121,26 +121,26 @@ nav {
 	<form action="insertMeeting.do" method="post">
 		<div class="container mt-3 w-75" align="center">
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
+	<input
 					type="text" class="form-control" name="writer" id="writer"
 					placeholder="동네모임글 작성자....">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+
 				<input type="text" class="form-control" name="title" id="title"
 					placeholder="동네모임글 제목....">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				
 				<input type="number" class="form-control" name="per" id="per"
 					placeholder="인원">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				
 				<input type="date" class="form-control" name="meet_date" id="meet_date">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				
 				<input type="text" class="form-control" name="place" id="place"
 					placeholder="장소">
 			</div>
@@ -150,7 +150,7 @@ nav {
 
        
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+			
 				<textarea class="form-control" name="content" id="content" rows="20"
 					placeholder="동네모임글 상세내용...."></textarea>
 			</div>

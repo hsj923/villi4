@@ -120,38 +120,38 @@ nav {
 	<form action="insertVote.do" method="post">
 		<div class="container mt-3 w-75" align="center">
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
+				<input
 					type="text" class="form-control" name="writer" id="writer"
 					placeholder="동네투표글 작성자....">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				
 				<input type="text" class="form-control" name="title" id="title"
 					placeholder="동네투표글 제목....">
 			</div>
 
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+				
 				<textarea class="form-control" name="content" id="content" rows="20"
 					placeholder="동네투표글 내용"></textarea>
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				
 				<input type="text" class="form-control" name="itemlist1" id="itemlist1"
 					placeholder="항목1">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				
 				<input type="text" class="form-control" name="itemlist2" id="itemlist2"
 					placeholder="항목2">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+			
 				<input type="text" class="form-control" name="itemlist3" id="itemlist3"
 					placeholder="항목3">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+			
 				<input type="text" class="form-control" name="itemlist4" id="itemlist4"
 					placeholder="항목4">
 			</div>

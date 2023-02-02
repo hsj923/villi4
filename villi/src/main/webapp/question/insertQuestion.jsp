@@ -120,17 +120,17 @@ nav {
 <form action="insertQuestion.do" method="post">
 		<div class="container mt-3" align="center">
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
+			 <input
 					type="text" class="form-control" name="writer" id="writer"
 					placeholder="동네질문글 작성자....">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				
 				<input type="text" class="form-control" name="title" id="title"
 					placeholder="동네질문글 제목....">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+
 				<textarea class="form-control" name="content" id="content" rows="20"
 					placeholder="동네질문글 상세내용...."></textarea>
 			</div>

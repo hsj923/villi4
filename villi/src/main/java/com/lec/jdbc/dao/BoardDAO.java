@@ -35,7 +35,8 @@ public class BoardDAO {
 	private String selectBoardList = "";
 	private String selectBoardListByTitle = ""; 
 	private String selectBoardListByWriter = ""; 
-	private String selectBoardListByCate2 = ""; 
+	private String selectBoardListByCate2 = "";
+
 	
 	@PostConstruct
 	public void getSqlPropeties() {
@@ -116,6 +117,7 @@ public class BoardDAO {
 	public int updateBoard(BoardVO board) {
 		return jdbcTemplate.update(updateBoard, board.getTitle(), board.getContent(), board.getSeq());
 	}
+
 	
 	public void updateBoardCount(BoardVO board) {
 		jdbcTemplate.update(updateBoardCount,  board.getSeq());

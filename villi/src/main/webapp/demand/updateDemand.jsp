@@ -79,9 +79,16 @@ nav {
 							<!--================ nav bar ===================-->
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="demand/insertDemand.jsp">글작성</a></li>
-
+									<li class="nav-item">
+										<!-- ================글작성버튼, 로그인============= --> <c:if
+											test="${ sessionScope.user.getNickname() == null }">
+											<a class="nav-link active" aria-current="page"
+												href="index.jsp">로그인</a>
+										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
+											<a class="nav-link active" aria-current="page"
+												href="demand/insertDemand.jsp">글작성</a>
+										</c:if>
+									</li>
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
@@ -154,20 +161,22 @@ nav {
 					<li class="list-group-item text-start">
 						<div class="row">
 							<div class="col-4 text-start">
-								<span class="fs-4 fw-bold">${ demand.title }</span><c:choose>
-							<c:when test="${demand.status eq '대기중'}">
-								<span class="badge bg-success text-white rounded-pill ">${demand.status}</span>
-							</c:when>
-							<c:when test="${demand.status eq '예약중'}">
-								<span class="badge bg-warning text-white rounded-pill">${demand.status}</span>
-							</c:when>
-							<c:when test="${demand.status eq '빌리완료'}">
-								<span class="badge bg-danger text-white rounded-pill ">${demand.status}</span>
-							</c:when>
-						</c:choose>
+								<span class="fs-4 fw-bold">${ demand.title }</span>
+								<c:choose>
+									<c:when test="${demand.status eq '대기중'}">
+										<span class="badge bg-success text-white rounded-pill ">${demand.status}</span>
+									</c:when>
+									<c:when test="${demand.status eq '예약중'}">
+										<span class="badge bg-warning text-white rounded-pill">${demand.status}</span>
+									</c:when>
+									<c:when test="${demand.status eq '빌리완료'}">
+										<span class="badge bg-danger text-white rounded-pill ">${demand.status}</span>
+									</c:when>
+								</c:choose>
 							</div>
 							<div class="col-8 text-end">
-								<p class="text-muted fs-6 fst-italic">${demand.regDate}</p> <br>
+								<p class="text-muted fs-6 fst-italic">${demand.regDate}</p>
+								<br>
 							</div>
 						</div>
 
@@ -176,7 +185,8 @@ nav {
 
 						<p class="text-muted fs-5">${ demand.content }</p> <br> <br>
 						<br>
-						<p class="mt-4">조회 : ${ demand.cnt }</p></li>
+						<p class="mt-4">조회 : ${ demand.cnt }</p>
+					</li>
 					<li class="list-group-item text-end "><a
 						href="report/report_insert.jsp" class="stretched-link text-danger">이
 							게시글 신고하기</a></li>
@@ -202,12 +212,24 @@ nav {
 				</div>
 			</div>
 		</form>
-		<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
-			<a href="deleteDemand.do?seq=${demand.getSeq()}"
-				class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getDemandList.do"
-				class="btn btn-dark my-5 mx-4">게시글목록</a>
-		</div>
+
+
+
+		<c:if test="${ sessionScope.user.getNickname() == null }">
+			<div class="container row-3" align="center">
+				<a href="index.jsp"><button class="btn btn-dark my-5 mx-4"
+						type="button">로그인</button></a>
+			</div>
+		</c:if>
+		<c:if test="${ sessionScope.user.getNickname() != null }">
+			<div class="container row-3" align="center">
+				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+				<a href="deleteDemand.do?seq=${demand.getSeq()}"
+					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getDemandList.do"
+					class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
+		</c:if>
+
 	</div>
 
 

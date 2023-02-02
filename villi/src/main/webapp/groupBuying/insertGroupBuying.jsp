@@ -120,17 +120,17 @@ nav {
 	<form action="insertGroupBuying.do" method="post">
 		<div class="container mt-3" align="center">
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
+			 <input
 					type="text" class="form-control" name="writer" id="writer"
 					placeholder="공구글 작성자....">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+			
 				<input type="number" class="form-control" name="per" id="per"
 					placeholder="모집인원">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+				
 				<input type="text" class="form-control" name="title" id="title"
 					placeholder="공구글 제목....">
 			</div>
@@ -152,12 +152,12 @@ nav {
 					</script>
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
+			
 				<input type="date" class="form-control" name="buying_date" id="buying_date"
 					placeholder="공구 날짜">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+				
 				<textarea class="form-control" name="content" id="content" rows="20"
 					placeholder="공구글 상세내용...."></textarea>
 			</div>
