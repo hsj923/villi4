@@ -54,8 +54,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void updateCount(BoardVO board) {
-		boardDAO.updateCount(board);
+	public void updateBoardCount(BoardVO board) {
+		boardDAO.updateBoardCount(board);
 	}
 	
 }

@@ -13,6 +13,8 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -22,6 +24,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+
 <style>
 @font-face {
 	font-family: 'Pretendard-Regular';
@@ -38,6 +41,18 @@ body {
 
 nav {
 	background-color: #FFFAFA;
+}
+
+.bi-heart {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
+}
+
+.bi-heart-fill {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
 }
 </style>
 
@@ -136,7 +151,10 @@ nav {
 
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item text-start"><c:choose>
+					<li class="list-group-item text-start">
+						<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ demand.title }</span><c:choose>
 							<c:when test="${demand.status eq '대기중'}">
 								<span class="badge bg-success text-white rounded-pill ">${demand.status}</span>
 							</c:when>
@@ -146,18 +164,18 @@ nav {
 							<c:when test="${demand.status eq '빌리완료'}">
 								<span class="badge bg-danger text-white rounded-pill ">${demand.status}</span>
 							</c:when>
-						</c:choose> <span class="fs-4 fw-bold">${ demand.title }</span>
-						<p class="text-muted fs-6 fst-italic">${demand.regDate}</p> <br>
-					<br>
+						</c:choose>
+							</div>
+							<div class="col-8 text-end">
+								<p class="text-muted fs-6 fst-italic">${demand.regDate}</p> <br>
+							</div>
+						</div>
 
 
 
 
-
-
-
-
-						<p class="text-muted fs-5">${ demand.content }</p> <br> <br> <br>
+						<p class="text-muted fs-5">${ demand.content }</p> <br> <br>
+						<br>
 						<p class="mt-4">조회 : ${ demand.cnt }</p></li>
 					<li class="list-group-item text-end "><a
 						href="report/report_insert.jsp" class="stretched-link text-danger">이
@@ -168,10 +186,12 @@ nav {
 					<div class="row">
 						<div class="col-4 text-start">
 							<c:if test="${ !empty  demand.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">${ demand.price }원</span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-5">${ demand.price }원</span>
 							</c:if>
 							<c:if test="${ empty  demand.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">가격협의</span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-5">가격협의</span>
 							</c:if>
 						</div>
 						<div class="col-8 text-end">
@@ -191,16 +211,29 @@ nav {
 	</div>
 
 
-
+	<script>
+		var i = 0;
+		$('.bi-heart').on('click', function() {
+			if (i == 0) {
+				$(this).removeClass('bi-heart');
+				$(this).addClass('bi-heart-fill');
+				i++;
+			} else if (i == 1) {
+				$(this).removeClass('bi-heart-fill');
+				$(this).addClass('bi-heart');
+				i--;
+			}
+		});
+	</script>
 
 
 
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteQuestion() {
-			if(confirm("자료를 삭제하겠습니까?")) {
-		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
-		    }
+			if (confirm("자료를 삭제하겠습니까?")) {
+				self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+			}
 		}
 	</script>
 </body>

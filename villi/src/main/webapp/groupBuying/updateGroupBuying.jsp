@@ -13,6 +13,8 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -38,6 +40,17 @@ body {
 
 nav {
 	background-color: #FFFAFA;
+}
+.bi-heart {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
+}
+
+.bi-heart-fill {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
 }
 </style>
 
@@ -138,10 +151,22 @@ nav {
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
-					<span class="badge bg-success text-white rounded-pill">
-							${groupBuying.status} </span> <span class="fs-4 fw-bold">${ groupBuying.title }</span>
-						<p class="text-muted fs-6 fst-italic">${groupBuying.regDate}</p>
-						
+						<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ groupBuying.title }</span>
+								<c:choose>
+							<c:when test="${groupBuying.status eq '모집중'}">
+								<span class="badge bg-success text-white rounded-pill ">${groupBuying.status}</span>
+							</c:when>
+							<c:when test="${groupBuying.status eq '모집종료'}">
+								<span class="badge bg-danger text-white rounded-pill ">${groupBuying.status}</span>
+							</c:when>
+						</c:choose>
+							</div>
+							<div class="col-8 text-end">
+								<p class="fs-6 fst-italic 	text-decoration-underline">${groupBuying.regDate}</p>
+							</div>
+						</div>
 					
 						
 	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
@@ -165,10 +190,10 @@ nav {
 					<div class="row">
 						<div class="col-4 text-start">
 							<c:if test="${ !empty  groupBuying.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">${ groupBuying.price }원</span>
+								<span class="fs-4 mx-3">	<i class="bi bi-heart fs-5"></i></span><span class="fs-5">${ groupBuying.price }원</span>
 							</c:if>
 							<c:if test="${ empty  groupBuying.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">가격협의</span>
+								<span class="fs-4 mx-3">	<i class="bi bi-heart fs-5"></i></span><span class="fs-5">가격협의</span>
 							</c:if>
 						</div>
 						<div class="col-8 text-end">
@@ -189,6 +214,20 @@ nav {
 
 
 
+	<script>
+    var i = 0;
+    $('.bi-heart').on('click',function(){
+        if(i==0){
+            $(this).removeClass('bi-heart');
+            $(this).addClass('bi-heart-fill');
+            i++;
+        }else if(i==1){
+            $(this).removeClass('bi-heart-fill');
+            $(this).addClass('bi-heart');
+            i--;
+        }     
+    });
+</script>
 
 
 	<!-- 삭제시 confirm -->

@@ -28,8 +28,9 @@ public class BoardVO {
 	private String price;
 	private String usedate;
 	private String duedate;
-	
+	private int like_cnt;
 
+	
 	@Override
 	public String toString() {
 		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", status="
@@ -37,7 +38,14 @@ public class BoardVO {
 				+ fileName2 + ", fileName3=" + fileName3 + ", fileName4=" + fileName4 + ", fileName5=" + fileName5
 				+ ", uploadFile1=" + uploadFile1 + ", uploadFile2=" + uploadFile2 + ", uploadFile3=" + uploadFile3
 				+ ", uploadFile4=" + uploadFile4 + ", uploadFile5=" + uploadFile5 + ", cate=" + cate + ", cate2="
-				+ cate2 + ", price=" + price + ", usedate=" + usedate + ", duedate=" + duedate + "]";
+				+ cate2 + ", price=" + price + ", usedate=" + usedate + ", duedate=" + duedate + ", like_cnt="
+				+ like_cnt + "]";
+	}
+	public int getLike_cnt() {
+		return like_cnt;
+	}
+	public void setLike_cnt(int like_cnt) {
+		this.like_cnt = like_cnt;
 	}
 	public String getDuedate() {
 		return duedate;

@@ -166,8 +166,13 @@ nav {
 									id="navbarSupportedContent">
 									<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 										<li class="nav-item">
-											<!-- ================글작성버튼============= -->
-											<div class="dropdown">
+										
+				<c:if test="${ sessionScope.user.getNickname() == null }">
+					<input type="submit" class="col-1 btn btn-primary" value="login">
+				</c:if>
+				<c:if test="${ sessionScope.user.getNickname() != null }">
+					<!-- ================글작성버튼============= -->
+											<div class="dropdown">						
 												<button class="btn dropdown-toggle" type="button"
 													id="dropdownMenuButton2" data-bs-toggle="dropdown"
 													aria-expanded="false">글작성</button>
@@ -179,6 +184,22 @@ nav {
 														href="board/insertServiceBoard.jsp">서비스</a></li>
 												</ul>
 											</div>
+				</c:if>
+				
+				
+<!-- 											================글작성버튼============= -->
+<!-- 											<div class="dropdown">						 -->
+<!-- 												<button class="btn dropdown-toggle" type="button" -->
+<!-- 													id="dropdownMenuButton2" data-bs-toggle="dropdown" -->
+<!-- 													aria-expanded="false">글작성</button> -->
+<!-- 												<ul class="dropdown-menu dropdown-menu-dark" -->
+<!-- 													aria-labelledby="dropdownMenuButton2"> -->
+<!-- 													<li><a class="dropdown-item" -->
+<!-- 														href="board/insertBoard.jsp">상품</a></li> -->
+<!-- 													<li><a class="dropdown-item" -->
+<!-- 														href="board/insertServiceBoard.jsp">서비스</a></li> -->
+<!-- 												</ul> -->
+<!-- 											</div> -->
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getQuestionList.do">동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -247,15 +268,8 @@ nav {
 									width="450" height="250"
 									src="resources/images/${ board.fileName1 }" alt="image"></a></span>
 							<div class="card-body">
-								<h6 class="card-title fw-bold">${board.title}</h6>
-								<div class="fw-bold">
-									<c:if test="${ !empty  board.price}">
-										<span>${ board.price }원</span>
-									</c:if>
-									<c:if test="${ empty  board.price}">
-										<span>가격협의</span>
-									</c:if>
-									<c:choose>
+							
+								<h6 class="card-title fw-bold">${board.title}<c:choose>
 										<c:when test="${board.status eq '대기중'}">
 											<span class="badge bg-success text-white rounded-pill">${board.status}</span>
 										</c:when>
@@ -265,7 +279,15 @@ nav {
 										<c:when test="${board.status eq '대여중'}">
 											<span class="badge bg-danger text-white rounded-pill">${board.status}</span>
 										</c:when>
-									</c:choose>
+									</c:choose></h6>
+								<div class="fw-bold">
+									<c:if test="${ !empty  board.price}">
+										<span>${ board.price }원</span>
+									</c:if>
+									<c:if test="${ empty  board.price}">
+										<span>가격협의</span>
+									</c:if>
+									
 								</div>
 								<div>
 									<c:if test="${ !empty  board.usedate}">
@@ -277,53 +299,12 @@ nav {
 								</div>
 								<div class="text-muted mt-3">위치</div>
 								<p class="card-mtext">
-									<!-- ===============좋아요(찜리스트) 기능 구현=============== -->
-									<c:choose>
-										<%-- 로그인 상태일때 - 하트 클릭 되게 --%>
-										<c:when test="${not empty sessionScope.name}">
-											<c:choose>
-												<c:when test="${empty like.likeseq}">
-													<%-- 빈 하트일때 --%>
-													<span> <a idx="${like.seq }" href="javascript:"
-														class="heart-click heart_icon${like.seq }"><svg
-																xmlns="http://www.w3.org/2000/svg" width="16"
-																height="16" fill="currentColor" class="bi bi-suit-heart"
-																viewBox="0 0 16 16">
-                                  <path
-																	d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
-                                </svg></a>
-													</span>
-												</c:when>
-												<c:otherwise>
-													<%-- 꽉찬 하트일때 --%>
-													<span> <a idx="${like.seq }" href="javascript:"
-														class="heart-click heart_icon${like.seq }"><svg
-																xmlns="http://www.w3.org/2000/svg" width="16"
-																height="16" fill="currentColor"
-																class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                                  <path
-																	d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
-                                </svg></a>
-													</span>
-												</c:otherwise>
-											</c:choose>
-										</c:when>
-										<%-- 로그인 상태가 아닐때  - 하트클릭 안되게 --%>
-										<c:otherwise>
-											<span> <a href="javascript:" class="heart-notlogin">
-													<svg class="heart3" xmlns="http://www.w3.org/2000/svg"
-														width="16" height="16" fill="currentColor"
-														class="bi bi-suit-heart" viewBox="0 0 16 16">
-                          <path
-															d="M8 6.236l-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
-                        </svg>
-											</a>
-											</span>
-										</c:otherwise>
-									</c:choose>
-									<span id="heart${like.seq }">${tmp.heart }</span>
-
-
+									
+						
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+</svg>
+                        
 									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
 										fill="currentColor" class="bi bi-chat-square-dots"
 										viewBox="0 0 16 16">

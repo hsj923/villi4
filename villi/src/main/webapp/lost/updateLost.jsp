@@ -13,6 +13,8 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -38,6 +40,17 @@ body {
 
 nav {
 	background-color: #FFFAFA;
+}
+.bi-heart {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
+}
+
+.bi-heart-fill {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
 }
 </style>
 
@@ -137,8 +150,14 @@ nav {
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
-				<span class="fs-4 fw-bold">${ lost.title }</span>
-						<p class="text-muted fs-6 fst-italic">${lost.regDate}</p>
+		<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ lost.title }</span>
+							</div>
+							<div class="col-8 text-end">
+								<p class="fs-6 fst-italic 	text-decoration-underline">${lost.regDate}</p>
+							</div>
+						</div>
 							<br><br>
 							<p class="text-muted fs-5">${ lost.content }</p>	
 	              <c:if test="${ !empty  lost.fileName1}">
@@ -157,7 +176,7 @@ nav {
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
 						</div>
 						<div class="col-8 text-end">
 							<a href="#" class="btn ps-6 text-white rounded-pill"
@@ -174,8 +193,20 @@ nav {
 		</div>
 	</div>
 
-
-
+<script>
+    var i = 0;
+    $('.bi-heart').on('click',function(){
+        if(i==0){
+            $(this).removeClass('bi-heart');
+            $(this).addClass('bi-heart-fill');
+            i++;
+        }else if(i==1){
+            $(this).removeClass('bi-heart-fill');
+            $(this).addClass('bi-heart');
+            i--;
+        }     
+    });
+</script>
 
 
 

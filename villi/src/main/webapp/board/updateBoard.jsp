@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
@@ -22,6 +24,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+
 
 <style>
 @font-face {
@@ -57,6 +60,18 @@ nav {
 
 a {
 	text-decoration: none
+}
+
+.bi-heart {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
+}
+
+.bi-heart-fill {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
 }
 </style>
 <body>
@@ -175,12 +190,12 @@ a {
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName1}">
 							<img src="resources/images/${ board.fileName1 }"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-100 card-img-top embed-responsive-item"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName1}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-100 card-img-top embed-responsive-item"
 								alt="img">
 						</c:if>
 					</div>
@@ -190,12 +205,12 @@ a {
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName2}">
 							<img src="resources/images/${ board.fileName2 }"
-								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
+								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName2}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
+								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
@@ -205,12 +220,12 @@ a {
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName3}">
 							<img src="resources/images/${ board.fileName3 }"
-								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
+								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName3}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
+								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
@@ -229,7 +244,7 @@ a {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						
+
 						<img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"> <span>${ board.writer }</span> <span
@@ -242,14 +257,26 @@ a {
 
 				</div>
 				<ul class="list-group list-group-flush">
-
-
-
-
-					<li class="list-group-item text-start"><span
-						class="badge bg-success text-white rounded-pill">
-							${board.status} </span> <span class="fs-4 fw-bold">${ board.title }</span>
-						<p class="fs-6 fst-italic 	text-decoration-underline">${ board.cate2 }·${board.regDate}</p>
+					<li class="list-group-item text-start">
+						<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ board.title }</span><c:choose>
+										<c:when test="${board.status eq '대기중'}">
+											<span class="badge bg-success text-white rounded-pill">${board.status}</span>
+										</c:when>
+										<c:when test="${board.status eq '예약중'}">
+											<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
+										</c:when>
+										<c:when test="${board.status eq '대여중'}">
+											<span class="badge bg-danger text-white rounded-pill">${board.status}</span>
+										</c:when>
+									</c:choose>
+							</div>
+							<div class="col-8 text-end">
+								<p class="fs-6 fst-italic 	text-decoration-underline">${board.regDate}</p>
+							</div>
+						</div>
+						<p class="fs-6 fst-italic 	text-decoration-underline">${ board.cate2 }</p>
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 							fill="currentColor" class="bi bi-calendar-check"
 							viewBox="0 0 16 16">
@@ -266,7 +293,8 @@ a {
 							<br>
 						</c:if> <br> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
-						<p class="mt-4">조회 : ${ board.cnt }</p></li>
+						<p class="mt-4">조회 : ${ board.cnt }</p>
+					</li>
 					<li class="list-group-item text-end "><a
 						href="report/insertReport.jsp" class="stretched-link text-danger">이
 							게시글 신고하기</a></li>
@@ -275,26 +303,37 @@ a {
 					<div class="row">
 						<div class="col-4 text-start">
 							<c:if test="${ !empty  board.price}">
-								<span class="fs-4 mx-3"><i
-									class="bi bi-heart-fill text-danger"></i></span>
+								<span class="fs-4 mx-3"> <i class="bi bi-heart fs-5"></i></span>
 								<span class="fs-5">${ board.price }원</span>
 							</c:if>
 							<c:if test="${ empty  board.price}">
-								<span class="fs-4 mx-3"><i
-									class="bi bi-heart-fill text-danger"></i></span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
 								<span class="fs-5">가격협의</span>
 							</c:if>
 						</div>
 						<div class="col-8 text-end">
-							<a href="#" class="btn ps-6 text-white rounded-pill"
+							<a href="getChatList.do" class="btn ps-6 text-white rounded-pill"
 								style="background-color: #72CCD2;">채팅하기</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</form>
-
 	</div>
+	<script>
+    var i = 0;
+    $('.bi-heart').on('click',function(){
+        if(i==0){
+            $(this).removeClass('bi-heart');
+            $(this).addClass('bi-heart-fill');
+            i++;
+        }else if(i==1){
+            $(this).removeClass('bi-heart-fill');
+            $(this).addClass('bi-heart');
+            i--;
+        }     
+    });
+</script>
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteBoard() {

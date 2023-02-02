@@ -104,11 +104,15 @@ nav {
 	</nav>
 	<!-- 	<!--==============================게시물 제목===============================   -->
 	<div class="container">
+		
 		<div class="row">
-			<div class="col">
-				<h4>${ vote.title }</h4>
-			</div>
-		</div>
+						<div class="col-4 text-start">
+							<h4>${ vote.title } </h4>
+						</div>
+						<div class="col-8 text-end">
+							<span class="text-muted fs-6 text-end">조회 : ${ vote.cnt }</span>
+						</div>		 
+					</div>
 
 
 

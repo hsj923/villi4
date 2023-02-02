@@ -13,6 +13,8 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -38,6 +40,18 @@ body {
 
 nav {
 	background-color: #FFFAFA;
+}
+
+.bi-heart {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
+}
+
+.bi-heart-fill {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
 }
 </style>
 
@@ -136,16 +150,23 @@ nav {
 
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item text-start"><c:choose>
+					<li class="list-group-item text-start">
+						<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ meeting.title }</span>
+								<c:choose>
 							<c:when test="${meeting.status eq '모집중'}">
 								<span class="badge bg-success text-white rounded-pill ">${meeting.status}</span>
 							</c:when>
 							<c:when test="${meeting.status eq '모임종료'}">
 								<span class="badge bg-danger text-white rounded-pill ">${meeting.status}</span>
 							</c:when>
-						</c:choose> <span class="fs-4 fw-bold">${ meeting.title }</span>
-						<p class="text-muted fs-6 fst-italic">${meeting.regDate}</p> <svg
-							xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						</c:choose>
+							</div>
+							<div class="col-8 text-end">
+								<p class="fs-6 fst-italic 	text-decoration-underline">${meeting.regDate}</p>
+							</div>
+						</div> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 							fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
   <path
 								d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
@@ -166,20 +187,20 @@ nav {
 								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
   <path
 								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-</svg><span class="fs-6 ms-2">${ meeting.meet_date }</span> <br>
-					<br>
+</svg><span class="fs-6 ms-2">${ meeting.meet_date }</span> <br> <br>
 
 
-						<p class="text-muted fs-5">${ meeting.content }</p> <br> <br> <br>
+						<p class="text-muted fs-5">${ meeting.content }</p> <br> <br>
+						<br>
 						<p class="mt-4">조회 : ${ meeting.cnt }</p></li>
 					<li class="list-group-item text-end "><a
 						href="report/report_insert.jsp" class="stretched-link text-danger">이
 							게시글 신고하기</a></li>
 				</ul>
-			<div class="card-body">
+				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span>
+							<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
 						</div>
 						<div class="col-8 text-end">
 							<a href="#" class="btn ps-6 text-white rounded-pill"
@@ -197,17 +218,29 @@ nav {
 		</div>
 	</div>
 
-
-
+	<script>
+		var i = 0;
+		$('.bi-heart').on('click', function() {
+			if (i == 0) {
+				$(this).removeClass('bi-heart');
+				$(this).addClass('bi-heart-fill');
+				i++;
+			} else if (i == 1) {
+				$(this).removeClass('bi-heart-fill');
+				$(this).addClass('bi-heart');
+				i--;
+			}
+		});
+	</script>
 
 
 
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteQuestion() {
-			if(confirm("자료를 삭제하겠습니까?")) {
-		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
-		    }
+			if (confirm("자료를 삭제하겠습니까?")) {
+				self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+			}
 		}
 	</script>
 </body>
