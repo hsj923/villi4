@@ -98,6 +98,7 @@ nav {
 			</div>
 		</div>
 	</section>
+	
 	<section class="home-main-section" id="section2">
 		<div class="container">
 			<div class="row">

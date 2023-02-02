@@ -236,7 +236,8 @@ color:#23dbc9
 
 		<div class="container grid-container">
 			<div class="row">
-				<c:forEach items="${ myboardList}" var="mysboard">
+				<c:forEach items="${ getMyBoardList}" var="getMyBoardList">
+				<c:if test = "${getMyBoardList.writer eq sessionScope.nickname }">
 					<div class="col-12 col-md-6 col-lg-3 mt-5">
 						<div class="card">
 							<a href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
@@ -290,24 +291,16 @@ color:#23dbc9
 							</div>
 						</div>
 					</div>
+					</c:if>
 				</c:forEach>
 			</div>
 		</div>
 		
 		<!-- 게시판 -->
 
-		<div class="row align-items-start mt-3">
+		<%-- <div class="row align-items-start mt-3">
 			<ul class="pagination justify-content-center">
 
-				<c:set var="cp" value="${searchVO.getCurPage()}" />
-				<c:set var="rp" value="${searchVO.getRowSizePerPage()}" />
-				<c:set var="fp" value="${searchVO.getFirstPage()}" />
-				<c:set var="lp" value="${searchVO.getLastPage()}" />
-				<c:set var="ps" value="${searchVO.getPageSize()}" />
-				<c:set var="tp" value="${searchVO.getTotalPageCount()}" />
-				<c:set var="sc" value="${searchVO.getSearchCategory()}" />
-				<c:set var="st" value="${searchVO.getSearchType()}" />
-				<c:set var="sw" value="${searchVO.getSearchWord()}" />
 
 				<c:if test="${ fp != 1 }">
 					<li class="page-item"><a
@@ -348,7 +341,7 @@ color:#23dbc9
 			</div>
 			<!-- rowSizePerPage -->
 		</div>
-		<!-- 페이징 -->
+		<!-- 페이징 --> --%>
 	</div>
 	<!-- main  -->
 

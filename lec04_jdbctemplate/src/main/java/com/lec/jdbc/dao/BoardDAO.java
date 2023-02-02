@@ -1,14 +1,18 @@
 package com.lec.jdbc.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.mapper.BoardRowMapper;
@@ -38,10 +42,11 @@ public class BoardDAO {
 	private String selectBoardListByWriter = ""; 
 	private String selectBoardListByCate2 = ""; 
 	
+//	private String selectByWriter ="";
+	
 	@PostConstruct
 	public void getSqlPropeties() {
 		selectBySeq              = environment.getProperty("selectBySeq");
-		selectById               = environment.getProperty("selectById");
 		boardTotalRowCount       = environment.getProperty("boardTotalRowCount");
 		insertBoard              = environment.getProperty("insertBoard");
 		insertServiceBoard       = environment.getProperty("insertServiceBoard");
@@ -52,6 +57,9 @@ public class BoardDAO {
 		selectBoardListByTitle   = environment.getProperty("selectBoardListByTitle");
 		selectBoardListByWriter  = environment.getProperty("selectBoardListByWriter");
 		selectBoardListByCate2= environment.getProperty("selectBoardListByCate2");
+		
+		
+//		selectByWriter         = environment.getProperty("selectByWriter");
 	}
 
 	public BoardVO getBoard(BoardVO board) {
@@ -68,7 +76,7 @@ public class BoardDAO {
 		} else {			
 			if(searchVO.getSearchType().equalsIgnoreCase("title")) {
 				sql = boardTotalRowCount + " and title like '%" + searchVO.getSearchWord() + "%'";
-			} else if(searchVO.getSearchType().equalsIgnoreCase("writer")) {
+			} else if(searchVO.getSearchType().equalsIgnoreCase("nickname")) {
 				sql = boardTotalRowCount + " and writer like '%" + searchVO.getSearchWord() + "%'";
 			} else if(searchVO.getSearchType().equalsIgnoreCase("Cate2")) {
 				sql = boardTotalRowCount + " and cate2 like '%" + searchVO.getSearchWord() + "%'";
@@ -86,7 +94,7 @@ public class BoardDAO {
 		} else {
 			if(searchVO.getSearchType().equalsIgnoreCase("title")) {
 				sql = selectBoardListByTitle;
-			} else if(searchVO.getSearchType().equalsIgnoreCase("writer")) {
+			} else if(searchVO.getSearchType().equalsIgnoreCase("nickname")) {
 				sql = selectBoardListByWriter;
 			} else if(searchVO.getSearchType().equalsIgnoreCase("Cate2")) {
 				sql = selectBoardListByCate2;
@@ -95,31 +103,12 @@ public class BoardDAO {
 		
 		String searchWord = "%" + searchVO.getSearchWord() + "%";					
 		Object[] args = {searchWord, searchVO.getFirstRow(), searchVO.getRowSizePerPage()};
+		
+		
 		return jdbcTemplate.query(sql, args, new BoardRowMapper());
 	}
 	
-	
-	public List<BoardVO> getMyBoardList(SearchVO searchVO) {
-		
-		if(searchVO.getSearchType()==null || searchVO.getSearchType().isEmpty() ||
-				searchVO.getSearchWord()==null || searchVO.getSearchWord().isEmpty()) {
-			sql = selectBoardListByTitle;
-			searchVO.setSearchType("title");
-		} else {
-			if(searchVO.getSearchType().equalsIgnoreCase("title")) {
-				sql = selectBoardListByTitle;
-			} else if(searchVO.getSearchType().equalsIgnoreCase("writer")) {
-				sql = selectBoardListByWriter;
-			} else if(searchVO.getSearchType().equalsIgnoreCase("Cate2")) {
-				sql = selectBoardListByCate2;
-			} 					
-		}
-		
-		String searchWord = "%" + searchVO.getSearchWord() + "%";					
-		Object[] args = {searchWord, searchVO.getFirstRow(), searchVO.getRowSizePerPage()};
-		return jdbcTemplate.query(sql, args, new BoardRowMapper());
-	}
-	
+	//**
 	
 	
 	
@@ -147,6 +136,36 @@ public class BoardDAO {
 	public void updateCount(BoardVO board) {
 		jdbcTemplate.update(updateCount,  board.getSeq());
 	}
+	
+	
+
+//	public List<BoardVO> getMyBoardList(SearchVO searchVO, BoardVO board) {
+//		
+//		
+//		if(searchVO.getSearchType()==null || searchVO.getSearchType().isEmpty() ||
+//				searchVO.getSearchWord()==null || searchVO.getSearchWord().isEmpty()) {
+//			sql = selectBoardListByTitle;
+//			searchVO.setSearchType("title");
+//		} else {
+//			if(searchVO.getSearchType().equalsIgnoreCase("title")) {
+//				sql = selectBoardListByTitle;
+//			} else if(searchVO.getSearchType().equalsIgnoreCase("nickname")) {
+//				sql = selectBoardListByWriter;
+//			} else if(searchVO.getSearchType().equalsIgnoreCase("Cate2")) {
+//				sql = selectBoardListByCate2;
+//			} 					
+//		}
+//		
+//		String searchWord = "%" + searchVO.getSearchWord() + "%";					
+//		Object[] args = {searchWord, searchVO.getFirstRow(), searchVO.getRowSizePerPage()};
+//		
+//		
+//		return jdbcTemplate.query(selectByWriter, args, new BoardRowMapper());
+//		
+//		
+//	}
+
+	
 	
 	
 	

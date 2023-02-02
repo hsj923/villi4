@@ -50,6 +50,10 @@ public class BoardController {
 		uploadFolder = environment.getProperty("uploadFolder");
 	}
 	
+	
+	
+	
+	
 	@RequestMapping("getBoardList.do")
 	public String getBoardList(Model model, SearchVO searchVO,
 			@RequestParam(defaultValue="1") int curPage,
@@ -73,38 +77,7 @@ public class BoardController {
 	}
 	
 	
-	
-	@RequestMapping("getMyBoardList.do")
-	public String getMyBoardList(Model model, UserVO vo, HttpSession sess ,SearchVO searchVO,
-	
-	
-			@RequestParam(defaultValue="1") int curPage,
-			@RequestParam(defaultValue="20") int rowSizePerPage,
-			@RequestParam(defaultValue="") String searchCategory,
-			@RequestParam(defaultValue="") String searchType,
-			@RequestParam(defaultValue="") String searchWord) {
-		
-		
-		UserVO user = userService.getUser(vo);
-		sess.setAttribute("user", user);
-		
-		searchVO.setTotalRowCount(boardService.getTotalRowCount(searchVO));
-		searchVO.setCurPage(curPage);
-		searchVO.setRowSizePerPage(rowSizePerPage);
-		searchVO.setSearchCategory(searchCategory);
-		searchVO.setSearchType(searchType);
-		searchVO.setSearchWord(searchWord);
-		searchVO.pageSetting();
-		
-	
-		List<BoardVO> myboardList = boardService.getMyBoardList(searchVO);
-	
-		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("myboardList", myboardList);		
-		
-		return "board/getMyBoardList.jsp";
-	}
-	
+
 	
 	@RequestMapping("*/insertBoard.do")
 	public String insertBoard(BoardVO board) throws IOException {
@@ -182,6 +155,9 @@ public class BoardController {
 		boardService.deleteBoard(board);
 		return "getBoardList.do";
 	}	
+	
+	
+	
 	
 	@RequestMapping("/download.do")
 	public String download(HttpServletRequest req, HttpServletResponse res) throws Exception { 	

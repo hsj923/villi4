@@ -112,7 +112,7 @@ color:#23dbc9
       <br />
       <div class="container mt-3" align="left">
         <ul class="list-group list-group-flush">			
-  	     <a href="../updateUser.do?id=${ user.getId() }" class="list-group-item">프로필 수정</a>
+  	     <a href="../updateUser.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
          <a href="location.jsp" class="list-group-item">동네설정</a>
           <a href="#" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>

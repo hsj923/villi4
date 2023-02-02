@@ -16,6 +16,7 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardDAO boardDAO;
 	
+	
 //	public BoardServiceImpl() {
 //		System.out.println("Service 객체 생성!!!!");
 //	}
@@ -33,11 +34,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.getBoardList(searchVO);
 	}
 	
-	@Override
-	public List<BoardVO> getMyBoardList(SearchVO searchVO){
-		return boardDAO.getMyBoardList(searchVO);
-	}
-	
+
 	@Override
 	public BoardVO insertBoard(BoardVO board) {
 		return boardDAO.insertBoard(board);

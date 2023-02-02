@@ -1,5 +1,6 @@
 package com.lec.jdbc.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.lec.jdbc.common.SearchVO;
@@ -11,11 +12,16 @@ public interface BoardService {
 	int getTotalRowCount(SearchVO searchVO);
 	List<BoardVO> getBoardList(SearchVO searchVO);
 	
-	List<BoardVO> getMyBoardList(SearchVO searchVO);
-	
 	BoardVO insertBoard(BoardVO board);
 	BoardVO insertServiceBoard(BoardVO board);
 	int deleteBoard(BoardVO board);
 	int updateBoard(BoardVO board);
 	void updateCount(BoardVO board);
+	
+	
+	
+
+	
+
+	
 }

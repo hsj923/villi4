@@ -11,7 +11,9 @@
 		crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
-		<style>
+	
+	
+	<style>
 	.a{text-decoration: none;}
     .map_wrap {position:relative;width:60%;height:350px;top:100px;}
     .title {font-weight:bold;display:block;}
@@ -85,15 +87,18 @@ color:#23dbc9;
 	</header>
 
 
+
 <div class="map_wrap container">
     <div id="map"  style="width:100%;height:100%;position:relative;overflow:hidden;boarder-radius:5px;"></div>
     <div class="hAddr">
         <span class="title">  ${ sessionScope.user.getName() }님의 현재위치</span>
         <span id="centerAddr"></span>
     </div>
-    <div class="btn_box">
-    <button  class="btn text-white loc_btn" type="submit">현재위치로 동네 설정하기</button>
+    	<div class="btn_box">
+    <button  class="btn text-white loc_btn" type="submit"onClick="location.href='location2.jsp'" >현재위치로 동네 설정하기</button>
+    
     </div>
+    
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c9cd8fc62340f0b717e303a629a8b0c3&libraries=services"></script>
@@ -133,6 +138,20 @@ color:#23dbc9;
 	        displayMarker(locPosition, message);
 	            
 	      });
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	    
 	} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 	    
@@ -188,16 +207,39 @@ function searchDetailAddrFromCoords(coords, callback) {
 function displayCenterInfo(result, status) {
     if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
-
+        
+		
         for(var i = 0; i < result.length; i++) {
             // 행정동의 region_type 값은 'H' 이므로
             if (result[i].region_type === 'H') {
                 infoDiv.innerHTML = result[i].address_name;
                 break;
             }
-        }
     }    
+        }
 }
+/* 
+		var address_name = result[i].address_name;
+	    
+	    $("#btn-save").click(function () {
+	        var input_report = document.getElementById("input_report").value;
+
+	        $.ajax({
+	          type: "POST",
+	          url: "user/location.jsp",
+	          data: { 'address_name' : address_name},
+	          dataType: "text",
+	          success: function (data) {
+	            console.log('성공');
+	 
+	          },
+	          error: function (request, status, error) {
+	            console.log('실패');
+	           
+	          }
+	        }); // ajax END
+	      }) // btn END
+ */
 
 </script>
 </body>
