@@ -65,7 +65,7 @@ public class CsreplyController {
 		searchVO.setSearchWord(searchWord);
 		searchVO.pageSetting();
 	
-		List<CsReplyVO> csreplyList = csreplyService.getCsReplyList(bno, searchVO);
+		List<CsReplyVO> csreplyList = csreplyService.getCsReplyList(bno);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("csreplyList", csreplyList);		
 		return "cs/getCsBoardList.jsp";
@@ -78,10 +78,11 @@ public class CsreplyController {
 	}	
 	
 	@RequestMapping(value="/updateCsReply.do", method=RequestMethod.GET)
-	public String updateCsReply(Model model, CsReplyVO csreply, SearchVO searchVO) {
-		csreplyService.getCsReplyList(0, searchVO);
+	public String updateCsReply(Model model, CsReplyVO csreply, int bno,SearchVO searchVO) {
+		List<CsReplyVO> csreplyList = csreplyService.getCsReplyList(bno);
+		System.out.println(csreplyList.toString());
 		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("csreply", csreplyService.getCsReply(csreply));
+		model.addAttribute("csreplyList", csreplyList);
 		return "cs/updateCsBoard.jsp";
 	}
 	

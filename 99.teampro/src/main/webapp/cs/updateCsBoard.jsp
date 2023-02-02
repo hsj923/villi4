@@ -107,19 +107,21 @@ pre { white-space: pre-wrap;
 		</div>
 		
 		<!-- 댓글 시작 -->
-		<div class="container-sm mt-5" align="center">
-			<c:forEach items="${csreplyList}" var="csreplyList"/>
-				<div class="card">
-					<ul class="list-group list-group-flush">
-							<li class="list-group-item text-start">
-								<span class="fs-5 fw-bold">${csreply.getWriter()}</span>
-				  				<hr>
-				  				<pre class="fs-6">${csreply.getContent()}</pre>
-				  				<hr>
-				  				<p class="mt-4 text-end">댓글 등록일 : ${csreply.getRegDate()}</p>
-							</li>	
-						</ul>
-				</div>
+		      <div class="container-sm mt-5" align="center">
+         <c:forEach items="${csreplyList}" var="csreplyList">
+            <div class="card">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold">${csreplyList.writer}</span>
+                          <hr>
+                          <pre class="fs-6">${csreplyList.content}</pre>
+                          <hr>
+                          <p class="mt-4 text-end">댓글 등록일 : ${csreplyList.regDate}</p>
+                     </li>   
+                  </ul>
+            </div>
+         </c:forEach>
+
 				<br />
 			<form action="updateCsReply.do" method="post">
 					<p>

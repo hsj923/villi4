@@ -71,23 +71,9 @@ public class CsReplyDAO {
 		return jdbcTemplate.queryForInt(sql);
 	}
 
-	public List<CsReplyVO> getCsReplyList(int bno, SearchVO searchVO) {
-				
-		if(searchVO.getSearchType()==null || searchVO.getSearchType().isEmpty() ||
-				searchVO.getSearchWord()==null || searchVO.getSearchWord().isEmpty()) {
-			sql = selectCsReplyListByBno;
-			searchVO.setSearchType("bno");
-		} else {
-			if(searchVO.getSearchType().equalsIgnoreCase("writer")) {
-				sql = selectCsReplyListByWriter;
-			} else if(searchVO.getSearchType().equalsIgnoreCase("content")) {
-				sql = selectCsReplyListByContent;
-			} 			
-		}
-		
-		String searchWord = "%" + searchVO.getSearchWord() + "%";					
-		Object[] args = {searchWord, searchVO.getFirstRow(), searchVO.getRowSizePerPage()};
-		return jdbcTemplate.query(sql, args, new CsReplyRowMapper());
+	public List<CsReplyVO> getCsReplyList(int bno) {
+		Object[] args = {bno};
+		return jdbcTemplate.query(selectCsReplyList, args, new CsReplyRowMapper());
 	}
 	
 	public CsReplyVO insertCsReply(CsReplyVO csreply) {

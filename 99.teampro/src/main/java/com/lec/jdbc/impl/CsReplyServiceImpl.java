@@ -31,8 +31,8 @@ public class CsReplyServiceImpl implements CsreplyService{
 	}
 
 	@Override
-	public List<CsReplyVO> getCsReplyList(int bno, SearchVO searchVO) {
-		return csreplyDAO.getCsReplyList(bno, searchVO);
+	public List<CsReplyVO> getCsReplyList(int bno) {
+		return csreplyDAO.getCsReplyList(bno);
 	}
 
 	@Override

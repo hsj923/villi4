@@ -12,5 +12,5 @@ public interface CsreplyService {
 	CsReplyVO insertCsReply(CsReplyVO csreply);
 	int deleteCsReply(CsReplyVO csreply);
 	int updateCsReply(CsReplyVO csreply);
-	List<CsReplyVO> getCsReplyList(int bno, SearchVO searchVO);
+	List<CsReplyVO> getCsReplyList(int bno);
 }

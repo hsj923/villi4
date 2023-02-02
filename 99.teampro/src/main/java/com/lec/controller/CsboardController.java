@@ -78,10 +78,17 @@ public class CsboardController {
 	}	
 	
 	@RequestMapping(value="/updateCsBoard.do", method=RequestMethod.GET)
-	public String updateCsBoard(Model model, CsBoardVO csboard, SearchVO searchVO) {
+	public String updateCsBoard(Model model, CsBoardVO csboard, SearchVO searchVO,int bno) {
+		
+		List<CsReplyVO> csreplyList = csreplyService.getCsReplyList(bno);
+		System.out.println(csreplyList.toString());
+		model.addAttribute("csreplyList", csreplyList);
+		
 		csboardService.updateCsCount(csboard);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("csboard", csboardService.getCsBoard(csboard));
+		
+		
 		return "cs/updateCsBoard.jsp";
 	}
 	
