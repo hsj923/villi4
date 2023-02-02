@@ -188,6 +188,8 @@ nav {
 											href="getVoteList.do">동네투표</a></li>
 										<li class="nav-item"><a class="nav-link"
 											href="getDemandList.do">빌리요청</a></li>
+											<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 									</ul>
 									
 									
@@ -240,9 +242,11 @@ nav {
 				<c:forEach items="${boardList}" var="board">
 					<div class="col-12 col-md-6 col-lg-3 mt-5">
 						<div class="card">
+						
 							<a href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
 								style="text-decoration: none"><img class="card-img-top"
 								src="resources/images/${ board.fileName1 }" alt="image"></a>
+								
 							<div class="card-body">
 								<h6 class="card-title fw-bold">${board.title}</h6>
 								<p class="card-text">

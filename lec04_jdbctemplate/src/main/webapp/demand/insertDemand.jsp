@@ -125,11 +125,16 @@ nav {
 	<form id="frm" action="insertDemand.do" method="post" onsubmit="return formCheck();" name="frm"
 			enctype="multipart/form-data">
 		<div class="container mt-3" align="center">
-			<div class="input-group mb-3">
-				<span class="input-group-text"><i class="fas fa-user"></i></span> <input
-					type="text" class="form-control" name="writer" id="writer"
-					placeholder="빌리요청글 작성자....">
+			
+			
+			
+			
+				<div class="input-group mb-3 w-75">
+				<input type="hidden" class="form-control" name="writer" id="writer"
+					value=${ user.getNickname() } >
 			</div>
+			
+			
 			<div class="input-group mb-3">
 				<span class="input-group-text"><i class="fas fa-address-book"></i></span>
 				<input type="text" class="form-control" name="title" id="title"

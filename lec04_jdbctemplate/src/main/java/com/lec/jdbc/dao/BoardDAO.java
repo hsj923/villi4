@@ -25,13 +25,13 @@ public class BoardDAO {
 	Environment environment;
 	
 	private String sql = "";
-	private String selectBySeq = "";
+	private String selectByBoardSeq = "";
 	private String boardTotalRowCount = "";
 	private String insertBoard = "";
 	private String insertServiceBoard = "";
 	private String deleteBoard = "";
 	private String updateBoard = "";
-	private String updateCount = "";
+	private String updateBoardCount = "";
 	private String selectBoardList = "";
 	private String selectBoardListByTitle = ""; 
 	private String selectBoardListByWriter = ""; 
@@ -39,13 +39,13 @@ public class BoardDAO {
 	
 	@PostConstruct
 	public void getSqlPropeties() {
-		selectBySeq              = environment.getProperty("selectBySeq");
+		selectByBoardSeq              = environment.getProperty("selectBySeq");
 		boardTotalRowCount       = environment.getProperty("boardTotalRowCount");
 		insertBoard              = environment.getProperty("insertBoard");
 		insertServiceBoard       = environment.getProperty("insertServiceBoard");
 		deleteBoard              = environment.getProperty("deleteBoard");
 		updateBoard              = environment.getProperty("updateBoard");
-		updateCount              = environment.getProperty("updateCount");
+		updateBoardCount              = environment.getProperty("updateCount");
 		selectBoardList          = environment.getProperty("selectBoardList");
 		selectBoardListByTitle   = environment.getProperty("selectBoardListByTitle");
 		selectBoardListByWriter  = environment.getProperty("selectBoardListByWriter");
@@ -54,7 +54,7 @@ public class BoardDAO {
 
 	public BoardVO getBoard(BoardVO board) {
 		Object[] args = { board.getSeq() };		
-		return (BoardVO) jdbcTemplate.queryForObject(selectBySeq, args, new BoardRowMapper());
+		return (BoardVO) jdbcTemplate.queryForObject(selectByBoardSeq, args, new BoardRowMapper());
 	}
 	
 	public int getTotalRowCount(SearchVO searchVO) {
@@ -118,7 +118,7 @@ public class BoardDAO {
 	}
 	
 	public void updateCount(BoardVO board) {
-		jdbcTemplate.update(updateCount,  board.getSeq());
+		jdbcTemplate.update(updateBoardCount,  board.getSeq());
 	}
 	
 	

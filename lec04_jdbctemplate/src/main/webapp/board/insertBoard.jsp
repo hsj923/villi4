@@ -190,10 +190,14 @@ nav {
 					</select>
 				</div>
 			</div>
+			
+			
 			<div class="input-group mb-3 w-75">
-				<input type="text" class="form-control" name="writer" id="writer"
-					value=${ sessionScope.user.getNickname() } disabled>
+				<input type="hidden" class="form-control" name="writer" id="writer"
+					value=${ user.getNickname() } >
 			</div>
+			
+			
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="title" id="title"
 					placeholder="글 제목">

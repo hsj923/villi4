@@ -4,12 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Villi : 게시글</title>
-<link rel="icon" href="../resources/images/favicon.png">
+<title>게시글 상세보기</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
@@ -24,23 +25,20 @@
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
 
+
 <style>
-
-
-   
-   @font-face {
+@font-face {
 	font-family: 'Pretendard-Regular';
 	src:
 		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
 		format('woff');
 	font-weight: 400;
 	font-style: normal;
-   }
+}
 
 body {
 	font-family: 'Pretendard-Regular';
 }
-
 
 header {
 	background-color: #FFFAFA;
@@ -54,14 +52,27 @@ nav {
 	background-image:
 		url(https://d1unjqcospf8gs.cloudfront.net/assets/home/trust/3x/img-trust-1-08564a68dc6a07f9f05a35b2308a288ace19158318c3412960a257b4ffa2d9f8.png);
 }
+
 #fileimg img {
 	height: 600px;
 	object-fit: fill;
 }
 
-a { text-decoration:none }
+a {
+	text-decoration: none
+}
 
+.bi-heart {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
+}
 
+.bi-heart-fill {
+	font-size: 30px;
+	line-height: 30px;
+	color: crimson;
+}
 </style>
 <body>
 	<!-- ============search=============== -->
@@ -80,7 +91,6 @@ a { text-decoration:none }
 								aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-
 							<!--================ nav bar ===================-->
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -92,18 +102,24 @@ a { text-decoration:none }
 												aria-expanded="false">글작성</button>
 											<ul class="dropdown-menu dropdown-menu-dark"
 												aria-labelledby="dropdownMenuButton2">
-												<li><a class="dropdown-item" href="board/insertBoard.jsp">상품</a></li>
-												<li><a class="dropdown-item" href="board_sinsert.jsp">서비스</a></li>
+												<li><a class="dropdown-item"
+													href="board/insertBoard.jsp">상품</a></li>
+												<li><a class="dropdown-item"
+													href="board/insertServiceBoard.jsp">서비스</a></li>
 											</ul>
 										</div>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getQuestionList.do">우리동네질문</a></li>
+										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getLostList.do">동네분실센터</a></li>
+										aria-current="page" href="getLostList.do">분실센터</a></li>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getMeetingList.do">동네모임</a></li>
+										aria-current="page" href="getMeetingList.do">동네모임</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="getVoteList.do">동네투표</a></li>
+										aria-current="page" href="getVoteList.do">동네투표</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getDemandList.do">빌리요청</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 								</ul>
 								<form action="getBoardList.do" method="post" id="boardForm">
 									<input type="hidden" id="curPage" name="curPage"
@@ -113,6 +129,7 @@ a { text-decoration:none }
 									<div class="container">
 										<div class="row justify-content-md">
 											<div class="col-md-auto">
+
 												<select class="form-select" id="searchType"
 													name="searchType">
 													<option value="">검색</option>
@@ -125,10 +142,11 @@ a { text-decoration:none }
 												</select>
 											</div>
 											<div class="col col-lg-6">
-												<input class="form-control" name="searchWord" type="text" />
+												<input class="form-control" name="searchWord" type="text"
+													placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
 											</div>
 											<div class="col col-lg-2">
-												<button class="btn btn-outline-dark" type="submit">Search</button>
+												<button class="btn btn-outline-success" type="submit">Search</button>
 											</div>
 										</div>
 									</div>
@@ -140,7 +158,6 @@ a { text-decoration:none }
 			</div>
 		</div>
 	</nav>
-
 
 
 
@@ -159,10 +176,10 @@ a { text-decoration:none }
 						data-bs-slide-to="1" aria-label="Slide 2"></button>
 					<button type="button" data-bs-target="#carouselExampleIndicators"
 						data-bs-slide-to="2" aria-label="Slide 3"></button>
-<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
-<!-- 						data-bs-slide-to="3" aria-label="Slide 4"></button> -->
-<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
-<!-- 						data-bs-slide-to="4" aria-label="Slide 5"></button> -->
+					<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+					<!-- 						data-bs-slide-to="3" aria-label="Slide 4"></button> -->
+					<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+					<!-- 						data-bs-slide-to="4" aria-label="Slide 5"></button> -->
 				</div>
 
 
@@ -173,12 +190,12 @@ a { text-decoration:none }
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName1}">
 							<img src="resources/images/${ board.fileName1 }"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-100 card-img-top embed-responsive-item"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName1}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item"
+								class="d-block w-100 card-img-top embed-responsive-item"
 								alt="img">
 						</c:if>
 					</div>
@@ -188,58 +205,31 @@ a { text-decoration:none }
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName2}">
 							<img src="resources/images/${ board.fileName2 }"
-								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
+								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName2}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
+								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
 
 
-					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg">
+					<div class="carousel-item embed-responsive embed-responsive-4by3"
+						id="fileimg">
 						<c:if test="${ !empty  board.fileName3}">
 							<img src="resources/images/${ board.fileName3 }"
-								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
+								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 						<c:if test="${ empty  board.fileName3}">
 							<img src="resources/images/noimg.png"
-								class="d-block w-75 card-img-top embed-responsive-item rounded-3"
+								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
 
-
-
-<!-- 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg"> -->
-<%-- 						<c:if test="${ !empty  board.fileName4}"> --%>
-<%-- 							<img src="resources/images/${ board.fileName4}" --%>
-<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
-<!-- 								alt="img"> -->
-<%-- 						</c:if> --%>
-<%-- 						<c:if test="${ empty  board.fileName4}"> --%>
-<!-- 							<img src="resources/images/noimg.png" -->
-<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
-<!-- 								alt="img"> -->
-<%-- 						</c:if> --%>
-<!-- 					</div> -->
-
-
-<!-- 					<div class="carousel-item embed-responsive embed-responsive-4by3" id="fileimg"> -->
-<%-- 						<c:if test="${ !empty  board.fileName5}"> --%>
-<%-- 							<img src="resources/images/${ board.fileName5}" --%>
-<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
-<!-- 								alt="img"> -->
-<%-- 						</c:if> --%>
-<%-- 						<c:if test="${ empty  board.fileName5}"> --%>
-<!-- 							<img src="resources/images/noimg.png" -->
-<!-- 								class="d-block w-75 card-img-top embed-responsive-item" -->
-<!-- 								alt="img"> -->
-<%-- 						</c:if> --%>
-<!-- 					</div> -->
 
 
 				</div>
@@ -251,53 +241,105 @@ a { text-decoration:none }
 	<!-- form -->
 	<div class="container-sm" align="center">
 		<form action="updateBoard.do" method="post">
-		
 			<div class="card">
-			
 				<div class="card-body">
 					<h5 class="card-title text-start">
+
 						<img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
-							height="75"> <span class="col-md-auto text-success fw-bold">
-							${board.status} </span> <span>${ board.writer }</span> <span
+							height="75"> <span>${ board.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
-						<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
+
+
 					</h5>
+					<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
+
+
 				</div>
-				
-				
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item text-start"><p class="fs-4 fw-bold">(${ board.cate })${ board.title }</p>
-						<p class="fs-6 fst-italic">${ board.cate2 }·${board.regDate}</p> <br>
+					<li class="list-group-item text-start">
+						<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ board.title }</span><c:choose>
+										<c:when test="${board.status eq '대기중'}">
+											<span class="badge bg-success text-white rounded-pill">${board.status}</span>
+										</c:when>
+										<c:when test="${board.status eq '예약중'}">
+											<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
+										</c:when>
+										<c:when test="${board.status eq '대여중'}">
+											<span class="badge bg-danger text-white rounded-pill">${board.status}</span>
+										</c:when>
+									</c:choose>
+							</div>
+							<div class="col-8 text-end">
+								<p class="fs-6 fst-italic 	text-decoration-underline">${board.regDate}</p>
+							</div>
+						</div>
+						<p class="fs-6 fst-italic 	text-decoration-underline">${ board.cate2 }</p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-calendar-check"
+							viewBox="0 0 16 16">
+  <path
+								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+  <path
+								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+</svg> <c:if test="${ !empty  board.usedate}">
+							<span class="fs-6 ms-2">대여가능일 : ${ board.usedate } ~ ${ board.duedate }
+							</span>
+							<br>
+						</c:if> <c:if test="${ empty  board.usedate}">
+							<span>날짜상의</span>
+							<br>
+						</c:if> <br> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
-						<p class="mt-4">조회 : ${ board.cnt }</p></li>
-					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
+						<p class="mt-4">조회 : ${ board.cnt }</p>
+					</li>
+					<li class="list-group-item text-end "><a
+						href="report/insertReport.jsp" class="stretched-link text-danger">이
+							게시글 신고하기</a></li>
 				</ul>
-				
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-							<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span> <span class="fs-5">${ board.price }₩</span>
+							<c:if test="${ !empty  board.price}">
+								<span class="fs-4 mx-3"> <i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-5">${ board.price }원</span>
+							</c:if>
+							<c:if test="${ empty  board.price}">
+								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-5">가격협의</span>
+							</c:if>
 						</div>
 						<div class="col-8 text-end">
-							<a href="#" class="btn ps-6 text-white rounded-pill" style="background-color: #72CCD2;">채팅하기</a>
+							<a href="getChatList.do" class="btn ps-6 text-white rounded-pill"
+								style="background-color: #72CCD2;">채팅하기</a>
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</form>
-		
-		<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
-			<a href="deleteBoard.do?seq=${board.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
-			<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
-		</div>
-		
-		
 	</div>
+
+	<script>
 	
-	
+    var i = 0;
+    $('.bi-heart').on('click',function(){
+        if(i==0){
+            $(this).removeClass('bi-heart');
+            $(this).addClass('bi-heart-fill');
+            i++;
+        }else if(i==1){
+            $(this).removeClass('bi-heart-fill');
+            $(this).addClass('bi-heart');
+            i--;
+        }     
+    });
+    
+    
+    </script>
+
+
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteBoard() {
@@ -380,7 +422,7 @@ a { text-decoration:none }
 						<p>
 							<a target="_blank"
 								class="block text-m text-carrot text-no-decoration mt-3"
-								href="https://www.gongju.go.kr/kr/sub06_07_08_03.do"> <span
+								href="https://ncv.kdca.go.kr/menu.es?mid=a30200000000"> <span
 								class="text-info">코로나19 예방 수칙</span>
 							</a>
 						</p>
@@ -389,8 +431,12 @@ a { text-decoration:none }
 
 			</div>
 		</div>
-
-		</div>
 	</section>
+	<div class="container row-3" align="center">
+		<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+		<a href="deleteBoard.do?seq=${board.getSeq()}"
+			class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getBoardList.do"
+			class="btn btn-dark my-5 mx-4">게시글목록</a>
+	</div>
 </body>
 </html>

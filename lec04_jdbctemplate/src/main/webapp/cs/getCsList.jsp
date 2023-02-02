@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Villi : 공지사항</title>
+	<title>Villi : 고객문의</title>
 <link rel="icon" href="../resources/images/favicon.png">
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">	
@@ -135,8 +135,10 @@ color:#23dbc9;
 	<hr/>	
 	
 	
-	<!-- =============== 자주 묻는 질문(if문으로 관리자가 작성한 글로만 수정해야함, 사용자들이 등록한 문의게시물 리스트 따로 밑에 필요함) =================== -->
+	<!-- =============== 자주 묻는 질문( 관리자가 작성한 글로만 수정해야함, 사용자들이 등록한 문의게시물 리스트 따로 밑에 필요함) =================== -->
 	<div class="container mt-3">	
+	
+	
 	<h4 class="fw-bold  mt-4 mb-3">자주 묻는 질문</h4>
 		<table class="table table-bordered table-striped table-hover">
 			<thead class="table-dark text-center">
@@ -153,6 +155,8 @@ color:#23dbc9;
 				
 			</thead>
 		    <tbody>
+
+	  
 				<c:forEach var="cs" items="${ csList }">
 					<tr>
 					    <td scope="row" align="center">${cs.seq }</td>
