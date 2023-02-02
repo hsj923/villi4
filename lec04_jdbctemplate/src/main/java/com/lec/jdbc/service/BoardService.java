@@ -8,6 +8,7 @@ import com.lec.jdbc.vo.BoardVO;
 public interface BoardService {
 
 	BoardVO getBoard(BoardVO vo);
+	
 	int getTotalRowCount(SearchVO searchVO);
 	List<BoardVO> getBoardList(SearchVO searchVO);
 	BoardVO insertBoard(BoardVO board);

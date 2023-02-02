@@ -96,6 +96,34 @@ public class UserController {
 		return "getUserList.do";
 	}	
 
+	
+	//**
+	
+	
+	@RequestMapping(value="/getUser.do", method=RequestMethod.GET)
+	public String getUser(Model model, UserVO user, SearchVO searchVO) {
+		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("user", userService.getUserByNick(user));
+		return "user/getUser.jsp";
+	}
+	
+	@RequestMapping(value="/getUser.do", method=RequestMethod.POST)
+	public String getUser(UserVO user) throws IOException {
+		MultipartFile uploadFile = user.getUploadFile();
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			uploadFile.transferTo(new File(uploadFolder + fileName));
+			user.setFileName(fileName);
+		}
+		userService.getUserByNick(user);
+		return "getUserList.do";
+	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value="/deleteUser.do", method=RequestMethod.GET)
 	public String deleteUser(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
 		user.setEmail(email);
@@ -103,6 +131,8 @@ public class UserController {
 		model.addAttribute("user", userService.getUser(user));
 		return "user/deleteUser.jsp";
 	}
+	
+	
 	
 	@RequestMapping(value="/deleteUser.do", method=RequestMethod.POST)
 	public String deleteUser(UserVO user) {

@@ -242,20 +242,24 @@ a {
 	<div class="container-sm" align="center">
 		<form action="updateBoard.do" method="post">
 			<div class="card">
+			
 				<div class="card-body">
 					<h5 class="card-title text-start">
+					<a href="getUser.do?nickname=${ board.writer }">
 
 						<img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
-							height="75"> <span>${ board.writer }</span> <span
-							class="fs-5"><i class="bi bi-award text-warning"></i></span>
-
+							height="75">
+								<span>${ board.writer }</span> 
+								<span class="fs-5"><i class="bi bi-award text-warning"></i></span>
+					</a>
 
 					</h5>
+					
 					<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
-
-
 				</div>
+				
+				
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
 						<div class="row">

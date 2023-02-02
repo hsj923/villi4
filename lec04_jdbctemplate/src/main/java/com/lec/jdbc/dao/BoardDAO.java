@@ -39,7 +39,7 @@ public class BoardDAO {
 	
 	@PostConstruct
 	public void getSqlPropeties() {
-		selectByBoardSeq              = environment.getProperty("selectBySeq");
+		selectByBoardSeq              = environment.getProperty("selectByBoardSeq");
 		boardTotalRowCount       = environment.getProperty("boardTotalRowCount");
 		insertBoard              = environment.getProperty("insertBoard");
 		insertServiceBoard       = environment.getProperty("insertServiceBoard");
