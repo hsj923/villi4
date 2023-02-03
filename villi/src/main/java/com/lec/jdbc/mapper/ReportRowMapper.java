@@ -15,7 +15,7 @@ public class ReportRowMapper implements RowMapper<ReportVO> {
 		report.setR_etime(rs.getDate("R_ETIME"));
 		report.setR_time(rs.getDate("R_TIME"));
 		report.setName(rs.getString("NAME"));
-		report.setStatus(rs.getString("STATUS"));
+		report.setR_status(rs.getString("R_STATUS"));
 		return report;
 	}
 }

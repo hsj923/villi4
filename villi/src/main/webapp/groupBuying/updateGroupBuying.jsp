@@ -224,15 +224,22 @@ nav {
 				</div>
 			</div>
 		</form>
-		<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
-			<a href="deleteGroupBuying.do?seq=${groupBuying.getSeq()}"
-				class="btn btn-dark my-5 mx-2">게시글삭제</a> <a
-				href="getGroupBuyingList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
-		</div>
+	<c:if test="${ sessionScope.user.getNickname() == groupBuying.writer }">
+			<div class="container row-3" align="center">
+				<a href="getDemandList.do"
+					class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
+		</c:if>
+		<c:if test="${ sessionScope.user.getNickname() != groupBuying.writer }">
+			<div class="container row-3" align="center">
+				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+				<a href="deleteGroupBuying.do?seq=${groupBuying.getSeq()}"
+					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getGroupBuyingList.do"
+					class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
+		</c:if>
+
 	</div>
-
-
 
 
 	<script>

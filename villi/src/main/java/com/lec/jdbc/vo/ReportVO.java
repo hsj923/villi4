@@ -6,24 +6,33 @@ import org.springframework.web.multipart.MultipartFile;
 public class ReportVO {
 
 	private int seq;
-	private String status; 
+	private String r_status; 
 	private Date r_etime; 
 	private Date r_time; 
 	private String r_rs1; 
 	private String r_con; 
 	private String name;
+	
+	
+	
+	@Override
+	public String toString() {
+		return "ReportVO [seq=" + seq + ", r_status=" + r_status + ", r_etime=" + r_etime + ", r_time=" + r_time
+				+ ", r_rs1=" + r_rs1 + ", r_con=" + r_con + ", name=" + name + "]";
+	}
+	public String getR_status() {
+		return r_status;
+	}
+	public void setR_status(String r_status) {
+		this.r_status = r_status;
+	}
 	public int getSeq() {
 		return seq;
 	}
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+
 	public Date getR_etime() {
 		return r_etime;
 	}
@@ -54,11 +63,6 @@ public class ReportVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Override
-	public String toString() {
-		return "ReportVO [seq=" + seq + ", status=" + status + ", r_etime=" + r_etime + ", r_time=" + r_time
-				+ ", r_rs1=" + r_rs1 + ", r_con=" + r_con + ", name=" + name + "]";
-	} 
 
 
 

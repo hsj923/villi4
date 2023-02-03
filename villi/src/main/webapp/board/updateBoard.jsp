@@ -171,9 +171,9 @@ a {
 
 
 	<!-- 이미지 -->
-	<div class="container-lg">
-		<div class="p-3 " align="center">
-			<!-- 이미지 -->
+	<div class="container w-50">
+		<div class="p-3 " align="center">			<!-- 이미지 -->
+
 			<div id="carouselExampleIndicators"
 				class="carousel carousel-dark slide" data-bs-ride="carousel">
 				<div class="carousel-indicators">
@@ -247,12 +247,12 @@ a {
 	</div>
 
 	<!-- form -->
-	<div class="container-sm" align="center">
+	<div class="container w-50" align="center">
 		<form action="updateBoard.do" method="post">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<a href="updateUser.do?email=${ board.getWriter() }" style= "text-decoration: none"
+						<a href="getUser.do?nickname=${ board.writer }" style= "text-decoration: none"
 						class="text-dark"><img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"> <span>${ board.writer }</span> <span
@@ -349,7 +349,8 @@ a {
 
 
 	<!-- 안전거래 -->
-	<section class="home-main-section" id="section1">
+		<div class="container w-50" align="center">
+	<section class="home-main-section " id="section1">
 		<h2 class="main-title text-center my-5 fw-bold">
 			잠깐! 빌리는 안전하고 신뢰할 수 있는 거래를 지향합니다 <br>안전수칙을 확인해주세요
 		</h2>
@@ -461,7 +462,7 @@ a {
 			</div>
 			
 			<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-primary my-5 me-4" value="게시글수정"/>
+			<input type="submit" class="btn btn-dark my-5 me-4" value="게시글수정"/>
 			<a href="deleteBoard.do?seq=${board.getSeq()}"
 				class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getBoardList.do"
 				class="btn btn-dark my-5 mx-4">게시글목록</a>
@@ -469,5 +470,6 @@ a {
 		</form>			
 	</div>
 	</c:if>
+	</div>
 </body>
 </html>

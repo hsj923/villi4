@@ -14,4 +14,6 @@ public interface UserService {
 	int deleteUser(UserVO user);
 	int updateUser(UserVO user);
 	UserVO getUser1(UserVO vo);
+	//**
+	UserVO getUserByNick(UserVO vo);
 }

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Spring Framework</title>
+<title>신고하기</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -35,114 +35,32 @@ body {
 	font-family: 'Pretendard-Regular';
 }
 
-nav {
-	background-color: #FFFAFA;
-}
 </style>
 </head>
 <body>
 
-	<!-- ============search=============== -->
-	<nav class="border-bottom border-dark sticky-top z-index-10">
-		<div class="container" align="center">
-			<div class="row p-3">
-				<div class="col">
-
-					<nav class="navbar navbar-expand-lg navbar-light">
-						<div class="container-fluid">
-							<a class="navbar-brand" href="../getBoardList.do">Villi</a>
-							<button class="navbar-toggler" type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#navbarSupportedContent"
-								aria-controls="navbarSupportedContent" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<!--================ nav bar ===================-->
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
-								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="">글작성</a></li>
-
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getQuestionList.do">동네질문</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getLostList.do">분실센터</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getMeetingList.do">동네모임</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getVoteList.do">동네투표</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getDemandList.do">빌리요청</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getGroupBuyingList.do">공동구매</a></li>
-								</ul>
-								<form action="getReportList.do" method="post" id="reportForm">
-									<input type="hidden" id="curPage" name="curPage"
-										value="${searchVO.getCurPage()}"> <input type="hidden"
-										id="rowSizePerPage" name="rowSizePerPage"
-										value="${searchVO.getRowSizePerPage()}">
-									<div class="container">
-										<div class="row justify-content-md">
-											<div class="col-md-auto">
-
-												<select class="form-select" id="searchType"
-													name="searchType">
-													<option value="">검색</option>
-													<option value="title"
-														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-													<option value="writer"
-														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
-													<option value="cate2"
-														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
-												</select>
-											</div>
-											<div class="col col-lg-6">
-												<input class="form-control" name="searchWord" type="text"
-													placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
-											</div>
-											<div class="col col-lg-2">
-												<button class="btn btn-outline-success" type="submit">Search</button>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</nav>
-
-
-	<!--=============================================================================================== -->
-
+         
 	<form action="insertReport.do" method="post">
 		<div class="container mt-3 w-75" align="center">
 			<div class="input-group mb-3 w-75">
-				<input type="text" class="form-control" name="seq" id="seq"
-					placeholder="${ board. }" disabled>
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="name" id="name"
 					placeholder="${ sessionScope.user.getNickname() }" disabled>
 			</div>
-
-
 			<select class="form-select form-select mb-3 w-75" name="r_rs1"
 				aria-label=".form-select example">
 				<option selected>신고이유</option>
-				<option value="디지털기기">판매가 금지된 물품을 거래합니다</option>
-				<option value="공구용품">동네 이웃 주민이 아닌것 같습니다</option>
-				<option value="여성의류">사기 글입니다</option>
-				<option value="남성의류">중복 게시글입니다</option>
-				<option value="주방/화장실용품">거래/환불분쟁</option>
-				<option value="행사용품/캠핑용품">금전 요구를 합니다</option>
-				<option value="반려동물용품">성희롱을 합니다</option>
-				<option value="취미/게임/음반">욕설을 합니다</option>
-				<option value="가구/인테리어">비매너 사용자입니다</option>
-				<option value="뷰티/미용용품">기타 다른 문제가 있습니다</option>
+				<option value="거래가 금지된 물건을 거래합니다">거래가 금지된 물건을 거래합니다</option>
+				<option value="동네 이웃 주민이 아닌것 같습니다">동네 이웃 주민이 아닌것 같습니다</option>
+				<option value="사기 글입니다">사기 글입니다</option>
+				<option value="중복 게시글입니다">중복 게시글입니다</option>
+				<option value="거래/환불분쟁">거래/환불분쟁</option>
+				<option value="금전 요구를 합니다">금전 요구를 합니다</option>
+				<option value="성희롱을 합니다">성희롱을 합니다</option>
+				<option value="욕설을 합니다">욕설을 합니다</option>
+				<option value="비매너 사용자입니다">비매너 사용자입니다</option>
+				<option value="기타 다른 문제가 있습니다">기타 다른 문제가 있습니다</option>
 			</select>
 
 			<div class="input-group mb-3 w-75">

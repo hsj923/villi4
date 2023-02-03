@@ -215,13 +215,13 @@ nav {
 
 
 
-		<c:if test="${ sessionScope.user.getNickname() == null }">
+		<c:if test="${ sessionScope.user.getNickname() == demand.writer }">
 			<div class="container row-3" align="center">
-				<a href="index.jsp"><button class="btn btn-dark my-5 mx-4"
-						type="button">로그인</button></a>
+				<a href="getDemandList.do"
+					class="btn btn-dark my-5 mx-4">게시글목록</a>
 			</div>
 		</c:if>
-		<c:if test="${ sessionScope.user.getNickname() != null }">
+		<c:if test="${ sessionScope.user.getNickname() != demand.writer }">
 			<div class="container row-3" align="center">
 				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
 				<a href="deleteDemand.do?seq=${demand.getSeq()}"

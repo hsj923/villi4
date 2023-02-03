@@ -148,11 +148,10 @@ nav {
 						<tr>
 						   	<td><a href="updateReport.do?seq=${report.getSeq()}"
 								style="text-decoration: none">${ report.seq }</a></td>
-							<td>${ report.seq }</td>
 							<td>${ report.name }</td>
 							<td>${ report.r_rs1 }</td>
 							<td>${ report.r_status }</td>
-							<td>${ report.r_etimr }</td>
+							<td>${ report.r_etime }</td>
 							<td>${ report.r_time }</td>
 						</tr>
 					</c:forEach>
@@ -202,51 +201,12 @@ nav {
 		</ul>
 		<!-- pagination -->
 
-		<div class="col-auto me-1">
-			<div class="input-group mb-3">
-				<span class="input-group-text"><i class="fas fa-list"></i></span> <select
-					class="col-auto form-select" id="rowPerPage" name="rowPerPage">
-					<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
-					<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
-					<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
-					<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
-				</select>
-			</div>
-		</div>
+
 		<!-- rowSizePerPage -->
 	</div>
 	<!-- 페이징 -->
-	</div>
-	<!-- main  -->
 
 
-	<script>
-		$(function() {
-
-			// 목록 갯수 변경
-			$('#rowPerPage').change(function(e) {
-				$('#curPage').val(1);
-				$('#rowSizePerPage').val($(this).val());
-				$('#reportForm').submit();
-			}); //#rowPerPage
-
-			// 초기화 버튼 클릭
-			$('#btnReset').click(
-					function() {
-						$('#curPage').val(1);
-						$('#reportForm').find(
-								"select[name='searchCategory'] option:eq(0)")
-								.attr("selected", "selected");
-						$('#reportForm').find(
-								"select[name='searchType'] option:eq(0)").attr(
-								"selected", "selected");
-						$('#reportForm').find("input[name='searchWord']")
-								.val("");
-						$('#reportForm').submit();
-					}); // #id_btn_reset.cli			
-
-		})
-	</script>
 
 </body>
 </html>

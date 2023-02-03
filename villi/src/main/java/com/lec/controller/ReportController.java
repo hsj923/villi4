@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import com.lec.jdbc.common.SearchVO;
+import com.lec.jdbc.service.BoardService;
 import com.lec.jdbc.service.ReportService;
-import com.lec.jdbc.vo.BoardVO;
 import com.lec.jdbc.vo.ReportVO;
+import com.lec.jdbc.vo.UserVO;
 
 @Controller
 @PropertySource("classpath:config/uploadpath.properties")
@@ -27,6 +28,9 @@ public class ReportController {
 
 	@Autowired
 	ReportService reportService;
+	
+	@Autowired
+	BoardService boardService;
 	
 	@Autowired
 	Environment environment;
@@ -65,9 +69,6 @@ public class ReportController {
 		reportService.insertReport(report);
 		return "redirect:/getReportList.do";
 	}	
-	
-
-	
 	
 	
 	@RequestMapping(value="/updateReport.do", method=RequestMethod.GET)

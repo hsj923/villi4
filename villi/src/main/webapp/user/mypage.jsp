@@ -101,13 +101,14 @@ color:#23dbc9
      	<div class="row mt-2"> 
      	
      	<div class="col-2">  	
-    	  <c:if test="${ !empty  sessionScope.user.fileName}">
-			<img src="../resources/images/${ sessionScope.user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+    	  <c:if test="${ !empty  sessionScope.user.getFileName()}">
+			<img src="../resources/images/${ sessionScope.user.getFileName() }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
-		  <c:if test="${ empty  sessionScope.user.fileName}">
+		  <c:if test="${ empty  sessionScope.user.getFileName()}">
 			<img src="../resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
 		  </div>   
+		  
 	   <div class="col mt-4">
      	 <h4>${sessionScope.user.getNickname()}님</h4>
        </div>
@@ -125,16 +126,16 @@ color:#23dbc9
         		
   	     <a href="../updateUser.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
          <a href="location.jsp" class="list-group-item">동네설정</a>
-          <a href="../getChatList.do" class="list-group-item">채팅리스트</a> 
+           <a href="../getChatList.do" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>
-          <a href="#" class="list-group-item">내가 쓴 글 목록</a>
+          <a href="# class="list-group-item">내가 쓴 글 목록</a>
        </ul>
        <hr />
        </div>
        <div class="container mt-3" align="left">
        <ul class="list-group list-group-flush">
           <a href="../getNoticeList.do" li class="list-group-item">공지사항</a>
-          <a href="service/service_list.jsp" li class="list-group-item">고객센터</a>
+          <a href="../getCsList.do" li class="list-group-item">고객센터</a>
        </ul>
        </div>
 </body>

@@ -191,37 +191,47 @@ nav {
 				</div>
 			</div>
 		</form>
-		<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
-			<a href="deleteLost.do?seq=${lost.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
-			<a href="getLostList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
-		</div>
+		
+		<c:if test="${ sessionScope.user.getNickname() != lost.writer }">
+			<div class="container row-3" align="center">
+				<a href="index.jsp"><button class="btn btn-dark my-5 mx-4"
+						type="button">로그인</button></a>
+			</div>
+		</c:if>
+		<c:if test="${ sessionScope.user.getNickname() == lost.writer }">
+			<div class="container row-3" align="center">
+				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+				<a href="deleteLost.do?seq=${lost.getSeq()}"
+					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getLostList.do"
+					class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
+		</c:if>
 	</div>
 
-<script>
-    var i = 0;
-    $('.bi-heart').on('click',function(){
-        if(i==0){
-            $(this).removeClass('bi-heart');
-            $(this).addClass('bi-heart-fill');
-            i++;
-        }else if(i==1){
-            $(this).removeClass('bi-heart-fill');
-            $(this).addClass('bi-heart');
-            i--;
-        }     
-    });
-</script>
+
+	<script>
+		var i = 0;
+		$('.bi-heart').on('click', function() {
+			if (i == 0) {
+				$(this).removeClass('bi-heart');
+				$(this).addClass('bi-heart-fill');
+				i++;
+			} else if (i == 1) {
+				$(this).removeClass('bi-heart-fill');
+				$(this).addClass('bi-heart');
+				i--;
+			}
+		});
+	</script>
 
 
 
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteQuestion() {
-			if(confirm("자료를 삭제하겠습니까?")) {
-		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
-		    }
+			if (confirm("자료를 삭제하겠습니까?")) {
+				self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+			}
 		}
 	</script>
 </body>
-</html>

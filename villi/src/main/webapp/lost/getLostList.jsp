@@ -204,34 +204,9 @@ nav {
 					</c:if>
 				</ul>
 				<!-- pagination -->
-
-				<div class="col-auto me-1">
-					<div class="input-group mb-3">
-						<span class="input-group-text"><i class="fas fa-list"></i></span>
-						<select class="col-auto form-select" id="rowPerPage"
-							name="rowPerPage">
-							<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
-							<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
-							<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
-							<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
-						</select>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
-
-	<script>
-		$(function() {
-			// 목록 갯수 변경
-			$('#rowPerPage').change(function(e) {
-				$('#curPage').val(1);
-				$('#rowSizePerPage').val($(this).val());
-				$('#lostForm').submit();
-			}); //#rowPerPage		
-
-		})
-	</script>
 
 </body>
 </html>

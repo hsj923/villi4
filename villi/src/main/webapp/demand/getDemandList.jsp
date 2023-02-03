@@ -213,52 +213,13 @@ nav {
 			</c:if>
 		</ul>
 		<!-- pagination -->
-
-		<div class="col-auto me-1">
-			<div class="input-group mb-3">
-				<span class="input-group-text"><i class="fas fa-list"></i></span> <select
-					class="col-auto form-select" id="rowPerPage" name="rowPerPage">
-					<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
-					<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
-					<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
-					<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
-				</select>
-			</div>
-		</div>
-		<!-- rowSizePerPage -->
 	</div>
 	<!-- 페이징 -->
 	</div>
 	<!-- main  -->
 
 
-	<script>
-		$(function() {
 
-			// 목록 갯수 변경
-			$('#rowPerPage').change(function(e) {
-				$('#curPage').val(1);
-				$('#rowSizePerPage').val($(this).val());
-				$('#demandForm').submit();
-			}); //#rowPerPage
-
-			// 초기화 버튼 클릭
-			$('#btnReset').click(
-					function() {
-						$('#curPage').val(1);
-						$('#demandForm').find(
-								"select[name='searchCategory'] option:eq(0)")
-								.attr("selected", "selected");
-						$('#demandForm').find(
-								"select[name='searchType'] option:eq(0)").attr(
-								"selected", "selected");
-						$('#demandForm').find("input[name='searchWord']")
-								.val("");
-						$('#demandForm').submit();
-					}); // #id_btn_reset.cli			
-
-		})
-	</script>
 
 </body>
 </html>

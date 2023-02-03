@@ -275,18 +275,30 @@ nav {
     }
 </script>
 		</form>
+		<c:if test="${ sessionScope.user.getNickname() != vote.writer }">
+			<div class="container row-3" align="center">
+				<a href="index.jsp"><button class="btn btn-dark my-5 mx-4"
+						type="button">로그인</button></a>
+			</div>
+		</c:if>
+		<c:if test="${ sessionScope.user.getNickname() == vote.writer }">
+			<div class="container row-3" align="center">
+				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+				<a href="deleteVote.do?seq=${vote.getSeq()}"
+					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getVoteList.do"
+					class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
+		</c:if>
 	</div>
-	<div class="container mt-5" align="center">
-		<a href="vote/vote_insert.jsp" class="btn btn-primary">글등록</a><a
-			href="report/report_insert.jsp" class="btn btn-danger">신고</a> <a
-			href="deleteVote.do?seq=${board.getSeq()}" class="btn btn-primary">게시글삭제</a>
-		<a href="getVoteList.do" class="btn btn-primary">게시글목록</a>
-	</div>
 
 
-
-
-
-
+	<!-- 삭제시 confirm -->
+	<script>
+		function deleteVote() {
+			if (confirm("자료를 삭제하겠습니까?")) {
+				self.location.href = "deleteVote.do?seq=${ vote.seq }";
+			}
+		}
+	</script>
 </body>
 </html>

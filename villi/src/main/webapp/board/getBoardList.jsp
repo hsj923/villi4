@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,10 +92,11 @@ nav {
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
-					<span class=mx-2><a href="#" style="text-decoration: none"
-						class="text-dark">좋아요</a> </span> <span class=mx-1><a
-						href="user/mypage.jsp" style="text-decoration: none"
-						class="text-dark">마이페이지</a></span> <span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					<span class=mx-2><a href="getLikeList.do"
+						style="text-decoration: none" class="text-dark">좋아요</a> </span> <span
+						class=mx-1><a href="user/mypage.jsp"
+						style="text-decoration: none" class="text-dark">마이페이지</a></span> <span
+						class="mx-2">${ sessionScope.user.getNickname() }님</span>
 
 				</div>
 			</div>
@@ -204,8 +206,8 @@ nav {
 										<div class="row justify-content-md">
 											<div class="col-md-auto">
 
-												
-												
+
+
 												<select class="form-select" id="searchType"
 													name="searchType">
 													<option value="">검색</option>
@@ -253,7 +255,19 @@ nav {
 								src="resources/images/${ board.fileName1 }" alt="image"></a></span>
 						<div class="card-body">
 
-							<h6 class="card-title fw-bold">${board.title}<c:choose>
+							<!-- 글자수 넘칠 경우 자르기 -->
+							<h6 class="card-title fw-bold">
+								<c:choose>
+									<c:when test="${fn:length(board.title) > 19}">
+										<c:out value="${fn:substring(board.title,0,18)}" />....
+           </c:when>
+									<c:otherwise>
+										<c:out value="${board.title}" />
+									</c:otherwise>
+								</c:choose>
+								
+								<!-- status 따라서 버튼 색상 변경 -->
+								<c:choose>
 									<c:when test="${board.status eq '대기중'}">
 										<span class="badge bg-success text-white rounded-pill">${board.status}</span>
 									</c:when>
@@ -309,20 +323,7 @@ z" />
 			</c:forEach>
 		</div>
 		<!-- =======================LIST 끝========================== -->
-		<div class="col-auto">
-			<div
-				class="position-absolute bottom-0 start-0 translate-middle-y ms-5">
-				<div class="input-group mb-3">
-					<span class="input-group-text"><i class="fas fa-list"></i></span> <select
-						class="col-auto form-select" id="rowPerPage" name="rowPerPage">
-						<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
-						<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
-						<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
-						<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
-					</select>
-				</div>
-			</div>
-		</div>
+
 		<!-- 게시판 -->
 
 		<div class="row align-items-start mt-3 ">
@@ -364,7 +365,21 @@ z" />
 			</ul>
 			<!-- pagination -->
 
-
+			<div class="col-auto">
+				<div
+					class="position-absolute bottom-0 start-0 translate-middle-y ms-5 position-fixed">
+					<div class="input-group mb-3">
+						<span class="input-group-text"><i class="fas fa-list"></i></span>
+						<select class="col-auto form-select" id="rowPerPage"
+							name="rowPerPage">
+							<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
+							<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
+							<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
+							<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
+						</select>
+					</div>
+				</div>
+			</div>
 			<!-- rowSizePerPage -->
 		</div>
 		<!-- 페이징 -->
@@ -373,17 +388,16 @@ z" />
 
 
 	<script>
-			$(function() {
+		$(function() {
 
-				// 목록 갯수 변경
-				$('#rowPerPage').change(function(e) {
-					$('#curPage').val(1);
-					$('#rowSizePerPage').val($(this).val());
-					$('#boardForm').submit();
-				}); //#rowPerPage
+			// 목록 갯수 변경
+			$('#rowPerPage').change(function(e) {
+				$('#curPage').val(1);
+				$('#rowSizePerPage').val($(this).val());
+				$('#boardForm').submit();
+			}); //#rowPerPage
 
-
-			})
-		</script>
+		})
+	</script>
 </body>
 </html>
