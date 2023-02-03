@@ -101,6 +101,7 @@ color:#23dbc9
      	<div class="row mt-2"> 
      	
      	<div class="col-2">  	
+     	
     	  <c:if test="${ !empty  sessionScope.user.fileName}">
 			<img src="../resources/images/${ sessionScope.user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>

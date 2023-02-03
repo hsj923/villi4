@@ -92,6 +92,25 @@ color:#23dbc9;
 	background: #444 !important;
 	border-color: #444 !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 
@@ -135,11 +154,161 @@ color:#23dbc9;
 	<hr/>	
 	
 	
-	<!-- =============== 자주 묻는 질문( 관리자가 작성한 글로만 수정해야함, 사용자들이 등록한 문의게시물 리스트 따로 밑에 필요함) =================== -->
+	
 	<div class="container mt-3">	
 	
 	
-	<h4 class="fw-bold  mt-4 mb-3">자주 묻는 질문</h4>
+	
+	
+	
+	
+	
+	<ul class="faq_list" id="faqAllBox">
+				
+					<li><!-- 디폴트 활성화 필요시 class="open" -->
+						<div class="q">
+							<span class="i"><span class="alt_text">질문</span>Q</span>
+							<a href="#faq_1">온라인 교육을 받으려고 하는데 지원되지 않는 비디오 유형 또는 잘못된 파일 경로입니다.</a>
+						</div>
+						
+						<div class="a" id="faq_1">
+							<span class="i"><span class="alt_text">대답</span>A</span>
+								<p>
+									안녕하세요. 소상공인 지식배움터입니다. 
+<br />보통의 경우 개인 PC의 네트워크 환경에 따라 문제가 발생하기 때문에 인터넷 옵션 초기화와 브라우저를 업데이트 하시는 것을 추천드립니다.
+<br />이후로도 동영상 시청에 지속적인 문제가 발생하신다면 헬프데스크(1644-5302)를 통해 문의 주시기를 바랍니다.
+								</p>
+						</div>
+					</li>
+				
+					<li><!-- 디폴트 활성화 필요시 class="open" -->
+						<div class="q">
+							<span class="i"><span class="alt_text">질문</span>Q</span>
+							<a href="#faq_1">온라인 강의가 모바일 기기에서 열리지 않습니다.</a>
+						</div>
+						
+						<div class="a" id="faq_1">
+							<span class="i"><span class="alt_text">대답</span>A</span>
+								<p>
+									안녕하세요. 소상공인 지식배움터입니다. 
+<br />동영상이 정상적으로 재생되지 않는다면, 모바일 기기 혹은 네트워크의 문제일 가능성이 높습니다. 아래의 방법들을 진행해 보시기를 권장드립니다.
+<br />1. 브라우저 앱 재실행
+<br />2. 네트워크 연결 상태 확인
+<br />3. 브라우저 앱 설정 초기화 혹은 재설치
+<br />이후로도 동영상 시청에 지속적인 문제가 발생하신다면 헬프데스크(1644-5302)를 통해 문의 주시기를 바랍니다.
+								</p>
+						</div>
+					</li>
+				
+					<li><!-- 디폴트 활성화 필요시 class="open" -->
+						<div class="q">
+							<span class="i"><span class="alt_text">질문</span>Q</span>
+							<a href="#faq_1">소상공인 정책자금 신청을 위해 교육을 수강하고 싶습니다.</a>
+						</div>
+						
+						<div class="a" id="faq_1">
+							<span class="i"><span class="alt_text">대답</span>A</span>
+								<p>
+									Q1. 소상공인 정책자금 신청을 위해 교육을 수강하고 싶습니다. 
+<br />소상공인 정책자금을 지원하시려면 온라인교육에 들어가셔서 교육 중 원하시는 교육으로 신청하셔서 12시간 이상 수강해 주시면 됩니다.(교육 신청 과정은 Q3 참고) 
+<br />
+<br />Q2. 온라인교육 수료완료 후 정책자금을 신청하고 싶습니다.
+<br />자금/오프라인 교육에 대한 문의는 1357로 전화주시면 관할지역 소상공인 지역센터로 연결되오니 문의 부탁 드립니다.(휴대전화, 인터넷전화 연결 안됨. 유선전화 연결 가능함) 
+<br />각 지역 센터에서 정책자금 신청관련 자세한 안내 받으시면 됩니다. 
+<br />
+<br />Q3. 온라인교육 교육신청 및 소상공인 정책자금 신청 과정 안내 
+<br />1. 온라인교육에서 원하시는 과정으로 신청 
+<br />2. 나의 강의실 > 학습현황 > 학습중인 과정에 입장해서 수강
+<br />3. 나의 강의실 > 학습현황 > 학습완료 과정에서 수료한 시간을 합산해서 12시간 이상인지 확인 
+<br />4. 1357 로 전화주셔서 정책자금 신청관련 방문서류 안내 받으신 후 정책자금 지원대상 확인서 발급함 
+<br />5. 각 지역 신용보증 재단에서 신용보증서 발급 (신용, 재정상태, 경영능력, 사업성 등 평가 후 발급)
+<br />6. 은행에서 대출 실행 (자금 안내는 "소상공인시장진흥공단 - 지원사업 - 소상공인자금" 에서 융자 절차 등 자세한 내용 확인해 주시면 됩니다.) 
+<br />
+<br /><신용보증서는 본인 및 배우자 신용상태, 자기자금, 영업기간 및 실적 등에 따라 발급이 불가 할수 있습니다.>
+								</p>
+						</div>
+					</li>
+				
+					<li><!-- 디폴트 활성화 필요시 class="open" -->
+						<div class="q">
+							<span class="i"><span class="alt_text">질문</span>Q</span>
+							<a href="#faq_1">수강신청 확인은 어떻게 하나요?</a>
+						</div>
+						
+						<div class="a" id="faq_1">
+							<span class="i"><span class="alt_text">대답</span>A</span>
+								<p>
+									수강신청을 하신 후 나의강의실 &gt; 학습현황 &gt; 학습중인 과정 에서 신청내용을 확인하시고 학습을 진행하면 됩니다.
+								</p>
+						</div>
+					</li>
+				
+					<li><!-- 디폴트 활성화 필요시 class="open" -->
+						<div class="q">
+							<span class="i"><span class="alt_text">질문</span>Q</span>
+							<a href="#faq_1">기관회원인데 로그인 및 수강신청이 안됩니다.</a>
+						</div>
+						
+						<div class="a" id="faq_1">
+							<span class="i"><span class="alt_text">대답</span>A</span>
+								<p>
+									기관회원은 학습 및 수료증 발부가 불가 하므로, 개인회원으로 가입 후 이용을 해주시기 바랍니다.
+								</p>
+						</div>
+					</li>
+				
+					<li><!-- 디폴트 활성화 필요시 class="open" -->
+						<div class="q">
+							<span class="i"><span class="alt_text">질문</span>Q</span>
+							<a href="#faq_1">수료증 출력시 테두리 이미지가 출력이 안됩니다.</a>
+						</div>
+						
+						<div class="a" id="faq_1">
+							<span class="i"><span class="alt_text">대답</span>A</span>
+								<p>
+									1 .IE8 버전 : 도구 - 인터넷옵션 - 고급 - 인쇄 - 배경 및 이미지 인쇄 체크 
+<br />2. IE10 버전 : 파일 - 페이지설정 - 배경색 및 이미지 인쇄 체크
+<br />위와 같은 설정 후 F5번 눌러주신 후 프린트 해주시면 됩니다.
+								</p>
+						</div>
+					</li>
+				
+					<li><!-- 디폴트 활성화 필요시 class="open" -->
+						<div class="q">
+							<span class="i"><span class="alt_text">질문</span>Q</span>
+							<a href="#faq_1">(현장교육) 교육취소를 하려고 하는데 취소버튼이 보이지 않습니다.</a>
+						</div>
+						
+						<div class="a" id="faq_1">
+							<span class="i"><span class="alt_text">대답</span>A</span>
+								<p>
+									선정이 되시면 직접 취소를 하실 수 없습니다.
+<br />신청하신 교육기관으로 전화하셔서 신청하신 교육의 취소의사를 말씀드리고 취소요청해 주시기 바랍니다.
+								</p>
+						</div>
+					</li>
+				
+				
+		
+	
+<script type="text/javascript">
+
+	//내용 펼치기
+	$(function() {
+		$(".faq_list .q").on("click",function(){
+			$(".faq_list li").not($(this).parents("li")).removeClass("open");
+			$(this).parents("li").toggleClass("open");
+			return false;
+		});
+	});
+	
+</script>
+	
+	
+	
+	
+	
+	<h4 class="fw-bold  mt-4 mb-3">고객 문의 게시판</h4>
 		<table class="table table-bordered table-striped table-hover">
 			<thead class="table-dark text-center">
 				<th scope="col" class="col-1 text-center">No.</th>

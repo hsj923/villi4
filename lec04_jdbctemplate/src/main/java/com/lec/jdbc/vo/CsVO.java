@@ -16,7 +16,7 @@ public class CsVO {
 	private MultipartFile uploadFile1;
 	
 	
-	
+
 	public int getSeq() {
 		return seq;
 	}

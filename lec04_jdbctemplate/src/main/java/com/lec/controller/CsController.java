@@ -108,29 +108,7 @@ public class CsController {
 	}	
 	
 	
-	// FAQ
-	
-//	@RequestMapping("FAQ.do")
-//	public String getFAQList(Model model, SearchVO searchVO,
-//			@RequestParam(defaultValue="1") int curPage,
-//			@RequestParam(defaultValue="20") int rowSizePerPage,
-//			@RequestParam(defaultValue="") String searchCategory,
-//			@RequestParam(defaultValue="") String searchType,
-//			@RequestParam(defaultValue="") String searchWord) {
-//		
-//		searchVO.setTotalRowCount(csService.getTotalRowCount(searchVO));
-//		searchVO.setCurPage(curPage);
-//		searchVO.setRowSizePerPage(rowSizePerPage);
-//		searchVO.setSearchCategory(searchCategory);
-//		searchVO.setSearchType(searchType);
-//		searchVO.setSearchWord(searchWord);
-//		searchVO.pageSetting();
-//	
-//		List<CsVO> csList = csService.getFAQList(searchVO);
-//		model.addAttribute("searchVO", searchVO);
-//		model.addAttribute("csList", csList);		
-//		return "cs/getCsList.jsp";
-//	}
+
 	
 	
 	

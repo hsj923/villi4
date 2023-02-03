@@ -1,5 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,7 +128,7 @@ border-radius:1.5em;
 	<div class="container col-5 mt-4">
 	<h3 class="fw-bold">프로필 수정</h3>
 	<hr/>
-		<form role="form" action="updateUser.do" method="post" onSubmit="return checkResult();" >
+		<form:form role="form" action="updateUser.do" method="post" onSubmit="return checkResult();" >
 			
 			
 			<input type="hidden" name="email" value="${user.getEmail()}">
@@ -145,7 +147,9 @@ border-radius:1.5em;
 		   <c:if test="${ !empty  user.fileName}">
 			<img src="resources/images/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
-		  <c:if test="${ empty  user.fileName}">
+		  
+		  
+		  <c:if test="${ empty user.fileName}">
 			<img src="resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
 		  
@@ -214,7 +218,7 @@ border-radius:1.5em;
 						
 			</div>	
 			
-		</form>	
+		</form:form>	
 		
 				
 	</div>	

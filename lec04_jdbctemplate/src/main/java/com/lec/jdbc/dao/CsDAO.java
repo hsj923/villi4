@@ -35,7 +35,6 @@ public class CsDAO {
 	private String selectCsListByTitle = ""; 
 	private String selectCsListByContent = ""; 
 	
-	//FAQ
 	
 	@PostConstruct
 	public void getSqlPropeties() {
@@ -48,8 +47,10 @@ public class CsDAO {
 		selectCsList          = environment.getProperty("selectCsList");
 		selectCsListByTitle   = environment.getProperty("selectCsListByTitle");
 		selectCsListByContent  = environment.getProperty("selectCsListByContent");
-	}
 
+		
+	}
+	
 	public CsVO getCs(CsVO cs) {
 		Object[] args = { cs.getSeq() };		
 		return (CsVO) jdbcTemplate.queryForObject(selectByCsSeq, args, new CsRowMapper());

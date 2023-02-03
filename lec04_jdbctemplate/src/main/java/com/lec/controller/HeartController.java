@@ -9,7 +9,7 @@ import com.lec.jdbc.dao.BoardDAO;
 
 public class HeartController {
 
-//	
+	
 //	// heart.jsp(상세조회)를 가기전에 회원이 해당 게시글에 좋아요를 한게 있는지 체크하는 부분.
 //	
 //	@RequestMapping(value="heart",method=RequestMethod.GET)
@@ -28,5 +28,5 @@ public class HeartController {
 //		model.addAttribute("heart",heart);
 //		return "exhibition/detail";
 //	}
-//	
+	
 }
