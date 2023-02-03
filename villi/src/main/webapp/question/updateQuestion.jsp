@@ -53,6 +53,7 @@ nav {
 	line-height: 30px;
 	color: crimson;
 }
+
 </style>
 
 </head>
@@ -90,7 +91,7 @@ nav {
 										</c:if>
 									</li>
 
-									<li class="nav-item"><a class="nav-link"
+									<li class="nav-item"><a class="nav-link text-info"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getLostList.do">분실센터</a></li>

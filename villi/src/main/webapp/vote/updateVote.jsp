@@ -49,47 +49,57 @@ nav {
 </head>
 <body>
 	<!-- ============search=============== -->
-<nav class="border-bottom border-dark sticky-top z-index-10">
+	<nav class="border-bottom border-dark sticky-top z-index-10">
 		<div class="container" align="center">
 			<div class="row p-3">
 				<div class="col">
 					<nav class="navbar navbar-expand navbar-light sticky-top">
 						<div class="container-fluid">
 							<a class="navbar-brand" href="getBoardList.do">Villi</a>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+							<button class="navbar-toggler" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarSupportedContent"
+								aria-controls="navbarSupportedContent" aria-expanded="true"
+								aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
 
 							<!--================ nav bar ===================-->
-							<div class="navbar-collapse collapse show" id="navbarSupportedContent" style="">
+							<div class="navbar-collapse collapse show"
+								id="navbarSupportedContent" >								
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-									
-									
-									<!-- ================글작성버튼, 로그인============= --> <c:if
+										<!-- ================글작성버튼, 로그인============= --> <c:if
 											test="${ sessionScope.user.getNickname() == null }">
 											<a class="nav-link active" aria-current="page"
 												href="index.jsp">로그인</a>
-										</c:if> 
-										<c:if test="${ sessionScope.user.getNickname() != null }">
-											<a class="nav-link active" aria-current="page" href="">글작성</a>
+										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
+											<a class="nav-link active" aria-current="page"
+												href="question/insertQuestion.jsp">글작성</a>
 										</c:if>
 									</li>
-										
-
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getQuestionList.do">동네질문</a></li>
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getLostList.do">분실센터</a></li>
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getMeetingList.do">동네모임</a></li>
-									<li class="nav-item"><a class="nav-link" href="getVoteList.do">동네투표</a></li>
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getDemandList.do">빌리요청</a></li>
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
-								</ul>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getQuestionList.do">동네질문</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getLostList.do">분실센터</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getMeetingList.do">동네모임</a></li>
+									<li class="nav-item"><a class="nav-link text-info"
+										aria-current="page" href="getVoteList.do">동네투표</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getDemandList.do">빌리요청</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
+								</ul>				
 								<form action="getVoteList.do" method="post" id="voteForm">
-									<input type="hidden" id="curPage" name="curPage" value="1"> <input type="hidden" id="rowSizePerPage" name="rowSizePerPage" value="10">
+									<input type="hidden" id="curPage" name="curPage" value="1">
+									<input type="hidden" id="rowSizePerPage" name="rowSizePerPage"
+										value="10">
 									<div class="container">
 										<div class="row justify-content-md">
 											<div class="col-md-auto">
-												<select class="form-select" id="searchType" name="searchType">
+												<select class="form-select" id="searchType"
+													name="searchType">
 													<option value="">검색</option>
 													<option value="title">제목</option>
 													<option value="writer">작성자</option>
@@ -114,15 +124,15 @@ nav {
 	</nav>
 	<!-- 	<!--==============================게시물 제목===============================   -->
 	<div class="container">
-		
+
 		<div class="row">
-						<div class="col-4 text-start">
-							<h4>${ vote.title } </h4>
-						</div>
-						<div class="col-8 text-end">
-							<span class="text-muted fs-6 text-end">조회 : ${ vote.cnt }</span>
-						</div>		 
-					</div>
+			<div class="col-4 text-start">
+				<h4>${ vote.title }</h4>
+			</div>
+			<div class="col-8 text-end">
+				<span class="text-muted fs-6 text-end">조회 : ${ vote.cnt }</span>
+			</div>
+		</div>
 
 
 
@@ -139,7 +149,7 @@ nav {
 						<canvas id="myChart1"></canvas>
 					</div>
 					<div class="card-footer text-center text-dark">
-						<h3 class= "text-muted ">${ vote.content }</h3>
+						<h3 class="text-muted ">${ vote.content }</h3>
 					</div>
 				</div>
 			</div>
@@ -151,35 +161,35 @@ nav {
 
 		<div class="form-check">
 			<input class="form-check-input" type="radio" name="flexRadioDefault"
-				id="check1" value="${ vote.itemcnt1 }"
-				onchange="checkBox(this)"> <label class="form-check-label"
-				for="flexRadioDefault1"> ${ vote.itemlist1 } </label>
+				id="check1" value="${ vote.itemcnt1 }" onchange="checkBox(this)">
+			<label class="form-check-label" for="flexRadioDefault1"> ${ vote.itemlist1 }
+			</label>
 		</div>
 
 
 		<div class="form-check">
 			<input class="form-check-input" type="radio" name="flexRadioDefault"
-				id="check2" value="${ vote.itemcnt2 }"
-				onchange="checkBox(this)"> <label class="form-check-label"
-				for="flexRadioDefault2"> ${ vote.itemlist2 } </label>
+				id="check2" value="${ vote.itemcnt2 }" onchange="checkBox(this)">
+			<label class="form-check-label" for="flexRadioDefault2"> ${ vote.itemlist2 }
+			</label>
 		</div>
 
 
 		<c:if test="${ !empty  vote.itemlist3}">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="check3" value="${ vote.itemcnt3 }"
-					onchange="checkBox(this)"> <label class="form-check-label"
-					for="flexRadioDefault3"> ${ vote.itemlist3 } </label>
+					id="check3" value="${ vote.itemcnt3 }" onchange="checkBox(this)">
+				<label class="form-check-label" for="flexRadioDefault3"> ${ vote.itemlist3 }
+				</label>
 			</div>
 		</c:if>
 
 		<c:if test="${ !empty  vote.itemlist4}">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="check4" value="${ vote.itemcnt4 }"
-					onchange="checkBox(this)"> <label class="form-check-label"
-					for="flexRadioDefault4"> ${ vote.itemlist4 } </label>
+					id="check4" value="${ vote.itemcnt4 }" onchange="checkBox(this)">
+				<label class="form-check-label" for="flexRadioDefault4"> ${ vote.itemlist4 }
+				</label>
 			</div>
 		</c:if>
 		<!-- ==================부트스트랩====================== -->
@@ -229,24 +239,21 @@ nav {
 			//체크박스 체크시 체크된 값 출력
 			function checkBox(box) {
 				var obj_length = document.getElementsByName("flexRadioDefault").length;
-				
-				   for (var i=0; i<obj_length; i++) {
-				if (box.checked==true) { // 체크가 되면 checed==true라는 값을 전달받는다. 
-					if (check1.checked)
-						document.getElementById("sumcnt1").value = parseInt(box.value) + 1; //getElementById메소드 이용&value속성 변경
-					else if (check2.checked) {
-						document.getElementById("sumcnt2").value = parseInt(box.value) + 1;
-					} else if (check3.checked) {
-						document.getElementById("sumcnt3").value = parseInt(box.value) + 1;
-					} else if (check4.checked) {
-						document.getElementById("sumcnt4").value = parseInt(box.value) + 1;
-					} 
+
+				for (var i = 0; i < obj_length; i++) {
+					if (box.checked == true) { // 체크가 되면 checed==true라는 값을 전달받는다. 
+						if (check1.checked)
+							document.getElementById("sumcnt1").value = parseInt(box.value) + 1; //getElementById메소드 이용&value속성 변경
+						else if (check2.checked) {
+							document.getElementById("sumcnt2").value = parseInt(box.value) + 1;
+						} else if (check3.checked) {
+							document.getElementById("sumcnt3").value = parseInt(box.value) + 1;
+						} else if (check4.checked) {
+							document.getElementById("sumcnt4").value = parseInt(box.value) + 1;
+						}
+					}
 				}
 			}
-		}		   
-			
-
-
 		</script>
 
 		<!-- ================================투표하기 버튼=============================== -->
@@ -266,14 +273,15 @@ nav {
 					id="sumcnt4" />
 			</c:if>
 
-			<input type="submit" id="vote" class="btn btn-success" onclick="voteconfirm()" value="투표하기" />
+			<input type="submit" id="vote" class="btn btn-success"
+				onclick="voteconfirm()" value="투표하기" />
 
-   
-<script>
-    function voteconfirm() {
-        alert("투표가 성공적으로 완료되었습니다");
-    }
-</script>
+
+			<script>
+				function voteconfirm() {
+					alert("투표가 성공적으로 완료되었습니다");
+				}
+			</script>
 		</form>
 		<c:if test="${ sessionScope.user.getNickname() != vote.writer }">
 			<div class="container row-3" align="center">

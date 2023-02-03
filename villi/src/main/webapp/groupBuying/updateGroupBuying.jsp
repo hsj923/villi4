@@ -101,7 +101,7 @@ nav {
 										aria-current="page" href="getVoteList.do">동네투표</a></li>
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getDemandList.do">빌리요청</a></li>
-									<li class="nav-item"><a class="nav-link"
+									<li class="nav-item"><a class="nav-link text-info"
 										aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 								</ul>
 								<form action="getGroupBuyingList.do" method="post"
