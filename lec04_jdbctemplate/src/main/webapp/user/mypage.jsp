@@ -108,6 +108,7 @@ color:#23dbc9
 			<img src="../resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
 		  </div>   
+		  
 	   <div class="col mt-4">
      	 <h4>${sessionScope.user.getNickname()}님</h4>
        </div>
