@@ -369,22 +369,7 @@ nav {
 				$('#boardForm').submit();
 			}); //#rowPerPage
 
-			// 초기화 버튼 클릭
-			$('#btnReset').click(
-					function() {
-						$('#curPage').val(1);
-						$('#boardForm').find(
-								"select[name='searchCategory'] option:eq(0)")
-								.attr("selected", "selected");
-						$('#boardForm').find(
-								"select[name='searchType'] option:eq(0)").attr(
-								"selected", "selected");
-						$('#boardForm').find("input[name='searchWord']")
-								.val("");
-						$('#boardForm').submit();
-					}); // #id_btn_reset.cli			
 
-		})
 	</script>
 
 </body>
