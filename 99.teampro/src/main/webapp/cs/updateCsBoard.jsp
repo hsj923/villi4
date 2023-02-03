@@ -122,19 +122,26 @@ pre { white-space: pre-wrap;
             </div>
          </c:forEach>
 
-				<br />
-			<form action="updateCsReply.do" method="post">
-					<p>
-						<label>댓글 작성자 </label> <input type="text">
-					</p>
-					<p>
-						<textarea rows="5" cols="50"></textarea>
-					</p>
-					<p>
-						<button type="button">댓글 작성</button>
-					</p>
-			</form>
+		<br />
 		
+		<!-- 댓글 작성 -->
+		<div>
+		    <form method="post" action="insertCsReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"disabled>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content"></textarea>
+		        </p>
+		        <p>
+		        	<input type="hidden" name="bno" value="${csboard.bno}">
+		        	<c:if test="${ sessionScope.isAdmin }">
+		            <button type="submit">댓글 작성</button>
+		            </c:if>
+		        </p>
+		    </form> 
+		</div>
+				
 		<!-- 댓글 끝 -->
 			     
 		   <!-- 관리자일 때만 글등록, 글삭제 보이게 -->

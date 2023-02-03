@@ -71,16 +71,18 @@ public class CsreplyController {
 		return "cs/getCsBoardList.jsp";
 	}
 	
-	@RequestMapping("/insertCsReply.do")
-	public String insertCsReply(CsReplyVO csreply) {		
+	// ¥Ò±€ ¿€º∫
+	@RequestMapping(value= "/insertCsReply.do" , method = RequestMethod.POST)
+	public String insertCsReply(CsReplyVO csreply,Model model,int bno) throws Exception {
+		model.addAttribute("bno" , bno);
 		csreplyService.insertCsReply(csreply);
-		return "getCsBoardList.jsp";
-	}	
+		System.out.println(csreply.getRegDate());
+		return "redirect:/updateCsBoard.do";
+	}
 	
 	@RequestMapping(value="/updateCsReply.do", method=RequestMethod.GET)
 	public String updateCsReply(Model model, CsReplyVO csreply, int bno,SearchVO searchVO) {
 		List<CsReplyVO> csreplyList = csreplyService.getCsReplyList(bno);
-		System.out.println(csreplyList.toString());
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("csreplyList", csreplyList);
 		return "cs/updateCsBoard.jsp";

@@ -77,7 +77,7 @@ public class CsReplyDAO {
 	}
 	
 	public CsReplyVO insertCsReply(CsReplyVO csreply) {
-		jdbcTemplate.update(insertCsReply, csreply.getWriter(), csreply.getContent(), csreply.getRegDate());
+		jdbcTemplate.update(insertCsReply, csreply.getBno(),csreply.getWriter(), csreply.getContent());
 		return csreply;
 	}	
 	

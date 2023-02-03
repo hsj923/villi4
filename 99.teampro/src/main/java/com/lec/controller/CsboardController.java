@@ -81,7 +81,7 @@ public class CsboardController {
 	public String updateCsBoard(Model model, CsBoardVO csboard, SearchVO searchVO,int bno) {
 		
 		List<CsReplyVO> csreplyList = csreplyService.getCsReplyList(bno);
-		System.out.println(csreplyList.toString());
+		//System.out.println(csreplyList.toString());
 		model.addAttribute("csreplyList", csreplyList);
 		
 		csboardService.updateCsCount(csboard);
