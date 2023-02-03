@@ -15,7 +15,7 @@ public class BoardRowMapper implements RowMapper<BoardVO> {
 		board.setWriter(rs.getString("WRITER"));
 		board.setContent(rs.getString("CONTENT"));
 		board.setStatus(rs.getString("STATUS"));
-		board.setRegDate(rs.getDate("REGDATE"));
+		board.setRegDate(rs.getString("REGDATE"));
 		board.setCnt(rs.getInt("CNT"));
 		board.setFileName1(rs.getString("FILENAME1"));
 		board.setFileName2(rs.getString("FILENAME2"));
@@ -25,6 +25,9 @@ public class BoardRowMapper implements RowMapper<BoardVO> {
 		board.setCate(rs.getString("CATE"));
 		board.setCate2(rs.getString("CATE2"));
 		board.setPrice(rs.getString("PRICE"));
+		board.setUsedate(rs.getString("USEDATE"));
+		board.setDuedate(rs.getString("DUEDATE"));
+		board.setLike_cnt(rs.getInt("LIKE_CNT"));
 		// board.setUploadFile(rs.getString("FILE"));
 		return board;
 	}

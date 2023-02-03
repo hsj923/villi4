@@ -60,5 +60,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	
+	// 다른 유저 보기 
+	@Override
+	public UserVO getUserByNick(UserVO user) {
+		return userDAO.getUserByNick(user)
+				;
+	}
+
+	
 	
 }

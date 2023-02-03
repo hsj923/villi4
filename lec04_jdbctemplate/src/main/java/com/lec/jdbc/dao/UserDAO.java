@@ -34,6 +34,10 @@ public class UserDAO {
 	private String selectUserListById = ""; 
 	private String selectUserListByName = ""; 
 	
+	//**
+	
+	private String selectByNickname = "";
+	
 	@PostConstruct
 	public void getSqlPropeties() {
 		selectById           = environment.getProperty("selectById");
@@ -44,6 +48,11 @@ public class UserDAO {
 		selectUserList       = environment.getProperty("selectUserList");
 		selectUserListById   = environment.getProperty("selectUserListById");
 		selectUserListByName = environment.getProperty("selectUserListByName");
+		
+		
+		//**
+		
+		selectByNickname = environment.getProperty("selectByNickname");
 	}
 
 	public UserVO getUser(UserVO user) {
@@ -51,6 +60,23 @@ public class UserDAO {
 		Object[] args = { user.getEmail() };		
 		return (UserVO) jdbcTemplate.queryForObject(selectById, args, new UserRowMapper());
 	}
+	
+	
+	
+	//** 
+	
+
+	public UserVO getUserByNick(UserVO user) {
+		// System.out.println(jdbcTemplate.getDataSource().getConnection().toString());
+		Object[] args = { user.getNickname() };		
+		return (UserVO) jdbcTemplate.queryForObject(selectByNickname, args, new UserRowMapper());
+	}
+	
+	
+	
+	
+	
+	
 	
 	public int getTotalRowCount(SearchVO searchVO) {
 		sql = userTotalRowCount;
@@ -85,4 +111,3 @@ public class UserDAO {
 	}
 
 }
-

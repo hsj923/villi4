@@ -124,6 +124,8 @@ public class BoardController {
 		boardService.updateBoard(board);
 		return "getBoardList.do";
 	}	
+	
+
 
 	@RequestMapping(value="/deleteBoard.do", method=RequestMethod.GET)
 	public String deleteBoard(Model model, BoardVO board, SearchVO searchVO, @RequestParam int seq) {

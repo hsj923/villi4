@@ -11,7 +11,7 @@ public class BoardVO {
 	private String writer;
 	private String content;
 	private String status;
-	private Date regDate;
+	private String regDate;
 	private int cnt;
 	private String fileName1; 
 	private String fileName2; 
@@ -26,8 +26,11 @@ public class BoardVO {
 	private String cate;
 	private String cate2;
 	private String price;
-	
+	private String usedate;
+	private String duedate;
+	private int like_cnt;
 
+	
 	@Override
 	public String toString() {
 		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", status="
@@ -35,7 +38,26 @@ public class BoardVO {
 				+ fileName2 + ", fileName3=" + fileName3 + ", fileName4=" + fileName4 + ", fileName5=" + fileName5
 				+ ", uploadFile1=" + uploadFile1 + ", uploadFile2=" + uploadFile2 + ", uploadFile3=" + uploadFile3
 				+ ", uploadFile4=" + uploadFile4 + ", uploadFile5=" + uploadFile5 + ", cate=" + cate + ", cate2="
-				+ cate2 + ", price=" + price + "]";
+				+ cate2 + ", price=" + price + ", usedate=" + usedate + ", duedate=" + duedate + ", like_cnt="
+				+ like_cnt + "]";
+	}
+	public int getLike_cnt() {
+		return like_cnt;
+	}
+	public void setLike_cnt(int like_cnt) {
+		this.like_cnt = like_cnt;
+	}
+	public String getDuedate() {
+		return duedate;
+	}
+	public void setDuedate(String duedate) {
+		this.duedate = duedate;
+	}
+	public String getUsedate() {
+		return usedate;
+	}
+	public void setUsedate(String usedate) {
+		this.usedate = usedate;
 	}
 	public String getPrice() {
 		return price;
@@ -85,10 +107,10 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 	public int getCnt() {

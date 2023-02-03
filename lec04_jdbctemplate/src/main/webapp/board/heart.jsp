@@ -24,7 +24,7 @@
       
       <div>
 	<a class="text-dark heart" style="text-decoration-line: none;">
-		<img id="heart" src="/resources/images/heart.png">
+		<img id="heart" height="30" width="30" src="../resources/images/heart.png">
 		좋아요
 	</a>
 </div>
@@ -40,12 +40,12 @@
         // heartval이 1이면 좋아요가 이미 되있는것이므로 heart-fill.svg를 출력하는 코드
         if(heartval>0) {
             console.log(heartval);
-            $("#heart").prop("src", "/resources/icon/heart-fill.svg");
+            $("#heart").prop("src", "../resources/images/heart-fill.png");
             $(".heart").prop('name',heartval)
         }
         else {
             console.log(heartval);
-            $("#heart").prop("src", "/resources/icon/heart.svg");
+            $("#heart").prop("src", "../resources/images/heart.png");
             $(".heart").prop('name',heartval)
         }
 
@@ -59,9 +59,9 @@
 	    	success : function(data){
 	    		that.prop('name',data);
 	        	if(data==1) {
-	            	     $('#heart').prop("src","/resources/images/heart-fill.png");
+	            	     $('#heart').prop("src","../resources/images/heart-fill.png");
 	        	} else {
-                    	     $('#heart').prop("src","/resources/images/heart.png");
+                    	     $('#heart').prop("src","../resources/images/heart.png");
 	        	}
              	}
 	    });
