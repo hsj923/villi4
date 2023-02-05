@@ -31,10 +31,10 @@ public class UserController {
 	
 	private String uploadFolder = "";
 	
-   @PostConstruct
-   public void getUploadPathProperties() {
+    @PostConstruct
+    public void getUploadPathProperties() {
 	   uploadFolder = environment.getProperty("uploadFolder");
-   }
+    }
 		
 	@RequestMapping("getUserList.do")
 	public String getUserList(Model model, SearchVO searchVO,
@@ -77,6 +77,7 @@ public class UserController {
 //		return "redirect:/getUserList.do";
 //	}
 	
+	
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
 	public String updateUser(Model model, UserVO user, SearchVO searchVO) {
 		model.addAttribute("searchVO", searchVO);
@@ -118,9 +119,6 @@ public class UserController {
 		userService.getUserByNick(user);
 		return "getUserList.do";
 	}
-	
-	
-	
 	
 	
 	

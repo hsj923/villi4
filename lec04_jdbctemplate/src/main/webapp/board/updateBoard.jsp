@@ -95,19 +95,27 @@ a {
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-										<!-- ================글작성버튼============= -->
-										<div class="dropdown">
-											<button class="btn dropdown-toggle" type="button"
-												id="dropdownMenuButton2" data-bs-toggle="dropdown"
-												aria-expanded="false">글작성</button>
-											<ul class="dropdown-menu dropdown-menu-dark"
-												aria-labelledby="dropdownMenuButton2">
-												<li><a class="dropdown-item"
-													href="board/insertBoard.jsp">상품</a></li>
-												<li><a class="dropdown-item"
-													href="board/insertServiceBoard.jsp">서비스</a></li>
-											</ul>
-										</div>
+									
+									<!-- ================글작성버튼, 로그인============= -->		
+				<c:if test="${ sessionScope.user.getNickname() == null }">
+					<a class="nav-link active" aria-current="page"
+												href="index.jsp">로그인</a>
+				</c:if>
+				<c:if test="${ sessionScope.user.getNickname() != null }">		
+											<div class="dropdown">						
+												<button class="btn dropdown-toggle" type="button"
+													id="dropdownMenuButton2" data-bs-toggle="dropdown"
+													aria-expanded="false">글작성</button>
+												<ul class="dropdown-menu dropdown-menu-dark"
+													aria-labelledby="dropdownMenuButton2">
+													<li><a class="dropdown-item"
+														href="board/insertBoard.jsp">상품</a></li>
+													<li><a class="dropdown-item"
+														href="board/insertServiceBoard.jsp">서비스</a></li>
+												</ul>
+											</div>
+				</c:if>
+										
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
@@ -163,9 +171,9 @@ a {
 
 
 	<!-- 이미지 -->
-	<div class="container-lg">
-		<div class="p-3 " align="center">
-			<!-- 이미지 -->
+	<div class="container w-50">
+		<div class="p-3 " align="center">			<!-- 이미지 -->
+
 			<div id="carouselExampleIndicators"
 				class="carousel carousel-dark slide" data-bs-ride="carousel">
 				<div class="carousel-indicators">
@@ -239,42 +247,34 @@ a {
 	</div>
 
 	<!-- form -->
-	<div class="container-sm" align="center">
+	<div class="container w-50" align="center">
 		<form action="updateBoard.do" method="post">
 			<div class="card">
-			
 				<div class="card-body">
 					<h5 class="card-title text-start">
-					<a href="getUser.do?nickname=${ board.writer }">
-
-						<img src="resources/images/noimg.png"
+						<a href="getUser.do?nickname=${ board.writer }" style= "text-decoration: none"
+						class="text-dark"><img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
-							height="75">
-								<span>${ board.writer }</span> 
-								<span class="fs-5"><i class="bi bi-award text-warning"></i></span>
-					</a>
-
+							height="75"> <span>${ board.writer }</span> <span
+							class="fs-5"><i class="bi bi-award text-warning"></i></span></a>
 					</h5>
-					
-					<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
 				</div>
-				
-				
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
 						<div class="row">
 							<div class="col-4 text-start">
-								<span class="fs-4 fw-bold">${ board.title }</span><c:choose>
-										<c:when test="${board.status eq '대기중'}">
-											<span class="badge bg-success text-white rounded-pill">${board.status}</span>
-										</c:when>
-										<c:when test="${board.status eq '예약중'}">
-											<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
-										</c:when>
-										<c:when test="${board.status eq '대여중'}">
-											<span class="badge bg-danger text-white rounded-pill">${board.status}</span>
-										</c:when>
-									</c:choose>
+								<span class="fs-4 fw-bold">${ board.title }</span>
+								<c:choose>
+									<c:when test="${board.status eq '대기중'}">
+										<span class="badge bg-success text-white rounded-pill">${board.status}</span>
+									</c:when>
+									<c:when test="${board.status eq '예약중'}">
+										<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
+									</c:when>
+									<c:when test="${board.status eq '대여중'}">
+										<span class="badge bg-danger text-white rounded-pill">${board.status}</span>
+									</c:when>
+								</c:choose>
 							</div>
 							<div class="col-8 text-end">
 								<p class="fs-6 fst-italic 	text-decoration-underline">${board.regDate}</p>
@@ -289,7 +289,8 @@ a {
   <path
 								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
 </svg> <c:if test="${ !empty  board.usedate}">
-							<span class="fs-6 ms-2">대여가능일 : ${ board.usedate } ~ ${ board.duedate }</span>
+							<span class="fs-6 ms-2">대여가능일 : ${ board.usedate } ~ ${ board.duedate }
+							</span>
 							<br>
 						</c:if> <c:if test="${ empty  board.usedate}">
 							<span>날짜상의</span>
@@ -323,9 +324,7 @@ a {
 			</div>
 		</form>
 	</div>
-
 	<script>
-	
     var i = 0;
     $('.bi-heart').on('click',function(){
         if(i==0){
@@ -338,11 +337,7 @@ a {
             i--;
         }     
     });
-    
-    
-    </script>
-
-
+</script>
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteBoard() {
@@ -354,7 +349,8 @@ a {
 
 
 	<!-- 안전거래 -->
-	<section class="home-main-section" id="section1">
+		<div class="container w-50" align="center">
+	<section class="home-main-section " id="section1">
 		<h2 class="main-title text-center my-5 fw-bold">
 			잠깐! 빌리는 안전하고 신뢰할 수 있는 거래를 지향합니다 <br>안전수칙을 확인해주세요
 		</h2>
@@ -431,15 +427,49 @@ a {
 						</p>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</section>
+	<c:if test="${ sessionScope.user.getName() != board.writer }">
 	<div class="container row-3" align="center">
-		<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
-		<a href="deleteBoard.do?seq=${board.getSeq()}"
-			class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getBoardList.do"
-			class="btn btn-dark my-5 mx-4">게시글목록</a>
+	<a href="index.jsp"><button class="btn btn-dark my-5 mx-2">로그인</button></a>
+	</div>
+	</c:if>
+	<c:if test="${ sessionScope.user.getName() ==  board.writer}">
+		
+		<div class="container mt-3" align="center">
+		<form action="updateBoard.do" method="post">
+			<input name="seq" type="hidden" value="${board.seq}" />
+			<div class="input-group mb-3">
+  				<span class="input-group-text" id="desc_title"><i class="fas fa-address-book"></i></span>
+  				<input type="text" class="form-control" name="title" value="${ board.title }">
+			</div>
+			<div class="input-group mb-3">
+  				<span class="input-group-text" id="desc_title"><i class="fas fa-user"></i></span>
+  				<input type="text" class="form-control" name="writer" value="${ board.writer }" disabled>
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+			  <textarea class="form-control"  name="content" rows="15" >${ board.content }</textarea>
+			</div>	
+			<div class="input-group mb-3">
+  				<span class="input-group-text" id="desc_title"><i class="fas fa-calendar"></i></span>
+  				<input type="text" class="form-control" name="writer" value="${board.regDate }" disabled>
+			</div>
+			<div class="input-group mb-3">
+  				<span class="input-group-text" id="desc_title"><i class="fas fa-hashtag"></i></span>
+  				<input type="text" class="form-control" name="writer" value="${ board.cnt }" disabled>
+			</div>
+			
+			<div class="container row-3" align="center">
+			<input type="submit" class="btn btn-dark my-5 me-4" value="게시글수정"/>
+			<a href="deleteBoard.do?seq=${board.getSeq()}"
+				class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getBoardList.do"
+				class="btn btn-dark my-5 mx-4">게시글목록</a>
+		</div>
+		</form>			
+	</div>
+	</c:if>
 	</div>
 </body>
 </html>

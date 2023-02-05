@@ -11,7 +11,7 @@
 		crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 @font-face {
 	font-family: 'Pretendard-Regular';
@@ -44,43 +44,76 @@ body {
 					</div>
 
 					<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
+						<span class=mx-2></span> 
+						<span class=mx-1></span> 
 					</div>
 				</div>
 			</div>
 		</header>
+ 	<!-- ===========header================ -->
 
+<form action="insertUser.do" method="post">
 
-	<div class="container mt-5">
-			<form action="insertUser.do" method="post">
+	<div class="container col-5 mt-4">
+		<h3 class="fw-bold">회원가입</h3>
+			<hr/>
+			<br/>
 			
-				<div class="modal-content">				
-					<div class="modal-header bg-info text-white">
-						<h1 class="motal-title fs-5" id="staticBackdropLabel">회원가입</h1>
-					</div> <!-- modal-header -->
-					
-					<div class="modal-body">
-					
-					
-						<div class="input-group mb-3">
+			
+	
+						<div class="input-group mb-2">
 							<div class="input-group-text"><i class="fas fa-envelope"></i></div>
-							<input type="text" name="email" class="form-control" id="email" required placeholder="이메일">
-						</div>
-						
-					<div class="pwok">
+							<input type="text" name="email" class="form-control" id="email" required placeholder="이메일" onchange="checkEmail();"  >
+						</div> 
 						<div class="input-group mb-3">
+						<span id="confirmEmail"></span>
+						</div>
+	
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>	
+				
+		  <script>
+            // 이메일 중복체크
+            function checkEmail() {
+               var email = $('#email').val();
+               var confirmEmail = document.getElementById('confirmEmail');
+               var correctColor = "#000" ;   //맞았을 때 출력되는 색깔.
+               var wrongColor ="#d92742";   //틀렸을 때 출력되는 색깔
+               $.ajax({
+                     url:'../emailCheck.do', //Controller에서 요청 받을 주소
+                     type:'post', //POST 방식으로 전달
+                     data:{email:email},
+                     success:function(result){ //컨트롤러에서 넘어온 값을 받는다 
+                         if(result != "success"){
+                            confirmEmail.style.color = correctColor;
+                            confirmEmail.innerHTML = "사용 가능한 이메일입니다.";
+                            $('#email').attr("check_email", "success");
+                         } else { // cnt가 1일 경우 -> 이미 존재하는 이메일
+                            confirmEmail.style.color = wrongColor;
+                            confirmEmail.innerHTML = "이미 존재하는 이메일입니다.";
+                            $('#email').attr("check_email", "fail");
+                         }
+                     },
+                     error:function(){
+                         alert("에러입니다.");
+                     }
+                 });
+                 
+            };
+            </script>
+								
+					<div class="pwok">
+						<div class="input-group mb-2">
 							<div class="input-group-text"><i class="fas fa-lock"></i></div>
 						    <input type="password" id="password_1" name="password"  class="form-control" class="pw" required placeholder="비밀번호"  ><br>
 						</div>
 						
-							<div class="input-group mb-1">
+							<div class="input-group mb-3">
 							<div class="input-group-text"><i class="fas fa-check-square"></i></div>
 							<input type="password" id="password_2" class="form-control"  class="pw"  required placeholder="비밀번호 확인">
 						</div>
 						 
-						  <span id="success" style="display: none; font-weight: bold;" >비밀번호가 일치합니다.</span>
-						    <span id="danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span>
+						  <span id="success" style="display: none; " >비밀번호가 일치합니다.</span>
+						    <span id="danger" style="display: none; color: #d92742; ">비밀번호가 일치하지 않습니다.</span>
 						
 						
 						</div>
@@ -106,11 +139,11 @@ body {
 						</script>
 					
 						
-						<div class="input-group mb-3 mt-3">
+						<div class="input-group mb-3 mt-4">
 							<div class="input-group-text"><i class="fas fa-user-circle"></i></div>
 							<input type="text" name="nickname" class="form-control" id="nickname" required placeholder="닉네임">
 						</div>
-						<div class="input-group mb-3">
+						<div class="input-group mb-4 mt-4" >
 							<div class="input-group-text"><i class="fas fa-user"></i></div>
 							<input type="text" name="name" class="form-control" id="name" required placeholder="이름">
 						</div>
@@ -118,14 +151,12 @@ body {
 						
 						<!--  우편번호 -->
 						
-						
-						
-						<div class="input-group mb-3">
+						<div class="input-group mb-4">
 						<div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
 							<input type="text" name="address" id="sample4_postcode" class="form-control" placeholder="우편번호">
 							
 							<input type="button" onclick="sample4_execDaumPostcode()"  class="form-control" value="우편번호 찾기"><br>
-							<input type="text" id="sample4_roadAddress" class="form-control" placeholder="도로명주소">
+							<input type="text" id="sample4_roadAddress" class="form-control"name="address"  placeholder="도로명주소">
 							<input type="text" id="sample4_jibunAddress" class="form-control" placeholder="지번주소">
 							
 							<input type="text" id="sample4_detailAddress" class="form-control" placeholder="상세주소">
@@ -189,20 +220,17 @@ body {
 							        }).open();
 							    }
 							</script>
-						</div>
+						</div> <!-- 우편번호 끝 -->
 
 					</div>
-
-					</div> <!-- modal-body -->
  					
-					<div class="modal-footer ">
-						<button type="submit" class="btn btn-info text-white">가입하기</button>
-					</div> <!-- modal-footer -->
-				 <!-- modal-content -->
+					<div class="container  mt-5" align="center">
+						<button type="submit" class="btn btn-dark mx-4 ">가입하기</button>
+					</div>	
+					
 			
+			</form>
 
 
-</form>
-</div>
 </body>
 </html>   

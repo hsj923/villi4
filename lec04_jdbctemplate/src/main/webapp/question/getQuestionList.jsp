@@ -71,11 +71,19 @@ nav {
 									aria-label="Toggle navigation">
 									<span class="navbar-toggler-icon"></span>
 								</button>
-								<!--================ nav bar ===================-->
+							<!--================ nav bar ===================-->
 								<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="meeting/insertMeeting.jsp">글작성</a>
+									<li class="nav-item">
+									
+									<!-- ================글작성버튼, 로그인============= --> <c:if
+											test="${ sessionScope.user.getNickname() == null }">
+											<a class="nav-link active" aria-current="page"
+												href="index.jsp">로그인</a>
+										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
+																												<a class="nav-link active"
+										aria-current="page" href="question/insertQuestion.jsp">글작성</a>
+										</c:if>
 									</li>
 											
 										<li class="nav-item"><a class="nav-link"

@@ -49,7 +49,7 @@ nav {
 */
 
 
-.map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap, .map_wrap * {margin:0; padding:0;font-family:Pretendard-Regular,dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap {position:relative;width:100%;height:350px;}
 #category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
 #category li {float:left;list-style: none;width:50px;px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
@@ -58,10 +58,10 @@ nav {
 #category li:last-child{margin-right:0;border-right:0;}
 #category li span {display: block;margin:0 auto 3px;width:27px;height: 28px;}
 #category li .category_bg {background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png) no-repeat;}
-#category li .bank {background-position: -10px 0;}
+#category li .hospital {background-position: -10px -72px;}
 #category li .mart {background-position: -10px -36px;}
 #category li .pharmacy {background-position: -10px -72px;}
-#category li .oil {background-position: -10px -108px;}
+#category li .restaurant {background-position: -10px -144px;}
 #category li .cafe {background-position: -10px -144px;}
 #category li .store {background-position: -10px -180px;}
 #category li.on .category_bg {background-position-x:-46px;}
@@ -101,8 +101,16 @@ nav {
 								<!--================ nav bar ===================-->
 								<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item"><a class="nav-link active"
+									<li class="nav-item">
+									
+									<!-- ================글작성버튼, 로그인============= --> <c:if
+											test="${ sessionScope.user.getNickname() == null }">
+											<a class="nav-link active" aria-current="page"
+												href="index.jsp">로그인</a>
+										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
+																												<a class="nav-link active"
 										aria-current="page" href="question/insertQuestion.jsp">글작성</a>
+										</c:if>
 									</li>
 											
 										<li class="nav-item"><a class="nav-link"
@@ -223,21 +231,21 @@ nav {
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
-        <li id="BK9" data-order="0"> 
-            <span class="category_bg bank"></span>
-            은행
-        </li>       
         <li id="MT1" data-order="1"> 
             <span class="category_bg mart"></span>
             마트
         </li>  
+        <li id="HP8" data-order="0"> 
+            <span class="category_bg hospital"></span>
+            병원
+        </li>       
         <li id="PM9" data-order="2"> 
             <span class="category_bg pharmacy"></span>
             약국
         </li>  
-        <li id="OL7" data-order="3"> 
-            <span class="category_bg oil"></span>
-            주유소
+        <li id="FD6" data-order="3"> 
+            <span class="category_bg restaurant "></span>
+            음식점
         </li>  
         <li id="CE7" data-order="4"> 
             <span class="category_bg cafe"></span>
@@ -246,7 +254,12 @@ nav {
         <li id="CS2" data-order="5"> 
             <span class="category_bg store"></span>
             편의점
-        </li>      
+        </li>   
+         <li id="CT1" data-order="6"> 
+            <span class="category_bg store"></span>
+            문화시설
+        </li> 
+           
     </ul>
 </div>
 </div>
@@ -320,7 +333,7 @@ function displayMarker(locPosition, message) {
 }    
 
 
-
+// ================ 카테고리 ===================
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places(map); 
