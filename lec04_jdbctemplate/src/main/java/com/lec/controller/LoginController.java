@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lec.jdbc.dao.LoginDAO;
@@ -71,6 +73,19 @@ public class LoginController {
 		    	  return "login/login.jsp";
 	}
 	
+	
+	
+	
+	@RequestMapping(value = "/emailCheck.do" , method = RequestMethod.POST)
+	   @ResponseBody
+	   public String emailCheck(@RequestParam("email") String email){
+	      int cnt = userService.emailCheck(email);
+	      if (cnt != 0) {
+	         return "fail";
+	      } else {
+	         return "success";
+	      }
+	   }
 	
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession sess) {

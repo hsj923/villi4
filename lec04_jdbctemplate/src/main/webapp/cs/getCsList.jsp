@@ -1,21 +1,21 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Villi : 고객문의</title>
-<link rel="icon" href="../resources/images/favicon.png">
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">	
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
 		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" 
 		crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <style>
+
 
 @font-face {
    font-family: 'Pretendard-Regular';
@@ -27,9 +27,12 @@
 }
 
 body {
-   font-family: 'Pretendard-Regular';
+
+  font-family: 'Pretendard-Regular';
+  background: #fff;
+ 
 }
-   
+
 /* Header */
 
 header {
@@ -45,42 +48,103 @@ color:black;
 color:#23dbc9;
 }
 
-.btn_radius{
-border-radius:1.5em;
+.accordion .accordion-item {
+  border-bottom: 1px solid #e5e5e5;
 }
 
-.bg-dark a{
-text-decoration: none;
-color:white;
+.accordion .accordion-item button[aria-expanded=true] {
+  border-bottom: 1px solid #03b5d2;
 }
 
-.bg-dark:hover{
-text-decoration: none;
-color:white;
+.accordion button {
+  position: relative;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 1em 0;
+  color: #7288a2;
+  font-size: 1.15rem;
+  font-weight: 400;
+  border: none;
+  background: none;
+  outline: none;
 }
 
-.container btn_box mt-5{
-width:100%;
-border : 1px solid black; 
+.accordion button:hover, .accordion button:focus {
+  cursor: pointer;
+  color: #03b5d2;
 }
 
-.row align-items-start{
-border : 1px solid black; 
+.accordion button:hover::after, .accordion button:focus::after {
+  cursor: pointer;
+  color: #03b5d2;
+  border: 1px solid #03b5d2;
 }
 
-.btn btn-dark mx-4 btn_radius{
-margin-right : 20px;
-border : 1px solid black; 
+.accordion button .accordion-title {
+  padding: 1em 1.5em 1em 0;
 }
 
-.title{
-text-decoration: none;
-color:black;
+.accordion button .icon {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 22px;
 }
 
-.title:hover{
+.accordion button .icon::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+}
 
-color:#23dbc9;
+.accordion button .icon::after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+
+.accordion button[aria-expanded=true] {
+  color: #03b5d2;
+}
+
+.accordion button[aria-expanded=true] .icon::after {
+  width: 0;
+}
+
+.accordion button[aria-expanded=true] + .accordion-content {
+  opacity: 1;
+  max-height: 60em;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+}
+
+.accordion .accordion-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 200ms linear, max-height 200ms linear;
+  will-change: opacity, max-height;
+}
+
+.accordion .accordion-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 2em 0;
 }
 
 .pagination li a {
@@ -92,34 +156,14 @@ color:#23dbc9;
 	background: #444 !important;
 	border-color: #444 !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
-
-
 </head>
 <body>
- <!--------------- header --------------->
+
+  <!--------------- header --------------->
  
  <header class="border-bottom border-white">
-      <div class="container">
+      <div class="container" >
          <div class="row align-items-start p-3">
             <div class="col mt-3">
                <a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
@@ -136,178 +180,14 @@ color:#23dbc9;
             </div>
          </div>
       </div>
-      
- <!-------------- script -------------->     
-	<script>
-		function deleteCs() {
-			if(confirm("문의사항을 삭제하겠습니까?")) {
-		    	self.location.href = "deleteCs.do?noti_seq=${ cs.noti_seq }";
-		    }
-		}
-	</script>
-</header>
+   </header>  
+   
+   
+   
 
-<!------------------ 본문 ------------------->
-	<div class="container col-5 mt-4"  align="center">
-	 	<h3 class="fw-bold">고객 문의</h3>
-	</div>
-	<hr/>	
-	
-	
-	
-	<div class="container mt-3">	
-	
-	
-	
-	
-	
-	
-	
-	<ul class="faq_list" id="faqAllBox">
-				
-					<li><!-- 디폴트 활성화 필요시 class="open" -->
-						<div class="q">
-							<span class="i"><span class="alt_text">질문</span>Q</span>
-							<a href="#faq_1">온라인 교육을 받으려고 하는데 지원되지 않는 비디오 유형 또는 잘못된 파일 경로입니다.</a>
-						</div>
-						
-						<div class="a" id="faq_1">
-							<span class="i"><span class="alt_text">대답</span>A</span>
-								<p>
-									안녕하세요. 소상공인 지식배움터입니다. 
-<br />보통의 경우 개인 PC의 네트워크 환경에 따라 문제가 발생하기 때문에 인터넷 옵션 초기화와 브라우저를 업데이트 하시는 것을 추천드립니다.
-<br />이후로도 동영상 시청에 지속적인 문제가 발생하신다면 헬프데스크(1644-5302)를 통해 문의 주시기를 바랍니다.
-								</p>
-						</div>
-					</li>
-				
-					<li><!-- 디폴트 활성화 필요시 class="open" -->
-						<div class="q">
-							<span class="i"><span class="alt_text">질문</span>Q</span>
-							<a href="#faq_1">온라인 강의가 모바일 기기에서 열리지 않습니다.</a>
-						</div>
-						
-						<div class="a" id="faq_1">
-							<span class="i"><span class="alt_text">대답</span>A</span>
-								<p>
-									안녕하세요. 소상공인 지식배움터입니다. 
-<br />동영상이 정상적으로 재생되지 않는다면, 모바일 기기 혹은 네트워크의 문제일 가능성이 높습니다. 아래의 방법들을 진행해 보시기를 권장드립니다.
-<br />1. 브라우저 앱 재실행
-<br />2. 네트워크 연결 상태 확인
-<br />3. 브라우저 앱 설정 초기화 혹은 재설치
-<br />이후로도 동영상 시청에 지속적인 문제가 발생하신다면 헬프데스크(1644-5302)를 통해 문의 주시기를 바랍니다.
-								</p>
-						</div>
-					</li>
-				
-					<li><!-- 디폴트 활성화 필요시 class="open" -->
-						<div class="q">
-							<span class="i"><span class="alt_text">질문</span>Q</span>
-							<a href="#faq_1">소상공인 정책자금 신청을 위해 교육을 수강하고 싶습니다.</a>
-						</div>
-						
-						<div class="a" id="faq_1">
-							<span class="i"><span class="alt_text">대답</span>A</span>
-								<p>
-									Q1. 소상공인 정책자금 신청을 위해 교육을 수강하고 싶습니다. 
-<br />소상공인 정책자금을 지원하시려면 온라인교육에 들어가셔서 교육 중 원하시는 교육으로 신청하셔서 12시간 이상 수강해 주시면 됩니다.(교육 신청 과정은 Q3 참고) 
-<br />
-<br />Q2. 온라인교육 수료완료 후 정책자금을 신청하고 싶습니다.
-<br />자금/오프라인 교육에 대한 문의는 1357로 전화주시면 관할지역 소상공인 지역센터로 연결되오니 문의 부탁 드립니다.(휴대전화, 인터넷전화 연결 안됨. 유선전화 연결 가능함) 
-<br />각 지역 센터에서 정책자금 신청관련 자세한 안내 받으시면 됩니다. 
-<br />
-<br />Q3. 온라인교육 교육신청 및 소상공인 정책자금 신청 과정 안내 
-<br />1. 온라인교육에서 원하시는 과정으로 신청 
-<br />2. 나의 강의실 > 학습현황 > 학습중인 과정에 입장해서 수강
-<br />3. 나의 강의실 > 학습현황 > 학습완료 과정에서 수료한 시간을 합산해서 12시간 이상인지 확인 
-<br />4. 1357 로 전화주셔서 정책자금 신청관련 방문서류 안내 받으신 후 정책자금 지원대상 확인서 발급함 
-<br />5. 각 지역 신용보증 재단에서 신용보증서 발급 (신용, 재정상태, 경영능력, 사업성 등 평가 후 발급)
-<br />6. 은행에서 대출 실행 (자금 안내는 "소상공인시장진흥공단 - 지원사업 - 소상공인자금" 에서 융자 절차 등 자세한 내용 확인해 주시면 됩니다.) 
-<br />
-<br /><신용보증서는 본인 및 배우자 신용상태, 자기자금, 영업기간 및 실적 등에 따라 발급이 불가 할수 있습니다.>
-								</p>
-						</div>
-					</li>
-				
-					<li><!-- 디폴트 활성화 필요시 class="open" -->
-						<div class="q">
-							<span class="i"><span class="alt_text">질문</span>Q</span>
-							<a href="#faq_1">수강신청 확인은 어떻게 하나요?</a>
-						</div>
-						
-						<div class="a" id="faq_1">
-							<span class="i"><span class="alt_text">대답</span>A</span>
-								<p>
-									수강신청을 하신 후 나의강의실 &gt; 학습현황 &gt; 학습중인 과정 에서 신청내용을 확인하시고 학습을 진행하면 됩니다.
-								</p>
-						</div>
-					</li>
-				
-					<li><!-- 디폴트 활성화 필요시 class="open" -->
-						<div class="q">
-							<span class="i"><span class="alt_text">질문</span>Q</span>
-							<a href="#faq_1">기관회원인데 로그인 및 수강신청이 안됩니다.</a>
-						</div>
-						
-						<div class="a" id="faq_1">
-							<span class="i"><span class="alt_text">대답</span>A</span>
-								<p>
-									기관회원은 학습 및 수료증 발부가 불가 하므로, 개인회원으로 가입 후 이용을 해주시기 바랍니다.
-								</p>
-						</div>
-					</li>
-				
-					<li><!-- 디폴트 활성화 필요시 class="open" -->
-						<div class="q">
-							<span class="i"><span class="alt_text">질문</span>Q</span>
-							<a href="#faq_1">수료증 출력시 테두리 이미지가 출력이 안됩니다.</a>
-						</div>
-						
-						<div class="a" id="faq_1">
-							<span class="i"><span class="alt_text">대답</span>A</span>
-								<p>
-									1 .IE8 버전 : 도구 - 인터넷옵션 - 고급 - 인쇄 - 배경 및 이미지 인쇄 체크 
-<br />2. IE10 버전 : 파일 - 페이지설정 - 배경색 및 이미지 인쇄 체크
-<br />위와 같은 설정 후 F5번 눌러주신 후 프린트 해주시면 됩니다.
-								</p>
-						</div>
-					</li>
-				
-					<li><!-- 디폴트 활성화 필요시 class="open" -->
-						<div class="q">
-							<span class="i"><span class="alt_text">질문</span>Q</span>
-							<a href="#faq_1">(현장교육) 교육취소를 하려고 하는데 취소버튼이 보이지 않습니다.</a>
-						</div>
-						
-						<div class="a" id="faq_1">
-							<span class="i"><span class="alt_text">대답</span>A</span>
-								<p>
-									선정이 되시면 직접 취소를 하실 수 없습니다.
-<br />신청하신 교육기관으로 전화하셔서 신청하신 교육의 취소의사를 말씀드리고 취소요청해 주시기 바랍니다.
-								</p>
-						</div>
-					</li>
-				
-				
-		
-	
-<script type="text/javascript">
 
-	//내용 펼치기
-	$(function() {
-		$(".faq_list .q").on("click",function(){
-			$(".faq_list li").not($(this).parents("li")).removeClass("open");
-			$(this).parents("li").toggleClass("open");
-			return false;
-		});
-	});
-	
-</script>
-	
-	
-	
-	
-	
+
+<div class="container">
 	<h4 class="fw-bold  mt-4 mb-3">고객 문의 게시판</h4>
 		<table class="table table-bordered table-striped table-hover">
 			<thead class="table-dark text-center">
@@ -321,11 +201,8 @@ color:#23dbc9;
 			    <c:if test="${ sessionScope.isAdmin }">
 					<th scope="col" class="col-1 text-center">삭제</th>
 				</c:if>			
-				
 			</thead>
 		    <tbody>
-
-	  
 				<c:forEach var="cs" items="${ csList }">
 					<tr>
 					    <td scope="row" align="center">${cs.seq }</td>
@@ -333,17 +210,17 @@ color:#23dbc9;
 						<td scope="row" align="center">${cs.writer }</td>
 						<td scope="row" align="right">${cs.cnt }</td>
 						<td><fmt:formatDate value="${cs.regDate }" pattern="yyyy-MM-dd"/></td>
-					<c:if test="${ sessionScope.isAdmin }">
+					    <c:if test="${ sessionScope.isAdmin }">
 						<td align="center">
 							<a href="deleteCs.do?noti_seq=${ cs.seq }" class="btn btn-danger" onclick="deleteCs()"><i class="fas fa-trash"></i></a>
 						</td>
-					</c:if>
+					    </c:if>
 					</tr>
 				</c:forEach>			
 			</tbody>
 		</table>	
 		
-		<!-- ==================== 검색 ====================== -->
+		<!--===================== 검색 =======================-->
 		<div class="row">
 		<div class="col text-start">
        <form action="getCsList.do" method="post" id="csForm">
@@ -381,15 +258,8 @@ color:#23dbc9;
 		<div class="col text-end">
 		<input type="submit" class="btn btn-dark mx-4 "  value="1:1 문의하기" onClick="location.href='cs/insertCs.jsp'"/>
 		</div>
-		</div>
-		
-			
-	</div>
-	
-	
-	
-	
-	
+		</div>		
+</div>
 
 	<!------- 여기서부터는 페이징 처리 ------->
 	<div class="container mt-3">
@@ -414,5 +284,143 @@ color:#23dbc9;
 			</ul>	    	
 		</div>
 	</div> 		
+
+
+<!--------------------- 자주 묻는 질문---------------------->   
+<div class="container"  >
+  <h4 class="fw-bold  mt-4 mb-3">자주 묻는 질문</h4>
+  
+  <div class="accordion">
+    
+    <div class="accordion-item">
+      <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title"> &nbsp; 중고거래 운영정책</span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p style="line-height : 1.5;">
+&nbsp;&nbsp;  • 가까운 이웃과의 만남이 따뜻함이 될 수 있도록 거래매너를 지켜요.</br>
+&nbsp;&nbsp;  • 서로 존중하고 배려해요. 존댓말로 솔직하게 대화해요.</br>
+&nbsp;&nbsp;  • 모두의 시간은 소중해요. 약속은 반드시 지켜요.</br>
+&nbsp;&nbsp;  • 절대로 중간에 연락 끊기는 일이 없도록 해요.</br>
+&nbsp;&nbsp;  • 언제나 따뜻한 인사로 시작하고 마무리해요.</br>
+&nbsp;&nbsp;  • 늦은 시간, 특히 모두가 자고 있는 새벽 시간에는 채팅을 자제해주세요.</br>
+&nbsp;&nbsp;  • 택배 거래보다는 만나서 직거래하기로 해요.</br>
+&nbsp;&nbsp;  • 이웃과의 거래는 만 14세 이상부터 하기로 해요.</br>
+</p>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title"> &nbsp; 판매 금지 물품</span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+       <p style="line-height : 1.5;">
+&nbsp;&nbsp;   • 가품∙이미테이션 (상표권, 저작권 침해 물품, 특정 브랜드의 스타일을 모방한 물품)</br>
+&nbsp;&nbsp;    • 주류(무알콜 주류 포함), 담배, 전자담배, 모의총포 및 그 부속품 일체 (ex. 라이터, 비비탄 총/총알 등 청소년 유해물건)</br>
+&nbsp;&nbsp;    • 경유, LPG, 휘발유 등의 유류 거래</br>
+&nbsp;&nbsp;    • 반려동물, 생명이 있는 동물·곤충 (무료분양, 열대어 포함)</br>
+&nbsp;&nbsp;    • 한약∙의약품 ∙ 의료기기∙마약류 (청소년 유해약물∙유해화학물질)</br>
+&nbsp;&nbsp;   • 반영구 화장 등 면허나 자격 없는 자의 불법 유사 의료 행위 홍보/모집글</br>
+&nbsp;&nbsp;    • 수제 음식물∙건강기능식품 : 직접 만들거나 가공한 음식, 건강기능식품(지자체 및 영업 신고를 한 사람만 판매할 수 있음)</br>
+&nbsp;&nbsp;   • 유통기한이 지난 제품, 포장이 훼손되거나 개봉된 식품</br>
+&nbsp;&nbsp;    • 도수 있는 안경∙선글라스 (온라인 판매 불법)</br>
+&nbsp;&nbsp;   • 콘택트 렌즈, 써클 렌즈 (온라인 판매 불법)</br>
+&nbsp;&nbsp;   • 화장품 샘플 (온라인 판매 불법)</br>
+&nbsp;&nbsp;    • 화장품제조업 및 화장품책임판매업의 등록 없이 직접 제조한 화장품</br>
+&nbsp;&nbsp;  	   • 완제품이 아닌 직접 소분한 화장품</br>
+&nbsp;&nbsp;     • 화장품법에 따른 라벨 및 기재사항이 없는 화장품</br>
+&nbsp;&nbsp;  	   • 음란물 (청소년 유해 매체물)</br>
+&nbsp;&nbsp;  	   • 촬영 여부를 상대방이 알기 어려운 카메라 혹은 그밖에 유사한 기능을 갖춘 기계장치(불법 카메라 등)</br>
+&nbsp;&nbsp;  	   • 성생활용품</br>
+&nbsp;&nbsp;  	   • 개인정보 (게임 계정, 추천인 계정 포함)</br>
+&nbsp;&nbsp;  	   • 조건부 무료나눔</br>
+&nbsp;&nbsp;  	   • 렌탈 제품</br>
+&nbsp;&nbsp;  	   • 헌혈증 (무료나눔만 가능)</br>
+&nbsp;&nbsp;  	   • 초대권 (무료로 받은 초대권을 유료로 판매하는 경우 / 무료나눔만 가능)</br>
+&nbsp;&nbsp;  	   • 군용품∙군마트용품∙경찰용품∙도검∙화약류∙분사기∙전자충격기∙석궁∙활 (안전확인∙안전인증표시 없는 전기용품 및 단전지 또는 공산품)</br>
+&nbsp;&nbsp;  	   • USD 1000달러 이상의 외환 거래나 매매차익을 목적으로 하는 반복적인 외환 거래 (매매차익을 목적으로 하지 않는 1000달러 미만의 외환 거래는 허용) </br>
+&nbsp;&nbsp;  	   • 나라미, 정부 지원 생필품, 지역상품권, 문화누리카드 등 법률에 의해 재판매 할 수 없는 물품</br>
+&nbsp;&nbsp;  	   • 종량제봉투</br>
+&nbsp;&nbsp;  	   • 통신사 데이터, 인터넷 상품</br>
+&nbsp;&nbsp;  	   • 반입한 날로부터 1년 이상 경과하지 않은 전파인증이 면제된 해외직구 전자제품을 판매하는 행위</br>
+&nbsp;&nbsp;  	   • 낚시로 포획한 수산물 거래 행위</br>
+&nbsp;&nbsp;  	   • 암표매매 행위</br>
+&nbsp;&nbsp;  	   • 종자 (삽수,어린묘목 등)</br>
+&nbsp;&nbsp;  	   • 국가기관 인증을 받지 않고 친환경, 무농약, 유기농, 오가닉, 무공해 라는 표현을 사용하여 판매하는 행위</br>
+&nbsp; &nbsp; 	   • 100만 원 이상 금 제품 (골드바, 금괴, 금으로 제작된 목걸이, 팔찌, 귀걸이 등)</br>
+&nbsp;&nbsp;  	   • 리콜로 인한 회수/폐기 물품</br>
+&nbsp;&nbsp;  	   • 이외 법률을 위반하는 모든 물품</br>
+&nbsp;&nbsp;  	   • 당근마켓 광고주센터에 등록되지 않은 모든 홍보/광고
+	   </p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">&nbsp; FAQ를 확인해도 찾는 내용이 없나요?</span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p style="line-height : 1.5;">
+&nbsp; &nbsp; [마이페이지] - [고객문의] - [자주 묻는 질문] 을 클릭하여 관련 질문을 확인해도 찾으시는 내용이 없으신가요?
+        
+      </br>
+        
+&nbsp; &nbsp;         FAQ에서 확인할 수 없거나 다른 개선 제안을 남겨주고 싶으시다면</br>
+
+&nbsp; &nbsp; 		1:1 문의하기를 선택하여 제안을 남겨주세요.
+        </p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">&nbsp; 게시 금지 품목</span><span class="icon" aria-hidden="true"></span></button>
+      <div class="accordion-content">
+        <p style="line-height : 1.5;">
+&nbsp;&nbsp;   • 가품∙이미테이션 (상표권, 저작권 침해 물품, 특정 브랜드의 스타일을 모방한 물품)</br>
+&nbsp;&nbsp;    • 주류(무알콜 주류 포함), 담배, 전자담배, 모의총포 및 그 부속품 일체 (ex. 라이터, 비비탄 총/총알 등 청소년 유해물건)</br>
+&nbsp;&nbsp;    • 경유, LPG, 휘발유 등의 유류 거래</br>
+&nbsp;&nbsp;    • 반려동물, 생명이 있는 동물·곤충 (무료분양, 열대어 포함)</br>
+&nbsp;&nbsp;    • 한약∙의약품 ∙ 의료기기∙마약류 (청소년 유해약물∙유해화학물질)</br>
+&nbsp;&nbsp;   • 반영구 화장 등 면허나 자격 없는 자의 불법 유사 의료 행위 홍보/모집글</br>
+&nbsp;&nbsp;    • 수제 음식물∙건강기능식품 : 직접 만들거나 가공한 음식, 건강기능식품(지자체 및 영업 신고를 한 사람만 판매할 수 있음)</br>
+&nbsp;&nbsp;   • 유통기한이 지난 제품, 포장이 훼손되거나 개봉된 식품</br>
+&nbsp;&nbsp;    • 도수 있는 안경∙선글라스 (온라인 판매 불법)</br>
+&nbsp;&nbsp;   • 콘택트 렌즈, 써클 렌즈 (온라인 판매 불법)</br>
+&nbsp;&nbsp;   • 화장품 샘플 (온라인 판매 불법)</br>
+&nbsp;&nbsp;    • 화장품제조업 및 화장품책임판매업의 등록 없이 직접 제조한 화장품</br>
+&nbsp;&nbsp;  	   • 완제품이 아닌 직접 소분한 화장품</br>
+&nbsp;&nbsp;     • 화장품법에 따른 라벨 및 기재사항이 없는 화장품</br>
+&nbsp;&nbsp;  	   • 음란물 (청소년 유해 매체물)</br>
+&nbsp;&nbsp;  	   • 촬영 여부를 상대방이 알기 어려운 카메라 혹은 그밖에 유사한 기능을 갖춘 기계장치(불법 카메라 등)</br>
+&nbsp;&nbsp;  	   • 성생활용품</br>
+&nbsp;&nbsp;  	   • 개인정보 (게임 계정, 추천인 계정 포함)</br>
+&nbsp;&nbsp;  	   • 조건부 무료나눔</br>
+&nbsp;&nbsp;  	   • 렌탈 제품</br>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+const items = document.querySelectorAll(".accordion button");
+
+function toggleAccordion() {
+  const itemToggle = this.getAttribute('aria-expanded');
+  
+  for (i = 0; i < items.length; i++) {
+    items[i].setAttribute('aria-expanded', 'false');
+  }
+  
+  if (itemToggle == 'false') {
+    this.setAttribute('aria-expanded', 'true');
+  }
+}
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
+
+
+
+</script>
+
+
+
+
 </body>
 </html>

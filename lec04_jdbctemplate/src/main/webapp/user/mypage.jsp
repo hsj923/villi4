@@ -129,7 +129,7 @@ color:#23dbc9
          <a href="location.jsp" class="list-group-item">동네설정</a>
            <a href="../getChatList.do" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>
-          <a href="# class="list-group-item">내가 쓴 글 목록</a>
+          <a href="#" class="list-group-item">내가 쓴 글 목록</a>
        </ul>
        <hr />
        </div>

@@ -84,21 +84,37 @@ color:#23dbc9;
 		</div>
 	</header>
 
-	<div class="container col-5 mt-4"  align="center">
+<!-- ======================= 본문 ========================= -->
+	<div class="container col-5 mt-4 mb-6"  align="center">
 	 	<h3 class="fw-bold">내 동네 설정</h3>
 	</div>
 	 	<hr>
 
-<div class="map_wrap container">
-    <div id="map"  style="width:100%;height:100%;position:relative;overflow:hidden;boarder-radius:5px;"></div>
+<div class="map_wrap container w-60 mt-3  mb-4">
+    <div id="map"  style="width:100%;height:300px;position:relative;overflow:hidden;boarder-radius:5px;"></div>
     <div class="hAddr">
         <span class="title">  ${ sessionScope.user.getName() }님의 현재위치</span>
         <span id="centerAddr"></span>
     </div>
-    <div class="btn_box">
-    <button  class="btn text-white loc_btn" type="submit">현재위치로 동네 설정하기</button>
-    </div>
+ 
 </div>
+
+
+<div class="mt-5 w-50 container" >
+<form action="updateUser.do" method="post">
+
+<div class="mt-5" align="center" >
+			<label for="inputAddress" class="mt-5">* 동네 수정하기</label>
+		<input type="text" id="location" onkeyup='printName()' name="inputValue" class="form-control">
+	
+        <button  class="btn text-white loc_btn mt-4"   type="submit">현재위치로 동네 설정하기</button>
+	</div>
+			
+			
+
+
+
+
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c9cd8fc62340f0b717e303a629a8b0c3&libraries=services"></script>
 <script>
@@ -203,7 +219,14 @@ function displayCenterInfo(result, status) {
     }    
 }
 
+function printName()  {
+	  document.getElementById("location").innerText = data.address_name;
+	}
 </script>
+
+</form>
+</div>
+
 </body>
 </html>
  

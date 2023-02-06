@@ -77,19 +77,18 @@ nav {
 		<header class="border-bottom border-white">
 			<div class="container">
 				<div class="row align-items-start p-3">
-					<div class="col mt-3">
-						<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
-					</div>
-					<div class="col" align="center">
+				
+					<div class="col mb-3">
 						<a href="getBoardList.do"><img src="resources/images/test.png"
 							alt="logo" width=70px height=70px></a>
 					</div>
-
+					
 					<div class="col mt-3 text-end r_menu">
+						
 						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
+						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-
 					</div>
 				</div>
 			</div>
@@ -112,13 +111,13 @@ nav {
 				<div
 					class="carousel-item active embed-responsive embed-responsive-4by3"
 					id="banner">
-					<img src="resources/images/banner1.JPG"
+					<img src="resources/images/banner4.png"
 						class="d-block w-100 card-img-top embed-responsive-item"
 						alt="banner1">
 				</div>
 				<div class="carousel-item embed-responsive embed-responsive-4by3"
 					id="banner">
-					<img src="resources/images/banner2.JPG"
+					<img src="resources/images/banner3.png"
 						class="d-block w-100 card-img-top embed-responsive-item"
 						alt="banner2">
 				</div>

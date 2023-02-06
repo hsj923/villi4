@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lec.jdbc.common.SearchVO;
+import com.lec.jdbc.dao.EmailDAO;
 import com.lec.jdbc.dao.PWDAO;
 import com.lec.jdbc.dao.UserDAO;
 import com.lec.jdbc.service.UserService;
@@ -67,6 +68,17 @@ public class UserServiceImpl implements UserService {
 				;
 	}
 
+	
+	// ---------------- 이메일 중복 체크 ------------------
+	
+	@Autowired
+	private EmailDAO emailDAO;
+	
+	
+	public int emailCheck(String email) {
+	      return emailDAO.emailCheck(email);
+	   }
+	
 	
 	
 }

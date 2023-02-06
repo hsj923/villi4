@@ -39,6 +39,8 @@ body {
 nav {
 	background-color: #FFFAFA;
 }
+
+
 </style>
 
 </head>
@@ -47,7 +49,7 @@ nav {
 <body>
 	<!-- ============search=============== -->
 	<nav class="border-bottom border-dark sticky-top z-index-10">
-		<div class="container" align="center">
+		<div class="container-fluid" align="center">
 			<div class="row p-3">
 				<div class="col">
 
@@ -64,9 +66,16 @@ nav {
 							<!--================ nav bar ===================-->
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="meeting/insertMeeting.jsp">글작성</a></li>
-
+									<li class="nav-item">
+									<!-- ================글작성버튼, 로그인============= --> <c:if
+											test="${ sessionScope.user.getNickname() == null }">
+											<a class="nav-link active" aria-current="page"
+												href="index.jsp">로그인</a>
+										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
+																				<a class="nav-link active"
+										aria-current="page" href="meeting/insertMeeting.jsp">글작성</a>
+										</c:if>
+									</li>
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
@@ -121,7 +130,7 @@ nav {
 
 
 	<!-- form -->
-	<div class="container-sm mt-3" align="center">
+	<div class="container w-50 mt-3" align="center">
 		<form action="updateMeeting.do" method="post">
 			<div class="card">
 				<div class="card-body">
@@ -196,9 +205,6 @@ nav {
 				class="btn btn-dark my-5 mx-4">게시글목록</a>
 		</div>
 	</div>
-
-
-
 
 
 

@@ -54,29 +54,25 @@ body {
 					</div>
 
 					<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a	href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark"></a> </span> 
+						<span class=mx-1><a	href="user/mypage.jsp" style="text-decoration:none" class="text-dark"></a></span>
+						
 					</div>
 				</div>
 			</div>
 		</header>
 
 <body>
-
-	<div class="container mt-5">
-		<form action="joinus.jsp" method="post">
-			<div class="container" align="center">
-				<div class="modal-content">
+<form action="joinus.jsp" method="post">
 
 
-					<div class="modal-header bg-info text-white">
-						<h1 class="motal-title fs-5" id="staticBackdropLabel">이용약관</h1>
-					</div>
-					<!-- modal-header -->
+	<div class="container col-5 mt-4">
+		<h3 class="fw-bold">이용약관</h3>
+			<hr/>
+			<br/>
 
+					
 
-					<div class="modal-body">
 						<div class="input-group mb-3">
 							<div class="text" align="left">
 								<strong>가. 개인정보의 수집 및 이용 목적</strong><br> 국가공간정보포털은 다음의 목적을
@@ -105,33 +101,31 @@ body {
 							</div>
 
 
-								<div class="container mt-4">
+									<div class="container  mt-5" align="center">
 								<div class="row justify-content-md-center">
 									<div class="col col-lg-2"></div>
 									<div class="row justify-content-md-center" id="ok">
 
-									<p>
-										<input type="checkbox" required> 이용약관에 동의합니다.
-									</p>
-									<p>
-										<input type="submit" value="확인"
-											class="btn btn-info text-white">
+
+
+									<p><input type="checkbox" required> 이용약관에 동의합니다.</p>
+									
+								
+									<p><button class="btn btn-dark text-white"  onClick="history.back()"> 이전 </button>
+										<input type="submit" value="확인" class="btn btn-dark text-white">
 									<p>
 								</div>
-									<div class="col col-lg-2"></div>
+							
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+			
 		</form>
-	</div>
+
 
 </body>
 </html>
-
-
 
 
 
