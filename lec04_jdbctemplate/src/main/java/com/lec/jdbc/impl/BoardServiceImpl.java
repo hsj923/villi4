@@ -52,10 +52,10 @@ public class BoardServiceImpl implements BoardService {
 	public int updateBoard(BoardVO board) {
 		return boardDAO.updateBoard(board);
 	}
-	
+
 	@Override
-	public void updateCount(BoardVO board) {
-		boardDAO.updateCount(board);
+	public void updateBoardCount(BoardVO board) {
+		boardDAO.updateBoardCount(board);
 	}
 	
 }

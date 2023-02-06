@@ -54,6 +54,13 @@ header {
 pre { white-space: pre-wrap; 
 	  font-family: 'Pretendard-Regular';}
 
+/*body*/
+
+span.fs-5 fw-bold {
+    font-size: 1.25rem!important;
+    color: #4881f7;
+}
+
 </style>
 	
 	
@@ -89,7 +96,6 @@ pre { white-space: pre-wrap;
 		}
 	</script> -->
 	
-
 		<div class="container-sm mt-5" align="center">
 			<form action="updateCsBoard.do" method="post">
 			  	<div class="card">
@@ -107,12 +113,12 @@ pre { white-space: pre-wrap;
 		</div>
 		
 		<!-- 댓글 시작 -->
-		      <div class="container-sm mt-5" align="center">
+		<div class="container-sm mt-5" align="center">
          <c:forEach items="${csreplyList}" var="csreplyList">
             <div class="card">
                <ul class="list-group list-group-flush">
                      <li class="list-group-item text-start">
-                        <span class="fs-5 fw-bold">${csreplyList.writer}</span>
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${csreplyList.writer}</span>
                           <hr>
                           <pre class="fs-6">${csreplyList.content}</pre>
                           <hr>

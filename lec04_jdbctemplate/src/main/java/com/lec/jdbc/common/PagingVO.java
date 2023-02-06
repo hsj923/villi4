@@ -4,23 +4,23 @@ import java.io.Serializable;
 
 public class PagingVO implements Serializable {
 	
-	//입력받는 데이터
-	private int curPage = 1;           // 현재 페이지 번호
-	private int rowSizePerPage = 10;   // 한 페이지당 레코드 수      기본10
-	private int pageSize = 10;         // 페이지 리스트에서 보여줄 페이지 갯수  이거는 보통 10 or 5 안 변함 
-	private int totalRowCount;        // 총 레코드 건수
+	//�엯�젰諛쏅뒗 �뜲�씠�꽣
+	private int curPage = 1;           // �쁽�옱 �럹�씠吏� 踰덊샇
+	private int rowSizePerPage = 10;   // �븳 �럹�씠吏��떦 �젅肄붾뱶 �닔      湲곕낯10
+	private int pageSize = 10;         // �럹�씠吏� 由ъ뒪�듃�뿉�꽌 蹂댁뿬以� �럹�씠吏� 媛��닔  �씠嫄곕뒗 蹂댄넻 10 or 5 �븞 蹂��븿 
+	private int totalRowCount;        // 珥� �젅肄붾뱶 嫄댁닔
 	         
-	//입력받는 데이터를 통해 계산되는 값
-	private int firstRow ;           // 시작 레크드 번호   
-	private int lastRow;             // 마지막 레크드 번호 
-	private int totalPageCount;      // 총 페이지 건수
-	private int firstPage; 	         // 페이지 리스트에서 시작  페이지 번호 
-	private int lastPage;            // 페이지 리스트에서 마지막 페이지 번호 
+	//�엯�젰諛쏅뒗 �뜲�씠�꽣瑜� �넻�빐 怨꾩궛�릺�뒗 媛�
+	private int firstRow ;           // �떆�옉 �젅�겕�뱶 踰덊샇   
+	private int lastRow;             // 留덉�留� �젅�겕�뱶 踰덊샇 
+	private int totalPageCount;      // 珥� �럹�씠吏� 嫄댁닔
+	private int firstPage; 	         // �럹�씠吏� 由ъ뒪�듃�뿉�꽌 �떆�옉  �럹�씠吏� 踰덊샇 
+	private int lastPage;            // �럹�씠吏� 由ъ뒪�듃�뿉�꽌 留덉�留� �럹�씠吏� 踰덊샇 
 	
-	//page계산
+	//page怨꾩궛
 	public void pageSetting() {
 
-		totalPageCount=(totalRowCount-1)/rowSizePerPage+1;  
+		totalPageCount=(totalRowCount-1)/rowSizePerPage+0;  
 		firstRow=(curPage-1)*rowSizePerPage;  
 		lastRow=firstRow + rowSizePerPage;    
 //		firstRow=(curPage-1)*rowSizePerPage+1;  

@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Spring Framework</title>
+<title>Villi</title>
+<link rel="icon" href="resources/images/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -32,42 +33,41 @@
 	font-weight: 400;
 	font-style: normal;
 }
-
 body {
 	font-family: 'Pretendard-Regular';
 }
-
 header {
-	background-color: #FFFAFA;
+	background-color: #FFF;
+	height: 90px;
 }
+
+
 
 nav {
-	background-color: #FFFAFA;
+	background-color: #FFF;
 }
-
 #banner2 {
 	background-color: #ebecf0;
 }
-
 #banner img {
 	width: 100%;
 	height: 650px;
 	object-fit: cover;
 }
-
-.r_menu a {
-	text-decoration: none;
-	color: black;
-	.
-	card
-	{
-	margin-bottom
-	:
-	1rem;
-}
-
 .card-mtext {width =10px;height =10px;
 	
+}
+.r_menu a:hover {
+	color: #23dbc9
+}
+.pagination li a {
+	border-radius: 0 !important;
+	color: #333 !important;
+}
+.pagination li.active a {
+	color: #fff !important;
+	background: #444 !important;
+	border-color: #444 !important;
 }
 </style>
 </head>
@@ -86,9 +86,18 @@ nav {
 					</div>
 
 					<div class="col mt-3 text-end r_menu">
-					  <span class= mx-2><a href="#">좋아요</a> </span>
-					  <span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
-					  <span class="mx-2">${ sessionScope.user.getName() }님</span>	
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+						<!-- 관리자로 로그인 할 경우 -->
+		                  <c:if test="${ sessionScope.isAdmin }">
+		                  <span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span> 
+						  </c:if>
+				  
+				  <!-- 관리자로 로그인 하지 않았을 경우 -->
+						  <c:if test="${ sessionScope.isAdmin != null && !sessionScope.isAdmin }">
+		                  <span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
+		                  </c:if>
+						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+
 					</div>
 				</div>
 			</div>
@@ -152,11 +161,15 @@ nav {
 									aria-label="Toggle navigation">
 									<span class="navbar-toggler-icon"></span>
 								</button>
+								
+								
 								<!--================ nav bar ===================-->
 								<div class="collapse navbar-collapse"
 									id="navbarSupportedContent">
+									
 									<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 										<li class="nav-item">
+											
 											<!-- ================글작성버튼============= -->
 											<div class="dropdown">
 												<button class="btn dropdown-toggle" type="button"
@@ -170,6 +183,9 @@ nav {
 														href="board/insertServiceBoard.jsp">서비스</a></li>
 												</ul>
 											</div>
+											
+											
+											
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getQuestionList.do">우리동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -179,8 +195,13 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 											href="getVoteList.do">동네투표</a></li>
 										<li class="nav-item"><a class="nav-link"
-											href="getWantBoardList.do">빌리요청</a></li>
+											href="getDemandList.do">빌리요청</a></li>
+											<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 									</ul>
+									
+									
+									<!-- ==================== 검색 ==================== -->
 									<form action="getBoardList.do" method="post" id="boardForm">
 										<input type="hidden" id="curPage" name="curPage"
 											value="${searchVO.getCurPage()}"> <input
@@ -206,7 +227,7 @@ nav {
 														placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
 												</div>
 												<div class="col col-lg-2">
-													<button class="btn btn-outline-success" type="submit">Search</button>
+													<button class="btn text-white "  style="background-color: #72CCD2;" type="submit">Search</button>
 												</div>
 											</div>
 										</div>
@@ -225,12 +246,15 @@ nav {
 
 		<div class="container grid-container">
 			<div class="row">
+			
 				<c:forEach items="${boardList}" var="board">
 					<div class="col-12 col-md-6 col-lg-3 mt-5">
 						<div class="card">
+						
 							<a href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
 								style="text-decoration: none"><img class="card-img-top"
 								src="resources/images/${ board.fileName1 }" alt="image"></a>
+								
 							<div class="card-body">
 								<h6 class="card-title fw-bold">${board.title}</h6>
 								<p class="card-text">
@@ -238,13 +262,13 @@ nav {
 
 									<c:choose>
 										<c:when test="${board.status eq '대기중'}">
-											<span class="card-text bg-success text-white fs-6">${board.status}</span>
+											<span class="badge bg-success text-white rounded-pill ">${board.status}</span>
 										</c:when>
 										<c:when test="${board.status eq '예약중'}">
-											<span class="card-text bg-warning text-white fs-6">${board.status}</span>
+											<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
 											</c:when>
 										<c:when test="${board.status eq '대여중'}">
-											<span class="card-text bg-danger text-white fs-6">${board.status}</span>
+											<span class="badge bg-danger text-white rounded-pill ">${board.status}</span>
 											</c:when>
 									</c:choose>					
 									<c:if test="${ !empty  board.price}">
@@ -280,12 +304,14 @@ nav {
 						</div>
 					</div>
 				</c:forEach>
+				
+				
 			</div>
 		</div>
 		<!-- 게시판 -->
 
-		<div class="row align-items-start mt-3">
-			<ul class="col pagination justify-content-center">
+		<div class="row align-items-start mt-3 " >
+			<ul class="pagination justify-content-center ">
 
 				<c:set var="cp" value="${searchVO.getCurPage()}" />
 				<c:set var="rp" value="${searchVO.getRowSizePerPage()}" />
@@ -300,7 +326,7 @@ nav {
 				<c:if test="${ fp != 1 }">
 					<li class="page-item"><a
 						href="getBoardList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
-						class="page-link"><i class="fas fa-fast-backward"></i></a></li>
+						class="page-link" ><i class="fas fa-fast-backward"></i></a></li>
 					<li class="page-item"><a
 						href="getBoardList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 						class="page-link"><i class="fas fa-backward"></i></a></li>
@@ -351,22 +377,7 @@ nav {
 				$('#boardForm').submit();
 			}); //#rowPerPage
 
-			// 초기화 버튼 클릭
-			$('#btnReset').click(
-					function() {
-						$('#curPage').val(1);
-						$('#boardForm').find(
-								"select[name='searchCategory'] option:eq(0)")
-								.attr("selected", "selected");
-						$('#boardForm').find(
-								"select[name='searchType'] option:eq(0)").attr(
-								"selected", "selected");
-						$('#boardForm').find("input[name='searchWord']")
-								.val("");
-						$('#boardForm').submit();
-					}); // #id_btn_reset.cli			
 
-		})
 	</script>
 
 </body>

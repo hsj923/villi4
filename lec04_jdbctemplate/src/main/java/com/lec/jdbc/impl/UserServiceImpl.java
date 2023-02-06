@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lec.jdbc.common.SearchVO;
+import com.lec.jdbc.dao.PWDAO;
 import com.lec.jdbc.dao.UserDAO;
 import com.lec.jdbc.service.UserService;
 import com.lec.jdbc.vo.UserVO;
@@ -47,4 +48,25 @@ public class UserServiceImpl implements UserService {
 	public int updateUser(UserVO user) {
 		return userDAO.updateUser(user);
 	}
+	
+	
+	// ------------------------ 비밀번호 찾기 --------------------------
+	
+	@Autowired
+	private PWDAO pwDAO;
+
+	public UserVO getUser1(UserVO vo) {
+		return pwDAO.getUser1(vo);
+	}
+
+	
+	// 다른 유저 보기 
+	@Override
+	public UserVO getUserByNick(UserVO user) {
+		return userDAO.getUserByNick(user)
+				;
+	}
+
+	
+	
 }

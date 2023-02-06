@@ -34,6 +34,10 @@ public class UserDAO {
 	private String selectUserListById = ""; 
 	private String selectUserListByName = ""; 
 	
+	//**
+	
+	private String selectByNickname = "";
+	
 	@PostConstruct
 	public void getSqlPropeties() {
 		selectById           = environment.getProperty("selectById");
@@ -44,13 +48,35 @@ public class UserDAO {
 		selectUserList       = environment.getProperty("selectUserList");
 		selectUserListById   = environment.getProperty("selectUserListById");
 		selectUserListByName = environment.getProperty("selectUserListByName");
+		
+		
+		//**
+		
+		selectByNickname = environment.getProperty("selectByNickname");
 	}
 
 	public UserVO getUser(UserVO user) {
 		// System.out.println(jdbcTemplate.getDataSource().getConnection().toString());
-		Object[] args = { user.getId() };		
+		Object[] args = { user.getEmail() };		
 		return (UserVO) jdbcTemplate.queryForObject(selectById, args, new UserRowMapper());
 	}
+	
+	
+	
+	//** 
+	
+
+	public UserVO getUserByNick(UserVO user) {
+		// System.out.println(jdbcTemplate.getDataSource().getConnection().toString());
+		Object[] args = { user.getNickname() };		
+		return (UserVO) jdbcTemplate.queryForObject(selectByNickname, args, new UserRowMapper());
+	}
+	
+	
+	
+	
+	
+	
 	
 	public int getTotalRowCount(SearchVO searchVO) {
 		sql = userTotalRowCount;
@@ -71,19 +97,17 @@ public class UserDAO {
 	
 	public UserVO insertUser(UserVO user) {
 		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");	
-		jdbcTemplate.update(insertUser, user.getId(), user.getPassword(), user.getName(), user.getRole());
+		jdbcTemplate.update(insertUser, user.getEmail(), user.getPassword(), user.getName(), user.getRole());
 		return user;
 	}	
 	
 	public int deleteUser(UserVO user) {
-		return jdbcTemplate.update(deleteUser, user.getId());
+		return jdbcTemplate.update(deleteUser, user.getEmail());
 	}
 
 	public int updateUser(UserVO user) {
 		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");
-		return jdbcTemplate.update(updateUser, user.getName(), user.getPassword(), user.getRole(), user.getId());
+		return jdbcTemplate.update(updateUser, user.getName(), user.getPassword(), user.getRole(), user.getEmail(), user.getFileName());
 	}
 
 }
-
-

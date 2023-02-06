@@ -113,7 +113,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/updateBoard.do", method=RequestMethod.GET)
 	public String updateBoard(Model model, BoardVO board, SearchVO searchVO) {
-		boardService.updateCount(board);
+		boardService.updateBoardCount(board);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("board", boardService.getBoard(board));
 		return "board/updateBoard.jsp";

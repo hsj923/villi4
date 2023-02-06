@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>상품빌리 글쓰기</title>
+<title>Villi : 신고)글쓰기</title>
+<link rel="icon" href="../resources/images/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -137,7 +138,7 @@ nav {
 												<input class="form-control" name="searchWord" type="text" />
 											</div>
 											<div class="col col-lg-2">
-												<button class="btn btn-outline-success" type="submit">Search</button>
+												<button class="btn btn-outline-dark" type="submit">Search</button>
 											</div>
 										</div>
 									</div>
@@ -188,11 +189,11 @@ nav {
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="writer" id="writer"
-					placeholder="글 작성자....">
+					placeholder="글 작성자">
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="title" id="title"
-					placeholder="글 제목....">
+					placeholder="글 제목">
 			</div>
 			<div class="input-group mb-3 w-75">
 				<input type="text" class="form-control" name="price" id="price"
@@ -215,7 +216,7 @@ nav {
 			</div>
 			<div class="input-group mb-3 w-75">
 				<textarea class="form-control" name="content" id="content" rows="20"
-					placeholder="글 상세내용...."></textarea>
+					placeholder="게시글 내용을 작성해주세요"></textarea>
 			</div>
 			<!-- 파일첨부 -->
 			
@@ -231,9 +232,9 @@ nav {
 			</div>
 			<input type="hidden" name="fileName" value="" />
 			<div class="input-group input-group-lg mb-5 w-75">
-				<input type="button" class="form-control btn btn-outline-success" OnClick="checkform()"
+				<input type="button" class="form-control btn btn-dark" OnClick="checkform()"
 					aria-label="Sizing example input"
-					aria-describedby="inputGroup-sizing-lg" id="click"  value="작성">
+					aria-describedby="inputGroup-sizing-lg" id="click"  value="글작성">
 			</div>
 		</form>
 	</div>

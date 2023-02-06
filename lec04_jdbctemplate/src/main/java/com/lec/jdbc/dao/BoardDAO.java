@@ -25,27 +25,28 @@ public class BoardDAO {
 	Environment environment;
 	
 	private String sql = "";
-	private String selectBySeq = "";
+	private String selectByBoardSeq = "";
 	private String boardTotalRowCount = "";
 	private String insertBoard = "";
 	private String insertServiceBoard = "";
 	private String deleteBoard = "";
 	private String updateBoard = "";
-	private String updateCount = "";
+	private String updateBoardCount = "";
 	private String selectBoardList = "";
 	private String selectBoardListByTitle = ""; 
 	private String selectBoardListByWriter = ""; 
-	private String selectBoardListByCate2 = ""; 
+	private String selectBoardListByCate2 = "";
+
 	
 	@PostConstruct
 	public void getSqlPropeties() {
-		selectBySeq              = environment.getProperty("selectBySeq");
+		selectByBoardSeq              = environment.getProperty("selectByBoardSeq");
 		boardTotalRowCount       = environment.getProperty("boardTotalRowCount");
 		insertBoard              = environment.getProperty("insertBoard");
 		insertServiceBoard       = environment.getProperty("insertServiceBoard");
 		deleteBoard              = environment.getProperty("deleteBoard");
 		updateBoard              = environment.getProperty("updateBoard");
-		updateCount              = environment.getProperty("updateCount");
+		updateBoardCount              = environment.getProperty("updateBoardCount");
 		selectBoardList          = environment.getProperty("selectBoardList");
 		selectBoardListByTitle   = environment.getProperty("selectBoardListByTitle");
 		selectBoardListByWriter  = environment.getProperty("selectBoardListByWriter");
@@ -54,7 +55,7 @@ public class BoardDAO {
 
 	public BoardVO getBoard(BoardVO board) {
 		Object[] args = { board.getSeq() };		
-		return (BoardVO) jdbcTemplate.queryForObject(selectBySeq, args, new BoardRowMapper());
+		return (BoardVO) jdbcTemplate.queryForObject(selectByBoardSeq, args, new BoardRowMapper());
 	}
 	
 	public int getTotalRowCount(SearchVO searchVO) {
@@ -97,12 +98,12 @@ public class BoardDAO {
 	}
 	
 	public BoardVO insertBoard(BoardVO board) {
-		jdbcTemplate.update(insertBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3(), board.getFileName4(), board.getFileName5());
+		jdbcTemplate.update(insertBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getUsedate(), board.getDuedate(), board.getFileName1(), board.getFileName2(), board.getFileName3());
 		return board;
 	}	
 	
 	public BoardVO insertServiceBoard(BoardVO board) {
-		jdbcTemplate.update(insertServiceBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getFileName1(), board.getFileName2(), board.getFileName3(), board.getFileName4(), board.getFileName5());
+		jdbcTemplate.update(insertServiceBoard, board.getTitle(), board.getWriter(), board.getContent(), board.getCate2(), board.getPrice(), board.getUsedate(), board.getDuedate(), board.getFileName1(), board.getFileName2(), board.getFileName3());
 		return board;
 	}	
 	
@@ -116,9 +117,10 @@ public class BoardDAO {
 	public int updateBoard(BoardVO board) {
 		return jdbcTemplate.update(updateBoard, board.getTitle(), board.getContent(), board.getSeq());
 	}
+
 	
-	public void updateCount(BoardVO board) {
-		jdbcTemplate.update(updateCount,  board.getSeq());
+	public void updateBoardCount(BoardVO board) {
+		jdbcTemplate.update(updateBoardCount, board.getSeq());
 	}
 	
 	
