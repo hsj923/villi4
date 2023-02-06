@@ -33,6 +33,7 @@ public class UserDAO {
 	private String selectUserList = "";
 	private String selectUserListById = ""; 
 	private String selectUserListByName = ""; 
+	private String updateAddr = "";
 	
 	@PostConstruct
 	public void getSqlPropeties() {
@@ -44,6 +45,7 @@ public class UserDAO {
 		selectUserList       = environment.getProperty("selectUserList");
 		selectUserListById   = environment.getProperty("selectUserListById");
 		selectUserListByName = environment.getProperty("selectUserListByName");
+		updateAddr           = environment.getProperty("updateAddr");
 	}
 
 	public UserVO getUser(UserVO user) {
@@ -56,7 +58,7 @@ public class UserDAO {
 		sql = userTotalRowCount;
 		String sw = searchVO.getSearchWord()==null ? "" : searchVO.getSearchWord();
 		String st = searchVO.getSearchType();
-		sql = sw =="" ? sql : (st.equalsIgnoreCase("id") ? sql + " and id like '%" + sw +"%'" : sql + " and name like '%" + sw + "%'");
+		sql = sw =="" ? sql : (st.equalsIgnoreCase("email") ? sql + " and email like '%" + sw +"%'" : sql + " and name like '%" + sw + "%'");
 		return jdbcTemplate.queryForInt(sql);
 	}
 
@@ -71,7 +73,7 @@ public class UserDAO {
 	
 	public UserVO insertUser(UserVO user) {
 		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");	
-		jdbcTemplate.update(insertUser, user.getEmail(), user.getPassword(), user.getName(), user.getRole());
+		jdbcTemplate.update(insertUser,  user.getEmail(), user.getPassword(), user.getName(), user.getRole());
 		return user;
 	}	
 	
@@ -82,6 +84,10 @@ public class UserDAO {
 	public int updateUser(UserVO user) {
 		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");
 		return jdbcTemplate.update(updateUser, user.getName(), user.getPassword(), user.getRole(), user.getEmail(), user.getFileName());
+	}
+	
+	public int updateAddr(UserVO user) {
+		return jdbcTemplate.update(updateAddr, user.getAddress());
 	}
 
 }

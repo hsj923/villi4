@@ -13,4 +13,5 @@ public interface UserService {
 	UserVO insertUser(UserVO user);
 	int deleteUser(UserVO user);
 	int updateUser(UserVO user);
+	int updateAddr(UserVO user);
 }

@@ -90,14 +90,19 @@ color:#23dbc9;
 
 <div class="map_wrap container">
     <div id="map"  style="width:100%;height:100%;position:relative;overflow:hidden;boarder-radius:5px;"></div>
+   
+  <form action="updateAddr.do" method="post">
     <div class="hAddr">
         <span class="title">  ${ sessionScope.user.getName() }님의 현재위치</span>
-        <span id="centerAddr"></span>
+        <input type="text" name="address" value="" id="centerAddr"></input>
     </div>
-    	<div class="btn_box">
-    <button  class="btn text-white loc_btn" type="submit"onClick="location.href='location2.jsp'" >현재위치로 동네 설정하기</button>
-    
+   
+   
+   
+   	<div class="btn_box">
+    	<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="현재위치로 동네설정하기" onClick="location.href='mypage.jsp'"/>
     </div>
+    </form>
     
 </div>
 
@@ -212,12 +217,15 @@ function displayCenterInfo(result, status) {
         for(var i = 0; i < result.length; i++) {
             // 행정동의 region_type 값은 'H' 이므로
             if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
+                infoDiv.value = result[i].address_name;
                 break;
             }
     }    
         }
 }
+
+
+
 /* 
 		var address_name = result[i].address_name;
 	    

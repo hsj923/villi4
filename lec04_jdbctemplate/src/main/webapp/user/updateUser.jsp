@@ -128,7 +128,7 @@ border-radius:1.5em;
 		<form role="form" action="updateUser.do" method="post" onSubmit="return checkResult();" >
 			
 			
-			<input type="hidden" name="id" value="${user.getId()}">
+			<input type="hidden" name="email" value="${user.getEmail()}">
 			<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
 			<input type="hidden" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 			<input type="hidden" name="searchCategory" value="${searchVO.getSearchCategory()}">
@@ -161,7 +161,7 @@ border-radius:1.5em;
 			<label for="inputEmail">* 이메일 주소</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
-				<input type="text" name="id" class="form-control" value="${ user.getId() }" disabled>
+				<input type="text" name="email" class="form-control" value="${ user.getEmail() }" disabled>
 			</div>
 
 			<!-- 이름(닉네임) 변경  --> 

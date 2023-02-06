@@ -96,6 +96,25 @@ public class UserController {
 		return "getUserList.do";
 	}	
 
+	
+	
+	// 주소 변경
+	@RequestMapping(value="/updateAddr.do", method=RequestMethod.GET)
+	public String updateAddr(Model model, UserVO user, SearchVO searchVO) {
+		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("user", userService.getUser(user));
+		return "user/location.jsp";
+	}
+	
+	@RequestMapping(value="/updateAddr.do", method=RequestMethod.POST)
+	public String updateAddr(UserVO user) throws IOException {
+		userService.updateUser(user);
+		return "redirect:/getUserList.do";
+	}	
+
+	
+	
+	
 	@RequestMapping(value="/deleteUser.do", method=RequestMethod.GET)
 	public String deleteUser(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
 		user.setEmail(email);
