@@ -70,6 +70,19 @@ public class UserServiceImpl implements UserService {
 
 	
 	// ---------------- 이메일 중복 체크 ------------------
+<<<<<<< HEAD
+=======
+	
+	@Autowired
+	private EmailDAO emailDAO;
+	
+	
+	public int emailCheck(String email) {
+	      return emailDAO.emailCheck(email);
+	   }
+	
+	
+>>>>>>> refs/remotes/origin/master
 	
 	@Autowired
 	private EmailDAO emailDAO;

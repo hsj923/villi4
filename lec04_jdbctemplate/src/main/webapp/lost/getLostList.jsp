@@ -84,6 +84,13 @@ nav {
 												href="lost/insertLost.jsp">글작성</a>
 										</c:if>
 									</li>
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> refs/remotes/origin/master
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
@@ -137,12 +144,6 @@ nav {
 	<!-- =========상품보기=============== -->
 	<!-- ======================LIST========================= -->
 
-	<div class="container col-5 mt-4"  align="center">
-	 	<h3 class="fw-bold">분실센터</h3>
-	</div>
-	<hr/>
-
-	
 	<div class="container mt-3">
 		<div class="row mt-4">
 			<table class="table table-hover table-bordered">
@@ -206,34 +207,9 @@ nav {
 					</c:if>
 				</ul>
 				<!-- pagination -->
-
-				<div class="col-auto me-1">
-					<div class="input-group mb-3">
-						<span class="input-group-text"><i class="fas fa-list"></i></span>
-						<select class="col-auto form-select" id="rowPerPage"
-							name="rowPerPage">
-							<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
-							<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
-							<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
-							<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
-						</select>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
-
-	<script>
-		$(function() {
-			// 목록 갯수 변경
-			$('#rowPerPage').change(function(e) {
-				$('#curPage').val(1);
-				$('#rowSizePerPage').val($(this).val());
-				$('#lostForm').submit();
-			}); //#rowPerPage		
-
-		})
-	</script>
 
 </body>
 </html>
