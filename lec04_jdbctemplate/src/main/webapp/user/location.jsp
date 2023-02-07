@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Villi : 동네설정</title>
-<link rel="icon" href="../resources/images/favicon.png">
+	<title>Spring Framework</title>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
@@ -12,7 +11,9 @@
 		crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
-		<style>
+	
+	
+	<style>
 	.a{text-decoration: none;}
     .map_wrap {position:relative;width:60%;height:350px;top:100px;}
     .title {font-weight:bold;display:block;}
@@ -61,58 +62,49 @@ color:#23dbc9;
 </head>
 <body>
 
-	<!-- ===========header================ -->
+<!-- ===========header================ -->
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
-		
-				
-				<div class="col mb-3">
-					<a href="../getBoardList.do"><img src="../resources/images/test.png"
+				<div class="col mt-3">
+					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
+				</div>
+				<div class="col" align="center">
+					<a href="../board/getBoardList.jsp"><img src="../resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
-					<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="../location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					<span class= mx-2><a href="#">좋아요</a> </span>
+					<span class= mx-1><a href="mypage.jsp">마이페이지</a></span>
+		           <span class="mx-2">${ sessionScope.user.getName() }님</span>
+					
+					
+					
 				</div>
 			</div>
 		</div>
 	</header>
 
-<!-- ======================= 본문 ========================= -->
-	<div class="container col-5 mt-4 mb-6"  align="center">
-	 	<h3 class="fw-bold">내 동네 설정</h3>
-	</div>
-	 	<hr>
 
-<div class="map_wrap container w-60 mt-3  mb-4">
-    <div id="map"  style="width:100%;height:300px;position:relative;overflow:hidden;boarder-radius:5px;"></div>
+
+<div class="map_wrap container">
+    <div id="map"  style="width:100%;height:100%;position:relative;overflow:hidden;boarder-radius:5px;"></div>
+   
+  <form action="updateAddr.do" method="post">
     <div class="hAddr">
         <span class="title">  ${ sessionScope.user.getName() }님의 현재위치</span>
-        <span id="centerAddr"></span>
+        <input type="text" name="address" value="" id="centerAddr"></input>
     </div>
- 
+   
+   
+   
+   	<div class="btn_box">
+    	<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="현재위치로 동네설정하기" onClick="location.href='mypage.jsp'"/>
+    </div>
+    </form>
+    
 </div>
-
-
-<div class="mt-5 w-50 container" >
-<form action="updateUser.do" method="post">
-
-<div class="mt-5" align="center" >
-			<label for="inputAddress" class="mt-5">* 동네 수정하기</label>
-		<input type="text" id="location" onkeyup='printName()' name="inputValue" class="form-control">
-	
-        <button  class="btn text-white loc_btn mt-4"   type="submit">현재위치로 동네 설정하기</button>
-	</div>
-			
-			
-
-
-
-
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c9cd8fc62340f0b717e303a629a8b0c3&libraries=services"></script>
 <script>
@@ -151,6 +143,20 @@ color:#23dbc9;
 	        displayMarker(locPosition, message);
 	            
 	      });
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	    
 	} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 	    
@@ -206,25 +212,44 @@ function searchDetailAddrFromCoords(coords, callback) {
 function displayCenterInfo(result, status) {
     if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
-
+        
+		
         for(var i = 0; i < result.length; i++) {
             // 행정동의 region_type 값은 'H' 이므로
             if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
+                infoDiv.value = result[i].address_name;
                 break;
             }
-        }
     }    
+        }
 }
 
-function printName()  {
-	  document.getElementById("location").innerText = data.address_name;
-	}
+
+
+/* 
+		var address_name = result[i].address_name;
+	    
+	    $("#btn-save").click(function () {
+	        var input_report = document.getElementById("input_report").value;
+
+	        $.ajax({
+	          type: "POST",
+	          url: "user/location.jsp",
+	          data: { 'address_name' : address_name},
+	          dataType: "text",
+	          success: function (data) {
+	            console.log('성공');
+	 
+	          },
+	          error: function (request, status, error) {
+	            console.log('실패');
+	           
+	          }
+	        }); // ajax END
+	      }) // btn END
+ */
+
 </script>
-
-</form>
-</div>
-
 </body>
 </html>
  

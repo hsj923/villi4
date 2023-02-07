@@ -144,20 +144,35 @@ border-radius:1.5em;
 		  <div class="col-2 input-group mb-3 mt-2"> 
 		  
 		   <c:if test="${ !empty  user.fileName}">
-			<img src="resources/images/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+			<div class="select_img"><img src="/resources/images/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img"></div>
 		  </c:if>
 		  
 		  
 		  <c:if test="${ empty user.fileName}">
-			<img src="resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+		  <div class="select_img">
+			<img src="" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+		  </div>
 		  </c:if>
 		  
+		 
 		 
 		  </div>
 		  
 		  <input type="file" class="form-control mb-3" name="uploadFile"
 					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">
 		 
+			 
+		 <script>
+ 			 $("#uploadFile").change(function(){
+   			 if(this.files && this.files[0]) {
+    	     var reader = new FileReader;
+    		 reader.onload = function(data) {
+     		 $(".select_img img").attr("src", data.target.result).width(500);        
+    		 }
+    		 reader.readAsDataURL(this.files[0]);
+   			 }
+  			});
+ 	    </script>	 
 			 
 			 
 		  <!--  아이디 입력칸, 변경불가  : 아마도 이메일로 바뀜  -->
@@ -212,7 +227,7 @@ border-radius:1.5em;
 		  
 			<div class="container btn_box mt-5" align="center">
 				
-				<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기" onClick="location.href='user/mypage.jsp'"/>
+				<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기" />
 			<!-- 	<a href="logout.do" class="btn btn-dark mx-4 btn_radius">로그아웃</a> -->
 						
 			</div>	

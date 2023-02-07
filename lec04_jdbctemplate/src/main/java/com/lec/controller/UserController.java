@@ -59,9 +59,16 @@ public class UserController {
 	}
 	
 	@RequestMapping("*/insertUser.do")
-	public String insertUser(UserVO user) {		
+	public String insertUser(UserVO user)  throws IOException{		
+		MultipartFile uploadFile = user.getUploadFile();
+		
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			uploadFile.transferTo(new File(uploadFolder + fileName));
+			user.setFileName(fileName);
+		}
 		userService.insertUser(user);
-		return "redirect:/getUserList.do";
+		return "redirect:/login.do";
 	}	
 
 //	@RequestMapping("*/insertUser.do")
@@ -87,14 +94,16 @@ public class UserController {
 	
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
 	public String updateUser(UserVO user) throws IOException {
+		
 		MultipartFile uploadFile = user.getUploadFile();
+		
 		if(!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
 			uploadFile.transferTo(new File(uploadFolder + fileName));
 			user.setFileName(fileName);
 		}
 		userService.updateUser(user);
-		return "getUserList.do";
+		return "redirect:/getUserList.do";
 	}	
 
 	

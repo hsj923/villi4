@@ -154,9 +154,6 @@ nav {
 		</div>
 	</nav>
 
-
-<!--뭐해 -->
-
 	<!-- 카테고리 -->
 	<div class="container mt-3" align="center">
 		<form id="frm" action="insertBoard.do" method="post" onsubmit="return formCheck();" name="frm"

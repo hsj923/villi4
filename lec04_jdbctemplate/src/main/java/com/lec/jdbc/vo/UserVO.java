@@ -15,6 +15,18 @@ public class UserVO {
 	private String fileName;
 	private MultipartFile uploadFile;
 	
+	private String thumbImg;
+	
+	
+	
+	
+	
+	public String getThumbImg() {
+		return thumbImg;
+	}
+	public void setThumbImg(String thumbImg) {
+		this.thumbImg = thumbImg;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -53,6 +65,7 @@ public class UserVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	public String getFileName() {
 		return fileName;
 	}
