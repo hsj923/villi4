@@ -94,6 +94,7 @@ a { text-decoration:none }
 									<li class="nav-item"><a class="nav-link"
 										href="getVoteList.do">동네투표</a></li>
 								</ul>
+								
 								<form action="getBoardList.do" method="post" id="boardForm">
 									<input type="hidden" id="curPage" name="curPage"
 										value="${searchVO.getCurPage()}"> <input type="hidden"
@@ -243,6 +244,7 @@ a { text-decoration:none }
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
+					
 						<img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"> <span class="col-md-auto text-success fw-bold">

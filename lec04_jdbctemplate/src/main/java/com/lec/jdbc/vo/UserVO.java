@@ -69,9 +69,12 @@ public class UserVO {
 	}
 	
 	
+	
+	
 	@Override
 	public String toString() {
-		return "UserVO [email=" + email + ", password=" + password + ", name=" + name + ", role=" + role + "]";
+		return "UserVO [email=" + email + ", address=" + address + ", password=" + password + ", name=" + name + ", role=" + role + "]";
 	}
+
 	
 }

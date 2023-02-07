@@ -73,7 +73,7 @@ public class UserDAO {
 	
 	public UserVO insertUser(UserVO user) {
 		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");	
-		jdbcTemplate.update(insertUser,  user.getEmail(), user.getPassword(), user.getName(), user.getRole());
+		jdbcTemplate.update(insertUser,  user.getEmail(), user.getPassword(), user.getName(), user.getRole(), user.getAddress(), user.getFileName());
 		return user;
 	}	
 	
@@ -83,11 +83,11 @@ public class UserDAO {
 
 	public int updateUser(UserVO user) {
 		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");
-		return jdbcTemplate.update(updateUser, user.getName(), user.getPassword(), user.getRole(), user.getEmail(), user.getFileName());
+		return jdbcTemplate.update(updateUser, user.getNickname(), user.getPassword(), user.getRole(), user.getEmail(), user.getFileName());
 	}
 	
 	public int updateAddr(UserVO user) {
-		return jdbcTemplate.update(updateAddr, user.getAddress());
+		return jdbcTemplate.update(updateAddr, user.getAddress(), user.getEmail());
 	}
 
 }

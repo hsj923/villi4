@@ -70,7 +70,7 @@ color:#23dbc9;
 					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
 				</div>
 				<div class="col" align="center">
-					<a href="../board/getBoardList.jsp"><img src="../resources/images/test.png"
+					<a href="getBoardList.do"><img src="resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
@@ -92,6 +92,8 @@ color:#23dbc9;
     <div id="map"  style="width:100%;height:100%;position:relative;overflow:hidden;boarder-radius:5px;"></div>
    
   <form action="updateAddr.do" method="post">
+  <input type="hidden" name="email" value="${user.getEmail() }">
+  
     <div class="hAddr">
         <span class="title">  ${ sessionScope.user.getName() }님의 현재위치</span>
         <input type="text" name="address" value="" id="centerAddr"></input>
@@ -102,9 +104,7 @@ color:#23dbc9;
    	<div class="btn_box">
     	<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="현재위치로 동네설정하기" onClick="location.href='mypage.jsp'"/>
     </div>
-    </form>
-    
-</div>
+   
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c9cd8fc62340f0b717e303a629a8b0c3&libraries=services"></script>
 <script>
@@ -143,19 +143,6 @@ color:#23dbc9;
 	        displayMarker(locPosition, message);
 	            
 	      });
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
 	    
 	    
 	} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -226,30 +213,11 @@ function displayCenterInfo(result, status) {
 
 
 
-/* 
-		var address_name = result[i].address_name;
-	    
-	    $("#btn-save").click(function () {
-	        var input_report = document.getElementById("input_report").value;
-
-	        $.ajax({
-	          type: "POST",
-	          url: "user/location.jsp",
-	          data: { 'address_name' : address_name},
-	          dataType: "text",
-	          success: function (data) {
-	            console.log('성공');
-	 
-	          },
-	          error: function (request, status, error) {
-	            console.log('실패');
-	           
-	          }
-	        }); // ajax END
-	      }) // btn END
- */
-
 </script>
+
+ </form>
+    
+</div>
 </body>
 </html>
  

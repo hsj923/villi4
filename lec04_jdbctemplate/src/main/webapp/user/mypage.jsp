@@ -96,7 +96,18 @@ color:#23dbc9
 	
       <div class="admin_my">
       <div class="admin_img">
-      <img src="resources/images/logo.png" class="rounded-circle" id="admin_img" alt="" width="100px" height="100px">
+      
+      <img src="../resources/images/logo.png" class="rounded-circle" id="admin_img" alt="" width="100px" height="100px">
+        
+        
+        
+            <c:if test="${ !empty user.getFileName()}">
+     <img src="../resources/images/${ user.getFileName() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
+     </c:if>
+     
+    	<c:if test="${ empty user.getFileName() }">
+    	<img src="../resources/images/noimg.png" class="rounded-circle" id="admin_img" width="100px" height="100px" alt="img">
+    	</c:if>
       </div>
       <div class="container mt-3" id="mem_info">
       <h3>${sessionScope.user.getName()}님</h3>

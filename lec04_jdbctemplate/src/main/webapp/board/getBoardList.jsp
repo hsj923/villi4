@@ -99,6 +99,7 @@ color:#23dbc9
 					  <span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
 					  <span class="mx-2">${ sessionScope.user.getName() }님</span>	
 					</div>
+					
 				</div>
 			</div>
 		</header>

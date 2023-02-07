@@ -53,7 +53,7 @@ body {
 
 
 	<div class="container mt-5">
-			<form action="insertUser.do" method="post">
+			<form action="insertUser.do" method="post" enctype="multipart/form-data">
 			
 				<div class="modal-content">				
 					<div class="modal-header bg-info text-white">
@@ -61,6 +61,16 @@ body {
 					</div> <!-- modal-header -->
 					
 					<div class="modal-body">
+					
+					<!-- ==== 프로필 이미지 업로드 ====== -->
+					
+				
+			<div class="input-group mb-3 w-75">
+
+				<input type="file" class="form-control" name="uploadFile"
+					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">
+			</div>
+			<input type="hidden" name="fileName" value="" />
 					
 					
 						<div class="input-group mb-3">

@@ -125,6 +125,18 @@ border-radius:1.5em;
 	<div class="container col-5 mt-4">
 	<h4>프로필 수정</h4>
 	<hr/>
+		 <label for="inputProfile">* 프로필 사진</label>
+		  <div class="col-2 input-group mb-3 mt-2"> 
+		  
+		  
+		  
+		  
+		   <c:if test="${ !empty user.getFileName()}">
+			<img src="resources/images/${ user.getFileName() }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+		  </c:if>
+		  
+		 
+		  </div>
 		<form role="form" action="updateUser.do" method="post" onSubmit="return checkResult();" >
 			
 			
@@ -138,18 +150,6 @@ border-radius:1.5em;
 		 
 		 <!-- 프로필 사진 수정 -->
 		 
-		 <label for="inputProfile">* 프로필 사진</label>
-		  <div class="col-2 input-group mb-3 mt-2"> 
-		  
-		   <c:if test="${ !empty  user.fileName}">
-			<img src="resources/images/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
-		  </c:if>
-		  <c:if test="${ empty  user.fileName}">
-			<img src="resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
-		  </c:if>
-		  
-		 
-		  </div>
 		  
 		  <input type="file" class="form-control mb-3" name="uploadFile"
 					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">

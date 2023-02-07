@@ -59,9 +59,16 @@ public class UserController {
 	}
 	
 	@RequestMapping("*/insertUser.do")
-	public String insertUser(UserVO user) {		
+	public String insertUser(UserVO user) throws IOException {	
+		MultipartFile uploadFile = user.getUploadFile();
+		if(!uploadFile.isEmpty()) {
+			String fileName = uploadFile.getOriginalFilename();
+			uploadFile.transferTo(new File(uploadFolder + fileName));
+			user.setFileName(fileName);
+		}
+		
 		userService.insertUser(user);
-		return "redirect:/getUserList.do";
+		return "redirect:/login.do";
 	}	
 
 //	@RequestMapping("*/insertUser.do")
@@ -75,10 +82,12 @@ public class UserController {
 //		
 //		userService.insertUser(user);
 //		return "redirect:/getUserList.do";
-//	}
+//	}	
 	
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
-	public String updateUser(Model model, UserVO user, SearchVO searchVO) {
+	public String updateUser(Model model, UserVO user, SearchVO searchVO) throws IOException {
+		
+		
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("user", userService.getUser(user));
 		return "user/updateUser.jsp";
@@ -86,6 +95,9 @@ public class UserController {
 	
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
 	public String updateUser(UserVO user) throws IOException {
+		
+		
+		
 		MultipartFile uploadFile = user.getUploadFile();
 		if(!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();
@@ -100,7 +112,8 @@ public class UserController {
 	
 	// 주소 변경
 	@RequestMapping(value="/updateAddr.do", method=RequestMethod.GET)
-	public String updateAddr(Model model, UserVO user, SearchVO searchVO) {
+	public String updateAddr(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
+		user.setEmail(email);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("user", userService.getUser(user));
 		return "user/location.jsp";
@@ -108,11 +121,10 @@ public class UserController {
 	
 	@RequestMapping(value="/updateAddr.do", method=RequestMethod.POST)
 	public String updateAddr(UserVO user) throws IOException {
-		userService.updateUser(user);
-		return "redirect:/getUserList.do";
+		//System.out.println(user.toString());
+		userService.updateAddr(user);
+		return "getBoardList.do";
 	}	
-
-	
 	
 	
 	@RequestMapping(value="/deleteUser.do", method=RequestMethod.GET)
