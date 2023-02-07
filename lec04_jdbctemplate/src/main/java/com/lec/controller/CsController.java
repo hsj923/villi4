@@ -23,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.CsService;
+import com.lec.jdbc.service.CsreplyService;
+import com.lec.jdbc.vo.CsReplyVO;
 import com.lec.jdbc.vo.CsVO;
 
 @Controller
@@ -31,6 +33,9 @@ public class CsController {
 
 	@Autowired
 	CsService csService;
+	
+	@Autowired
+	CsreplyService csreplyService;
 	
 	@Autowired
 	Environment environment;
@@ -80,7 +85,11 @@ public class CsController {
 	}	
 	
 	@RequestMapping(value="/updateCs.do", method=RequestMethod.GET)
-	public String updateCs(Model model, CsVO cs, SearchVO searchVO) {
+	public String updateCs(Model model, CsVO cs, SearchVO searchVO, int bno) {
+	
+		List<CsReplyVO> csreplyList = csreplyService.getCsReplyList(bno);
+		model.addAttribute("csreplyList", csreplyList);
+		
 		csService.updateCsCount(cs);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("cs", csService.getCs(cs));
@@ -94,8 +103,8 @@ public class CsController {
 	}	
 
 	@RequestMapping(value="/deleteCs.do", method=RequestMethod.GET)
-	public String deleteCs(Model model, CsVO cs, SearchVO searchVO, @RequestParam int seq) {
-		cs.setSeq(seq);
+	public String deleteCs(Model model, CsVO cs, SearchVO searchVO, @RequestParam int bno) {
+		cs.setBno(bno);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("cs", csService.getCs(cs));
 		return "cs/deleteCs.jsp";

@@ -77,12 +77,9 @@ nav {
 							<!--================ nav bar ===================-->
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-<<<<<<< HEAD
 									<li class="nav-item">
-										<!-- ================글작성버튼, 로그인============= --> <c:if
-=======
-									<li class="nav-item"><!-- ================글작성버튼, 로그인============= --> <c:if
->>>>>>> refs/remotes/origin/master
+									
+									<!-- ================글작성버튼, 로그인============= --> <c:if
 											test="${ sessionScope.user.getNickname() == null }">
 											<a class="nav-link active" aria-current="page"
 												href="index.jsp">로그인</a>
@@ -171,7 +168,7 @@ nav {
 							<br><br>
 							<p class="text-muted fs-5">${ lost.content }</p>	
 	              <c:if test="${ !empty  lost.fileName1}">
-							<img class="rounded mx-auto d-block" src="resources/images/${ lost.fileName1 }"
+							<img class="w-100 rounded mx-auto d-block" src="resources/images/${ lost.fileName1 }"
 							   	height="600px" alt="img"/>
 						</c:if>
 						<c:if test="${ empty  lost.fileName1}">

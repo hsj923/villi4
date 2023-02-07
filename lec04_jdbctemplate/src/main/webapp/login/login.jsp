@@ -43,27 +43,26 @@ header {
 
 <body>
 
- 	<!-- ===========header================ -->
-		<header class="border-bottom border-white">
-			<div class="container">
-				<div class="row align-items-start p-3">
-					<div class="col mt-3">
-						<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
-					</div>
-					<div class="col" align="center">
-						<a href="getBoardList.do"><img src="resources/images/test.png"
-							alt="logo" width=70px height=70px></a>
-					</div>
+    <!-- ===========header================ -->
+	<header class="border-bottom border-white">
+		<div class="container">
+			<div class="row align-items-start p-3">
+		
+				
+				<div class="col mb-3">
+					<a href="index.jsp"><img src="resources/images/test.png"
+						alt="logo" width=70px height=70px></a>
+				</div>
 
-					<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark"></a> </span> 
-						<span class=mx-1><a	href="user/mypage.jsp" style="text-decoration:none" class="text-dark"></a></span> 
-
-					</div>
+				<div class="col mt-3 text-end r_menu">
+					<span class=mx-2></span> 
+						<span class=mx-1></span>
+						<span class=mx-1></span>  
+						<span class="mx-2"></span>
 				</div>
 			</div>
-		</header>
-	<!-- ===========header================ -->
+		</div>
+	</header>
 
 <form action="login.do" method="post">	
 <div class="container col-5 mt-4">

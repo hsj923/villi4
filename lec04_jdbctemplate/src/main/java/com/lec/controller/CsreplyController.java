@@ -35,7 +35,7 @@ public class CsreplyController {
 	
 	
 	@RequestMapping("getCsReplyList.do")
-	public String getCsList(Model model, SearchVO searchVO,int bno,
+	public String getCsList(Model model, SearchVO searchVO, int bno,
 			@RequestParam(defaultValue="1") int curPage,
 			@RequestParam(defaultValue="10") int rowSizePerPage,
 			@RequestParam(defaultValue="") String searchCategory,
@@ -56,9 +56,9 @@ public class CsreplyController {
 		return "cs/getCsList.jsp";
 	}
 	
-	// ��� �ۼ�
+
 	@RequestMapping(value= "/insertCsReply.do" , method = RequestMethod.POST)
-	public String insertCsReply(CsReplyVO csreply,Model model,int bno) throws Exception {
+	public String insertCsReply(CsReplyVO csreply, Model model, int bno) throws Exception {
 		model.addAttribute("bno" , bno);
 		csreplyService.insertCsReply(csreply);
 		return "redirect:/updateCs.do";

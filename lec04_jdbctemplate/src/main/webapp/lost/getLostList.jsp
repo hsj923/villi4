@@ -84,13 +84,7 @@ nav {
 												href="lost/insertLost.jsp">글작성</a>
 										</c:if>
 									</li>
-<<<<<<< HEAD
-=======
 
-
-
-
->>>>>>> refs/remotes/origin/master
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"

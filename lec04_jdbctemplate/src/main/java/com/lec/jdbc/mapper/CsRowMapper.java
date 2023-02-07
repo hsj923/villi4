@@ -11,7 +11,7 @@ public class CsRowMapper implements RowMapper<CsVO> {
 	
 	public CsVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		CsVO cs = new CsVO();
-		cs.setSeq(rs.getInt("SEQ"));
+		cs.setBno(rs.getInt("BNO"));
 		cs.setTitle(rs.getString("TITLE"));
 		cs.setWriter(rs.getString("WRITER"));
 		cs.setContent(rs.getString("CONTENT"));

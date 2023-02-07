@@ -75,24 +75,13 @@ nav {
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-<<<<<<< HEAD
-										<!-- ================글작성버튼, 로그인============= --> <c:if
-											test="${ sessionScope.user.getNickname() == null }">
+									<!-- ================글작성버튼, 로그인============= --> 
+									<c:if test="${ sessionScope.user.getNickname() == null }">
 											<a class="nav-link active" aria-current="page"
 												href="index.jsp">로그인</a>
 										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
 											<a class="nav-link active" aria-current="page"
 												href="lost/insertLost.jsp">글작성</a>
-=======
-									
-									<!-- ================글작성버튼, 로그인============= --> <c:if
-											test="${ sessionScope.user.getNickname() == null }">
-											<a class="nav-link active" aria-current="page"
-												href="index.jsp">로그인</a>
-										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
-																				<a class="nav-link active"
-										aria-current="page" href="meeting/insertMeeting.jsp">글작성</a>
->>>>>>> refs/remotes/origin/master
 										</c:if>
 									</li>
 	

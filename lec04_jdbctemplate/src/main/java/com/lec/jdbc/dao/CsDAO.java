@@ -52,7 +52,7 @@ public class CsDAO {
 	}
 	
 	public CsVO getCs(CsVO cs) {
-		Object[] args = { cs.getSeq() };		
+		Object[] args = { cs.getBno() };		
 		return (CsVO) jdbcTemplate.queryForObject(selectByCsSeq, args, new CsRowMapper());
 	}
 	
@@ -101,15 +101,15 @@ public class CsDAO {
 		
 		System.out.println(cs.toString());
 		
-		return jdbcTemplate.update(deleteCs, cs.getSeq());
+		return jdbcTemplate.update(deleteCs, cs.getBno());
 	}
 
 	public int updateCs(CsVO cs) {
-		return jdbcTemplate.update(updateCs, cs.getTitle(), cs.getContent(), cs.getSeq());
+		return jdbcTemplate.update(updateCs, cs.getTitle(), cs.getContent(), cs.getBno());
 	}
 	
 	public void updateCsCount(CsVO cs) {
-		jdbcTemplate.update(updateCsCount,  cs.getSeq());
+		jdbcTemplate.update(updateCsCount,  cs.getBno());
 	}
 	
 	

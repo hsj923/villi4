@@ -21,8 +21,8 @@
 		<br>
 		
 		<form action="deleteCs.do" method="post">
-			<input type="hidden" name="noti_seq" value="${ param.seq }">
-			<button type="submit" class="btn btn-danger text-white"><b>${ param.seq }</b>을 삭제하겠습니까?</button>
+			<input type="hidden" name="bno" value="${ param.bno }">
+			<button type="submit" class="btn btn-danger text-white"><b>${ param.bno }</b>을 삭제하겠습니까?</button>
 		</form>
 		
 		

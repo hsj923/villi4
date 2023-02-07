@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class CsVO {
 	
-	private int seq;
+	private int bno;
 	private String title;
 	private String writer;
 	private String content;
@@ -17,11 +17,12 @@ public class CsVO {
 	
 	
 
-	public int getSeq() {
-		return seq;
+
+	public int getBno() {
+		return bno;
 	}
-	public void setSeq(int seq) {
-		this.seq = seq;
+	public void setBno(int bno) {
+		this.bno = bno;
 	}
 	public String getTitle() {
 		return title;

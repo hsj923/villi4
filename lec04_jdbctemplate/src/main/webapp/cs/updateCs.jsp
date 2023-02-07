@@ -59,31 +59,32 @@ pre { white-space: pre-wrap;
 <body>
 
 
-<!------------- header ---------------->
- <header class="border-bottom border-white">
-      <div class="container">
-         <div class="row align-items-start p-3">
-            <div class="col mt-3">
-               <a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
-            </div>
-            <div class="col" align="center">
-               <a href="getBoardList.do"><img src="resources/images/test.png"
-                  alt="logo" width=70px height=70px></a>
-            </div>
-            <div class="col mt-3 text-end r_menu">
-               <span class= mx-2><a href="#">좋아요</a> </span>
-               <span class= mx-1><a href="user/mypage.jsp">마이페이지</a></span>
-               <span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-            </div>
-         </div>
-      </div>
-</header>
+<!-- ===========header================ -->
+	<header class="border-bottom border-white">
+		<div class="container">
+			<div class="row align-items-start p-3">
+		
+				
+				<div class="col mb-3">
+					<a href="getBoardList.do"><img src="resources/images/test.png"
+						alt="logo" width=70px height=70px></a>
+				</div>
+
+				<div class="col mt-3 text-end r_menu">
+					<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
+						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+				</div>
+			</div>
+		</div>
+	</header>
 
 
 	<script>
 		function deleteCs() {
 			if(confirm("공지를 삭제하겠습니까?")) {
-		    	self.location.href = "deleteCs.do?seq=${ cs.seq }";
+		    	self.location.href = "deleteCs.do?bno=${ cs.bno }";
 		    }
 		}
 	</script>
@@ -104,25 +105,63 @@ pre { white-space: pre-wrap;
 			  				 
 			  				<hr>
 			  				
-			  				<p class="mt-4 text-end">글 등록일 : ${cs.regDate }</p></li>
+			  				<p class="mt-4 text-end">문의 등록일 : ${cs.regDate }</p></li>
 			  			
 			  			
 			  			</li>
 			  		</ul>
 			  </div>
+			  </form>
+			  </div>
 			  
+<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertCsReply.do">
+		
+		            <input type="hidden" name="writer" value="${ sessionScope.user.getNickname() }">
+
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%; height:70px;"></textarea>
+		        </p>
+		       
+		        <p>
+		        	<input type="hidden" name="bno" value="${cs.bno}">
+		         
+		          <c:if test="${ sessionScope.isAdmin }"> 
+		        	
+		            <button class="btn btn-dark " type="submit">댓글 작성</button>
+		           
+		          </c:if>
+		          
+		        </p>
+		    </form> 
+		</div>
+	
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${csreplyList}" var="csreplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-6 fw-bold" style="color: #4881f7;">${csreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${csreplyList.regDate}</span>
+                          <pre class="fs-6">${csreplyList.content}</pre>  
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />
+				
+		<!-- 댓글 끝 -->
 			     
-		   <!-- 관리자일 때만 글등록, 글삭제 보이게 -->
-	<%-- 	    <c:if test="${ sessionScope.isAdmin }"> 
-			</c:if>  --%>
 		   
 		   <div class="mt-4">
 			
 			<a href="getCsList.do" class="btn btn-dark mx-3"  onclick="deleteCs()">글삭제</a>
 			 
-			<a href="getCsList.do" class="btn btn-dark mx-1">공지사항 목록</a>
+			<a href="getCsList.do" class="btn btn-dark mx-1">고객 문의 목록</a>
 			
-			<a href="cs/insertCs.jsp" class="btn btn-dark mx-3">공지사항 글등록</a>
+			<a href="cs/insertCs.jsp" class="btn btn-dark mx-3">글등록</a>
 			</div>
 			  
 			  
@@ -147,7 +186,7 @@ pre { white-space: pre-wrap;
 			
 			
 		    <!-- input type="submit" class="btn btn-primary" value="글수정" -->
-			<a href="deleteBoard.do?seq=${board.seq }" class="btn btn-primary">글삭제</a>
+			<a href="deleteBoard.do?bno=${board.bno }" class="btn btn-primary">글삭제</a>
 		    
 		    
 		   <!-- 관리자일 때만 글등록, 글삭제 보이도 -->

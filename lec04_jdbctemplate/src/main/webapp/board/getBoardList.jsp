@@ -45,7 +45,7 @@ header {
 }
 
 nav {
-	background-color: #DCDCDC;
+	background-color: #fcfcfc;
 }
 
 #banner2 {
@@ -79,112 +79,62 @@ nav {
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-	<div>
-		<!-- ===========header================ -->
-		<header class="border-bottom border-white">
-			<div class="container">
-				<div class="row align-items-start p-3">
-				
-					<div class="col mb-3">
-						<a href="getBoardList.do"><img src="resources/images/test.png"
-							alt="logo" width=70px height=70px></a>
-					</div>
-					
-					<div class="col mt-3 text-end r_menu">
-						
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-					</div>
-=======
 	<!-- ===========header================ -->
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
-				<div class="col mt-3">
-					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
-				</div>
-				<div class="col" align="center">
+		
+				
+				<div class="col mb-4">
 					<a href="getBoardList.do"><img src="resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
-				<div class="col mt-3 text-end r_menu">
-					<span class=mx-2><a href="getLikeList.do"
-						style="text-decoration: none" class="text-dark">좋아요</a> </span> <span
-						class=mx-1><a href="user/mypage.jsp"
-						style="text-decoration: none" class="text-dark">마이페이지</a></span> <span
-						class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					<c:if test="${ sessionScope.user.getNickname() == null }">
+					   <div class="col mt-3 text-end r_menu">
+						 <span class=mx-2><a href="index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
+					   </div>
+					</c:if> 
+										
+					<c:if test="${ sessionScope.user.getNickname() != null }">			
+					 <div class="col mt-3 text-end r_menu">
+					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
+						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+				     </div>							
+				   </c:if>
 
->>>>>>> refs/remotes/origin/master
-				</div>
+
+
 			</div>
 		</div>
 	</header>
 	<!-- ============banner=============== -->
 
 	<div id="carouselExampleControls"
-		class="carousel carousel-dark slide border-bottom border-dark"
+		class="carousel carousel-dark slide"
 		data-bs-ride="carousel" align="center">
 
-<<<<<<< HEAD
-			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#carouselExampleControls"
-					data-bs-slide-to="0" class="active" aria-current="true"
-					aria-label="Slide 1"></button>
-				<button type="button" data-bs-target="#carouselExampleControls"
-					data-bs-slide-to="1" aria-label="Slide 2"></button>
-
-			</div>
-			<div class="carousel-inner">
-				<div
-					class="carousel-item active embed-responsive embed-responsive-4by3"
-					id="banner">
-					<img src="resources/images/banner4.png"
-						class="d-block w-100 card-img-top embed-responsive-item"
-						alt="banner1">
-				</div>
-				<div class="carousel-item embed-responsive embed-responsive-4by3"
-					id="banner">
-					<img src="resources/images/banner3.png"
-						class="d-block w-100 card-img-top embed-responsive-item"
-						alt="banner2">
-				</div>
-			</div>
-
-			<button class="carousel-control-prev" type="button"
-				data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button"
-				data-bs-target="#carouselExampleControls" data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Next</span>
-			</button>
-=======
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#carouselExampleControls"
 				data-bs-slide-to="0" class="active" aria-current="true"
 				aria-label="Slide 1"></button>
 			<button type="button" data-bs-target="#carouselExampleControls"
 				data-bs-slide-to="1" aria-label="Slide 2"></button>
->>>>>>> refs/remotes/origin/master
 
 		</div>
 		<div class="carousel-inner">
 			<div
 				class="carousel-item active embed-responsive embed-responsive-4by3"
 				id="banner">
-				<img src="resources/images/banner1.JPG"
+				<img src="resources/images/banner4.png"
 					class="d-block w-100 card-img-top embed-responsive-item"
 					alt="banner1">
 			</div>
 			<div class="carousel-item embed-responsive embed-responsive-4by3"
 				id="banner">
-				<img src="resources/images/banner2.JPG"
+				<img src="resources/images/banner3.png"
 					class="d-block w-100 card-img-top embed-responsive-item"
 					alt="banner2">
 			</div>
@@ -224,11 +174,12 @@ nav {
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-										<!-- ================글작성버튼, 로그인============= --> <c:if
-											test="${ sessionScope.user.getNickname() == null }">
-											<a class="nav-link active" aria-current="page"
-												href="index.jsp">로그인</a>
-										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
+									
+										<!-- ================글작성버튼, 로그인============= --> 
+										<c:if test="${ sessionScope.user.getNickname() == null }">
+											<a class="nav-link active" aria-current="page" href="index.jsp">로그인</a>
+										</c:if> 
+										<c:if test="${ sessionScope.user.getNickname() != null }">
 											<div class="dropdown">
 												<button class="btn dropdown-toggle" type="button"
 													id="dropdownMenuButton2" data-bs-toggle="dropdown"
@@ -242,6 +193,7 @@ nav {
 												</ul>
 											</div>
 										</c:if>
+										
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
