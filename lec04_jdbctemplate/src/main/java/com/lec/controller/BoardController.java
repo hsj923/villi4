@@ -180,6 +180,6 @@ public class BoardController {
 		os.close();
 		fis.close();
 		
-		return "getUserList.do";
+		return "getBoardList.do";
 	}	
 }

@@ -95,8 +95,7 @@ public class UserController {
 	
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
 	public String updateUser(UserVO user) throws IOException {
-		
-		
+
 		MultipartFile uploadFile1 = user.getUploadFile1();
 		
 		if(!uploadFile1.isEmpty()) {
