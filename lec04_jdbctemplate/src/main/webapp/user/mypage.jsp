@@ -94,6 +94,16 @@ color:#23dbc9
 		</div>
 	</header>
 	
+	<!-- ============== 본문 =============== -->
+	
+	
+	
+	<form action="getUserList.do" method="post" id="userForm">   
+			<input type="hidden" id="curPage" name="curPage" value="${searchVO.getCurPage()}"> 
+			<input type="hidden" id="rowSizePerPage" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
+		</form> <!-- getUserList.do -->
+	
+	
       <div class="admin_my">
       <div class="admin_img">
       
@@ -101,11 +111,11 @@ color:#23dbc9
         
         
         
-            <c:if test="${ !empty user.getFileName()}">
-     <img src="../resources/images/${ user.getFileName() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
+            <c:if test="${ !empty user.getFileName1()}">
+     <img src="../resources/images/${ user.getFileName1() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
      </c:if>
      
-    	<c:if test="${ empty user.getFileName() }">
+    	<c:if test="${ empty user.getFileName1() }">
     	<img src="../resources/images/noimg.png" class="rounded-circle" id="admin_img" width="100px" height="100px" alt="img">
     	</c:if>
       </div>
@@ -113,7 +123,7 @@ color:#23dbc9
       <h3>${sessionScope.user.getName()}님</h3>
   
   
-  			
+
 					
 					
         </div>
@@ -121,20 +131,25 @@ color:#23dbc9
       </div>
       <br />
       <br />
-      <div class="container mt-3" align="left">
+      
+      
+      	<div class="container mt-3" align="left">
         <ul class="list-group list-group-flush">			
+ 			
   	     <a href="../updateUser.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
          <a href="../updateAddr.do?email=${user.getEmail() }" class="list-group-item">동네설정</a>
-          <a href="#" class="list-group-item">채팅리스트</a> 
+          <a href="#" class="list-group-item">채팅리스트</a>
           <a href="#" class="list-group-item">찜리스트</a>
           <a href="../getMyBoardList.do" class="list-group-item">내가 쓴 글 목록</a>
+  			
        </ul>
        <hr />
        </div>
+       
        <div class="container mt-3" align="left">
        <ul class="list-group list-group-flush">
-          <a href="../getNoticeList.do" li class="list-group-item">공지사항</a>
-          <a href="service/service_list.jsp" li class="list-group-item">고객센터</a>
+			 <a href="../getNoticeList.do" li class="list-group-item">공지사항</a>
+             <a href="service/service_list.jsp" li class="list-group-item">고객센터</a>
        </ul>
        </div>
 </body>

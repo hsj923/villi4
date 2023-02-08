@@ -131,8 +131,8 @@ border-radius:1.5em;
 		  
 		  
 		  
-		   <c:if test="${ !empty user.getFileName()}">
-			<img src="resources/images/${ user.getFileName() }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+		   <c:if test="${ !empty user.getFileName1()}">
+			<img src="resources/images/${ user.getFileName1() }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
 		  
 		 
@@ -161,15 +161,21 @@ border-radius:1.5em;
 			<label for="inputEmail">* 이메일 주소</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
-				<input type="text" name="email" class="form-control" value="${ user.getEmail() }" disabled>
+				${ user.getEmail() }
 			</div>
 
+			<label for="inputEmail">* 이름</label>
+			    
+			<div class="col-2 input-group mb-3 mt-2" >
+				${ user.getName() }
+			</div>
+			
 			<!-- 이름(닉네임) 변경  --> 
 			
 			<label for="inputName">* 닉네임</label>
 			
 			<div class="col-2 input-group mb-3 mt-2">
-				<input type="text" name="name" class="form-control" value="${ user.getName() }">
+				<input type="text" name="name" class="form-control" placeholder="${ user.getName() }">
 			</div>
 			
 			

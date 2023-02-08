@@ -1,10 +1,16 @@
 package com.lec.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -21,6 +27,7 @@ import com.lec.jdbc.service.UserService;
 import com.lec.jdbc.vo.UserVO;
 
 @Controller("userController")
+@PropertySource("classpath:config/uploadpath.properties")
 public class UserController {
 
 	@Autowired
@@ -60,13 +67,6 @@ public class UserController {
 	
 	@RequestMapping("*/insertUser.do")
 	public String insertUser(UserVO user) throws IOException {	
-		MultipartFile uploadFile = user.getUploadFile();
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			uploadFile.transferTo(new File(uploadFolder + fileName));
-			user.setFileName(fileName);
-		}
-		
 		userService.insertUser(user);
 		return "redirect:/login.do";
 	}	
@@ -85,9 +85,8 @@ public class UserController {
 //	}	
 	
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
-	public String updateUser(Model model, UserVO user, SearchVO searchVO) throws IOException {
-		
-		
+	public String updateUser(Model model, UserVO user, SearchVO searchVO,  @RequestParam String email) throws IOException {
+		user.setEmail(email);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("user", userService.getUser(user));
 		return "user/updateUser.jsp";
@@ -97,17 +96,23 @@ public class UserController {
 	public String updateUser(UserVO user) throws IOException {
 		
 		
+       MultipartFile uploadFile = user.getUploadFile1();
 		
-		MultipartFile uploadFile = user.getUploadFile();
 		if(!uploadFile.isEmpty()) {
+			
 			String fileName = uploadFile.getOriginalFilename();
+			
+		    String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
+	         UUID uuid = UUID.randomUUID();
+	         String[] uuids = uuid.toString().split("-");
+	         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
 			uploadFile.transferTo(new File(uploadFolder + fileName));
-			user.setFileName(fileName);
+			user.setFileName1(uniqueName);
+			System.out.println(user.toString());
 		}
 		userService.updateUser(user);
 		return "getUserList.do";
 	}	
-
 	
 	
 	// 주소 변경
@@ -123,7 +128,7 @@ public class UserController {
 	public String updateAddr(UserVO user) throws IOException {
 		//System.out.println(user.toString());
 		userService.updateAddr(user);
-		return "getBoardList.do";
+		return "getUserList.do";
 	}	
 	
 	
@@ -140,4 +145,43 @@ public class UserController {
 		userService.deleteUser(user);
 		return "getUserList.do";
 	}	
+	
+	
+	
+	@RequestMapping("/downloadpro.do")
+	public String download(HttpServletRequest req, HttpServletResponse res) throws Exception { 	
+		req.setCharacterEncoding("utf-8");
+		String fileName = req.getParameter("fn");
+		
+		String fromPath = uploadFolder + fileName;
+		String toPath = uploadFolder + fileName;
+	
+		byte[] b = new byte[4096];
+		File f = new File(toPath);
+		FileInputStream fis = new FileInputStream(fromPath);
+		
+		String sMimeType = req.getSession().getServletContext().getMimeType(fromPath); // mimetype = file type : pdf, exe, txt.... 
+		if(sMimeType == null) sMimeType = "application/octet-stream";
+		
+		String sEncoding = new String(fileName.getBytes("utf-8"), "8859_1");
+		String sEncoding1 = URLEncoder.encode(fileName, "utf-8");
+		
+		res.setContentType(sMimeType);
+		res.setHeader("Content-Transfer-Encoding", "binary");
+		res.setHeader("Content-Disposition", "attachment; filename = " + sEncoding1);
+			
+		int numRead;
+		ServletOutputStream os = res.getOutputStream();
+	
+		while((numRead=fis.read(b, 0, b.length)) != -1 ) {
+			os.write(b, 0, numRead);
+		}
+		
+		os.flush();
+		os.close();
+		fis.close();
+		
+		return "getUserList.do";
+	}	
+	
 }

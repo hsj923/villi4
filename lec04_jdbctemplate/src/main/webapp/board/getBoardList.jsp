@@ -239,8 +239,9 @@ color:#23dbc9
 					<div class="col-12 col-md-6 col-lg-3 mt-5">
 						<div class="card">
 							<a href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
-								style="text-decoration: none"><img class="card-img-top"
-								src="resources/images/${ board.fileName1 }" alt="image"></a>
+								style="text-decoration: none">
+								<img class="card-img-top"
+								src="/img/${ board.fileName1 }" alt="image"></a>
 							<div class="card-body">
 								<h6 class="card-title fw-bold">${board.title}</h6>
 								<p class="card-text">
