@@ -9,7 +9,6 @@ import com.lec.jdbc.vo.UserVO;
 
 public class UserRowMapper implements RowMapper<UserVO> {
 
-	@Override
 	public UserVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		UserVO user = new UserVO();
 		user.setEmail(rs.getString("email"));
@@ -17,7 +16,7 @@ public class UserRowMapper implements RowMapper<UserVO> {
 		user.setNickname(rs.getString("nickname"));
 		user.setPassword(rs.getString("password"));
 		user.setRole(rs.getString("role"));
-		user.setFileName(rs.getString("filename"));
+		user.setFileName1(rs.getString("filename1"));
 		user.setAddress(rs.getString("address"));
 		return user;
 	}

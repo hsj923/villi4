@@ -56,7 +56,7 @@ body {
 		
 		
 	</script>
-
+<!--  
 	<script type="text/javascript">
  
 		function checkResult(){
@@ -67,10 +67,8 @@ body {
 		 return false;
 	 }
  }
-
-
 </script>
-
+-->
 
 <style type="text/css">
 
@@ -108,7 +106,7 @@ border-radius:1.5em;
 		
 				
 				<div class="col mb-3">
-					<a href="getBoardList.do"><img src="resources/images/test.png"
+					<a href="getBoardList.do"><img src="/img/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
@@ -127,10 +125,9 @@ border-radius:1.5em;
 	<div class="container col-5 mt-4">
 	<h3 class="fw-bold">프로필 수정</h3>
 	<hr/>
-		<form role="form" action="updateUser.do" method="post" onSubmit="return checkResult();" enctype="multipart/form-data" >
-			
-			
-			<input type="hidden" name="email" value="${user.getEmail()}">
+	
+		<form role="form" action="updateUser.do" method="post"  enctype="multipart/form-data" >
+		
 			<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
 			<input type="hidden" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 			<input type="hidden" name="searchCategory" value="${searchVO.getSearchCategory()}">
@@ -143,25 +140,22 @@ border-radius:1.5em;
 		 <label for="inputProfile" class="mt-3">* 프로필 사진</label>
 		  <div class="col-2 input-group mb-3 mt-2"> 
 		  
-		   <c:if test="${ !empty  user.getFileName()}">
-			<div class="select_img"><img src="resources/images/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img"></div>
+		   <c:if test="${ !empty  user.getFileName1()}">
+			<div class="select_img"><img src="resources/images/${ user.getfileName1() }" class="rounded-circle border border-dark" width="80" height="80" alt="img"></div>
 		  </c:if>
 		  
 		  
-		  <c:if test="${ empty user.getFileName()}">
+		  <c:if test="${ empty user.getFileName1()}">
 		  <div class="select_img">
 			<img src="resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </div>
 		  </c:if>
-		  
-		 
-		 
 		  </div>
 		  
-		  <input type="file" class="form-control mb-3" name="uploadFile"
-					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">
-		 
-			 
+		  <input type="file" class="form-control mb-3" name="uploadFile1"
+					id="uploadFile1" aria-describedby="uploadFile" aria-label="Upload">
+		 <input type="hidden" name="fileName" value="" />
+	<!--  		 
 		 <script>
  			 $("#uploadFile").change(function(){
    			 if(this.files && this.files[0]) {
@@ -173,27 +167,27 @@ border-radius:1.5em;
    			 }
   			});
  	    </script>	 
-			 
+	-->		 
 			 
 		  <!--  아이디 입력칸, 변경불가  : 아마도 이메일로 바뀜  -->
-		  
+		    <input type="hidden" name="email" value="${user.getEmail() }">
 			<label for="inputEmail" class="mt-2">* 이메일 주소</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
-				<input type="text" name="email" class="form-control" value="${ user.getEmail() }" disabled>
+				${ user.getEmail()}
 			</div>
 
 		  <!-- 이름 변경 불가 -->
 
-			<label for="inputEmail" class="mt-2">* 이름</label>
+			<label for="Email" class="mt-2">* 이름</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
-				<input type="text" name="name" class="form-control" value="${ user.getName() }" disabled>
+				${ user.getName() }
 			</div>
 
 			<!-- 닉네임 변경  --> 
 			
-			<label for="inputName" class="mt-2">* 닉네임</label>
+			<label for="inputNickName" class="mt-2">* 닉네임</label>
 			
 			<div class="col-2 input-group mb-3 mt-2">
 				<input type="text" name="nickname" class="form-control" value="${ user.getNickname() }">
@@ -213,23 +207,13 @@ border-radius:1.5em;
 			<label for="inputPassword" class="mt-2">* 비밀번호 확인</label>
 			
 			<div class="col-2 input-group mb-3 mt-2">
-				<input type="password"  id="passwordCheck" class="form-control" placeholder="비밀번호 확인" onkeyup="passConfirm();" check_pw="fail" required >
+				<input type="password"  id="passwordCheck" class="form-control" placeholder="비밀번호 확인" onkeyup="passConfirm();" required >
 			</div>
 			
 			<span id="confirmMsg"></span>
-			
-			
-		<!--  <div class="col-2 mb-3 form-check start-0">
-			    <input type="checkbox" class="form-check-input" name="role" ${ user.getRole().toUpperCase() == "ADMIN" ? "checked" : "" }>
-			    <label class="form-check-label" for="role">Administrator</label>
-			</div>
-		  -->
 		  
 			<div class="container btn_box mt-5" align="center">
-				
-				<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기" />
-			<!-- 	<a href="logout.do" class="btn btn-dark mx-4 btn_radius">로그아웃</a> -->
-						
+			  <button type="submit" class="btn btn-dark mx-4 btn_radius">수정하기</button>
 			</div>	
 			
 		</form>	

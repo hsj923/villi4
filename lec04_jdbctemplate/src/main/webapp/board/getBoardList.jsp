@@ -99,11 +99,26 @@ nav {
 					<c:if test="${ sessionScope.user.getNickname() != null }">			
 					 <div class="col mt-3 text-end r_menu">
 					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						
+						
+						
+						<!-- 관리자로 로그인 할 경우 
+                  <c:if test="${ sessionScope.isAdmin }">
+                  <span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span> 
+				  </c:if>
+				  -->
+				  
+				  <!-- 관리자로 로그인 하지 않았을 경우 
+				  <c:if test="${ sessionScope.isAdmin != null && !sessionScope.isAdmin }">
+                  <span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
+                  </c:if>
+                  -->
+                        <span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
 						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 				     </div>							
 				   </c:if>
+				   
 
 
 
@@ -122,6 +137,8 @@ nav {
 				aria-label="Slide 1"></button>
 			<button type="button" data-bs-target="#carouselExampleControls"
 				data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleControls"
+				data-bs-slide-to="2" aria-label="Slide 3"></button>
 
 		</div>
 		<div class="carousel-inner">
@@ -134,9 +151,15 @@ nav {
 			</div>
 			<div class="carousel-item embed-responsive embed-responsive-4by3"
 				id="banner">
-				<img src="resources/images/banner3.png"
+				<img src="resources/images/banner6.png"
 					class="d-block w-100 card-img-top embed-responsive-item"
 					alt="banner2">
+			</div>
+			<div class="carousel-item embed-responsive embed-responsive-4by3"
+				id="banner">
+				<img src="resources/images/banner5.png"
+					class="d-block w-100 card-img-top embed-responsive-item"
+					alt="banner3">
 			</div>
 		</div>
 
@@ -262,7 +285,7 @@ nav {
 							href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
 							style="text-decoration: none"><img class="card-img-top"
 								width="450" height="250"
-								src="resources/images/${ board.fileName1 }" alt="image"></a></span>
+								src="/img/${ board.fileName1 }" alt="image"></a></span>
 						<div class="card-body">
 
 							<!-- 글자수 넘칠 경우 자르기 -->

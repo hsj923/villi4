@@ -40,45 +40,8 @@ nav {
 	background-color: #FFFAFA;
 }
 
-
-
-<<<<<<< HEAD
-=======
-/*
-
-카테고리 검색
-
-*/
-
-
-.map_wrap, .map_wrap * {margin:0; padding:0;font-family:Pretendard-Regular,dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap {position:relative;width:100%;height:350px;}
-#category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
-#category li {float:left;list-style: none;width:50px;px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
-#category li.on {background: #eee;}
-#category li:hover {background: #ffe6e6;border-left:1px solid #acacac;margin-left: -1px;}
-#category li:last-child{margin-right:0;border-right:0;}
-#category li span {display: block;margin:0 auto 3px;width:27px;height: 28px;}
-#category li .category_bg {background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png) no-repeat;}
-#category li .hospital {background-position: -10px -72px;}
-#category li .mart {background-position: -10px -36px;}
-#category li .pharmacy {background-position: -10px -72px;}
-#category li .restaurant {background-position: -10px -144px;}
-#category li .cafe {background-position: -10px -144px;}
-#category li .store {background-position: -10px -180px;}
-#category li.on .category_bg {background-position-x:-46px;}
-.placeinfo_wrap {position:absolute;bottom:28px;left:-150px;width:300px;}
-.placeinfo {position:relative;width:100%;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;padding-bottom: 10px;background: #fff;}
-.placeinfo:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
-.placeinfo_wrap .after {content:'';position:relative;margin-left:-12px;left:50%;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-.placeinfo a, .placeinfo a:hover, .placeinfo a:active{color:#fff;text-decoration: none;}
-.placeinfo a, .placeinfo span {display: block;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-.placeinfo span {margin:5px 5px 0 5px;cursor: default;font-size:13px;}
-.placeinfo .title {font-weight: bold; font-size:14px;border-radius: 6px 6px 0 0;margin: -1px -1px 0 -1px;padding:10px; color: #fff;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
-.placeinfo .tel {color:#0f7833;}
-.placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
->>>>>>> refs/remotes/origin/master
-
+pre { white-space: pre-wrap; 
+	  font-family: 'Pretendard-Regular';}
 </style>
 
 </head>
@@ -104,16 +67,8 @@ nav {
 								<!--================ nav bar ===================-->
 								<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item">
-									
-									<!-- ================글작성버튼, 로그인============= --> <c:if
-											test="${ sessionScope.user.getNickname() == null }">
-											<a class="nav-link active" aria-current="page"
-												href="index.jsp">로그인</a>
-										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
-																												<a class="nav-link active"
+									<li class="nav-item"><a class="nav-link active"
 										aria-current="page" href="question/insertQuestion.jsp">글작성</a>
-										</c:if>
 									</li>
 											
 										<li class="nav-item"><a class="nav-link"
@@ -170,7 +125,7 @@ nav {
 
 
 <!-- form -->
-	<div class="container w-50 mt-3" align="center">
+	<div class="container-sm mt-3" align="center">
 		<form action="updateQuestion.do" method="post">
 			<div class="card">
 				<div class="card-body">
@@ -190,7 +145,7 @@ nav {
 							<br><br>
 							<p class="text-muted fs-5">${ question.content }</p>	
 	              <c:if test="${ !empty  question.fileName1}">
-							<img class="w-100 rounded mx-auto d-block" src="resources/images/${ question.fileName1 }"
+							<img class="rounded mx-auto d-block" src="resources/images/${ question.fileName1 }"
 							   	height="600px" alt="img"/>
 						</c:if>
 						<c:if test="${ empty  question.fileName1}">
@@ -215,14 +170,55 @@ nav {
 				</div>
 			</div>
 		</form>
-		<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
-			<a href="deleteQuestion.do?seq=${question.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
-			<a href="getQuestionList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
+			
+		<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertQReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
+		        </p>
+		        <p>
+		        	<input type="hidden" name="seq" value="${question.seq}">
+		        	<c:if test="${ sessionScope.isAdmin }">
+		            <button type="submit">댓글 작성</button>
+		            </c:if>
+		        </p>
+		    </form> 
 		</div>
+		
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${qreplyList}" var="qreplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${qreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${qreplyList.regDate}</span>
+                          <pre class="fs-6">${qreplyList.content}</pre>
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />	
+			
+			<!-- 댓글 끝 -->
+			<div class="container row-3" align="center">
+				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
+				<a href="deleteQuestion.do?seq=${question.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
+				<a href="getQuestionList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
 	</div>
 
-
-
+	<!-- 삭제시 confirm -->
+	<script>
+		function deleteQuestion() {
+			if(confirm("자료를 삭제하겠습니까?")) {
+		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+		    }
+		}
+	</script>
 </body>
 </html>

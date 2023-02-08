@@ -13,8 +13,6 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
-	<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -41,17 +39,9 @@ body {
 nav {
 	background-color: #FFFAFA;
 }
-.bi-heart {
-	font-size: 30px;
-	line-height: 30px;
-	color: crimson;
-}
 
-.bi-heart-fill {
-	font-size: 30px;
-	line-height: 30px;
-	color: crimson;
-}
+pre { white-space: pre-wrap; 
+	  font-family: 'Pretendard-Regular';}
 </style>
 
 </head>
@@ -74,20 +64,13 @@ nav {
 									aria-label="Toggle navigation">
 									<span class="navbar-toggler-icon"></span>
 								</button>
-							<!--================ nav bar ===================-->
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<!--================ nav bar ===================-->
+								<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item">
-									
-									<!-- ================글작성버튼, 로그인============= --> <c:if
-											test="${ sessionScope.user.getNickname() == null }">
-											<a class="nav-link active" aria-current="page"
-												href="index.jsp">로그인</a>
-										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
-											<a class="nav-link active" aria-current="page"
-												href="lost/insertLost.jsp">글작성</a>
-										</c:if>
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="lost/insertLost.jsp">글작성</a>
 									</li>
+											
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getQuestionList.do">동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -157,18 +140,12 @@ nav {
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
-		<div class="row">
-							<div class="col-4 text-start">
-								<span class="fs-4 fw-bold">${ lost.title }</span>
-							</div>
-							<div class="col-8 text-end">
-								<p class="fs-6 fst-italic 	text-decoration-underline">${lost.regDate}</p>
-							</div>
-						</div>
+				<span class="fs-4 fw-bold">${ lost.title }</span>
+						<p class="text-muted fs-6 fst-italic">${lost.regDate}</p>
 							<br><br>
 							<p class="text-muted fs-5">${ lost.content }</p>	
 	              <c:if test="${ !empty  lost.fileName1}">
-							<img class="w-100 rounded mx-auto d-block" src="resources/images/${ lost.fileName1 }"
+							<img class="rounded mx-auto d-block" src="resources/images/${ lost.fileName1 }"
 							   	height="600px" alt="img"/>
 						</c:if>
 						<c:if test="${ empty  lost.fileName1}">
@@ -183,7 +160,7 @@ nav {
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span>
 						</div>
 						<div class="col-8 text-end">
 							<a href="#" class="btn ps-6 text-white rounded-pill"
@@ -193,47 +170,54 @@ nav {
 				</div>
 			</div>
 		</form>
-		
-		<c:if test="${ sessionScope.user.getNickname() != lost.writer }">
-			<div class="container row-3" align="center">
-				<a href="index.jsp"><button class="btn btn-dark my-5 mx-4"
-						type="button">로그인</button></a>
-			</div>
-		</c:if>
-		<c:if test="${ sessionScope.user.getNickname() == lost.writer }">
-			<div class="container row-3" align="center">
-				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
-				<a href="deleteLost.do?seq=${lost.getSeq()}"
-					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getLostList.do"
-					class="btn btn-dark my-5 mx-4">게시글목록</a>
-			</div>
-		</c:if>
 	</div>
-
-
-	<script>
-		var i = 0;
-		$('.bi-heart').on('click', function() {
-			if (i == 0) {
-				$(this).removeClass('bi-heart');
-				$(this).addClass('bi-heart-fill');
-				i++;
-			} else if (i == 1) {
-				$(this).removeClass('bi-heart-fill');
-				$(this).addClass('bi-heart');
-				i--;
-			}
-		});
-	</script>
-
-
+	<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertLReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
+		        </p>
+		        <p>
+		        	<input type="hidden" name="seq" value="${lost.seq}">
+		        	<c:if test="${ sessionScope.isAdmin }">
+		            <button type="submit">댓글 작성</button>
+		            </c:if>
+		        </p>
+		    </form> 
+		</div>
+		
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${lreplyList}" var="lreplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${lreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${lreplyList.regDate}</span>
+                          <pre class="fs-6">${lreplyList.content}</pre>
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />	
+			
+			<!-- 댓글 끝 -->
+		<div class="container row-3" align="center">
+			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
+			<a href="deleteLost.do?seq=${lost.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
+			<a href="getLostList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
+		</div>
 
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteQuestion() {
-			if (confirm("자료를 삭제하겠습니까?")) {
-				self.location.href = "deleteQuestion.do?seq=${ question.seq }";
-			}
+			if(confirm("자료를 삭제하겠습니까?")) {
+		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+		    }
 		}
 	</script>
 </body>
+</html>

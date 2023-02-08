@@ -5,11 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-
-<title>Villi : 글쓰기</title>
-<link rel="icon" href="../resources/images/favicon.png">
-
+<title>상품빌리 글쓰기</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -25,37 +21,41 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
-	
-	<script type="text/javascript">
-		function checkform() {
-			if ( document.frm.cate2.value == "카테고리") {
-				alert("카테고리를 입력해주세요")
-				document.frm.cate2.select();
-				return false;
-			}
-			else if ( document.frm.title.value == "") {
-				alert("제목을 입력해주세요")
-				form.title.focus();
-				return false;		
-			}
-			else if ( document.frm.content.value == "") {
-				alert("내용을 입력해주세요")
-				document.frm.content.select();
-				return false;
-			}
-			else if ( document.frm.title.value == "") {
-				alert("작성자를 입력해주세요")
-				document.frm.title.select();
-				return false;
-			}
-			else if ( document.frm.uploadFile1.value == "") {
-				alert("사진은 한 개 이상 등록해주세요")
-				document.frm.uploadFile1.select();
-				return false;
-			}
-			document.frm.submit();
+
+<script type="text/javascript">
+	function checkform() {
+		if (document.frm.cate2.value == "카테고리") {
+			alert("카테고리를 입력해주세요")
+			document.frm.cate2.select();
+			return false;
+		} else if (document.frm.title.value == "") {
+			alert("제목을 입력해주세요")
+			form.title.focus();
+			return false;
+		} else if (document.frm.content.value == "") {
+			alert("내용을 입력해주세요")
+			document.frm.content.select();
+			return false;
+		} else if (document.frm.title.value == "") {
+			alert("작성자를 입력해주세요")
+			document.frm.title.select();
+			return false;
+		} else if (document.frm.uploadFile1.value == "") {
+			alert("사진은 한 개 이상 등록해주세요")
+			document.frm.uploadFile1.select();
+			return false;
+		} else if (document.frm.usedate.value == "") {
+			alert("대여 날짜를 입력해주세요")
+			document.frm.usedate.select();
+			return false;
+		} else if (document.frm.duedate.value == "") {
+			alert("마감 날짜를 입력해주세요")
+			document.frm.duedate.select();
+			return false;
 		}
-	</script>
+		document.frm.submit();
+	}
+</script>
 
 <style>
 @font-face {
@@ -77,6 +77,7 @@ nav {
 </style>
 </head>
 <body>
+
 	<!-- ============search=============== -->
 	<nav class="border-bottom border-dark sticky-top z-index-10">
 		<div class="container" align="center">
@@ -93,7 +94,6 @@ nav {
 								aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-
 							<!--================ nav bar ===================-->
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -105,18 +105,23 @@ nav {
 												aria-expanded="false">글작성</button>
 											<ul class="dropdown-menu dropdown-menu-dark"
 												aria-labelledby="dropdownMenuButton2">
-												<li><a class="dropdown-item" href="#">상품</a></li>
-												<li><a class="dropdown-item" href="insertServiceBoard.jsp">서비스</a></li>
+												<li><a class="dropdown-item" href="">상품</a></li>
+												<li><a class="dropdown-item"
+													href="insertServiceBoard.jsp">서비스</a></li>
 											</ul>
 										</div>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getQuestionList.do">우리동네질문</a></li>
+										aria-current="page" href="../getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getLostList.do">동네분실센터</a></li>
+										aria-current="page" href="../getLostList.do">분실센터</a></li>
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="../getMeetingList.do">동네모임</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="getVoteList.do">동네투표</a></li>
+										aria-current="page" href="../getVoteList.do">동네투표</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="../getDemandList.do">빌리요청</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="../getGroupBuyingList.do">공동구매</a></li>
 								</ul>
 								<form action="getBoardList.do" method="post" id="boardForm">
 									<input type="hidden" id="curPage" name="curPage"
@@ -126,6 +131,7 @@ nav {
 									<div class="container">
 										<div class="row justify-content-md">
 											<div class="col-md-auto">
+
 												<select class="form-select" id="searchType"
 													name="searchType">
 													<option value="">검색</option>
@@ -138,10 +144,11 @@ nav {
 												</select>
 											</div>
 											<div class="col col-lg-6">
-												<input class="form-control" name="searchWord" type="text" />
+												<input class="form-control" name="searchWord" type="text"
+													placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
 											</div>
 											<div class="col col-lg-2">
-												<button class="btn btn-outline-dark" type="submit">Search</button>
+												<button class="btn btn-outline-success" type="submit">Search</button>
 											</div>
 										</div>
 									</div>
@@ -154,77 +161,93 @@ nav {
 		</div>
 	</nav>
 
+
+	<!--뭐해 -->
+
 	<!-- 카테고리 -->
 	<div class="container mt-3" align="center">
-		<form id="frm" action="insertBoard.do" method="post" onsubmit="return formCheck();" name="frm"
+		<form id="frm" action="insertBoard.do" method="post"
+			onsubmit="return formCheck();" name="frm"
 			enctype="multipart/form-data">
 			<div class="row">
-<!-- 				<div class="col"> -->
-<!-- 					<select class="form-select form-select-lg mb-3"  -->
-<!-- 						aria-label=".form-select-lg example"> -->
-<!-- 						<option selected value="lend">빌리합니다</option> -->
-<!-- 						<option value="borrow">빌리해주세요</option> -->
-<!-- 					</select> -->
-<!-- 				</div> -->
 				<div class="col">
-					<select class="form-select form-select-lg mb-3 w-75" name="cate2"
-						aria-label=".form-select-lg example">
-						<option selected>카테고리</option>
-						<option value="디지털기기">디지털기기</option>
-						<option value="공구용품">공구용품</option>
-						<option value="여성의류">여성의류</option>
-						<option value="남성의류">남성의류</option>
-						<option value="주방/화장실용품">주방/화장실용품</option>
-						<option value="행사용품/캠핑용품">행사용품/캠핑용품</option>
-						<option value="반려동물용품">반려동물용품</option>
-						<option value="취미/게임/음반">취미/게임/음반</option>
-						<option value="가구/인테리어">가구/인테리어</option>
-						<option value="뷰티/미용용품">뷰티/미용용품</option>
-						<option value="스포츠/레저">스포츠/레저</option>
-						<option value="육아물품">육아물품</option>
-						<option value="도서">도서</option>
-						<option value="기타">기타</option>
-					</select>
+					
+					<div class="input-group mb-3 w-75">
+						<input
+							type="hidden" class="form-control" name="writer" id="writer"
+							value="${ user.getNickname() }" >
+					</div>
+
+			
+
+					<div class="input-group mb-3 w-75">
+						<span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z"/>
+</svg></span><select
+							class="form-select form-select w-75" name="cate2"
+							aria-label=".form-select example">
+							<option selected>카테고리</option>
+							<option value="디지털기기">디지털기기</option>
+							<option value="공구용품">공구용품</option>
+							<option value="여성의류">여성의류</option>
+							<option value="남성의류">남성의류</option>
+							<option value="주방/화장실용품">주방/화장실용품</option>
+							<option value="행사용품/캠핑용품">행사용품/캠핑용품</option>
+							<option value="반려동물용품">반려동물용품</option>
+							<option value="취미/게임/음반">취미/게임/음반</option>
+							<option value="가구/인테리어">가구/인테리어</option>
+							<option value="뷰티/미용용품">뷰티/미용용품</option>
+							<option value="스포츠/레저">스포츠/레저</option>
+							<option value="육아물품">육아물품</option>
+							<option value="도서">도서</option>
+							<option value="기타">기타</option>
+						</select>
+					</div>
 				</div>
 			</div>
-			
-			
+
 			<div class="input-group mb-3 w-75">
-				<input type="hidden" class="form-control" name="writer" id="writer"
-					value=${ user.getNickname() } >
-			</div>
-			
-			
-			<div class="input-group mb-3 w-75">
-				<input type="text" class="form-control" name="title" id="title"
+				<span class="input-group-text"><i class="fas fa-clipboard"></i></span><input
+					type="text" class="form-control" name="title" id="title"
 					placeholder="글 제목">
 			</div>
 			<div class="input-group mb-3 w-75">
-				<input type="text" class="form-control" name="price" id="price"
+				<span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+</svg></span><input type="text" class="form-control" name="price" id="price"
 					onkeyup="inputNumberFormat(this)" placeholder="가격(선택사항)">
 				<script>
-					 function inputNumberFormat(obj) {
-					     obj.value = comma(uncomma(obj.value));
-					 }
-
-					 function comma(str) {
-					     str = String(str);
-					     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-					 }
-
-					 function uncomma(str) {
-					     str = String(str);
-					     return str.replace(/[^\d]+/g, '');
-					 }
-					</script>
+					function inputNumberFormat(obj) {
+						obj.value = comma(uncomma(obj.value));
+					}
+					function comma(str) {
+						str = String(str);
+						return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+					}
+					function uncomma(str) {
+						str = String(str);
+						return str.replace(/[^\d]+/g, '');
+					}
+				</script>
 			</div>
+
 			<div class="input-group mb-3 w-75">
-				<textarea class="form-control" name="content" id="content" rows="20" placeholder="게시글 내용을 작성해주세요."></textarea>
+				<span class="input-group-text"><i class="fas fa-clipboard"></i></span><textarea class="form-control" name="content" id="content" rows="20"
+					placeholder="게시글 내용을 작성해주세요."></textarea>
 			</div>
-			
+			<label for="form-control" class="form-control-label">대여날짜와
+				마감날짜를 정해주세요</label>
+
+			<div class="input-group mb-3 w-75">
+			<span class="input-group-text">	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+  <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg></span>	<input type="date" class="form-control" name="usedate" id="usedate">
+				<input type="date" class="form-control" name="duedate" id="duedate">
+			</div>
 			<!-- 파일첨부 -->
-			
-			<label for="formFile" class="form-label">사진은 최대 3장까지 등록가능합니다</label>	
+
+			<label for="formFile" class="form-label">사진은 최대 3장까지 등록가능합니다</label>
 			<div class="input-group mb-3 w-75">
 
 				<input type="file" class="form-control" name="uploadFile1"
@@ -236,12 +259,12 @@ nav {
 			</div>
 			<input type="hidden" name="fileName" value="" />
 			<div class="input-group input-group-lg mb-5 w-75">
-				<input type="button" class="form-control btn btn-dark" OnClick="checkform()"
-					aria-label="Sizing example input"
-					aria-describedby="inputGroup-sizing-sm" id="click"  value="글작성">
+				<input type="button" class="form-control btn btn-dark"
+					OnClick="checkform()" aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-sm" id="click" value="글작성">
 			</div>
 		</form>
 	</div>
-	
+
 </body>
 </html>

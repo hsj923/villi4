@@ -100,11 +100,11 @@ color:#23dbc9
      	<div class="row mt-2"> 
      	
      	<div class="col-2">  	
-        	<c:if test="${ !empty user.getFileName()}">
-     			<img src="../resources/images/${ user.getFileName() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
+        	<c:if test="${ !empty user.getFileName1()}">
+     			<img src="../resources/images/${ user.getFileName1() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
      		</c:if>
      
-    		<c:if test="${ empty user.getFileName() }">
+    		<c:if test="${ empty user.getFileName1() }">
     			<img src="../resources/images/noimg.png" class="rounded-circle" id="admin_img" width="100px" height="100px" alt="img">
     		</c:if>
 		 </div>   

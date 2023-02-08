@@ -96,7 +96,7 @@ color:#23dbc9;
   
     <div class="hAddr">
         <span class="title">  ${ sessionScope.user.getName() }님의 현재위치</span>
-        <input type="text" name="address" value="" id="centerAddr"></input>
+        <input type="text" name="address" value="" id="centerAddr" readonly></input>
     </div>
    
    

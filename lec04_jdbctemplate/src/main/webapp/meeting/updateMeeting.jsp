@@ -40,57 +40,8 @@ nav {
 	background-color: #FFFAFA;
 }
 
-<<<<<<< HEAD
-=======
-/*
-
-동네맛집 css
-
-*/
-
-
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-.bg_white {background:#fff;}
-#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
-#menu_wrap .option p {margin:10px 0;}  
-#menu_wrap .option button {margin-left:5px;}
-#placesList li {list-style: none;}
-#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
-#placesList .item span {display: block;margin-top:4px;}
-#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#placesList .item .info{padding:10px 0 10px 55px;}
-#placesList .info .gray {color:#8a8a8a;}
-#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
-#placesList .info .tel {color:#009900;}
-#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
-#placesList .item .marker_1 {background-position: 0 -10px;}
-#placesList .item .marker_2 {background-position: 0 -56px;}
-#placesList .item .marker_3 {background-position: 0 -102px}
-#placesList .item .marker_4 {background-position: 0 -148px;}
-#placesList .item .marker_5 {background-position: 0 -194px;}
-#placesList .item .marker_6 {background-position: 0 -240px;}
-#placesList .item .marker_7 {background-position: 0 -286px;}
-#placesList .item .marker_8 {background-position: 0 -332px;}
-#placesList .item .marker_9 {background-position: 0 -378px;}
-#placesList .item .marker_10 {background-position: 0 -423px;}
-#placesList .item .marker_11 {background-position: 0 -470px;}
-#placesList .item .marker_12 {background-position: 0 -516px;}
-#placesList .item .marker_13 {background-position: 0 -562px;}
-#placesList .item .marker_14 {background-position: 0 -608px;}
-#placesList .item .marker_15 {background-position: 0 -654px;}
-#pagination {margin:10px auto;text-align: center;}
-#pagination a {display:inline-block;margin-right:10px;}
-#pagination .on {font-weight: bold; cursor: default;color:#777;}
-
-
-
-
->>>>>>> refs/remotes/origin/master
-
+pre { white-space: pre-wrap; 
+	  font-family: 'Pretendard-Regular';}
 </style>
 
 </head>
@@ -99,7 +50,7 @@ nav {
 <body>
 	<!-- ============search=============== -->
 	<nav class="border-bottom border-dark sticky-top z-index-10">
-		<div class="container-fluid" align="center">
+		<div class="container" align="center">
 			<div class="row p-3">
 				<div class="col">
 
@@ -116,16 +67,9 @@ nav {
 							<!--================ nav bar ===================-->
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item">
-									<!-- ================글작성버튼, 로그인============= --> <c:if
-											test="${ sessionScope.user.getNickname() == null }">
-											<a class="nav-link active" aria-current="page"
-												href="index.jsp">로그인</a>
-										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
-																				<a class="nav-link active"
-										aria-current="page" href="meeting/insertMeeting.jsp">글작성</a>
-										</c:if>
-									</li>
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="meeting/insertMeeting.jsp">글작성</a></li>
+
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
@@ -180,7 +124,7 @@ nav {
 
 
 	<!-- form -->
-	<div class="container w-50 mt-3" align="center">
+	<div class="container-sm mt-3" align="center">
 		<form action="updateMeeting.do" method="post">
 			<div class="card">
 				<div class="card-body">
@@ -248,6 +192,43 @@ nav {
 				</div>
 			</div>
 		</form>
+		
+		<!-- 댓글 자리 -->
+		<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertMReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
+		        </p>
+		        <p>
+		        	<input type="hidden" name="seq" value="${meeting.seq}">
+		        	<c:if test="${ sessionScope.isAdmin }">
+		            <button type="submit">댓글 작성</button>
+		            </c:if>
+		        </p>
+		    </form> 
+		</div>
+		
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${mreplyList}" var="mreplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${mreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${mreplyList.regDate}</span>
+                          <pre class="fs-6">${mreplyList.content}</pre>
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />	
+	
+	<!-- 댓글 끝 -->	
+		
 		<div class="container row-3" align="center">
 			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
 			<a href="deleteMeeting.do?seq=${meeting.getSeq()}"
@@ -256,5 +237,13 @@ nav {
 		</div>
 	</div>
 
+	<!-- 삭제시 confirm -->
+	<script>
+		function deleteQuestion() {
+			if(confirm("자료를 삭제하겠습니까?")) {
+		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+		    }
+		}
+	</script>
 </body>
 </html>

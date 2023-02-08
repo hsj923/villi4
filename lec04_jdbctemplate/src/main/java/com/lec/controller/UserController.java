@@ -1,10 +1,16 @@
 package com.lec.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -20,7 +26,8 @@ import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.UserService;
 import com.lec.jdbc.vo.UserVO;
 
-@Controller("userController")
+@Controller
+@PropertySource("classpath:config/uploadpath.properties")
 public class UserController {
 
 	@Autowired
@@ -60,13 +67,6 @@ public class UserController {
 	
 	@RequestMapping("*/insertUser.do")
 	public String insertUser(UserVO user)  throws IOException{		
-		MultipartFile uploadFile = user.getUploadFile();
-		
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			uploadFile.transferTo(new File(uploadFolder + fileName));
-			user.setFileName(fileName);
-		}
 		userService.insertUser(user);
 		return "redirect:/login.do";
 	}	
@@ -86,7 +86,8 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
-	public String updateUser(Model model, UserVO user, SearchVO searchVO) {
+	public String updateUser(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
+		user.setEmail(email);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("user", userService.getUser(user));
 		return "user/updateUser.jsp";
@@ -95,15 +96,27 @@ public class UserController {
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
 	public String updateUser(UserVO user) throws IOException {
 		
-		MultipartFile uploadFile = user.getUploadFile();
 		
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			uploadFile.transferTo(new File(uploadFolder + fileName));
-			user.setFileName(fileName);
+		MultipartFile uploadFile1 = user.getUploadFile1();
+		
+		if(!uploadFile1.isEmpty()) {
+			
+			String fileName = uploadFile1.getOriginalFilename();
+			
+		    String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
+	         UUID uuid = UUID.randomUUID();
+	         String[] uuids = uuid.toString().split("-");
+	         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
+
+			uploadFile1.transferTo(new File(uploadFolder + fileName));
+			user.setFileName1(uniqueName);
+			
+			System.out.println(user.toString());
 		}
+		
+		
 		userService.updateUser(user);
-		return "redirect:/getUserList.do";
+		return "getBoardList.do";
 	}	
 
 	
@@ -119,13 +132,16 @@ public class UserController {
 	
 	@RequestMapping(value="/getUser.do", method=RequestMethod.POST)
 	public String getUser(UserVO user) throws IOException {
-		MultipartFile uploadFile = user.getUploadFile();
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename();
-			uploadFile.transferTo(new File(uploadFolder + fileName));
-			user.setFileName(fileName);
+		
+		MultipartFile uploadFile1 = user.getUploadFile1();
+		if(!uploadFile1.isEmpty()) {
+			String fileName = uploadFile1.getOriginalFilename();
+			uploadFile1.transferTo(new File(uploadFolder + fileName));
+			user.setFileName1(fileName);
 		}
+		
 		userService.getUserByNick(user);
+		
 		return "getUserList.do";
 	}
 	
@@ -166,7 +182,41 @@ public class UserController {
 		}	
 		
 	
-	
+		@RequestMapping("/downloadpro.do")
+		public String download(HttpServletRequest req, HttpServletResponse res) throws Exception { 	
+			req.setCharacterEncoding("utf-8");
+			String fileName = req.getParameter("fn");
+			
+			String fromPath = uploadFolder + fileName;
+			String toPath = uploadFolder + fileName;
+		
+			byte[] b = new byte[4096];
+			File f = new File(toPath);
+			FileInputStream fis = new FileInputStream(fromPath);
+			
+			String sMimeType = req.getSession().getServletContext().getMimeType(fromPath); // mimetype = file type : pdf, exe, txt.... 
+			if(sMimeType == null) sMimeType = "application/octet-stream";
+			
+			String sEncoding = new String(fileName.getBytes("utf-8"), "8859_1");
+			String sEncoding1 = URLEncoder.encode(fileName, "utf-8");
+			
+			res.setContentType(sMimeType);
+			res.setHeader("Content-Transfer-Encoding", "binary");
+			res.setHeader("Content-Disposition", "attachment; filename = " + sEncoding1);
+				
+			int numRead;
+			ServletOutputStream os = res.getOutputStream();
+		
+			while((numRead=fis.read(b, 0, b.length)) != -1 ) {
+				os.write(b, 0, numRead);
+			}
+			
+			os.flush();
+			os.close();
+			fis.close();
+			
+			return "getUserList.do";
+		}	
 	
 	
 }

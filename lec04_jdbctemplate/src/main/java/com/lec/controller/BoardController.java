@@ -97,6 +97,8 @@ public class BoardController {
 			uploadFile1.transferTo(new File(uploadFolder + fileName));
 			board.setFileName1(fileName);
 		}	
+		
+		
 		MultipartFile uploadFile2 = board.getUploadFile2();
 		if (!uploadFile2.isEmpty()) {
 			String fileName = uploadFile2.getOriginalFilename();
@@ -178,6 +180,6 @@ public class BoardController {
 		os.close();
 		fis.close();
 		
-		return "getBoardList.do";
+		return "getUserList.do";
 	}	
 }

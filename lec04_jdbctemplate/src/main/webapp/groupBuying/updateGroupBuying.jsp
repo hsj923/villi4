@@ -13,8 +13,6 @@
 	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -42,17 +40,8 @@ nav {
 	background-color: #FFFAFA;
 }
 
-.bi-heart {
-	font-size: 30px;
-	line-height: 30px;
-	color: crimson;
-}
-
-.bi-heart-fill {
-	font-size: 30px;
-	line-height: 30px;
-	color: crimson;
-}
+pre { white-space: pre-wrap; 
+	  font-family: 'Pretendard-Regular';}
 </style>
 
 </head>
@@ -60,92 +49,82 @@ nav {
 
 <body>
 	<!-- ============search=============== -->
-	<nav class="border-bottom border-dark sticky-top z-index-10">
-		<div class="container" align="center">
-			<div class="row p-3">
-				<div class="col">
+		<nav class="border-bottom border-dark sticky-top z-index-10">
+			<div class="container" align="center">
+				<div class="row p-3">
+					<div class="col">
 
-					<nav class="navbar navbar-expand-lg navbar-light">
-						<div class="container-fluid">
-							<a class="navbar-brand" href="getBoardList.do">Villi</a>
-							<button class="navbar-toggler" type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#navbarSupportedContent"
-								aria-controls="navbarSupportedContent" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<!--================ nav bar ===================-->
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<nav class="navbar navbar-expand-lg navbar-light">
+							<div class="container-fluid">
+								<a class="navbar-brand" href="getBoardList.do">Villi</a>
+								<button class="navbar-toggler" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#navbarSupportedContent"
+									aria-controls="navbarSupportedContent" aria-expanded="false"
+									aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"></span>
+								</button>
+								<!--================ nav bar ===================-->
+								<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item">
-										<!-- ================글작성버튼, 로그인============= --> <c:if
-											test="${ sessionScope.user.getNickname() == null }">
-											<a class="nav-link active" aria-current="page"
-												href="index.jsp">로그인</a>
-										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
-											<a class="nav-link active" aria-current="page"
-												href="groupBuying/insertGroupBuying.jsp">글작성</a>
-										</c:if>
-
+									<li class="nav-item"><a class="nav-link active"
+										aria-current="page" href="groupBuying/insertGroupBuying.jsp">글작성</a>
 									</li>
+											
+										<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getQuestionList.do">동네질문</a></li>
+										<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getLostList.do">분실센터</a></li>
+										<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getMeetingList.do">동네모임</a></li>
+										<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getVoteList.do">동네투표</a></li>
+										<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getDemandList.do">빌리요청</a></li>
+										<li class="nav-item"><a class="nav-link"
+											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
+									</ul>
+									<form action="getGroupBuyingList.do" method="post" id="groupBuyingForm">
+										<input type="hidden" id="curPage" name="curPage"
+											value="${searchVO.getCurPage()}"> <input
+											type="hidden" id="rowSizePerPage" name="rowSizePerPage"
+											value="${searchVO.getRowSizePerPage()}">
+										<div class="container">
+											<div class="row justify-content-md">
+												<div class="col-md-auto">
 
-
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="getQuestionList.do">동네질문</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="getLostList.do">분실센터</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="getMeetingList.do">동네모임</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="getVoteList.do">동네투표</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="getDemandList.do">빌리요청</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
-								</ul>
-								<form action="getGroupBuyingList.do" method="post"
-									id="groupBuyingForm">
-									<input type="hidden" id="curPage" name="curPage"
-										value="${searchVO.getCurPage()}"> <input type="hidden"
-										id="rowSizePerPage" name="rowSizePerPage"
-										value="${searchVO.getRowSizePerPage()}">
-									<div class="container">
-										<div class="row justify-content-md">
-											<div class="col-md-auto">
-
-												<select class="form-select" id="searchType"
-													name="searchType">
-													<option value="">검색</option>
-													<option value="title"
-														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-													<option value="writer"
-														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
-													<option value="cate2"
-														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
-												</select>
-											</div>
-											<div class="col col-lg-6">
-												<input class="form-control" name="searchWord" type="text"
-													placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
-											</div>
-											<div class="col col-lg-2">
-												<button class="btn btn-outline-success" type="submit">Search</button>
+													<select class="form-select" id="searchType"
+														name="searchType">
+														<option value="">검색</option>
+														<option value="title"
+															${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
+														<option value="writer"
+															${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
+														<option value="cate2"
+															${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
+													</select>
+												</div>
+												<div class="col col-lg-6">
+													<input class="form-control" name="searchWord" type="text"
+														placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
+												</div>
+												<div class="col col-lg-2">
+													<button class="btn btn-outline-success" type="submit">Search</button>
+												</div>
 											</div>
 										</div>
-									</div>
-								</form>
+									</form>
+								</div>
 							</div>
-						</div>
-					</nav>
+						</nav>
+					</div>
 				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
 
 
 
-	<!-- form -->
+<!-- form -->
 	<div class="container-sm mt-3" align="center">
 		<form action="updateGroupBuying.do" method="post">
 			<div class="card">
@@ -162,58 +141,37 @@ nav {
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
-						<div class="row">
-							<div class="col-4 text-start">
-								<span class="fs-4 fw-bold">${ groupBuying.title }</span>
-								<c:choose>
-									<c:when test="${groupBuying.status eq '모집중'}">
-										<span class="badge bg-success text-white rounded-pill ">${groupBuying.status}</span>
-									</c:when>
-									<c:when test="${groupBuying.status eq '모집종료'}">
-										<span class="badge bg-danger text-white rounded-pill ">${groupBuying.status}</span>
-									</c:when>
-								</c:choose>
-							</div>
-							<div class="col-8 text-end">
-								<p class="fs-6 fst-italic 	text-decoration-underline">${groupBuying.regDate}</p>
-							</div>
-						</div> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-person-square"
-							viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-  <path
-								d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
-</svg><span class="fs-6 ms-2">${ groupBuying.per }명 모집</span><br> <svg
-							xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-calendar-check"
-							viewBox="0 0 16 16">
-  <path
-								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-  <path
-								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-</svg><span class="fs-6 ms-2">구매일 : ${ groupBuying.buying_date }</span> <br>
-					<br>
-
-
-						<p class="text-muted fs-5">${ groupBuying.content }</p> <br>
-						<br> <br>
-						<p class="mt-4">조회 : ${ groupBuying.cnt }</p>
-					</li>
-					<li class="list-group-item text-end "><a
-						href="report/report_insert.jsp" class="stretched-link text-danger">이
-							게시글 신고하기</a></li>
+					<span class="badge bg-success text-white rounded-pill">
+							${groupBuying.status} </span> <span class="fs-4 fw-bold">${ groupBuying.title }</span>
+						<p class="text-muted fs-6 fst-italic">${groupBuying.regDate}</p>
+						
+					
+						
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+</svg><span class="fs-6 ms-2">${ groupBuying.per }명 모집</span><br>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+  <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg><span class="fs-6 ms-2">구매일 : ${ groupBuying.buying_date }</span>
+						<br><br>
+						
+						
+						<p class="text-muted fs-5">${ groupBuying.content }</p>									
+						 <br> <br> <br>
+						<p class="mt-4">조회 : ${ groupBuying.cnt }</p></li>
+					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
 				</ul>
 
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
 							<c:if test="${ !empty  groupBuying.price}">
-								<span class="fs-4 mx-3"> <i class="bi bi-heart fs-5"></i></span>
-								<span class="fs-5">${ groupBuying.price }원</span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">${ groupBuying.price }원</span>
 							</c:if>
 							<c:if test="${ empty  groupBuying.price}">
-								<span class="fs-4 mx-3"> <i class="bi bi-heart fs-5"></i></span>
-								<span class="fs-5">가격협의</span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">가격협의</span>
 							</c:if>
 						</div>
 						<div class="col-8 text-end">
@@ -224,40 +182,49 @@ nav {
 				</div>
 			</div>
 		</form>
-	<c:if test="${ sessionScope.user.getNickname() == groupBuying.writer }">
-			<div class="container row-3" align="center">
-				<a href="getDemandList.do"
-					class="btn btn-dark my-5 mx-4">게시글목록</a>
-			</div>
-		</c:if>
-		<c:if test="${ sessionScope.user.getNickname() != groupBuying.writer }">
-			<div class="container row-3" align="center">
-				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
-				<a href="deleteGroupBuying.do?seq=${groupBuying.getSeq()}"
-					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getGroupBuyingList.do"
-					class="btn btn-dark my-5 mx-4">게시글목록</a>
-			</div>
-		</c:if>
-
+		
+		<!-- 댓글 자리 -->
+		<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertGReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
+		        </p>
+		        <p>
+		        	<input type="hidden" name="seq" value="${groupBuying.seq}">
+		        	<c:if test="${ sessionScope.isAdmin }">
+		            <button type="submit">댓글 작성</button>
+		            </c:if>
+		        </p>
+		    </form> 
+		</div>
+		
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${greplyList}" var="greplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${greplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${greplyList.regDate}</span>
+                          <pre class="fs-6">${greplyList.content}</pre>
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />	
+	
+	<!-- 댓글 끝 -->	
+		
+		<div class="container row-3" align="center">
+			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
+			<a href="deleteGroupBuying.do?seq=${groupBuying.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
+			<a href="getGroupBuyingList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
+		</div>
 	</div>
-
-
-	<script>
-    var i = 0;
-    $('.bi-heart').on('click',function(){
-        if(i==0){
-            $(this).removeClass('bi-heart');
-            $(this).addClass('bi-heart-fill');
-            i++;
-        }else if(i==1){
-            $(this).removeClass('bi-heart-fill');
-            $(this).addClass('bi-heart');
-            i--;
-        }     
-    });
-</script>
-
-
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteQuestion() {

@@ -25,7 +25,7 @@ public class UserDAO {
 	Environment environment;
 	
 	private String sql = "";
-	private String selectById = "";
+	private String selectByEmail = "";
 	private String userTotalRowCount = "";
 	private String insertUser = "";
 	private String deleteUser = "";
@@ -38,7 +38,7 @@ public class UserDAO {
 	
 	@PostConstruct
 	public void getSqlPropeties() {
-		selectById           = environment.getProperty("selectById");
+		selectByEmail           = environment.getProperty("selectByEmail");
 		userTotalRowCount    = environment.getProperty("userTotalRowCount");
 		insertUser           = environment.getProperty("insertUser");
 		deleteUser           = environment.getProperty("deleteUser");
@@ -53,7 +53,7 @@ public class UserDAO {
 	public UserVO getUser(UserVO user) {
 		// System.out.println(jdbcTemplate.getDataSource().getConnection().toString());
 		Object[] args = { user.getEmail() };		
-		return (UserVO) jdbcTemplate.queryForObject(selectById, args, new UserRowMapper());
+		return (UserVO) jdbcTemplate.queryForObject(selectByEmail, args, new UserRowMapper());
 	}
 	
  // 닉네임으로 유저 정보 가져오기
@@ -83,18 +83,18 @@ public class UserDAO {
 	
 	public UserVO insertUser(UserVO user) {
 		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");	
-		jdbcTemplate.update(insertUser, user.getEmail(), user.getPassword(), user.getNickname(), user.getName(), user.getRole(), user.getAddress(), user.getFileName());
+		jdbcTemplate.update(insertUser, user.getEmail(), user.getPassword(), user.getNickname(), user.getName(), user.getRole(), user.getAddress());
 		return user;
 	}	
-	
+
 	public int deleteUser(UserVO user) {
 		return jdbcTemplate.update(deleteUser, user.getEmail());
 	}
 
-	public UserVO updateUser(UserVO user) {
-		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");
-	    jdbcTemplate.update(updateUser, user.getNickname(), user.getPassword(), user.getRole(), user.getEmail(), user.getFileName());
-	    return user;
+	public int updateUser(UserVO user) {
+		System.out.println(user.toString());
+	    return jdbcTemplate.update(updateUser, user.getEmail(),user.getNickname(), user.getPassword(),  user.getFileName1());
+	    
 	}
 	
 	// 동네 설정
