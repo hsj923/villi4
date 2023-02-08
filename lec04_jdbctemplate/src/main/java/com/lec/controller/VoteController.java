@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.VoteService;
+import com.lec.jdbc.service.VreplyService;
+import com.lec.jdbc.vo.VReplyVO;
 import com.lec.jdbc.vo.VoteVO;
 
 @Controller
@@ -26,6 +28,9 @@ public class VoteController {
 
 	@Autowired
 	VoteService voteService;
+	
+	@Autowired
+	VreplyService vreplyService;
 	
 	@Autowired
 	Environment environment;
@@ -66,9 +71,11 @@ public class VoteController {
 	}	
 	
 	@RequestMapping(value="/updateVote.do", method=RequestMethod.GET)
-	public String updateVote(Model model, VoteVO vote, SearchVO searchVO) {
+	public String updateVote(Model model, VoteVO vote, SearchVO searchVO,int seq) {
+		
+		List<VReplyVO> vreplyList = vreplyService.getVReplyList(seq);
 		voteService.updateVoteCount(vote);
-		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("vreplyList", vreplyList);
 		model.addAttribute("vote", voteService.getVote(vote));
 		return "vote/updateVote.jsp";
 	}
@@ -78,9 +85,6 @@ public class VoteController {
 		voteService.updateVote(vote);
 		return "getVoteList.do";
 	}	
-
-
-	
 	
 	@RequestMapping(value="/deleteVote.do", method=RequestMethod.GET)
 	public String deleteVote(Model model, VoteVO vote, SearchVO searchVO, @RequestParam int seq) {

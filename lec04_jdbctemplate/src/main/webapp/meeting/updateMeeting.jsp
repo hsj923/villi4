@@ -39,6 +39,9 @@ body {
 nav {
 	background-color: #FFFAFA;
 }
+
+pre { white-space: pre-wrap; 
+	  font-family: 'Pretendard-Regular';}
 </style>
 
 </head>
@@ -189,6 +192,43 @@ nav {
 				</div>
 			</div>
 		</form>
+		
+		<!-- 댓글 자리 -->
+		<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertMReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
+		        </p>
+		        <p>
+		        	<input type="hidden" name="seq" value="${meeting.seq}">
+		        	<c:if test="${ sessionScope.isAdmin }">
+		            <button type="submit">댓글 작성</button>
+		            </c:if>
+		        </p>
+		    </form> 
+		</div>
+		
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${mreplyList}" var="mreplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${mreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${mreplyList.regDate}</span>
+                          <pre class="fs-6">${mreplyList.content}</pre>
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />	
+	
+	<!-- 댓글 끝 -->	
+		
 		<div class="container row-3" align="center">
 			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
 			<a href="deleteMeeting.do?seq=${meeting.getSeq()}"

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
+import com.lec.jdbc.service.GreplyService;
 import com.lec.jdbc.service.GroupBuyingService;
+import com.lec.jdbc.vo.GReplyVO;
 import com.lec.jdbc.vo.GroupBuyingVO;
 
 @Controller
@@ -26,6 +28,9 @@ public class GroupBuyingController {
 
 	@Autowired
 	GroupBuyingService groupBuyingService;
+	
+	@Autowired
+	GreplyService greplyService;
 	
 	@Autowired
 	Environment environment;
@@ -72,9 +77,11 @@ public class GroupBuyingController {
 	}	
 	
 	@RequestMapping(value="/updateGroupBuying.do", method=RequestMethod.GET)
-	public String updateGroupBuying(Model model, GroupBuyingVO groupBuying, SearchVO searchVO) {
+	public String updateGroupBuying(Model model, GroupBuyingVO groupBuying, SearchVO searchVO,int seq) {
+		
+		List<GReplyVO> greplyList = greplyService.getGReplyList(seq);
 		groupBuyingService.updateGroupBuyingCount(groupBuying);
-		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("greplyList", greplyList);
 		model.addAttribute("groupBuying", groupBuyingService.getGroupBuying(groupBuying));
 		return "groupBuying/updateGroupBuying.jsp";
 	}

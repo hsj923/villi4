@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.DemandService;
+import com.lec.jdbc.service.DreplyService;
+import com.lec.jdbc.vo.DReplyVO;
 import com.lec.jdbc.vo.DemandVO;
 
 @Controller
@@ -26,6 +28,9 @@ public class DemandController {
 
 	@Autowired
 	DemandService demandService;
+	
+	@Autowired
+	DreplyService dreplyService;
 	
 	@Autowired
 	Environment environment;
@@ -72,9 +77,11 @@ public class DemandController {
 	}	
 	
 	@RequestMapping(value="/updateDemand.do", method=RequestMethod.GET)
-	public String updateDemand(Model model, DemandVO demand, SearchVO searchVO) {
+	public String updateDemand(Model model, DemandVO demand, SearchVO searchVO,int seq) {
+		
+		List<DReplyVO> dreplyList = dreplyService.getDReplyList(seq);
 		demandService.updateDemandCount(demand);
-		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("dreplyList", dreplyList);
 		model.addAttribute("demand", demandService.getDemand(demand));
 		return "demand/updateDemand.jsp";
 	}
