@@ -146,4 +146,27 @@ public class UserController {
 		userService.deleteUser(user);
 		return "getUserList.do";
 	}	
+	
+	
+	// 동네 설정
+	
+		@RequestMapping(value="/updateAddr.do", method=RequestMethod.GET)
+		public String updateAddr(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
+			user.setEmail(email);
+			model.addAttribute("searchVO", searchVO);
+			model.addAttribute("user", userService.getUser(user));
+			return "user/location.jsp";
+		}
+		
+		@RequestMapping(value="/updateAddr.do", method=RequestMethod.POST)
+		public String updateAddr(UserVO user) throws IOException {
+			//System.out.println(user.toString());
+			userService.updateAddr(user);
+			return "getBoardList.do";
+		}	
+		
+	
+	
+	
+	
 }

@@ -33,9 +33,7 @@ public class UserDAO {
 	private String selectUserList = "";
 	private String selectUserListById = ""; 
 	private String selectUserListByName = ""; 
-	
-	//**
-	
+	private String updateAddr = "";
 	private String selectByNickname = "";
 	
 	@PostConstruct
@@ -48,10 +46,7 @@ public class UserDAO {
 		selectUserList       = environment.getProperty("selectUserList");
 		selectUserListById   = environment.getProperty("selectUserListById");
 		selectUserListByName = environment.getProperty("selectUserListByName");
-		
-		
-		//**
-		
+		updateAddr           = environment.getProperty("updateAddr");
 		selectByNickname = environment.getProperty("selectByNickname");
 	}
 
@@ -61,22 +56,13 @@ public class UserDAO {
 		return (UserVO) jdbcTemplate.queryForObject(selectById, args, new UserRowMapper());
 	}
 	
+ // 닉네임으로 유저 정보 가져오기
 	
-	
-	//** 
-	
-
 	public UserVO getUserByNick(UserVO user) {
 		// System.out.println(jdbcTemplate.getDataSource().getConnection().toString());
 		Object[] args = { user.getNickname() };		
 		return (UserVO) jdbcTemplate.queryForObject(selectByNickname, args, new UserRowMapper());
 	}
-	
-	
-	
-	
-	
-	
 	
 	public int getTotalRowCount(SearchVO searchVO) {
 		sql = userTotalRowCount;
@@ -110,5 +96,12 @@ public class UserDAO {
 	    jdbcTemplate.update(updateUser, user.getNickname(), user.getPassword(), user.getRole(), user.getEmail(), user.getFileName());
 	    return user;
 	}
+	
+	// 동네 설정
+	
+	public int updateAddr(UserVO user) {
+		return jdbcTemplate.update(updateAddr, user.getAddress(), user.getEmail());
+	}
+	
 
 }

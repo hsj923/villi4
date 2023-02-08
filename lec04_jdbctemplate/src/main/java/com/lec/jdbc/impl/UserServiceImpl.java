@@ -80,7 +80,13 @@ public class UserServiceImpl implements UserService {
 	      return emailDAO.emailCheck(email);
 	   }
 	
-
+	// ----------------- 동네 설정 -----------------------
+	
+	@Override
+	public int updateAddr(UserVO user) {
+		return userDAO.updateAddr(user);
+		
+	}
 
 	
 	

@@ -14,19 +14,9 @@ public class UserVO {
 	private String role;
 	private String fileName;
 	private MultipartFile uploadFile;
-	
-	private String thumbImg;
-	
+
 	
 	
-	
-	
-	public String getThumbImg() {
-		return thumbImg;
-	}
-	public void setThumbImg(String thumbImg) {
-		this.thumbImg = thumbImg;
-	}
 	public String getEmail() {
 		return email;
 	}

@@ -143,14 +143,14 @@ border-radius:1.5em;
 		 <label for="inputProfile" class="mt-3">* 프로필 사진</label>
 		  <div class="col-2 input-group mb-3 mt-2"> 
 		  
-		   <c:if test="${ !empty  user.fileName}">
-			<div class="select_img"><img src="/resources/images/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img"></div>
+		   <c:if test="${ !empty  user.getFileName()}">
+			<div class="select_img"><img src="resources/images/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img"></div>
 		  </c:if>
 		  
 		  
-		  <c:if test="${ empty user.fileName}">
+		  <c:if test="${ empty user.getFileName()}">
 		  <div class="select_img">
-			<img src="" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+			<img src="resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </div>
 		  </c:if>
 		  
@@ -188,7 +188,7 @@ border-radius:1.5em;
 			<label for="inputEmail" class="mt-2">* 이름</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
-				<input type="text" name="email" class="form-control" value="${ user.getName() }" disabled>
+				<input type="text" name="name" class="form-control" value="${ user.getName() }" disabled>
 			</div>
 
 			<!-- 닉네임 변경  --> 

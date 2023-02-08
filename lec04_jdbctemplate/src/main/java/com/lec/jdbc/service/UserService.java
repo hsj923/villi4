@@ -16,4 +16,7 @@ public interface UserService {
 	UserVO getUser1(UserVO vo);
 	//**
 	UserVO getUserByNick(UserVO vo);
+	
+	// 동네 설정
+	int updateAddr(UserVO user);
 }
