@@ -13,7 +13,9 @@ import org.springframework.stereotype.Repository;
 
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.mapper.ChatRowMapper;
+import com.lec.jdbc.mapper.LostRowMapper;
 import com.lec.jdbc.vo.ChatVO;
+import com.lec.jdbc.vo.LostVO;
 
 @Repository("chatDAO")
 @PropertySource("classpath:config/chatsql.properties")
@@ -52,13 +54,10 @@ public class ChatDAO {
 	}
 
 	public ChatVO getChat(ChatVO chat) {
-		try {			
-			Object[] args = { chat.getSeq() };		
-			return (ChatVO) jdbcTemplate.queryForObject(selectByChatSeq, args, new ChatRowMapper());
-		} catch(EmptyResultDataAccessException e) {
-			return null;
-		}
+		Object[] args = { chat.getSeq() };		
+		return (ChatVO) jdbcTemplate.queryForObject(selectByChatSeq, args, new ChatRowMapper());
 	}
+	
 	public int getTotalRowCount(SearchVO searchVO) {
 		
 		if(searchVO.getSearchType()==null || searchVO.getSearchType().isEmpty() ||

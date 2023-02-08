@@ -72,7 +72,7 @@ public class UserController {
 //			uploadFile.transferTo(new File(uploadFolder + fileName));
 //			user.setFileName(fileName);
 //		}
-//		
+//	
 //		userService.insertUser(user);
 //		return "redirect:/getUserList.do";
 //	}

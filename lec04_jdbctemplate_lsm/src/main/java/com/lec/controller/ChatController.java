@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -105,6 +106,14 @@ public class ChatController {
 	}	
 	
 	
+	@RequestMapping(value = "/chat.action", method = { RequestMethod.GET })
+	public String chat (HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+	return "chat.do";
+	}
+		
+
+	
+	
 	/* @RequestMapping("/download.do") */
 	public String download(HttpServletRequest req, HttpServletResponse res) throws Exception { 	
 		req.setCharacterEncoding("utf-8");
@@ -136,6 +145,9 @@ public class ChatController {
 		os.flush();
 		os.close();
 		fis.close();
+		
+
+		
 		
 		return "getChatList.do";
 	}	

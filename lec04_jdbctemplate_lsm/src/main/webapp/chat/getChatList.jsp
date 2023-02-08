@@ -416,7 +416,7 @@ img, svg {
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
-					<span class=mx-2><a href="#" style="text-decoration: none"
+					<span class=mx-2><a href="getUserList.do" style="text-decoration: none"
 						class="text-dark">좋아요</a> </span> <span class=mx-1><a
 						href="user/mypage.jsp" style="text-decoration: none"
 						class="text-dark">마이페이지</a></span> <span class="mx-2">${ sessionScope.user.getName() }님</span>
@@ -450,7 +450,7 @@ img, svg {
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="../getLostList.do">동네분실센터</a></li>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getMeetingList.do">동네모임</a></li>
+										aria-current="page" href="getMeetingList.do">동네모임</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="../getVoteList.do">동네투표</a></li>
 								</ul>
@@ -517,7 +517,7 @@ img, svg {
 															<div class="row">
 																<div class="col-2 mb-3">프사</div>
 																<div class="col-7 mb-3">
-																	${ chat.getSeq() }
+																	<%-- ${ chat.getSeq() } --%>
 																	<td scope="row"><a href="updateChat.do?id=${ chat.getWriter() }">${ chat.getWriter() }</a>
 																		l</td><c:choose>
 											<c:when test="${chat.status eq '대기중'}">
@@ -545,6 +545,7 @@ img, svg {
 																			href="report/insertReport.jsp">신고하기</a></li>
 																		<li><a class="dropdown-item" href="chat/deleteChat.jsp">채팅방
 																				삭제</a></li>
+																		<li><a class="dropdown-item" href="user/getUserList.jsp">마이페이지(임시)</a></li>
 																	</ul>
 																</div>
 															</div>

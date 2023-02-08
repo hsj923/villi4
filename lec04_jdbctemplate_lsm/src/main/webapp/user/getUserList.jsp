@@ -54,7 +54,7 @@
 				<div class="col-5 btn-group"> 		
 			    	<input type="reset" id="btnReset" class="col-1 btn btn-primary me-2" value="초기화">
 			    	<input type="submit" class="col-1 btn btn-primary me-2" value="Search">
-			    	<a href="user/insertUser.jsp" class="col-1 btn btn-primary me-2">사용자등록</a>
+			    	<a href="../insertUser.do" class="col-1 btn btn-primary me-2">사용자등록</a>
 					<a href="logout.do" class="col-1 btn btn-primary">logout</a>
 	        	</div>
 			</div>
