@@ -19,7 +19,7 @@ public interface BoardService {
 	void updateBoardCount(BoardVO board);
 	
 //	내가쓴글목록
-	List<BoardVO> getMyBoardList(String Writer);
+	List<BoardVO> getMyBoardList(String nickname);
 	
 //	좋아요
 //	void updateLikeCount(BoardVO board);

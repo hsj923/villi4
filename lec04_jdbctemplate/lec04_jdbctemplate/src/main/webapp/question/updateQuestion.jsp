@@ -194,7 +194,7 @@ nav {
 			<div id="carouselExampleIndicators"
 				class="carousel carousel-dark slide" data-bs-ride="carousel">
 				<div class="carousel-indicators">
-				<c:if test="${ !empty  lost.fileName2}">
+				<c:if test="${ !empty  question.fileName2}">
 							<button type="button" data-bs-target="#carouselExampleIndicators"
 						data-bs-slide-to="0" class="active" aria-current="true"
 						aria-label="Slide 1"></button>
@@ -216,8 +216,8 @@ nav {
 					<div
 						class="carousel-item active embed-responsive embed-responsive-4by3"
 						id="fileimg">
-						<c:if test="${ !empty  lost.fileName1}">
-							<img src="/img/${ lost.fileName1 }"
+						<c:if test="${ !empty  question.fileName1}">
+							<img src="/img/${ question.fileName1 }"
 								class="rounded mx-auto d-block w-75"
 								alt="img">
 						</c:if>
@@ -226,8 +226,8 @@ nav {
 
 					<div class="carousel-item embed-responsive embed-responsive-4by3"
 						id="fileimg">
-						<c:if test="${ !empty  lost.fileName2}">
-							<img src="/img/${ lost.fileName2 }"
+						<c:if test="${ !empty  question.fileName2}">
+							<img src="/img/${ question.fileName2 }"
 								class="rounded mx-auto d-block w-75"
 								alt="img">
 						</c:if>
@@ -236,8 +236,8 @@ nav {
 
 					<div class="carousel-item embed-responsive embed-responsive-4by3"
 						id="fileimg">
-						<c:if test="${ !empty  lost.fileName3}">
-							<img src="/img/${ lost.fileName3 }"
+						<c:if test="${ !empty  question.fileName3}">
+							<img src="/img/${ question.fileName3 }"
 								class="rounded mx-auto d-block w-75"
 								alt="img">
 						</c:if>

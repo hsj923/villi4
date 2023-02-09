@@ -19,8 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.BoardService;
+import com.lec.jdbc.service.ReportService;
+import com.lec.jdbc.service.ReviewService;
 import com.lec.jdbc.service.UserService;
 import com.lec.jdbc.vo.BoardVO;
+import com.lec.jdbc.vo.ReportVO;
+import com.lec.jdbc.vo.ReviewVO;
 import com.lec.jdbc.vo.UserVO;
 
 @Controller("userController")
@@ -32,6 +36,12 @@ public class UserController {
 	
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	ReportService reportService;
+	
+	@Autowired
+	ReviewService reviewService;
 	
 	@Autowired
 	Environment environment;
@@ -161,28 +171,23 @@ public class UserController {
 		
 		
 		@RequestMapping(value="/getUser.do", method=RequestMethod.GET)
-		public String getUser(Model model, UserVO user, SearchVO searchVO, String nickname) {
-			
+		public String getUser(Model model, UserVO user, SearchVO searchVO, String nickname) {		
 //			내가 쓴글 목록
 			List<BoardVO> MyboardList = boardService.getMyBoardList(nickname);
-			model.addAttribute("MyboardList", MyboardList);
+			model.addAttribute("MyboardList", MyboardList);		
+			
+//			신고게시글
+			List<ReportVO> MyreportList = reportService.getMyReportList(nickname);
+			model.addAttribute("MyreportList", MyreportList);
+			
+//			후기게시글
+			List<ReviewVO> MyreviewList = reviewService.getMyReviewList(nickname);
+			model.addAttribute("MyreviewList", MyreviewList);
 			
 			model.addAttribute("searchVO", searchVO);
 			model.addAttribute("user", userService.getUserByNick(user));
 			return "user/getUser.jsp";
 		}
 		
-		
-	//거래후기	
-		
-		@RequestMapping(value="/good.do", method=RequestMethod.POST)
-		@ResponseBody
-		public String ajaxUser(UserVO user) {
-			UserVO vo = userService.getUser(user);
-			
-			System.out.println("1........." + vo.getName());
-			
-			return vo.toString(); //vo.getName();
-		}		
-	
+
 }
