@@ -122,14 +122,13 @@ pre { white-space: pre-wrap;
 	</nav>
 
 
-
-	<!-- form -->
+<!-- form -->
 	<div class="container-sm mt-3" align="center">
 		<form action="updateDemand.do" method="post">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<img src="resources/images/noimg.png"
+						<img src="/img/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"><span>${demand.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
@@ -139,42 +138,80 @@ pre { white-space: pre-wrap;
 
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item text-start"><c:choose>
-							<c:when test="${demand.status eq '대기중'}">
-								<span class="badge bg-success text-white rounded-pill ">${demand.status}</span>
-							</c:when>
-							<c:when test="${demand.status eq '예약중'}">
-								<span class="badge bg-warning text-white rounded-pill">${demand.status}</span>
-							</c:when>
-							<c:when test="${demand.status eq '빌리완료'}">
-								<span class="badge bg-danger text-white rounded-pill ">${demand.status}</span>
-							</c:when>
-						</c:choose> <span class="fs-4 fw-bold">${ demand.title }</span>
-						<p class="fs-6 fst-italic">${demand.regDate}</p> <br>
-					<br>
+					<li class="list-group-item text-start">
+						<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ demand.title }</span>
+								<c:choose>
+									<c:when test="${demand.status eq '대기중'}">
+										<span class="badge bg-success text-white rounded-pill ">${demand.status}</span>
+									</c:when>
+									<c:when test="${demand.status eq '예약중'}">
+										<span class="badge bg-warning text-white rounded-pill">${demand.status}</span>
+									</c:when>
+									<c:when test="${demand.status eq '빌리완료'}">
+										<span class="badge bg-danger text-white rounded-pill ">${demand.status}</span>
+									</c:when>
+								</c:choose>
+							</div>
+							<div class="col-8 text-end">
+								<p class="text-muted fs-6 fst-italic">${demand.regDate}</p>
+								<br>
+							</div>
+						</div>
 
 
 
 
+						<p class="text-muted fs-5">${ demand.content }</p> 
+   <!-- 이미지 -->
+	<div class="container w-100">
+		<div class="p-3 " align="center">		
+
+			<div id="carouselExampleIndicators"
+				class="carousel carousel-dark slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+				<c:if test="${ empty  demand.fileName1}">
+
+				</c:if>
+
+				</div>
 
 
+				<div class="carousel-inner">
 
+					<div
+						class="carousel-item active embed-responsive embed-responsive-4by3"
+						id="fileimg">
+						<c:if test="${ !empty  demand.fileName1}">
+							
+							<img src="/img/${ demand.fileName1 }"
+								class="rounded mx-auto d-block w-75"
+								alt="img">
+								
+						</c:if>
+					</div>
 
-						<p class="fs-5">${ demand.content }</p> <br> <br> <br>
-						<p class="mt-4">조회 : ${ demand.cnt }</p></li>
-					<li class="list-group-item text-end "><a
-						href="report/report_insert.jsp" class="stretched-link text-danger">이
-							게시글 신고하기</a></li>
+				</div>
+
+			</div>
+		</div>
+	</div>
+				 <br> <br> <br>
+				 		<p class="mt-4">조회 : ${ demand.cnt }</p>
+					</li>
 				</ul>
 
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
 							<c:if test="${ !empty  demand.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">${ demand.price }원</span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-5">${ demand.price }원</span>
 							</c:if>
 							<c:if test="${ empty  demand.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">가격협의</span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-5">가격협의</span>
 							</c:if>
 						</div>
 						<div class="col-8 text-end">
@@ -185,6 +222,8 @@ pre { white-space: pre-wrap;
 				</div>
 			</div>
 		</form>
+
+
 		
 		<!-- 댓글 자리 -->
 		<!-- 댓글 작성 -->
@@ -198,9 +237,9 @@ pre { white-space: pre-wrap;
 		        </p>
 		        <p>
 		        	<input type="hidden" name="seq" value="${demand.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
+		        	
+		             <button class="btn btn-dark " type="submit">댓글 작성</button>
+		           
 		        </p>
 		    </form> 
 		</div>

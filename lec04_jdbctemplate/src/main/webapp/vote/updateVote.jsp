@@ -282,9 +282,7 @@ pre { white-space: pre-wrap;
 		        </p>
 		        <p>
 		        	<input type="hidden" name="seq" value="${vote.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
+		        	 <button class="btn btn-dark " type="submit">댓글 작성</button>
 		        </p>
 		    </form> 
 		</div>

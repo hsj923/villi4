@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Villi</title>
-<link rel="icon" href="resources/images/favicon.png">
+<link rel="icon" href="/img/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -76,6 +76,18 @@ nav {
 	background: #444 !important;
 	border-color: #444 !important;
 }
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom: .15rem solid transparent;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+  color: rgba(0, 0, 0, 0.7);
+  border-bottom-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+
 </style>
 </head>
 <body>
@@ -86,7 +98,7 @@ nav {
 		
 				
 				<div class="col mb-4">
-					<a href="getBoardList.do"><img src="resources/images/test.png"
+					<a href="getBoardList.do"><img src="/img/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
@@ -98,27 +110,12 @@ nav {
 										
 					<c:if test="${ sessionScope.user.getNickname() != null }">			
 					 <div class="col mt-3 text-end r_menu">
-					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						
-						
-						
-						<!-- 관리자로 로그인 할 경우 
-                  <c:if test="${ sessionScope.isAdmin }">
-                  <span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span> 
-				  </c:if>
-				  -->
-				  
-				  <!-- 관리자로 로그인 하지 않았을 경우 
-				  <c:if test="${ sessionScope.isAdmin != null && !sessionScope.isAdmin }">
-                  <span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
-                  </c:if>
-                  -->
-                        <span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
+					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
+						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
 						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 				     </div>							
 				   </c:if>
-				   
 
 
 
@@ -137,29 +134,21 @@ nav {
 				aria-label="Slide 1"></button>
 			<button type="button" data-bs-target="#carouselExampleControls"
 				data-bs-slide-to="1" aria-label="Slide 2"></button>
-			<button type="button" data-bs-target="#carouselExampleControls"
-				data-bs-slide-to="2" aria-label="Slide 3"></button>
 
 		</div>
 		<div class="carousel-inner">
 			<div
 				class="carousel-item active embed-responsive embed-responsive-4by3"
 				id="banner">
-				<img src="resources/images/banner4.png"
+				<img src="/img/banner4.png"
 					class="d-block w-100 card-img-top embed-responsive-item"
 					alt="banner1">
 			</div>
 			<div class="carousel-item embed-responsive embed-responsive-4by3"
 				id="banner">
-				<img src="resources/images/banner6.png"
+				<img src="/img/banner3.png"
 					class="d-block w-100 card-img-top embed-responsive-item"
 					alt="banner2">
-			</div>
-			<div class="carousel-item embed-responsive embed-responsive-4by3"
-				id="banner">
-				<img src="resources/images/banner5.png"
-					class="d-block w-100 card-img-top embed-responsive-item"
-					alt="banner3">
 			</div>
 		</div>
 
@@ -246,8 +235,8 @@ nav {
 													<option value="">검색</option>
 													<option value="title"
 														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-													<option value="writer"
-														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
+													<option value="nickname"
+														${searchVO.getSearchType()=="nickname" ? "selected" : "" }>작성자</option>
 													<option value="cate2"
 														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
 												</select>
@@ -283,7 +272,9 @@ nav {
 					<div class="card">
 						<span class="border border-dark"> <a
 							href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
-							style="text-decoration: none"><img class="card-img-top"
+							style="text-decoration: none">
+							
+							<img class="card-img-top"
 								width="450" height="250"
 								src="/img/${ board.fileName1 }" alt="image"></a></span>
 						<div class="card-body">
@@ -329,7 +320,8 @@ nav {
 									<span>날짜상의</span>
 								</c:if>
 							</div>
-							<div class="text-muted mt-3">위치</div>
+							<div class="mt-3">작성자 : ${ board.nickname }</div>
+							<div class="text-muted">위치</div>
 							<p class="card-mtext">
 
 
@@ -337,7 +329,7 @@ nav {
 									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
   <path
 										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-</svg>
+</svg>   ${ board.like_cnt }  
 
 								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
 									fill="currentColor" class="bi bi-chat-square-dots"
@@ -419,6 +411,15 @@ z" />
 	</div>
 	<!-- main  -->
 
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-11991680-4', 'ianlunn.github.io');
+		  ga('send', 'pageview');
+		</script>
 
 	<script>
 		$(function() {

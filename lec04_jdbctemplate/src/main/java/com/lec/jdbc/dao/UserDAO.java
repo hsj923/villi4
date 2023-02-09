@@ -36,6 +36,8 @@ public class UserDAO {
 	private String updateAddr = "";
 	private String selectByNickname = "";
 	
+	private String updatePro = "";
+	
 	@PostConstruct
 	public void getSqlPropeties() {
 		selectByEmail           = environment.getProperty("selectByEmail");
@@ -47,11 +49,11 @@ public class UserDAO {
 		selectUserListById   = environment.getProperty("selectUserListById");
 		selectUserListByName = environment.getProperty("selectUserListByName");
 		updateAddr           = environment.getProperty("updateAddr");
+		updatePro            = environment.getProperty("updatePro");
 		selectByNickname = environment.getProperty("selectByNickname");
 	}
 
 	public UserVO getUser(UserVO user) {
-		// System.out.println(jdbcTemplate.getDataSource().getConnection().toString());
 		Object[] args = { user.getEmail() };		
 		return (UserVO) jdbcTemplate.queryForObject(selectByEmail, args, new UserRowMapper());
 	}
@@ -65,7 +67,9 @@ public class UserDAO {
 	}
 	
 	public int getTotalRowCount(SearchVO searchVO) {
+		
 		sql = userTotalRowCount;
+		
 		String sw = searchVO.getSearchWord()==null ? "" : searchVO.getSearchWord();
 		String st = searchVO.getSearchType();
 		sql = sw =="" ? sql : (st.equalsIgnoreCase("id") ? sql + " and id like '%" + sw +"%'" : sql + " and name like '%" + sw + "%'");
@@ -91,17 +95,17 @@ public class UserDAO {
 		return jdbcTemplate.update(deleteUser, user.getEmail());
 	}
 
+	// 프로필 수정
 	public int updateUser(UserVO user) {
 		System.out.println(user.toString());
-	    return jdbcTemplate.update(updateUser, user.getEmail(),user.getNickname(), user.getPassword(),  user.getFileName1());
-	    
+	    return jdbcTemplate.update(updateUser, user.getEmail(), user.getNickname(), user.getPassword(),  user.getFileName());
 	}
+	
 	
 	// 동네 설정
 	
 	public int updateAddr(UserVO user) {
 		return jdbcTemplate.update(updateAddr, user.getAddress(), user.getEmail());
 	}
-	
 
 }

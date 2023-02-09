@@ -61,26 +61,22 @@ color:#23dbc9;
 
 </head>
 <body>
-
 <!-- ===========header================ -->
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
-				<div class="col mt-3">
-					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
-				</div>
-				<div class="col" align="center">
+		
+				
+				<div class="col mb-3">
 					<a href="getBoardList.do"><img src="resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
-					<span class= mx-2><a href="#">좋아요</a> </span>
-					<span class= mx-1><a href="mypage.jsp">마이페이지</a></span>
-		           <span class="mx-2">${ sessionScope.user.getName() }님</span>
-					
-					
-					
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
+						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 				</div>
 			</div>
 		</div>
@@ -95,7 +91,7 @@ color:#23dbc9;
   <input type="hidden" name="email" value="${user.getEmail() }">
   
     <div class="hAddr">
-        <span class="title">  ${ sessionScope.user.getName() }님의 현재위치</span>
+        <span class="title">  ${ sessionScope.user.getNickName() }님의 현재위치</span>
         <input type="text" name="address" value="" id="centerAddr" readonly></input>
     </div>
    

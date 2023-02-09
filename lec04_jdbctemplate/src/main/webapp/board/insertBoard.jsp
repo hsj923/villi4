@@ -78,88 +78,35 @@ nav {
 </head>
 <body>
 
-	<!-- ============search=============== -->
-	<nav class="border-bottom border-dark sticky-top z-index-10">
-		<div class="container" align="center">
-			<div class="row p-3">
-				<div class="col">
+<header class="border-bottom border-dark">
+		<div class="container w-50">
+			<div class="row align-items-start p-3">
+				<div class="col mt-3">
+					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
+				</div>
+				<div class="col" align="center">
+					<a href="../getBoardList.do"><img
+						src="../resources/images/test.png" alt="logo" width=70px
+						height=70px></a>
+				</div>
 
-					<nav class="navbar navbar-expand-lg navbar-light">
-						<div class="container-fluid">
-							<a class="navbar-brand" href="../getBoardList.do">Villi</a>
-							<button class="navbar-toggler" type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#navbarSupportedContent"
-								aria-controls="navbarSupportedContent" aria-expanded="false"
-								aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<!--================ nav bar ===================-->
-							<div class="collapse navbar-collapse" id="navbarSupportedContent">
-								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item">
-										<!-- ================글작성버튼============= -->
-										<div class="dropdown">
-											<button class="btn dropdown-toggle" type="button"
-												id="dropdownMenuButton2" data-bs-toggle="dropdown"
-												aria-expanded="false">글작성</button>
-											<ul class="dropdown-menu dropdown-menu-dark"
-												aria-labelledby="dropdownMenuButton2">
-												<li><a class="dropdown-item" href="">상품</a></li>
-												<li><a class="dropdown-item"
-													href="insertServiceBoard.jsp">서비스</a></li>
-											</ul>
-										</div>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getQuestionList.do">동네질문</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getLostList.do">분실센터</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getMeetingList.do">동네모임</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getVoteList.do">동네투표</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getDemandList.do">빌리요청</a></li>
-									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getGroupBuyingList.do">공동구매</a></li>
-								</ul>
-								<form action="getBoardList.do" method="post" id="boardForm">
-									<input type="hidden" id="curPage" name="curPage"
-										value="${searchVO.getCurPage()}"> <input type="hidden"
-										id="rowSizePerPage" name="rowSizePerPage"
-										value="${searchVO.getRowSizePerPage()}">
-									<div class="container">
-										<div class="row justify-content-md">
-											<div class="col-md-auto">
+				<div class="col mt-3 text-end r_menu">
+					<span class=mx-2><a href="../getLikeList.do"
+						style="text-decoration: none" class="text-dark">좋아요</a> </span> <span
+						class=mx-1><a href="../user/mypage.jsp"
+						style="text-decoration: none" class="text-dark">마이페이지</a></span> <span
+						class="mx-2">${ sessionScope.user.getNickname() }님</span>
 
-												<select class="form-select" id="searchType"
-													name="searchType">
-													<option value="">검색</option>
-													<option value="title"
-														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-													<option value="writer"
-														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
-													<option value="cate2"
-														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
-												</select>
-											</div>
-											<div class="col col-lg-6">
-												<input class="form-control" name="searchWord" type="text"
-													placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
-											</div>
-											<div class="col col-lg-2">
-												<button class="btn btn-outline-success" type="submit">Search</button>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</nav>
 				</div>
 			</div>
 		</div>
-	</nav>
+	</header>
+	
+	<!--=============================================================================================== -->
+	
+	<div class="container col-5 mt-4"  align="center">
+	 	<h3 class="fw-bold">상품 등록 게시글 작성하기</h3>
+	</div>
 
 
 	<!--뭐해 -->
@@ -171,14 +118,15 @@ nav {
 			enctype="multipart/form-data">
 			<div class="row">
 				<div class="col">
-					
 					<div class="input-group mb-3 w-75">
+						<span class="input-group-text"><i class="fas fa-user"></i></span>
 						<input
-							type="hidden" class="form-control" name="writer" id="writer"
-							value="${ user.getNickname() }" >
+							type="text" class="form-control"
+							value="${ user.getNickname() }" disabled>
+							<input type="hidden" class="form-control" name="nickname" id="nickname"
+							value="${ user.getNickname() }">
 					</div>
 
-			
 
 					<div class="input-group mb-3 w-75">
 						<span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
@@ -207,7 +155,7 @@ nav {
 			</div>
 
 			<div class="input-group mb-3 w-75">
-				<span class="input-group-text"><i class="fas fa-clipboard"></i></span><input
+				<span class="input-group-text"><i class="fas fa-address-book"></i></span><input
 					type="text" class="form-control" name="title" id="title"
 					placeholder="글 제목">
 			</div>

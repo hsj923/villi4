@@ -45,7 +45,7 @@ header {
 }
 
 nav {
-	background-color: #FFFAFA;
+	background-color: #fcfcfc;
 }
 
 .trust-image-01 {
@@ -73,6 +73,16 @@ a {
 	line-height: 30px;
 	color: crimson;
 }
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom: .15rem solid transparent;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+  color: rgba(0, 0, 0, 0.7);
+  border-bottom-color: rgba(0, 0, 0, 0.7);
+}
+
 </style>
 <body>
 	<!-- ============search=============== -->
@@ -95,14 +105,12 @@ a {
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-									
-									<!-- ================글작성버튼, 로그인============= -->		
-				<c:if test="${ sessionScope.user.getNickname() == null }">
-					<a class="nav-link active" aria-current="page"
+										<!-- ================글작성버튼, 로그인============= --> <c:if
+											test="${ sessionScope.user.getNickname() == null }">
+											<a class="nav-link active" aria-current="page"
 												href="index.jsp">로그인</a>
-				</c:if>
-				<c:if test="${ sessionScope.user.getNickname() != null }">		
-											<div class="dropdown">						
+										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
+											<div class="dropdown">
 												<button class="btn dropdown-toggle" type="button"
 													id="dropdownMenuButton2" data-bs-toggle="dropdown"
 													aria-expanded="false">글작성</button>
@@ -114,8 +122,7 @@ a {
 														href="board/insertServiceBoard.jsp">서비스</a></li>
 												</ul>
 											</div>
-				</c:if>
-										
+										</c:if>
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
@@ -143,8 +150,8 @@ a {
 													<option value="">검색</option>
 													<option value="title"
 														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-													<option value="writer"
-														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
+													<option value="nickname"
+														${searchVO.getSearchType()=="nickname" ? "selected" : "" }>작성자</option>
 													<option value="cate2"
 														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
 												</select>
@@ -153,8 +160,9 @@ a {
 												<input class="form-control" name="searchWord" type="text"
 													placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
 											</div>
-											<div class="col col-lg-2">
-												<button class="btn btn-outline-success" type="submit">Search</button>
+												<div class="col col-lg-2">
+												<button class="btn text-white "
+													style="background-color: #72CCD2;" type="submit">Search</button>
 											</div>
 										</div>
 									</div>
@@ -172,18 +180,29 @@ a {
 
 	<!-- 이미지 -->
 	<div class="container w-50">
-		<div class="p-3 " align="center">			<!-- 이미지 -->
+		<div class="py-3 " align="center">
 
 			<div id="carouselExampleIndicators"
 				class="carousel carousel-dark slide" data-bs-ride="carousel">
 				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide-to="0" class="active" aria-current="true"
-						aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide-to="1" aria-label="Slide 2"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+					<c:if test="${ !empty  board.fileName2 and empty board.fileName3}">
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="0" class="active" aria-current="true"
+							aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="1" aria-label="Slide 2"></button>
+					</c:if>
+					<c:if test="${ !empty  board.fileName3}">
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="0" class="active" aria-current="true"
+							aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</c:if>
+
 					<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
 					<!-- 						data-bs-slide-to="3" aria-label="Slide 4"></button> -->
 					<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
@@ -197,12 +216,7 @@ a {
 						class="carousel-item active embed-responsive embed-responsive-4by3"
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName1}">
-							<img src="resources/images/${ board.fileName1 }"
-								class="d-block w-100 card-img-top embed-responsive-item"
-								alt="img">
-						</c:if>
-						<c:if test="${ empty  board.fileName1}">
-							<img src="resources/images/noimg.png"
+							<img src="/img/${ board.fileName1 }"
 								class="d-block w-100 card-img-top embed-responsive-item"
 								alt="img">
 						</c:if>
@@ -212,12 +226,7 @@ a {
 					<div class="carousel-item embed-responsive embed-responsive-4by3"
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName2}">
-							<img src="resources/images/${ board.fileName2 }"
-								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
-								alt="img">
-						</c:if>
-						<c:if test="${ empty  board.fileName2}">
-							<img src="resources/images/noimg.png"
+							<img src="/img/${ board.fileName2 }"
 								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
@@ -227,21 +236,12 @@ a {
 					<div class="carousel-item embed-responsive embed-responsive-4by3"
 						id="fileimg">
 						<c:if test="${ !empty  board.fileName3}">
-							<img src="resources/images/${ board.fileName3 }"
-								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
-								alt="img">
-						</c:if>
-						<c:if test="${ empty  board.fileName3}">
-							<img src="resources/images/noimg.png"
+							<img src="/img/${ board.fileName3 }"
 								class="d-block w-100 card-img-top embed-responsive-item rounded-3"
 								alt="img">
 						</c:if>
 					</div>
-
-
-
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -252,11 +252,12 @@ a {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<a href="getUser.do?nickname=${ board.writer }" style= "text-decoration: none"
-						class="text-dark"><img src="resources/images/noimg.png"
-							class="rounded-circle border border-dark" alt="img" width="75"
-							height="75"> <span>${ board.writer }</span> <span
-							class="fs-5"><i class="bi bi-award text-warning"></i></span></a>
+						<a href="getUser.do?nickname=${ board.nickname }"
+							style="text-decoration: none" class="text-dark">
+<%-- 							<img src="/img/${ user.fileName }" class="rounded-circle border border-dark" alt="img" width="75" height="75">  --%>
+                                    
+							<span>작성자 : ${ board.nickname }</span> <span
+							class="fs-5"></span></a>
 					</h5>
 				</div>
 				<ul class="list-group list-group-flush">
@@ -294,14 +295,13 @@ a {
 							<br>
 						</c:if> <c:if test="${ empty  board.usedate}">
 							<span>날짜상의</span>
-							<br>
 						</c:if> <br> <br>
 						<p class="fs-5">${ board.content }</p> <br> <br> <br>
 						<p class="mt-4">조회 : ${ board.cnt }</p>
 					</li>
-					<li class="list-group-item text-end "><a
-						href="report/insertReport.jsp" class="stretched-link text-danger">이
-							게시글 신고하기</a></li>
+<!-- 					<li class="list-group-item text-end "><a -->
+<!-- 						href="report/insertReport.jsp" class="stretched-link text-danger">이 -->
+<!-- 							게시글 신고하기</a></li> -->
 				</ul>
 				<div class="card-body">
 					<div class="row">
@@ -324,20 +324,8 @@ a {
 			</div>
 		</form>
 	</div>
-	<script>
-    var i = 0;
-    $('.bi-heart').on('click',function(){
-        if(i==0){
-            $(this).removeClass('bi-heart');
-            $(this).addClass('bi-heart-fill');
-            i++;
-        }else if(i==1){
-            $(this).removeClass('bi-heart-fill');
-            $(this).addClass('bi-heart');
-            i--;
-        }     
-    });
-</script>
+
+
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteBoard() {
@@ -345,131 +333,154 @@ a {
 				self.location.href = "deleteBoard.do?seq=${ board.seq }";
 			}
 		}
+		
+		<!-- ======================좋아요 02-06 update중================= -->
+			var i = 0;
+			$('.bi-heart').on('click', function() {
+				if (i == 0) {
+	                        $(this).removeClass('bi-heart');
+							$(this).addClass('bi-heart-fill');
+
+
+					i++;
+				} else if (i == 1) {
+					$(this).removeClass('bi-heart-fill');
+					$(this).addClass('bi-heart');
+
+					i--;
+				}
+
+			});
 	</script>
 
 
 	<!-- 안전거래 -->
-		<div class="container w-50" align="center">
-	<section class="home-main-section " id="section1">
-		<h2 class="main-title text-center my-5 fw-bold">
-			잠깐! 빌리는 안전하고 신뢰할 수 있는 거래를 지향합니다 <br>안전수칙을 확인해주세요
-		</h2>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<img class="img-fluid" alt="동네인증거래"
-						src="resources/images/img-trust-1.png">
-				</div>
-				<div class="col align-self-center">
-					<h2 class="home-main-title fw-bold">동네인증한 사용자만 거래해요</h2>
-					<p class="text-m">빌리에서 거래하려면 동네인증이 필요해요. 동네인증은 설정한 동네에 있어야만 할 수
-						있어요. GPS를 이용하여 우리 동네를 인증한 진짜 이웃들과 거래하세요. 거래하려는 상대방의 인증 횟수를 보면 얼마나
-						자주 이 동네에서 사용했는지 알 수 있어요.</p>
+	<div class="container w-50" align="center">
+		<section class="home-main-section " id="section1">
+			<h2 class="main-title text-center my-5 fw-bold">
+				잠깐! 빌리는 안전하고 신뢰할 수 있는 거래를 지향합니다 <br>안전수칙을 확인해주세요
+			</h2>
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<img class="img-fluid" alt="동네인증거래"
+							src="/img/img-trust-1.png">
+					</div>
+					<div class="col align-self-center">
+						<h2 class="home-main-title fw-bold">동네인증한 사용자만 거래해요</h2>
+						<p class="text-m">빌리에서 거래하려면 동네인증이 필요해요. 동네인증은 설정한 동네에 있어야만 할
+							수 있어요. GPS를 이용하여 우리 동네를 인증한 진짜 이웃들과 거래하세요. 거래하려는 상대방의 인증 횟수를 보면
+							얼마나 자주 이 동네에서 사용했는지 알 수 있어요.</p>
 
-					<div class="home-buttons">
-						<p>
-							<a target="_blank"
-								class="block text-m text-carrot text-no-decoration mt-3"
-								href="https://www.consumer.go.kr/user/bbs/consumer/120/461/bbsDataView/2730.do">
-								<span class="text-info">직거래 사기예방 수칙</span>
-							</a>
-						</p>
+						<div class="home-buttons">
+							<p>
+								<a target="_blank"
+									class="block text-m text-carrot text-no-decoration mt-3"
+									href="https://www.consumer.go.kr/user/bbs/consumer/120/461/bbsDataView/2730.do">
+									<span class="text-info">직거래 사기예방 수칙</span>
+								</a>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<!-- 채팅거래 -->
-	<section class="home-main-section1" id="section2">
-		<div class="container">
-			<div class="row">
-				<div class="col align-self-center">
-					<div class="col mt-3 text-end r_menu">
-						<h2 class="home-main-title fw-bold">1:1 빌리채팅으로 대화해요</h2>
-						<p>빌리 내의 채팅을 통해 거래하는 게 가장 안전해요. 개인정보 공유 없이도 쉽고 편하게 거래할 수 있어요.
-							1:1 채팅으로 약속을 잡고 만나서 거래하세요. 채팅 내의 약속 알림을 설정하면 약속 시간 전에 알림을 받을 수
-							있어요.</p>
+		</section>
+		<!-- 채팅거래 -->
+		<section class="home-main-section1" id="section2">
+			<div class="container">
+				<div class="row">
+					<div class="col align-self-center">
+						<div class="col mt-3 text-end r_menu">
+							<h2 class="home-main-title fw-bold">1:1 빌리채팅으로 대화해요</h2>
+							<p>빌리 내의 채팅을 통해 거래하는 게 가장 안전해요. 개인정보 공유 없이도 쉽고 편하게 거래할 수 있어요.
+								1:1 채팅으로 약속을 잡고 만나서 거래하세요. 채팅 내의 약속 알림을 설정하면 약속 시간 전에 알림을 받을 수
+								있어요.</p>
+						</div>
 					</div>
-				</div>
-				<div class="col">
-					<img class="img-fluid" alt="이웃과의 거래, 동네생활 질문글과 동네가게"
-						src="resources/images/img-trust-2.png">
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-
-	<!-- 동네거래 -->
-
-
-	<section class="home-main-section" id="section1">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<img class="img-fluid" alt="동네거래"
-						src="resources/images/img-trust-3.png">
-				</div>
-				<div class="col align-self-center">
-					<h2 class="home-main-title fw-bold">근처에서 만나서 거래해요</h2>
-					<p class="text-m">중고거래 사기의 대부분은 택배거래에서 발생한다는 사실, 알고 계셨나요? 빌리에서는
-						택배거래보다 직거래를 권장해요. 만나서 거래할 때는 누구나 찾기 쉽고 안전한 공공장소가 좋아요. 빌리에서 가까운 이웃과
-						따뜻하게 거래하세요.</p>
-					<div class="home-buttons">
-						<p>
-							<a target="_blank"
-								class="block text-m text-carrot text-no-decoration mt-3"
-								href="https://ncv.kdca.go.kr/menu.es?mid=a30200000000"> <span
-								class="text-info">코로나19 예방 수칙</span>
-							</a>
-						</p>
+					<div class="col">
+						<img class="img-fluid" alt="이웃과의 거래, 동네생활 질문글과 동네가게"
+							src="/img/img-trust-2.png">
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<c:if test="${ sessionScope.user.getName() != board.writer }">
-	<div class="container row-3" align="center">
-	<a href="index.jsp"><button class="btn btn-dark my-5 mx-2">로그인</button></a>
-	</div>
-	</c:if>
-	<c:if test="${ sessionScope.user.getName() ==  board.writer}">
-		
-		<div class="container mt-3" align="center">
-		<form action="updateBoard.do" method="post">
-			<input name="seq" type="hidden" value="${board.seq}" />
-			<div class="input-group mb-3">
-  				<span class="input-group-text" id="desc_title"><i class="fas fa-address-book"></i></span>
-  				<input type="text" class="form-control" name="title" value="${ board.title }">
+		</section>
+
+
+
+
+		<!-- 동네거래 -->
+
+
+		<section class="home-main-section" id="section1">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<img class="img-fluid" alt="동네거래"
+							src="/img/img-trust-3.png">
+					</div>
+					<div class="col align-self-center">
+						<h2 class="home-main-title fw-bold">근처에서 만나서 거래해요</h2>
+						<p class="text-m">중고거래 사기의 대부분은 택배거래에서 발생한다는 사실, 알고 계셨나요?
+							빌리에서는 택배거래보다 직거래를 권장해요. 만나서 거래할 때는 누구나 찾기 쉽고 안전한 공공장소가 좋아요. 빌리에서
+							가까운 이웃과 따뜻하게 거래하세요.</p>
+						<div class="home-buttons">
+							<p>
+								<a target="_blank"
+									class="block text-m text-carrot text-no-decoration mt-3"
+									href="https://ncv.kdca.go.kr/menu.es?mid=a30200000000"> <span
+									class="text-info">코로나19 예방 수칙</span>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="input-group mb-3">
-  				<span class="input-group-text" id="desc_title"><i class="fas fa-user"></i></span>
-  				<input type="text" class="form-control" name="writer" value="${ board.writer }" disabled>
-			</div>
-			<div class="input-group mb-3">
-			  <span class="input-group-text"><i class="fas fa-clipboard"></i></span>
-			  <textarea class="form-control"  name="content" rows="15" >${ board.content }</textarea>
-			</div>	
-			<div class="input-group mb-3">
-  				<span class="input-group-text" id="desc_title"><i class="fas fa-calendar"></i></span>
-  				<input type="text" class="form-control" name="writer" value="${board.regDate }" disabled>
-			</div>
-			<div class="input-group mb-3">
-  				<span class="input-group-text" id="desc_title"><i class="fas fa-hashtag"></i></span>
-  				<input type="text" class="form-control" name="writer" value="${ board.cnt }" disabled>
-			</div>
-			
+		</section>
+		<c:if test="${ sessionScope.user.getName() != board.nickname }">
 			<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 me-4" value="게시글수정"/>
-			<a href="deleteBoard.do?seq=${board.getSeq()}"
-				class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getBoardList.do"
-				class="btn btn-dark my-5 mx-4">게시글목록</a>
-		</div>
-		</form>			
-	</div>
-	</c:if>
+				<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
+		</c:if>
+		<c:if test="${ sessionScope.user.getName() ==  board.nickname}">
+
+			<div class="container mt-3" align="center">
+				<form action="updateBoard.do" method="post">
+					<input name="seq" type="hidden" value="${board.seq}" />
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="desc_title"><i
+							class="fas fa-address-book"></i></span> <input type="text"
+							class="form-control" name="title" value="${ board.title }">
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="desc_title"><i
+							class="fas fa-user"></i></span> <input type="text" class="form-control"
+							name="nickname" value="${ board.nickname }" disabled>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
+						<textarea class="form-control" name="content" rows="15">${ board.content }</textarea>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="desc_title"><i
+							class="fas fa-calendar"></i></span> <input type="text"
+							class="form-control" name="regDate" value="${board.regDate }"
+							disabled>
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="desc_title"><i
+							class="fas fa-hashtag"></i></span> <input type="text"
+							class="form-control" name="cnt" value="${ board.cnt }"
+							disabled>
+					</div>
+					<div class="container row-3" align="center">
+						<input type="submit" class="btn btn-dark my-5 me-4" value="게시글수정" />
+						<a href="deleteBoard.do?seq=${board.getSeq()}"
+							class="btn btn-dark my-5 mx-2">게시글삭제</a> <a
+							href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
+					</div>
+				</form>
+			</div>
+		</c:if>
 	</div>
 </body>
 </html>

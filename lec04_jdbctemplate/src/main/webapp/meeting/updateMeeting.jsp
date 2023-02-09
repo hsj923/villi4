@@ -122,67 +122,107 @@ pre { white-space: pre-wrap;
 	</nav>
 
 
-
-	<!-- form -->
-	<div class="container-sm mt-3" align="center">
-		<form action="updateMeeting.do" method="post">
+<!-- form -->
+	<div class="container mt-3" align="center">
+		<form action="updateQuestion.do" method="post">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<img src="resources/images/noimg.png"
+						<a href="getUser.do?nickname=${ question.writer }"
+							style="text-decoration: none" class="text-dark"><img src="/img/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
-							height="75"><span>${meeting.writer }</span> <span
+							height="75"><span>${question.writer }</span> </a><span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
-
-						<!-- 	   <p class="fs-4 bg-secondary text-end">대여중</p>    -->
 					</h5>
+				</div>
+
+
+
+
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item text-start">
+						<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ question.title }</span>
+							</div>
+							<div class="col-8 text-end">
+								<p class="fs-6 fst-italic 	text-decoration-underline">${question.regDate}</p>
+							</div>
+						</div> <br>
+					<br>
+						<p class="text-muted fs-5">${ question.content }</p> <div class="carousel-inner">
+
+					   <!-- 이미지 -->
+	<div class="container w-100">
+		<div class="p-3 " align="center">		
+
+			<div id="carouselExampleIndicators"
+				class="carousel carousel-dark slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+				<c:if test="${ !empty  lost.fileName2}">
+							<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="0" class="active" aria-current="true"
+						aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="2" aria-label="Slide 3"></button>
+				</c:if>
+					
+					<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+					<!-- 						data-bs-slide-to="3" aria-label="Slide 4"></button> -->
+					<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+					<!-- 						data-bs-slide-to="4" aria-label="Slide 5"></button> -->
+				</div>
+
+
+				<div class="carousel-inner">
+
+					<div
+						class="carousel-item active embed-responsive embed-responsive-4by3"
+						id="fileimg">
+						<c:if test="${ !empty  lost.fileName1}">
+							<img src="/img/${ lost.fileName1 }"
+								class="rounded mx-auto d-block w-75"
+								alt="img">
+						</c:if>
+					</div>
+
+
+					<div class="carousel-item embed-responsive embed-responsive-4by3"
+						id="fileimg">
+						<c:if test="${ !empty  lost.fileName2}">
+							<img src="/img/${ lost.fileName2 }"
+								class="rounded mx-auto d-block w-75"
+								alt="img">
+						</c:if>
+					</div>
+
+
+					<div class="carousel-item embed-responsive embed-responsive-4by3"
+						id="fileimg">
+						<c:if test="${ !empty  lost.fileName3}">
+							<img src="/img/${ lost.fileName3 }"
+								class="rounded mx-auto d-block w-75"
+								alt="img">
+						</c:if>
+
+					</div>
+
+
 
 				</div>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item text-start"><c:choose>
-							<c:when test="${meeting.status eq '모집중'}">
-								<span class="badge bg-success text-white rounded-pill ">${meeting.status}</span>
-							</c:when>
-							<c:when test="${meeting.status eq '모임종료'}">
-								<span class="badge bg-danger text-white rounded-pill ">${meeting.status}</span>
-							</c:when>
-						</c:choose> <span class="fs-4 fw-bold">${ meeting.title }</span>
-						<p class="text-muted fs-6 fst-italic">${meeting.regDate}</p> <svg
-							xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-  <path
-								d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
-  <path
-								d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-</svg><span class="fs-6 ms-2">${ meeting.place }</span><br> <svg
-							xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-person-square"
-							viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-  <path
-								d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
-</svg><span class="fs-6 ms-2">${ meeting.per }명 모집</span><br> <svg
-							xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-							fill="currentColor" class="bi bi-calendar-check"
-							viewBox="0 0 16 16">
-  <path
-								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-  <path
-								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-</svg><span class="fs-6 ms-2">${ meeting.meet_date }</span> <br>
-					<br>
 
-
-						<p class="text-muted fs-5">${ meeting.content }</p> <br> <br> <br>
-						<p class="mt-4">조회 : ${ meeting.cnt }</p></li>
-					<li class="list-group-item text-end "><a
-						href="report/report_insert.jsp" class="stretched-link text-danger">이
-							게시글 신고하기</a></li>
+			</div>
+		</div>
+	</div>				 <br> <br> <br>
+						<p class="mt-4">조회 : ${ question.cnt }</p>
+					</li>
 				</ul>
-			<div class="card-body">
+				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span>
+							<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
 						</div>
 						<div class="col-8 text-end">
 							<a href="#" class="btn ps-6 text-white rounded-pill"
@@ -192,6 +232,7 @@ pre { white-space: pre-wrap;
 				</div>
 			</div>
 		</form>
+</div>
 		
 		<!-- 댓글 자리 -->
 		<!-- 댓글 작성 -->
@@ -205,9 +246,7 @@ pre { white-space: pre-wrap;
 		        </p>
 		        <p>
 		        	<input type="hidden" name="seq" value="${meeting.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
+		        	 <button class="btn btn-dark " type="submit">댓글 작성</button>
 		        </p>
 		    </form> 
 		</div>
@@ -236,6 +275,11 @@ pre { white-space: pre-wrap;
 				class="btn btn-dark my-5 mx-4">게시글목록</a>
 		</div>
 	</div>
+
+
+
+
+
 
 	<!-- 삭제시 confirm -->
 	<script>

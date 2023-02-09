@@ -124,13 +124,13 @@ pre { white-space: pre-wrap;
 
 
 
-<!-- form -->
+	<!-- form -->
 	<div class="container-sm mt-3" align="center">
 		<form action="updateGroupBuying.do" method="post">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<img src="resources/images/noimg.png"
+						<img src="/img/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"><span>${groupBuying.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
@@ -141,37 +141,93 @@ pre { white-space: pre-wrap;
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
-					<span class="badge bg-success text-white rounded-pill">
-							${groupBuying.status} </span> <span class="fs-4 fw-bold">${ groupBuying.title }</span>
-						<p class="text-muted fs-6 fst-italic">${groupBuying.regDate}</p>
+						<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ groupBuying.title }</span>
+								<c:choose>
+									<c:when test="${groupBuying.status eq '모집중'}">
+										<span class="badge bg-success text-white rounded-pill ">${groupBuying.status}</span>
+									</c:when>
+									<c:when test="${groupBuying.status eq '모집종료'}">
+										<span class="badge bg-danger text-white rounded-pill ">${groupBuying.status}</span>
+									</c:when>
+								</c:choose>
+							</div>
+							<div class="col-8 text-end">
+								<p class="fs-6 fst-italic 	text-decoration-underline">${groupBuying.regDate}</p>
+							</div>
+						</div> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-person-square"
+							viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+  <path
+								d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
+</svg><span class="fs-6 ms-2">${ groupBuying.per }명 모집</span><br> <svg
+							xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-calendar-check"
+							viewBox="0 0 16 16">
+  <path
+								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+  <path
+								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+</svg><span class="fs-6 ms-2">구매일 : ${ groupBuying.buying_date }</span> <br>
+					<br>
+
+
+						<p class="text-muted fs-5">${ groupBuying.content }</p>
 						
-					
-						
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
-</svg><span class="fs-6 ms-2">${ groupBuying.per }명 모집</span><br>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
-  <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-</svg><span class="fs-6 ms-2">구매일 : ${ groupBuying.buying_date }</span>
-						<br><br>
 						
 						
-						<p class="text-muted fs-5">${ groupBuying.content }</p>									
-						 <br> <br> <br>
-						<p class="mt-4">조회 : ${ groupBuying.cnt }</p></li>
-					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
+						
+						
+  <!-- 이미지 -->
+	<div class="container w-100">
+		<div class="p-3 " align="center">		
+
+			<div id="carouselExampleIndicators"
+				class="carousel carousel-dark slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+				<c:if test="${ empty  groupBuying.fileName1}">
+
+				</c:if>
+
+				</div>
+
+
+				<div class="carousel-inner">
+
+					<div
+						class="carousel-item active embed-responsive embed-responsive-4by3"
+						id="fileimg">
+						<c:if test="${ !empty  groupBuying.fileName1 }">
+							
+							<img src="/img/${ groupBuying.fileName1 }"
+								class="rounded mx-auto d-block w-75"
+								alt="img">
+								
+						</c:if>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+				 <br> <br> <br>
+						<p class="mt-4">조회 : ${ groupBuying.cnt }</p>
+					</li>
 				</ul>
 
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
 							<c:if test="${ !empty  groupBuying.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">${ groupBuying.price }원</span>
+								<span class="fs-4 mx-3"> <i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-5">${ groupBuying.price }원</span>
 							</c:if>
 							<c:if test="${ empty  groupBuying.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">가격협의</span>
+								<span class="fs-4 mx-3"> <i class="bi bi-heart fs-5"></i></span>
+								<span class="fs-5">가격협의</span>
 							</c:if>
 						</div>
 						<div class="col-8 text-end">
@@ -195,9 +251,7 @@ pre { white-space: pre-wrap;
 		        </p>
 		        <p>
 		        	<input type="hidden" name="seq" value="${groupBuying.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
+		         <button class="btn btn-dark " type="submit">댓글 작성</button>
 		        </p>
 		    </form> 
 		</div>
@@ -225,6 +279,12 @@ pre { white-space: pre-wrap;
 			<a href="getGroupBuyingList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 		</div>
 	</div>
+
+
+
+
+
+
 	<!-- 삭제시 confirm -->
 	<script>
 		function deleteQuestion() {

@@ -71,21 +71,21 @@ color:#23dbc9
    
 </style>
 <body>
-	<!-- ===========header================ -->
+<!-- ===========header================ -->
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
 		
 				
 				<div class="col mb-3">
-					<a href="../getBoardList.do"><img src="../resources/images/test.png"
+					<a href="getBoardList.do"><img src="resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
-					<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="../location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 				</div>
 			</div>
@@ -100,12 +100,12 @@ color:#23dbc9
      	<div class="row mt-2"> 
      	
      	<div class="col-2">  	
-        	<c:if test="${ !empty user.getFileName1()}">
-     			<img src="../resources/images/${ user.getFileName1() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
+        	<c:if test="${ !empty user.getFileName()}">
+     			<img src="resources/images/${ user.getFileName() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
      		</c:if>
      
-    		<c:if test="${ empty user.getFileName1() }">
-    			<img src="../resources/images/noimg.png" class="rounded-circle" id="admin_img" width="100px" height="100px" alt="img">
+    		<c:if test="${ empty user.getFileName() }">
+    			<img src="resources/images/noimg.png" class="rounded-circle" id="admin_img" width="100px" height="100px" alt="img">
     		</c:if>
 		 </div>   
 		  
@@ -124,9 +124,9 @@ color:#23dbc9
         <ul class="list-group list-group-flush">	
         
         		
-  	     <a href="../updateUser.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
-          <a href="../updateAddr.do?email=${user.getEmail() }" class="list-group-item">동네설정</a>
-           <a href="../getChatList.do" class="list-group-item">채팅리스트</a> 
+  	     <a href="updateUser.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
+          <a href="updateAddr.do?email=${user.getEmail() }" class="list-group-item">동네설정</a>
+           <a href="getChatList.do" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>
           <a href="#" class="list-group-item">내가 쓴 글 목록</a>
        </ul>
@@ -134,8 +134,8 @@ color:#23dbc9
        </div>
        <div class="container mt-3" align="left">
        <ul class="list-group list-group-flush">
-          <a href="../getNoticeList.do" li class="list-group-item">공지사항</a>
-          <a href="../getCsList.do" li class="list-group-item">고객센터</a>
+          <a href="getNoticeList.do" li class="list-group-item">공지사항</a>
+          <a href="getCsList.do" li class="list-group-item">고객센터</a>
        </ul>
        </div>
 </body>
@@ -144,7 +144,7 @@ color:#23dbc9
    <br />
    <br />
    <br />
-      <a href="../logout.do" class="badge rounded-pill bg-secondary logout_btn">로그아웃</a>
+      <a href="logout.do" class="badge rounded-pill bg-secondary logout_btn">로그아웃</a>
    </div>
 </footer>
 </html>

@@ -8,16 +8,15 @@ import org.springframework.jdbc.core.RowMapper;
 import com.lec.jdbc.vo.UserVO;
 
 public class UserRowMapper implements RowMapper<UserVO> {
-
 	public UserVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		UserVO user = new UserVO();
-		user.setEmail(rs.getString("email"));
-		user.setName(rs.getString("name"));
-		user.setNickname(rs.getString("nickname"));
-		user.setPassword(rs.getString("password"));
-		user.setRole(rs.getString("role"));
-		user.setFileName1(rs.getString("filename1"));
-		user.setAddress(rs.getString("address"));
+		user.setEmail(rs.getString("EMAIL"));
+		user.setName(rs.getString("NAME"));
+		user.setNickname(rs.getString("NICKNAME"));
+		user.setPassword(rs.getString("PASSWORD"));
+		user.setRole(rs.getString("ROLE"));
+		user.setFileName(rs.getString("FILENAME"));
+		user.setAddress(rs.getString("ADDRESS"));
 		return user;
 	}
 }

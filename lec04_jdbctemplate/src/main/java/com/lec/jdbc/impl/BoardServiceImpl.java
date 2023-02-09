@@ -58,4 +58,9 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.updateBoardCount(board);
 	}
 	
+//	내가쓴글목록
+	@Override
+	public List<BoardVO> getMyBoardList(String writer) {
+		return boardDAO.getMyBoardList(writer);
+	}
 }

@@ -11,8 +11,8 @@ public class UserVO {
 	private String nickname;
 	private String address;
 	private String role;
-	private String fileName1;
-	private MultipartFile uploadFile1;
+	private String fileName;
+	private MultipartFile uploadFile;
 
 	
 	
@@ -101,29 +101,29 @@ public class UserVO {
 
 
 
-	public String getFileName1() {
-		return fileName1;
+	public String getFileName() {
+		return fileName;
 	}
 
 
 
 
-	public void setFileName1(String fileName1) {
-		this.fileName1 = fileName1;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 
 
 
-	public MultipartFile getUploadFile1() {
-		return uploadFile1;
+	public MultipartFile getUploadFile() {
+		return uploadFile;
 	}
 
 
 
 
-	public void setUploadFile1(MultipartFile uploadFile1) {
-		this.uploadFile1 = uploadFile1;
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 
 
@@ -132,10 +132,13 @@ public class UserVO {
 	@Override
 	public String toString() {
 		return "UserVO [email=" + email + ", password=" + password + ", name=" + name + ", nickname=" + nickname
-				+ ", address=" + address + ", role=" + role + ", fileName1=" + fileName1 + ", uploadFile1="
-				+ uploadFile1 + "]";
+				+ ", address=" + address + ", role=" + role + ", fileName=" + fileName + ", uploadFile=" + uploadFile
+				+ "]";
 	}
-	
+
+
+
+
 	
 	
 	

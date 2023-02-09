@@ -124,13 +124,16 @@ pre { white-space: pre-wrap;
 
 
 
+
+
+
 <!-- form -->
-	<div class="container-sm mt-3" align="center">
+	<div class="container mt-3" align="center">
 		<form action="updateLost.do" method="post">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<img  src="resources/images/noimg.png" 
+						<img  src="/img/noimg.png" 
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"><span>${lost.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
@@ -140,27 +143,89 @@ pre { white-space: pre-wrap;
 				</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item text-start">
-				<span class="fs-4 fw-bold">${ lost.title }</span>
-						<p class="text-muted fs-6 fst-italic">${lost.regDate}</p>
+		<div class="row">
+							<div class="col-4 text-start">
+								<span class="fs-4 fw-bold">${ lost.title }</span>
+							</div>
+							<div class="col-8 text-end">
+								<p class="fs-6 fst-italic 	text-decoration-underline">${lost.regDate}</p>
+							</div>
+						</div>
 							<br><br>
 							<p class="text-muted fs-5">${ lost.content }</p>	
-	              <c:if test="${ !empty  lost.fileName1}">
-							<img class="rounded mx-auto d-block" src="resources/images/${ lost.fileName1 }"
-							   	height="600px" alt="img"/>
+	      <!-- 이미지 -->
+	<div class="container w-100">
+		<div class="p-3 " align="center">		
+
+			<div id="carouselExampleIndicators"
+				class="carousel carousel-dark slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+				<c:if test="${ !empty  lost.fileName2}">
+							<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="0" class="active" aria-current="true"
+						aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="2" aria-label="Slide 3"></button>
+				</c:if>
+					
+					<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+					<!-- 						data-bs-slide-to="3" aria-label="Slide 4"></button> -->
+					<!-- 					<button type="button" data-bs-target="#carouselExampleIndicators" -->
+					<!-- 						data-bs-slide-to="4" aria-label="Slide 5"></button> -->
+				</div>
+
+
+				<div class="carousel-inner">
+
+					<div
+						class="carousel-item active embed-responsive embed-responsive-4by3"
+						id="fileimg">
+						<c:if test="${ !empty  lost.fileName1}">
+							<img src="/img/${ lost.fileName1 }"
+								class="rounded mx-auto d-block w-75"
+								alt="img">
 						</c:if>
-						<c:if test="${ empty  lost.fileName1}">
-							
+					</div>
+
+
+					<div class="carousel-item embed-responsive embed-responsive-4by3"
+						id="fileimg">
+						<c:if test="${ !empty  lost.fileName2}">
+							<img src="/img/${ lost.fileName2 }"
+								class="rounded mx-auto d-block w-75"
+								alt="img">
 						</c:if>
+					</div>
+
+
+					<div class="carousel-item embed-responsive embed-responsive-4by3"
+						id="fileimg">
+						<c:if test="${ !empty  lost.fileName3}">
+							<img src="/img/${ lost.fileName3 }"
+								class="rounded mx-auto d-block w-75"
+								alt="img">
+						</c:if>
+
+					</div>
+
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
 					
 													
 						 <br> <br> <br>
 						<p class="mt-4">조회 : ${ lost.cnt }</p></li>
-					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
 				</ul>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span>
+								<span class="fs-4 mx-3"><i class="bi bi-heart fs-5"></i></span>
 						</div>
 						<div class="col-8 text-end">
 							<a href="#" class="btn ps-6 text-white rounded-pill"
@@ -170,7 +235,6 @@ pre { white-space: pre-wrap;
 				</div>
 			</div>
 		</form>
-	</div>
 	<!-- 댓글 작성 -->
 		<div class="container-sm mt-5" align="center">
 		    <form method="post" action="insertLReply.do">
@@ -182,9 +246,7 @@ pre { white-space: pre-wrap;
 		        </p>
 		        <p>
 		        	<input type="hidden" name="seq" value="${lost.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
+		        	 <button class="btn btn-dark " type="submit">댓글 작성</button>
 		        </p>
 		    </form> 
 		</div>

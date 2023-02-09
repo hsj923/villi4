@@ -20,10 +20,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lec.jdbc.common.SearchVO;
+import com.lec.jdbc.service.BoardService;
 import com.lec.jdbc.service.UserService;
+import com.lec.jdbc.vo.BoardVO;
 import com.lec.jdbc.vo.UserVO;
 
 @Controller
@@ -32,6 +36,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	BoardService boardService;
 	
 	@Autowired
 	Environment environment;
@@ -71,23 +78,10 @@ public class UserController {
 		return "redirect:/login.do";
 	}	
 
-//	@RequestMapping("*/insertUser.do")
-//	public String insertUser(UserVO user) throws IOException {
-//		MultipartFile uploadFile = user.getUploadFile();
-//		if(!uploadFile.isEmpty()) {
-//			String fileName = uploadFile.getOriginalFilename();
-//			uploadFile.transferTo(new File(uploadFolder + fileName));
-//			user.setFileName(fileName);
-//		}
-//		
-//		userService.insertUser(user);
-//		return "redirect:/getUserList.do";
-//	}
 	
-	
+	// 프로필 수정 
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
-	public String updateUser(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
-		user.setEmail(email);
+	public String updateUser(Model model, UserVO user, SearchVO searchVO) {
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("user", userService.getUser(user));
 		return "user/updateUser.jsp";
@@ -95,53 +89,49 @@ public class UserController {
 	
 	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
 	public String updateUser(UserVO user) throws IOException {
-
-		MultipartFile uploadFile1 = user.getUploadFile1();
 		
-		if(!uploadFile1.isEmpty()) {
+		
+		MultipartFile uploadFile = user.getUploadFile();
+		
+		if(!uploadFile.isEmpty()) {
 			
-			String fileName = uploadFile1.getOriginalFilename();
+			String fileName = uploadFile.getOriginalFilename();
 			
 		    String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
 	         UUID uuid = UUID.randomUUID();
 	         String[] uuids = uuid.toString().split("-");
 	         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
 
-			uploadFile1.transferTo(new File(uploadFolder + fileName));
-			user.setFileName1(uniqueName);
+			uploadFile.transferTo(new File(uploadFolder + fileName));
+			user.setFileName(uniqueName);
 			
 			System.out.println(user.toString());
 		}
 		
-		
 		userService.updateUser(user);
-		return "getBoardList.do";
+		return "getUserList.do";
+		
+		
 	}	
-
 	
 	//**
 	
 	
+   // 내가 쓴글 목록
 	@RequestMapping(value="/getUser.do", method=RequestMethod.GET)
-	public String getUser(Model model, UserVO user, SearchVO searchVO) {
+	public String getUser(Model model, UserVO user, SearchVO searchVO, String nickname) {
+		List<BoardVO> MyboardList = boardService.getMyBoardList(nickname);
+		model.addAttribute("MyboardList", MyboardList);
+		
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("user", userService.getUserByNick(user));
 		return "user/getUser.jsp";
 	}
 	
 	@RequestMapping(value="/getUser.do", method=RequestMethod.POST)
-	public String getUser(UserVO user) throws IOException {
-		
-		MultipartFile uploadFile1 = user.getUploadFile1();
-		if(!uploadFile1.isEmpty()) {
-			String fileName = uploadFile1.getOriginalFilename();
-			uploadFile1.transferTo(new File(uploadFolder + fileName));
-			user.setFileName1(fileName);
-		}
-		
-		userService.getUserByNick(user);
-		
-		return "getUserList.do";
+	public String getUser(UserVO user) {
+             userService.getUser(user);
+             return "getUserList.do";
 	}
 	
 	
@@ -153,8 +143,6 @@ public class UserController {
 		model.addAttribute("user", userService.getUser(user));
 		return "user/deleteUser.jsp";
 	}
-	
-	
 	
 	@RequestMapping(value="/deleteUser.do", method=RequestMethod.POST)
 	public String deleteUser(UserVO user) {
@@ -175,12 +163,26 @@ public class UserController {
 		
 		@RequestMapping(value="/updateAddr.do", method=RequestMethod.POST)
 		public String updateAddr(UserVO user) throws IOException {
-			//System.out.println(user.toString());
 			userService.updateAddr(user);
-			return "getBoardList.do";
+			return "getUserList.do";
 		}	
 		
+		
 	
+    //거래후기	
+	
+	@RequestMapping(value="/good.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String ajaxUser(UserVO user) {
+		UserVO vo = userService.getUser(user);
+		
+		System.out.println("1........." + vo.getName());
+		
+		return vo.toString(); //vo.getName();
+	}			
+		
+		
+		
 		@RequestMapping("/downloadpro.do")
 		public String download(HttpServletRequest req, HttpServletResponse res) throws Exception { 	
 			req.setCharacterEncoding("utf-8");

@@ -13,9 +13,8 @@ public interface UserService {
 	List<UserVO> getUserList(SearchVO searchVO);
 	UserVO insertUser(UserVO user);
 	int deleteUser(UserVO user);
-	
+	// 프로필 수정
 	int updateUser(UserVO user);
-	
 	UserVO getUser1(UserVO vo);
 	//**
 	UserVO getUserByNick(UserVO vo);
