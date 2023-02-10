@@ -31,12 +31,7 @@ public class ReviewController {
 	@Autowired
 	Environment environment;
 	
-	private String uploadFolder = "";
 	
-	@PostConstruct
-	public void getUploadPathPropeties() {
-		uploadFolder = environment.getProperty("uploadFolder");
-	}
 //	LIST컨트롤러
 	@RequestMapping("getReviewList.do")
 	public String getReviewList(Model model, SearchVO searchVO,

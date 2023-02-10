@@ -147,16 +147,14 @@ body {
 					</ul>
 				</section>
 			</div>
-			<div class="container mt-1" id="goodsBoardDiv">
+			<div class="container my-3" id="goodsBoardDiv">
 				<div class="row">
 					<c:forEach items="${MyboardList}" var="MyboardList">
 						<div class="col-12 col-md-6 col-lg-4 mt-2">
-							<div class="card">
-								<span class="border border-dark"> <a
-									href="updateBoard.do?seq=${MyboardList.getSeq()}"
-									class="link-dark" style="text-decoration: none"> <img
+						<div class="card" style="cursor: pointer;" onclick="location.href='updateBoard.do?seq=${MyboardList.getSeq()}';">
+								<span class="border border-dark"> <img
 										class="card-img-top" width="450" height="250"
-										src="/img/${ MyboardList.fileName1 }" alt="image"></a></span>
+										src="/img/${ MyboardList.fileName1 }" alt="image"></span>
 								<div class="card-body">
 
 
@@ -234,7 +232,7 @@ body {
 		
 	
 <!-- ==========================신고 게시글 리스트============================ -->
-		<div class="row mt-4" style="display: none;" id="goodsReportDiv">
+		<div class="row my-3" style="display: none;" id="goodsReportDiv">
 			<table class="table table-hover table-bordered">
 				<thead class="table-dark">
 					<th scope="col">글번호</th>
@@ -261,7 +259,7 @@ body {
 		
 		
 <!-- ======================후기 게시글 리스트========================== -->		
-		<div class="row mt-4" style="display: none;" id="goodsReviewDiv">
+		<div class="row my-3" style="display: none;" id="goodsReviewDiv">
 			<table class="table table-hover table-bordered">
 				<thead class="table-dark">
 					<th scope="col">글번호</th>

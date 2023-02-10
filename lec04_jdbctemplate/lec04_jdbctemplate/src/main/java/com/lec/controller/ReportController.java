@@ -38,12 +38,6 @@ public class ReportController {
 	@Autowired
 	Environment environment;
 	
-	private String uploadFolder = "";
-	
-	@PostConstruct
-	public void getUploadPathPropeties() {
-		uploadFolder = environment.getProperty("uploadFolder");
-	}
 //	LIST컨트롤러
 	@RequestMapping("getReportList.do")
 	public String getReportList(Model model, SearchVO searchVO,

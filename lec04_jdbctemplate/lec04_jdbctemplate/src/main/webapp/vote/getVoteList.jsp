@@ -161,7 +161,6 @@ nav {
 					<th scope="col">글번호</th>
 					<th scope="col">작성자</th>
 					<th scope="col">제목</th>
-					<th scope="col">내용</th>
 					<th scope="col">작성일</th>
 				</thead>
 				<tbody>
@@ -170,7 +169,6 @@ nav {
 						   	<td>${ vote.seq }</td>
 							<td>${ vote.writer }</td>
 							<td>${ vote.title }</td>
-							<td>${ vote.content }</td>
 							<td>${ vote.regDate }</td>
 						</tr>
 					</c:forEach>

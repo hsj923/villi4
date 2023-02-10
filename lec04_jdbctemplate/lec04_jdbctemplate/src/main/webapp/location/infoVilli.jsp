@@ -215,7 +215,7 @@ font-family: 'Pretendard-Regular';
 		
 				
 				<div class="col mb-3">
-					<a href="../getBoardList.do"><img src="../resources/images/test.png"
+					<a href="../getBoardList.do"><img src="/img/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 

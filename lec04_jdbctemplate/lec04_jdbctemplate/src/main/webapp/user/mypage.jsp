@@ -130,7 +130,7 @@ color:#23dbc9
        </ul>
        <hr />
        </div>
-       <div class="container mt-3" align="left">
+       <div class="container" align="left">
        <ul class="list-group list-group-flush">
           <a href="getNoticeList.do" li class="list-group-item">공지사항</a>
           <a href="getCsList.do" li class="list-group-item">고객센터</a>

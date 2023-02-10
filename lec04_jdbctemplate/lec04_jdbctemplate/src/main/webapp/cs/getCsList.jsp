@@ -356,11 +356,10 @@ color:#23dbc9;
 
 
 <!--------------------- 자주 묻는 질문---------------------->   
-<div class="container"  >
+<div class="container mb-5">
   <h4 class="fw-bold  mt-4 mb-3">자주 묻는 질문</h4>
   <hr>
   <div class="accordion">
-    
     <div class="accordion-item">
       <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title"> &nbsp; 중고거래 운영정책</span><span class="icon" aria-hidden="true"></span></button>
       <div class="accordion-content">
