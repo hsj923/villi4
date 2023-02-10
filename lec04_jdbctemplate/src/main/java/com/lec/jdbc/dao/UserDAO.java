@@ -95,17 +95,23 @@ public class UserDAO {
 		return jdbcTemplate.update(deleteUser, user.getEmail());
 	}
 
-	// 프로필 수정
-	public int updateUser(UserVO user) {
-		System.out.println(user.toString());
-	    return jdbcTemplate.update(updateUser, user.getEmail(), user.getNickname(), user.getPassword(),  user.getFileName());
-	}
-	
+//	// 프로필 수정
+//	public int updateUser(UserVO user) {
+//		System.out.println(user.toString());
+//	    return jdbcTemplate.update(updateUser, user.getEmail(), user.getNickname(), user.getPassword(),  user.getFileName());
+//	}
+
 	
 	// 동네 설정
 	
 	public int updateAddr(UserVO user) {
 		return jdbcTemplate.update(updateAddr, user.getAddress(), user.getEmail());
+	}
+	
+	// 프로필 수정(파일)
+	public int updatePro(UserVO user) {
+		return jdbcTemplate.update(updatePro, user.getNickname(), user.getPassword(), user.getFileName(), user.getEmail());
+		
 	}
 
 }

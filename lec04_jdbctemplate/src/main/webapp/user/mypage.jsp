@@ -101,11 +101,11 @@ color:#23dbc9
      	
      	<div class="col-2">  	
         	<c:if test="${ !empty user.getFileName()}">
-     			<img src="resources/images/${ user.getFileName() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
+     			<img src="/img/${ user.getFileName() }" class="rounded-circle" id="admin_img"  width="100px" height="100px" alt="img">
      		</c:if>
      
     		<c:if test="${ empty user.getFileName() }">
-    			<img src="resources/images/noimg.png" class="rounded-circle" id="admin_img" width="100px" height="100px" alt="img">
+    			<img src="/img/noimg.png" class="rounded-circle" id="admin_img" width="100px" height="100px" alt="img">
     		</c:if>
 		 </div>   
 		  
@@ -121,12 +121,10 @@ color:#23dbc9
       <br />
       <br />
       <div class="container " align="left">
-        <ul class="list-group list-group-flush">	
-        
-        		
-  	     <a href="updateUser.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
+        <ul class="list-group list-group-flush">			
+  	      <a href="updatePro.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
           <a href="updateAddr.do?email=${user.getEmail() }" class="list-group-item">동네설정</a>
-           <a href="getChatList.do" class="list-group-item">채팅리스트</a> 
+          <a href="getChatList.do" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>
           <a href="#" class="list-group-item">내가 쓴 글 목록</a>
        </ul>

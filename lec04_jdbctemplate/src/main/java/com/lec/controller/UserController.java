@@ -79,40 +79,40 @@ public class UserController {
 	}	
 
 	
-	// 프로필 수정 
-	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
-	public String updateUser(Model model, UserVO user, SearchVO searchVO) {
-		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("user", userService.getUser(user));
-		return "user/updateUser.jsp";
-	}
-	
-	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
-	public String updateUser(UserVO user) throws IOException {
-		
-		
-		MultipartFile uploadFile = user.getUploadFile();
-		
-		if(!uploadFile.isEmpty()) {
-			
-			String fileName = uploadFile.getOriginalFilename();
-			
-		    String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
-	         UUID uuid = UUID.randomUUID();
-	         String[] uuids = uuid.toString().split("-");
-	         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
-
-			uploadFile.transferTo(new File(uploadFolder + fileName));
-			user.setFileName(uniqueName);
-			
-			System.out.println(user.toString());
-		}
-		
-		userService.updateUser(user);
-		return "getUserList.do";
-		
-		
-	}	
+//	// 프로필 수정 
+//	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
+//	public String updateUser(Model model, UserVO user, SearchVO searchVO) {
+//		model.addAttribute("searchVO", searchVO);
+//		model.addAttribute("user", userService.getUser(user));
+//		return "user/updateUser.jsp";
+//	}
+//	
+//	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
+//	public String updateUser(UserVO user) throws IOException {
+//		
+//		
+//		MultipartFile uploadFile = user.getUploadFile();
+//		
+//		if(!uploadFile.isEmpty()) {
+//			
+//			String fileName = uploadFile.getOriginalFilename();
+//			
+//		    String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
+//	         UUID uuid = UUID.randomUUID();
+//	         String[] uuids = uuid.toString().split("-");
+//	         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
+//
+//			uploadFile.transferTo(new File(uploadFolder + fileName));
+//			user.setFileName(uniqueName);
+//			
+//			System.out.println(user.toString());
+//		}
+//		
+//		userService.updateUser(user);
+//		return "getUserList.do";
+//		
+//		
+//	}	
 	
 	//**
 	
@@ -165,6 +165,38 @@ public class UserController {
 		public String updateAddr(UserVO user) throws IOException {
 			userService.updateAddr(user);
 			return "getUserList.do";
+		}	
+		
+		// 프로필 수정 
+		
+		@RequestMapping(value="/updatePro.do", method=RequestMethod.GET)
+		public String updatePro(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
+			user.setEmail(email);
+			model.addAttribute("searchVO", searchVO);
+			model.addAttribute("user", userService.getUser(user));
+			return "user/updateProfile.jsp";
+		}
+		
+		@RequestMapping(value="/updatePro.do", method=RequestMethod.POST)
+		public String updatePro(UserVO user) throws IOException {
+			MultipartFile uploadFile = user.getUploadFile();
+			
+		if(!uploadFile.isEmpty()) {
+				
+				String fileName = uploadFile.getOriginalFilename();
+				
+			    String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
+		         UUID uuid = UUID.randomUUID();
+		         String[] uuids = uuid.toString().split("-");
+		         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
+
+			uploadFile.transferTo(new File(uploadFolder + fileName));
+				user.setFileName(uniqueName);
+			}
+			
+			
+			userService.updatePro(user);
+			return "getUserList.do?=" + user.getEmail();
 		}	
 		
 		

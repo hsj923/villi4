@@ -152,6 +152,8 @@ public class BoardController {
 		boardService.deleteBoard(board);
 		return "getBoardList.do";
 	}	
+	
+	
 //파일 다운로드
 	@RequestMapping("/download.do")
 	public String download(HttpServletRequest req, HttpServletResponse res) throws Exception { 	

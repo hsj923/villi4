@@ -84,21 +84,26 @@ color:#23dbc9;
 
 
 
+<!--============ 동네 설정 ===============-->
+
+
 <div class="map_wrap container">
+
     <div id="map"  style="width:100%;height:100%;position:relative;overflow:hidden;boarder-radius:5px;"></div>
    
   <form action="updateAddr.do" method="post">
   <input type="hidden" name="email" value="${user.getEmail() }">
   
     <div class="hAddr">
-        <span class="title">  ${ sessionScope.user.getNickName() }님의 현재위치</span>
+        <span class="title">  ${ sessionScope.user.getNickname() }님의 현재위치</span>
         <input type="text" name="address" value="" id="centerAddr" readonly></input>
     </div>
    
    
    
    	<div class="btn_box">
-    	<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="현재위치로 동네설정하기" onClick="location.href='mypage.jsp'"/>
+   		<span>${ sessionScope.user.getNickname() }님의 변경 전 동네 : ${ user.address }</span><br>
+    	<input type="submit" class="btn btn-dark mx-4 mt-2 btn_radius"  value="현재위치로 동네설정하기" onClick="location.href='mypage.jsp'"/>
     </div>
    
 

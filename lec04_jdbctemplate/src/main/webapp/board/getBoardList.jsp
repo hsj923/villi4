@@ -144,12 +144,16 @@ nav {
 					class="d-block w-100 card-img-top embed-responsive-item"
 					alt="banner1">
 			</div>
+			
 			<div class="carousel-item embed-responsive embed-responsive-4by3"
 				id="banner">
-				<img src="/img/banner3.png"
+				<img src="/img/banner6.png"
 					class="d-block w-100 card-img-top embed-responsive-item"
 					alt="banner2">
 			</div>
+			
+			
+			
 		</div>
 
 		<button class="carousel-control-prev" type="button"
