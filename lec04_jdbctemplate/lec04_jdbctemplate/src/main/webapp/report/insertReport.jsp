@@ -34,23 +34,19 @@
 body {
 	font-family: 'Pretendard-Regular';
 }
-
 </style>
 </head>
 <body>
 
-         
+
 	<form action="insertReport.do" method="post">
 		<div class="container mt-3 w-75" align="center">
-			<div class="input-group mb-3 w-75">
-			</div>
-			<div class="input-group mb-3 w-75">
-				<input type="text" class="form-control" name="name" id="name"
+				<input type="hidden" class="form-control" name="name" id="name"
 					placeholder="${ sessionScope.user.getNickname() }" disabled>
-			</div>
-			
 
-             <input type="text" name="writer" value="${user.nickname}">
+			<div class="input-group mb-3 w-75">
+				<input type="text" name="writer" value="${user.nickname}">
+			</div>
 			
 			<select class="form-select form-select mb-3 w-75" name="r_rs1"
 				aria-label=".form-select example">

@@ -49,7 +49,7 @@ nav {
 				</div>
 				<div class="col" align="center">
 					<a href="../getBoardList.do"><img
-						src="../img/test.png" alt="logo" width=70px
+						src="/img/test.png" alt="logo" width=70px
 						height=70px></a>
 				</div>
 

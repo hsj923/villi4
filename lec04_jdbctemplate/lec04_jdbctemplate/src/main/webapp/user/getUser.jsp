@@ -7,7 +7,7 @@
 <head>
 <title>Villi : 프로필 수정</title>
 <link rel="stylesheet" href="/jquery/themes/base/jquery.ui.all.css" />
-<link rel="icon" href="../resources/images/favicon.png">
+<link rel="icon" href="/img/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -35,16 +35,13 @@
 	font-weight: 400;
 	font-style: normal;
 }
-
 body {
 	font-family: 'Pretendard-Regular';
 }
-
 #user-filter {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-
 #user-filter ul {
 	list-style-type: none;
 	border-bottom: 1px solid #e9ecef;
@@ -55,37 +52,28 @@ body {
    margin-top: 20px;
    margin-bottom: 20px;
 }
-
 #user-filter ul {
    list-style-type: none;
    border-bottom: 1px solid #e9ecef;
    padding-bottom: 10px;
 }
-
 #user-filter ul li {
    display: inline-block;
    font-size: 17px;
 }
-
-
 #user-filter ul li a {
    color: #868e96;
    text-decoration: none;
    padding: 8px 20px;
 }
-
-
 #user-filter ul li a:hover {
    color: #f76707;
 }
-
-
 #user-filter ul li a.active {
    border-bottom: 3px solid #f76707;
    color: #f76707;
    font-weight: 600;
 }
-
 </style>
 
 </head>
@@ -136,12 +124,12 @@ body {
 			<div class="col-2 input-group ms-3 mb-3 mt-2">
 
 				<c:if test="${ !empty  user.fileName}">
-					<img src="resources/images/${ user.fileName }"
+					<img src="/img/${ user.fileName }"
 						class="rounded-circle border border-dark" width="80" height="80"
 						alt="img">
 				</c:if>
 				<c:if test="${ empty  user.fileName}">
-					<img src="resources/images/noimg.png"
+					<img src="/img/noimg.png"
 						class="rounded-circle border border-dark" width="80" height="80"
 						alt="img">
 				</c:if>

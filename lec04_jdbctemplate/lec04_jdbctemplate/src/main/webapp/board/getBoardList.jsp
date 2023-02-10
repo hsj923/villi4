@@ -111,7 +111,7 @@ nav {
 					<c:if test="${ sessionScope.user.getNickname() != null }">			
 					 <div class="col mt-3 text-end r_menu">
 					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
 						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 				     </div>							
@@ -134,6 +134,8 @@ nav {
 				aria-label="Slide 1"></button>
 			<button type="button" data-bs-target="#carouselExampleControls"
 				data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleControls"
+				data-bs-slide-to="2" aria-label="Slide 3"></button>
 
 		</div>
 		<div class="carousel-inner">
@@ -149,6 +151,12 @@ nav {
 				<img src="/img/banner3.png"
 					class="d-block w-100 card-img-top embed-responsive-item"
 					alt="banner2">
+			</div>
+			<div class="carousel-item embed-responsive embed-responsive-4by3"
+				id="banner">
+				<img src="/img/banner5.png"
+					class="d-block w-100 card-img-top embed-responsive-item"
+					alt="banner3">
 			</div>
 		</div>
 

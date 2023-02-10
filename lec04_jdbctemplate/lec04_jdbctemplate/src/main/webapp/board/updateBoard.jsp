@@ -436,12 +436,12 @@ a {
 				</div>
 			</div>
 		</section>
-		<c:if test="${ sessionScope.user.getName() != board.nickname }">
+		<c:if test="${ sessionScope.user.getNickname() != board.nickname }">
 			<div class="container row-3" align="center">
 				<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 			</div>
 		</c:if>
-		<c:if test="${ sessionScope.user.getName() ==  board.nickname}">
+		<c:if test="${ sessionScope.user.getNickname() ==  board.nickname}">
 
 			<div class="container mt-3" align="center">
 				<form action="updateBoard.do" method="post">

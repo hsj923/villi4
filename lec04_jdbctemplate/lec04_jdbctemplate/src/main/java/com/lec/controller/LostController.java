@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.LostService;
+import com.lec.jdbc.service.LreplyService;
+import com.lec.jdbc.vo.LReplyVO;
 import com.lec.jdbc.vo.LostVO;
 
 @Controller
@@ -26,6 +28,9 @@ public class LostController {
 
 	@Autowired
 	LostService lostService;
+	
+	@Autowired
+	LreplyService lreplyService;
 	
 	@Autowired
 	Environment environment;
@@ -84,9 +89,11 @@ public class LostController {
 	}	
 	
 	@RequestMapping(value="/updateLost.do", method=RequestMethod.GET)
-	public String updateLost(Model model, LostVO lost, SearchVO searchVO) {
+	public String updateLost(Model model, LostVO lost, SearchVO searchVO, int seq) {
+		List<LReplyVO> lreplyList = lreplyService.getLReplyList(seq);
 		lostService.updateLostCount(lost);
 		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("lreplyList", lreplyList);
 		model.addAttribute("lost", lostService.getLost(lost));
 		return "lost/updateLost.jsp";
 	}

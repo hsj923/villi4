@@ -98,7 +98,7 @@ nav {
 									</li>
 											
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getVoteList.do">동네질문</a></li>
+											aria-current="page" href="getQuestionList.do">동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getLostList.do">분실센터</a></li>
 										<li class="nav-item"><a class="nav-link"
