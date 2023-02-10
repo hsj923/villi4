@@ -56,7 +56,9 @@ nav {
 #section3 {
 	background-color: #F6FAF3;
 }
-
+#section4 {
+	background-color:#F5DEB3;
+}
 .r_menu a {
 	text-decoration: none;
 	color: black;
@@ -74,6 +76,7 @@ nav {
 </style>
 </head>
 <body>
+
 	<section class="home-main-section1" id="section1">
 		<div class="container">
 			<div class="row">
@@ -166,5 +169,29 @@ nav {
 			</div>
 		</div>
 	</section>
+	<section class="home-main-section" id="section4">
+		<div class="container">
+			<div class="row">
+				<img src="/img/test.png" class="img-responsive center-block"
+							alt="" height="900">
+							<div class="col">
+				<h1 class="fw-bold text-center my-5">빌리 앱 설치하기</h1>
+				<p class="text-center mb-5">
+					<a href=""> <img width="200" height="59"
+						src="https://blisgo.com/wp-content/uploads/2022/02/Available_on_the_App_Store.png"
+						alt="">
+					</a> <a href=""> <img width="200" height="59"
+						src="https://blisgo.com/wp-content/uploads/2022/02/Google_Play_Store.png"
+						alt="">
+					</a>
+				</p>
+			</div>
+			</div>
+		</div>
+	</section>
+	
+	
+
+
 </body>
 </html>

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
+import com.lec.jdbc.service.QreplyService;
 import com.lec.jdbc.service.QuestionService;
+import com.lec.jdbc.vo.QReplyVO;
 import com.lec.jdbc.vo.QuestionVO;
 
 @Controller
@@ -26,6 +28,9 @@ public class QuestionController {
 
 	@Autowired
 	QuestionService questionService;
+	
+	@Autowired
+	QreplyService qreplyService;
 	
 	@Autowired
 	Environment environment;
@@ -84,10 +89,15 @@ public class QuestionController {
 	}	
 	
 	@RequestMapping(value="/updateQuestion.do", method=RequestMethod.GET)
-	public String updateQuestion(Model model, QuestionVO question, SearchVO searchVO) {
+	public String updateQuestion(Model model, QuestionVO question, SearchVO searchVO,int seq) {
+		
+		List<QReplyVO> qreplyList = qreplyService.getQReplyList(seq);
+		
 		questionService.updateQuestionCount(question);
 		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("qreplyList", qreplyList);
 		model.addAttribute("question", questionService.getQuestion(question));
+		
 		return "question/updateQuestion.jsp";
 	}
 	

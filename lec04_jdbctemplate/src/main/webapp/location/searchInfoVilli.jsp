@@ -24,19 +24,23 @@
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Pretendard-Regular' ,dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap {position:relative;width:100%;height:350px;}
 #category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
-#category li {float:left;list-style: none;width:50px;px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
+#category li {float:left;list-style: none;width:60px;px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
 #category li.on {background: #eee;}
 #category li:hover {background: #ffe6e6;border-left:1px solid #acacac;margin-left: -1px;}
 #category li:last-child{margin-right:0;border-right:0;}
-#category li span {display: block;margin:0 auto 3px;width:27px;height: 28px;}
-#category li .category_bg {background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png) no-repeat;}
-#category li .hospital {background-position: -10px -72px;}
-#category li .mart {background-position: -10px -36px;}
-#category li .pharmacy {background-position: -10px -72px;}
-#category li .restaurant {background-position: -10px -144px;}
-#category li .cafe {background-position: -10px -144px;}
-#category li .store {background-position: -10px -180px;}
-#category li.on .category_bg {background-position-x:-46px;}
+#category li span {display: block;margin:0 auto 3px;width:40px;height: 40px;}
+#category li .category_bg {background:url(https://ifh.cc/g/RyLDwt.png) no-repeat;}
+
+#category li .hospital {background-position: 5px -40px;}
+#category li .mart {background-position: 5px 5px;}
+#category li .pharmacy {background-position: 5px -84px;}
+#category li .restaurant {background-position: 5px -129px;}
+#category li .cafe {background-position: 5px -172px;}
+#category li .store {background-position: 5px -215px;}
+#category li .cultural {background-position: 5px -260px;}
+
+
+
 .placeinfo_wrap {position:absolute;bottom:28px;left:-150px;width:300px;}
 .placeinfo {position:relative;width:100%;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;padding-bottom: 10px;background: #fff;}
 .placeinfo:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
@@ -82,20 +86,19 @@ header {
 		
 				
 				<div class="col mb-3">
-					<a href="../getBoardList.do"><img src="../resources/images/test.png"
+					<a href="../getBoardList.do"><img src="/img/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
-					<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="../user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+						<span class=mx-1><a href="../getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-1><a href="../location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 				</div>
 			</div>
 		</div>
 	</header>
-
 
 
   <!-- =====================동네 카테고리 검색====================== -->
@@ -108,11 +111,11 @@ header {
 <div class="map_wrap">
     <div id="map" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
     <ul id="category">
-        <li id="MT1" data-order="1"> 
+        <li id="MT1" data-order="0"> 
             <span class="category_bg mart"></span>
             마트
         </li>  
-        <li id="HP8" data-order="0"> 
+        <li id="HP8" data-order="1"> 
             <span class="category_bg hospital"></span>
             병원
         </li>       
@@ -133,7 +136,7 @@ header {
             편의점
         </li>   
          <li id="CT1" data-order="6"> 
-            <span class="category_bg store"></span>
+            <span class="category_bg cultural"></span>
             문화시설
         </li> 
            
@@ -295,7 +298,7 @@ function displayPlaces(places) {
     }
 }
 
-// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+//마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, order) {
     var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
@@ -309,10 +312,8 @@ function addMarker(position, order) {
             position: position, // 마커의 위치
             image: markerImage 
         });
-
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-
     return marker;
 }
 

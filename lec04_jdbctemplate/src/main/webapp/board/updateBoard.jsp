@@ -150,8 +150,8 @@ a {
 													<option value="">검색</option>
 													<option value="title"
 														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-													<option value="writer"
-														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
+													<option value="nickname"
+														${searchVO.getSearchType()=="nickname" ? "selected" : "" }>작성자</option>
 													<option value="cate2"
 														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
 												</select>
@@ -252,11 +252,11 @@ a {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<a href="getUser.do?nickname=${ board.writer }"
+						<a href="getUser.do?nickname=${ board.nickname }"
 							style="text-decoration: none" class="text-dark">
-<%-- 							<img src="resources/images/${ user.fileName }" class="rounded-circle border border-dark" alt="img" width="75" height="75">  --%>
+<%-- 							<img src="/img/${ user.fileName }" class="rounded-circle border border-dark" alt="img" width="75" height="75">  --%>
                                     
-							<span>작성자 : ${ board.writer }</span> <span
+							<span>작성자 : ${ board.nickname }</span> <span
 							class="fs-5"></span></a>
 					</h5>
 				</div>
@@ -281,7 +281,7 @@ a {
 								<p class="fs-6 fst-italic 	text-decoration-underline">${board.regDate}</p>
 							</div>
 						</div>
-						<p class="fs-6 fst-italic 	text-decoration-underline">${ board.cate2 }</p>
+						<p class="fs-6	text-decoration-underline">${ board.cate2 }(${ board.cate })</p>
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 							fill="currentColor" class="bi bi-calendar-check"
 							viewBox="0 0 16 16">
@@ -364,7 +364,7 @@ a {
 				<div class="row">
 					<div class="col">
 						<img class="img-fluid" alt="동네인증거래"
-							src="resources/images/img-trust-1.png">
+							src="/img/img-trust-1.png">
 					</div>
 					<div class="col align-self-center">
 						<h2 class="home-main-title fw-bold">동네인증한 사용자만 거래해요</h2>
@@ -399,7 +399,7 @@ a {
 					</div>
 					<div class="col">
 						<img class="img-fluid" alt="이웃과의 거래, 동네생활 질문글과 동네가게"
-							src="resources/images/img-trust-2.png">
+							src="/img/img-trust-2.png">
 					</div>
 				</div>
 			</div>
@@ -416,7 +416,7 @@ a {
 				<div class="row">
 					<div class="col">
 						<img class="img-fluid" alt="동네거래"
-							src="resources/images/img-trust-3.png">
+							src="/img/img-trust-3.png">
 					</div>
 					<div class="col align-self-center">
 						<h2 class="home-main-title fw-bold">근처에서 만나서 거래해요</h2>
@@ -436,12 +436,12 @@ a {
 				</div>
 			</div>
 		</section>
-		<c:if test="${ sessionScope.user.getName() != board.writer }">
+		<c:if test="${ sessionScope.user.getNickname() != board.nickname }">
 			<div class="container row-3" align="center">
 				<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 			</div>
 		</c:if>
-		<c:if test="${ sessionScope.user.getName() ==  board.writer}">
+		<c:if test="${ sessionScope.user.getNickname() ==  board.nickname}">
 
 			<div class="container mt-3" align="center">
 				<form action="updateBoard.do" method="post">
@@ -454,7 +454,7 @@ a {
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="desc_title"><i
 							class="fas fa-user"></i></span> <input type="text" class="form-control"
-							name="writer" value="${ board.writer }" disabled>
+							name="nickname" value="${ board.nickname }" disabled>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text"><i class="fas fa-clipboard"></i></span>
@@ -463,13 +463,13 @@ a {
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="desc_title"><i
 							class="fas fa-calendar"></i></span> <input type="text"
-							class="form-control" name="writer" value="${board.regDate }"
+							class="form-control" name="regDate" value="${board.regDate }"
 							disabled>
 					</div>
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="desc_title"><i
 							class="fas fa-hashtag"></i></span> <input type="text"
-							class="form-control" name="writer" value="${ board.cnt }"
+							class="form-control" name="cnt" value="${ board.cnt }"
 							disabled>
 					</div>
 					<div class="container row-3" align="center">

@@ -245,8 +245,8 @@ color:#23dbc9;
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
-					<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
 						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
 				</div>
@@ -356,11 +356,10 @@ color:#23dbc9;
 
 
 <!--------------------- 자주 묻는 질문---------------------->   
-<div class="container"  >
+<div class="container mb-5">
   <h4 class="fw-bold  mt-4 mb-3">자주 묻는 질문</h4>
   <hr>
   <div class="accordion">
-    
     <div class="accordion-item">
       <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title"> &nbsp; 중고거래 운영정책</span><span class="icon" aria-hidden="true"></span></button>
       <div class="accordion-content">

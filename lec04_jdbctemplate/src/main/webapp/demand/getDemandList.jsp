@@ -165,9 +165,8 @@ nav {
 				</thead>
 				<tbody>
 					<c:forEach var="demand" items="${ demandList }">
-						<tr>
-						   	<td><a href="updateDemand.do?seq=${demand.getSeq()}"
-								style="text-decoration: none">${ demand.seq }</a></td>
+						<tr style=" cursor: pointer;" onclick="location.href='updateDemand.do?seq=${demand.getSeq()}';">
+						   	<td>${ demand.seq }</td>
 							<td>${ demand.writer }</td>
 							<td>${ demand.title }</td>
 							<td>${ demand.content }</td>

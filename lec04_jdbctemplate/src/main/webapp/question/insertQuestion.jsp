@@ -49,14 +49,14 @@ nav {
 				</div>
 				<div class="col" align="center">
 					<a href="../getBoardList.do"><img
-						src="../resources/images/test.png" alt="logo" width=70px
+						src="/img/test.png" alt="logo" width=70px
 						height=70px></a>
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
 					<span class=mx-2><a href="../getLikeList.do"
 						style="text-decoration: none" class="text-dark">좋아요</a> </span> <span
-						class=mx-1><a href="../user/mypage.jsp"
+						class=mx-1><a href="../getUserList.do"
 						style="text-decoration: none" class="text-dark">마이페이지</a></span> <span
 						class="mx-2">${ sessionScope.user.getNickname() }님</span>
 

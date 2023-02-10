@@ -160,7 +160,7 @@ nav {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<img src="resources/images/noimg.png"
+						<img src="/img/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"><span>${meeting.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
@@ -228,6 +228,46 @@ nav {
 			</div>
 		</form>
 
+	</div>
+
+
+
+
+<!-- 댓글 자리 -->
+		<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertMReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
+		        </p>
+		        <p>
+		        	<input type="hidden" name="seq" value="${meeting.seq}">
+		        	 <button class="btn btn-dark " type="submit">댓글 작성</button>
+		        </p>
+		    </form> 
+		</div>
+		
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${mreplyList}" var="mreplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${mreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${mreplyList.regDate}</span>
+                          <pre class="fs-6">${mreplyList.content}</pre>
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />	
+	
+	<!-- 댓글 끝 -->	
+
+
 
 	<c:if test="${ sessionScope.user.getNickname() != meeting.writer }">
 			<div class="container row-3" align="center">
@@ -243,8 +283,7 @@ nav {
 					class="btn btn-dark my-5 mx-4">게시글목록</a>
 			</div>
 		</c:if>
-	</div>
-
+<!-- 하트클릭시이벤트 -->
 	<script>
 		var i = 0;
 		$('.bi-heart').on('click', function() {

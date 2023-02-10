@@ -98,7 +98,7 @@ nav {
 									</li>
 											
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getVoteList.do">동네질문</a></li>
+											aria-current="page" href="getQuestionList.do">동네질문</a></li>
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getLostList.do">분실센터</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -161,17 +161,14 @@ nav {
 					<th scope="col">글번호</th>
 					<th scope="col">작성자</th>
 					<th scope="col">제목</th>
-					<th scope="col">내용</th>
 					<th scope="col">작성일</th>
 				</thead>
 				<tbody>
 					<c:forEach var="vote" items="${ voteList }">
-						<tr>
-						   	<td><a href="updateVote.do?seq=${vote.getSeq()}"
-								style="text-decoration: none">${ vote.seq }</a></td>
+						<tr style=" cursor: pointer;" onclick="location.href='updateVote.do?seq=${vote.getSeq()}';">
+						   	<td>${ vote.seq }</td>
 							<td>${ vote.writer }</td>
 							<td>${ vote.title }</td>
-							<td>${ vote.content }</td>
 							<td>${ vote.regDate }</td>
 						</tr>
 					</c:forEach>

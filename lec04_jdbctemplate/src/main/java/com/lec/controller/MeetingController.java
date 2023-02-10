@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.MeetingService;
+import com.lec.jdbc.service.MreplyService;
+import com.lec.jdbc.vo.MReplyVO;
 import com.lec.jdbc.vo.MeetingVO;
 
 @Controller
@@ -26,6 +28,9 @@ public class MeetingController {
 
 	@Autowired
 	MeetingService meetingService;
+	
+	@Autowired
+	MreplyService mreplyService;
 	
 	@Autowired
 	Environment environment;
@@ -66,8 +71,10 @@ public class MeetingController {
 	}	
 	
 	@RequestMapping(value="/updateMeeting.do", method=RequestMethod.GET)
-	public String updateMeeting(Model model, MeetingVO meeting, SearchVO searchVO) {
+	public String updateMeeting(Model model, MeetingVO meeting, SearchVO searchVO,int seq) {
+		List<MReplyVO> mreplyList = mreplyService.getMReplyList(seq);
 		meetingService.updateMeetingCount(meeting);
+		model.addAttribute("mreplyList", mreplyList);
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("meeting", meetingService.getMeeting(meeting));
 		return "meeting/updateMeeting.jsp";

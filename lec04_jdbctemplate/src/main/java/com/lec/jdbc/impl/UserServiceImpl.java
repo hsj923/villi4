@@ -45,9 +45,16 @@ public class UserServiceImpl implements UserService {
 		return userDAO.deleteUser(user);
 	}
 
+//	// 프로필 수정
+//	@Override
+//	public int updateUser(UserVO user) {
+//		return userDAO.updateUser(user);
+//	}
+	
+	// 프로필 수정2
 	@Override
-	public UserVO updateUser(UserVO user) {
-		return userDAO.updateUser(user);
+	public int updatePro(UserVO user) {
+		return userDAO.updatePro(user);
 	}
 	
 	
@@ -87,7 +94,6 @@ public class UserServiceImpl implements UserService {
 		return userDAO.updateAddr(user);
 		
 	}
-
 	
 	
 	

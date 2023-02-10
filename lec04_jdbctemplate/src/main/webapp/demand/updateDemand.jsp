@@ -159,7 +159,7 @@ nav {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<img src="resources/images/noimg.png"
+						<img src="/img/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"><span>${demand.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
@@ -216,7 +216,7 @@ nav {
 						id="fileimg">
 						<c:if test="${ !empty  demand.fileName1}">
 							
-							<img src="resources/images/${ demand.fileName1 }"
+							<img src="/img/${ demand.fileName1 }"
 								class="rounded mx-auto d-block w-75"
 								alt="img">
 								
@@ -254,6 +254,41 @@ nav {
 			</div>
 		</form>
 
+		<!-- 댓글 자리 -->
+		<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertDReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
+		        </p>
+		        <p>
+		        	<input type="hidden" name="seq" value="${demand.seq}">
+		        	
+		             <button class="btn btn-dark " type="submit">댓글 작성</button>
+		           
+		        </p>
+		    </form> 
+		</div>
+		
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${dreplyList}" var="dreplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${dreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${dreplyList.regDate}</span>
+                          <pre class="fs-6">${dreplyList.content}</pre>
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />	
+	
+	<!-- 댓글 끝 -->
 
 
 		<c:if test="${ sessionScope.user.getNickname() != demand.writer }">

@@ -164,7 +164,7 @@ nav {
 				<div class="card-body">
 					<h5 class="card-title text-start">
 						<a href="getUser.do?nickname=${ question.writer }"
-							style="text-decoration: none" class="text-dark"><img src="resources/images/noimg.png"
+							style="text-decoration: none" class="text-dark"><img src="/img/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"><span>${question.writer }</span> </a><span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
@@ -194,7 +194,7 @@ nav {
 			<div id="carouselExampleIndicators"
 				class="carousel carousel-dark slide" data-bs-ride="carousel">
 				<div class="carousel-indicators">
-				<c:if test="${ !empty  lost.fileName2}">
+				<c:if test="${ !empty  question.fileName2}">
 							<button type="button" data-bs-target="#carouselExampleIndicators"
 						data-bs-slide-to="0" class="active" aria-current="true"
 						aria-label="Slide 1"></button>
@@ -216,8 +216,8 @@ nav {
 					<div
 						class="carousel-item active embed-responsive embed-responsive-4by3"
 						id="fileimg">
-						<c:if test="${ !empty  lost.fileName1}">
-							<img src="resources/images/${ lost.fileName1 }"
+						<c:if test="${ !empty  question.fileName1}">
+							<img src="/img/${ question.fileName1 }"
 								class="rounded mx-auto d-block w-75"
 								alt="img">
 						</c:if>
@@ -226,8 +226,8 @@ nav {
 
 					<div class="carousel-item embed-responsive embed-responsive-4by3"
 						id="fileimg">
-						<c:if test="${ !empty  lost.fileName2}">
-							<img src="resources/images/${ lost.fileName2 }"
+						<c:if test="${ !empty  question.fileName2}">
+							<img src="/img/${ question.fileName2 }"
 								class="rounded mx-auto d-block w-75"
 								alt="img">
 						</c:if>
@@ -236,8 +236,8 @@ nav {
 
 					<div class="carousel-item embed-responsive embed-responsive-4by3"
 						id="fileimg">
-						<c:if test="${ !empty  lost.fileName3}">
-							<img src="resources/images/${ lost.fileName3 }"
+						<c:if test="${ !empty  question.fileName3}">
+							<img src="/img/${ question.fileName3 }"
 								class="rounded mx-auto d-block w-75"
 								alt="img">
 						</c:if>
@@ -302,6 +302,41 @@ nav {
 	</script>
 		
 			
+		<!-- 댓글 작성 -->
+		<div class="container-sm mt-5" align="center">
+		    <form method="post" action="insertQReply.do">
+		        <p>
+		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
+		        </p>
+		        <p>
+		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
+		        </p>
+		        <p>
+		 
+		        	<input type="hidden" name="seq" value="${question.seq}">	 
+		        	<c:if test="${ sessionScope.isAdmin }">
+		            <button type="submit">댓글 작성</button>
+		            </c:if>
+		        </p>
+		    </form> 
+		</div>
+		
+		<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+         <c:forEach items="${qreplyList}" var="qreplyList">
+            <div class="card" style="border: 0;">
+               <ul class="list-group list-group-flush">
+                     <li class="list-group-item text-start">
+                        <span class="fs-5 fw-bold" style="color: #4881f7;">${qreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${qreplyList.regDate}</span>
+                          <pre class="fs-6">${qreplyList.content}</pre>                         				
+                     </li>   
+                  </ul>
+            </div>
+            <hr />
+         </c:forEach>
+		<br />	
+		
+			
 	<c:if test="${ sessionScope.user.getNickname() != question.writer }">
 			<div class="container row-3" align="center">
 				<a href="getQuestionList.do"
@@ -317,6 +352,5 @@ nav {
 			</div>
 		</c:if>
 	</div>
-
 </body>
 </html>

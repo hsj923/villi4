@@ -168,9 +168,8 @@ nav {
 				</thead>
 				<tbody>
 					<c:forEach var="lost" items="${ lostList }">
-						<tr>
-							<td><a href="updateLost.do?seq=${lost.getSeq()}"
-								style="text-decoration: none">${ lost.seq }</a></td>
+						<tr style="cursor: pointer;" onclick="location.href='updateLost.do?seq=${lost.getSeq()}';">
+							<td>${ lost.seq }</td>
 							<td>${ lost.writer }</td>
 							<td>${ lost.title }</td>
 							<td>${ lost.content }</td>

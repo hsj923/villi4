@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.BoardService;
+import com.lec.jdbc.service.UserService;
 import com.lec.jdbc.vo.BoardVO;
+import com.lec.jdbc.vo.CsReplyVO;
 
 
 @Controller
@@ -29,6 +31,9 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	UserService userService;
 	
 	@Autowired
 	Environment environment;
@@ -57,10 +62,6 @@ public class BoardController {
 		searchVO.pageSetting();
 	
 		List<BoardVO> boardList = boardService.getBoardList(searchVO);
-
-		
-		
-		
 		model.addAttribute("searchVO", searchVO);
 		model.addAttribute("boardList", boardList);		
 		return "board/getBoardList.jsp";
@@ -187,4 +188,28 @@ public class BoardController {
 		return "getBoardList.do";
 	}	
 
+	
+//	내가쓴글목록리스트
+	@RequestMapping("getMyBoardList.do")
+	public String getCsList(Model model, SearchVO searchVO, String nickname,
+			@RequestParam(defaultValue="1") int curPage,
+			@RequestParam(defaultValue="10") int rowSizePerPage,
+			@RequestParam(defaultValue="") String searchCategory,
+			@RequestParam(defaultValue="") String searchType,
+			@RequestParam(defaultValue="") String searchWord) {
+		
+		searchVO.setTotalRowCount(boardService.getTotalRowCount(searchVO));
+		searchVO.setCurPage(curPage);
+		searchVO.setRowSizePerPage(rowSizePerPage);
+		searchVO.setSearchCategory(searchCategory);
+		searchVO.setSearchType(searchType);
+		searchVO.setSearchWord(searchWord);
+		searchVO.pageSetting();
+		
+		
+		List<BoardVO> MyboardList = boardService.getMyBoardList(nickname);
+		model.addAttribute("searchVO", searchVO);
+		model.addAttribute("MyboardList", MyboardList);		
+		return "board/getBoardList.jsp";
+	}	
 }

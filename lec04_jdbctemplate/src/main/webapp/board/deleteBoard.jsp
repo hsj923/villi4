@@ -90,8 +90,8 @@
 													<option value="">검색</option>
 													<option value="title"
 														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-													<option value="writer"
-														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
+													<option value="nickname"
+														${searchVO.getSearchType()=="nickname" ? "selected" : "" }>작성자</option>
 													<option value="cate2"
 														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
 												</select>

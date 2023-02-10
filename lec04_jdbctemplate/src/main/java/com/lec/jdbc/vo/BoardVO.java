@@ -8,7 +8,7 @@ public class BoardVO {
 
 	private int seq;
 	private String title;
-	private String writer;
+	private String nickname;
 	private String content;
 	private String status;
 	private String regDate;
@@ -30,7 +30,7 @@ public class BoardVO {
 	
 	@Override
 	public String toString() {
-		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", status="
+		return "BoardVO [seq=" + seq + ", title=" + title + ", nickname=" + nickname + ", content=" + content + ", status="
 				+ status + ", regDate=" + regDate + ", cnt=" + cnt + ", fileName1=" + fileName1 + ", fileName2="
 				+ fileName2 + ", fileName3=" + fileName3 + ", uploadFile1=" + uploadFile1 + ", uploadFile2="
 				+ uploadFile2 + ", uploadFile3=" + uploadFile3 + ", cate=" + cate + ", cate2=" + cate2 + ", price="
@@ -96,11 +96,11 @@ public class BoardVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getWriter() {
-		return writer;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getContent() {
 		return content;
