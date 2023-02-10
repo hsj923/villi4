@@ -166,9 +166,8 @@ nav {
 				</thead>
 				<tbody>
 					<c:forEach var="vote" items="${ voteList }">
-						<tr>
-						   	<td><a href="updateVote.do?seq=${vote.getSeq()}"
-								style="text-decoration: none">${ vote.seq }</a></td>
+						<tr style=" cursor: pointer;" onclick="location.href='updateVote.do?seq=${vote.getSeq()}';">
+						   	<td>${ vote.seq }</td>
 							<td>${ vote.writer }</td>
 							<td>${ vote.title }</td>
 							<td>${ vote.content }</td>

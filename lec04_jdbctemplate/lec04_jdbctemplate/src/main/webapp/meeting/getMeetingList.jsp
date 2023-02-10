@@ -174,9 +174,8 @@ nav {
 				</thead>
 				<tbody>
 					<c:forEach var="meeting" items="${ meetingList }">
-						<tr>
-						   	<td><a href="updateMeeting.do?seq=${meeting.getSeq()}"
-								style="text-decoration: none">${ meeting.seq }</a></td>
+						<tr style="cursor: pointer;" onclick="location.href='updateMeeting.do?seq=${meeting.getSeq()}';">
+						   	<td>${ meeting.seq }</td>
 							<td>${ meeting.title }</td>
 							<td>${ meeting.writer }</td>
 							<td>${ meeting.content }</td>

@@ -173,9 +173,8 @@ nav {
 				</thead>
 				<tbody>
 					<c:forEach var="groupBuying" items="${ groupBuyingList }">
-						<tr>
-						   	<td><a href="updateGroupBuying.do?seq=${groupBuying.getSeq()}"
-								style="text-decoration: none">${ groupBuying.seq }</a></td>
+						<tr style=" cursor: pointer;" onclick="location.href='updateGroupBuying.do?seq=${groupBuying.getSeq()}';">
+						   	<td>${ groupBuying.seq }</td>
 							<td>${ groupBuying.writer }</td>
 							<td>${ groupBuying.title }</td>
 							<td>${ groupBuying.content }</td>

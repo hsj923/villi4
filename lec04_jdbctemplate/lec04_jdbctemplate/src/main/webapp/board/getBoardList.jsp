@@ -277,14 +277,11 @@ nav {
 		<div class="row">
 			<c:forEach items="${boardList}" var="board">
 				<div class="col-12 col-md-6 col-lg-3 mt-5">
-					<div class="card">
-						<span class="border border-dark"> <a
-							href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
-							style="text-decoration: none">
-							
+					<div class="card" style="cursor: pointer;" onclick="location.href='updateBoard.do?seq=${board.getSeq()}';">
+						<span class="border border-dark">
 							<img class="card-img-top"
 								width="450" height="250"
-								src="/img/${ board.fileName1 }" alt="image"></a></span>
+								src="/img/${ board.fileName1 }" alt="image"></span>
 						<div class="card-body">
 
 							<!-- 글자수 넘칠 경우 자르기 -->
