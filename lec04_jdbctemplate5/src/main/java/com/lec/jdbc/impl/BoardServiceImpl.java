@@ -57,5 +57,15 @@ public class BoardServiceImpl implements BoardService {
 	public void updateBoardCount(BoardVO board) {
 		boardDAO.updateBoardCount(board);
 	}
-	
+//	내가쓴글목록
+	@Override
+	public List<BoardVO> getMyBoardList(String writer) {
+		return boardDAO.getMyBoardList(writer);
+	}
+
+	@Override
+	public List<BoardVO> MyBoardList(String writer) {
+		// TODO Auto-generated method stub
+		return boardDAO.MyBoardList(writer);
+	}
 }
