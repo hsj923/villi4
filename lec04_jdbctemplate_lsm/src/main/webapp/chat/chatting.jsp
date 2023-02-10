@@ -27,7 +27,20 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
- <link rel="stylesheet" href="../css/chat.css"></link>
+<link rel="stylesheet" href="../css/chat.css"></link>
+<style>
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+body {
+	font-family: 'Pretendard-Regular';
+}
+</style>
 </head>
 <body>
 	<!-- ===========header================ -->
@@ -92,14 +105,15 @@
 				<div></div>
 				<div class="Side-list">
 					<nav class="Sidebar">
-						<a class="UserProf" href="../index.do"> <!-- 	<img class="selected profile-image" src="../resources/images/logo.png"  alt="villi" > -->
+						<a class="UserProf" href="../index.jsp"> 
+					<img class="selected profile-image" src="../resources/images/logo.png"  alt="villi" >
 						</a>
 					</nav>
 					<nav class="User-list">
 						<div class="nickname-bar">
 							<div class="nickname-area">사용자 닉네임</div>
 						</div>
-						
+
 						<form action="updateChat.do" method="post" id="chatForm">
 							<input type="hidden" id="curPage" name="curPage"
 								value="${searchVO.getCurPage()}"> <input type="hidden"
@@ -141,8 +155,8 @@
 															<div class="row">
 																<div class="col-2 mb-3">프사</div>
 																<div class="col-6 mb-3">
-																	<td scope="row"><a>${ chat.getWriter() }</a>l</td> 
-																	<span class="badge bg-success text-white rounded-pill ">${chat.getStatus()}</span>
+																	<td scope="row"><a>${ chat.getWriter() }</a>l</td> <span
+																		class="badge bg-success text-white rounded-pill ">${chat.getStatus()}</span>
 																</div>
 																<div class="col-1">
 																	<button type="button"
@@ -152,7 +166,8 @@
 																	</button>
 																	<ul class="dropdown-menu"
 																		aria-labelledby="dropdownMenuButton">
-																		<li><a class="dropdown-item" href="review/insertReview.jsp">후기 남기기</a></li>
+																		<li><a class="dropdown-item"
+																			href="review/insertReview.jsp">후기 남기기</a></li>
 																		<!-- 후기 작성폼 생성 -->
 																		<li><a class="dropdown-item"
 																			href="report/insertReport.jsp">신고하기</a></li>
@@ -188,17 +203,43 @@
 				</div>
 				<section class="Chatlist-box">
 					<div class="empty-box">
-						<!-- <svg width="96" height="81" viewBox="0 0 96 81" fill="none" xmlns="http://www.w3.org/2000/svg">
-  	<path d="M33.0004 0C15.0185 0 0 13.0729 0 29.6567C0 40.358 6.27606 49.642 15.5279 54.8364L13.8397 64.5305C13.7353 65.1299 13.928 65.7446 14.3535 66.1751L14.3573 66.179L14.3724 66.1939C14.3853 66.2066 14.4061 66.2267 14.4326 66.2506C14.4869 66.2995 14.568 66.3668 14.6744 66.435C14.9082 66.5849 15.1569 66.6709 15.3962 66.7073C15.7666 66.7637 16.0661 66.6901 16.1358 66.673L16.1413 66.6716C16.3174 66.6287 16.5003 66.558 16.6232 66.51C16.9302 66.3901 17.5014 66.1524 18.5787 65.6955C20.7218 64.7866 24.9636 62.9696 33.3799 59.3641C51.1931 59.1817 66.0008 46.1763 66.0008 29.7093C66.0008 13.1297 50.987 0 33.0004 0Z" fill="#DCDEE3"></path><path d="M72.2312 29.4385C72.2312 48.2002 56.7085 62.679 37.8858 64.8408C44.0168 70.067 52.3818 73.2792 61.479 73.3633C70.2216 76.9749 74.6257 78.7941 76.8498 79.7036C77.9674 80.1606 78.5583 80.3977 78.8749 80.517C79.0036 80.5654 79.1863 80.6333 79.3599 80.6741L79.3652 80.6754C79.4339 80.6917 79.7238 80.7604 80.0821 80.7078C80.313 80.6739 80.5564 80.5935 80.7883 80.4501C80.8943 80.3846 80.9756 80.3195 81.0307 80.2717C81.0459 80.2585 81.0593 80.2464 81.0704 80.2362C81.0789 80.2284 81.0861 80.2217 81.0918 80.2163L81.1071 80.2017L81.111 80.1978C81.5557 79.764 81.7577 79.1325 81.6467 78.5179L79.9012 68.8524C89.4699 63.674 96 54.3943 96 43.6557C96 29.1206 84.0984 17.353 68.7254 14.6059C70.9682 19.0808 72.2312 24.0881 72.2312 29.4385Z" fill="#DCDEE3"></path>
-  	</svg>
-   	<div class="empty-description">채팅할 상대를 선택해주세요.</div> -->
 						<!-- -------------------------------------------------------------------------------------- -->
 					</div>
-					<div tabindex="0" role="region" aria-label="메시지리스트"
-						class="css-1bc192o"></div>
-					<form class="css-1ckh9yi">
-						<textarea placeholder="메시지를 입력해주세요" id="msg"></textarea>
 
+
+					<!-- chat Form -->
+
+					<div id="nav-list">
+
+						<tr>
+							<td><input type="text" name="user" id="user"
+								placeholder="유저명" /></td>
+							<td>
+								<button type="button" class="btn btn-default" id="btnConnect">연결</button>
+							</td>
+
+							<button type="button" class="btn btn-default" id="btnDisconnect">
+								<!-- 연결 끊기 -->
+								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+  					<path
+										d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+ 					 <path
+										d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+					</svg>
+							</button>
+						</tr>
+					</div>
+					<tr>
+						<td colspan="2"><div id="list"></div></td>
+					</tr>
+					<form class="css-1ckh9yi">
+						<tr>
+											<!-- send -->
+							<td colspan="2">
+							<input type="text" name="msg" id="msg"
+								placeholder="대화 내용을 입력하세요."></td>
+						</tr>
 						<div class="chatform-option-area">
 							<div class="chatform-submenu">
 								<label class="option-wrapper"> <span
@@ -218,7 +259,7 @@
 											fill="white"></path>
 										  				<path d="M3 16L6.5 12L10 16" fill="white"></path>
 										  				<path d="M7 16L12 10L17 16" fill="white"></path>
-													</svg>완 <input type="file" multiple=""
+													</svg> <input type="file" multiple=""
 									accept="image/png, image/jpeg, image/gif">
 								</label> <label class="option-wrapper "> <span
 									class="option-tooltip">자주 쓰는 문구</span> <svg
@@ -240,20 +281,154 @@
 													d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
 													</svg>
 										</button>
+										
+										
 									</div>
 								</label>
 							</div>
-							<button class="disable css-1useanf" aria-disabled="true">전송</button>
+							<input type=text class="disable css-1useanf" aria-disabled="true" placeholder="전송">
+						</input>
 						</div>
 						</button>
-						<span class="text-length">0/1000</span>
+						
 			</div>
-			</form>
+			<!-- 채팅창 -->
+<script>
+//채팅 서버 주소
+let url = "ws://localhost:8080/chat/chatserver";
+// 웹 소켓
+let ws;
+// 연결하기
+$('#btnConnect').click(function() {
+	// 유저명 확인
+	console.log('입장');
+   	if ($('#user').val().trim() != '') {
+   		// 연결
+	   	ws = new WebSocket(url);
+	   	// 소켓 이벤트 매핑
+	   	ws.onopen = function (evt) {
+	   		// console.log('서버 연결 성공');
+	   		print($('#user').val(), '입장했습니다.');
+	   				
+	   		// 현재 사용자가 입장했다고 서버에게 통지(유저명 전달)
+	   		// -> 1#유저명
+			ws.send('1#' + $('#user').val() + '#');
+					
+			$('#user').attr('readonly', true);
+			$('#btnConnect').attr('disabled', true);
+			$('#btnDisconnect').attr('disabled', false);
+			$('#msg').attr('disabled', false);
+			$('#msg').focus();
+		};
+        
+		ws.onmessage = function (evt) {
+			// print('', evt.data);
+			let index = evt.data.indexOf("#", 2);
+			let no = evt.data.substring(0, 1); 
+			let user = evt.data.substring(2, index);
+			let txt = evt.data.substring(index + 1);
+	   				
+			if (no == '1') {
+				print2(user);
+			} else if (no == '2') {
+				print(user, txt);
+			} else if (no == '3') {
+				print3(user);
+			}
+			$('#list').scrollTop($('#list').prop('scrollHeight'));
+		};
+	   			
+		ws.onclose = function (evt) {
+			console.log('소켓이 닫힙니다.');
+		};
+
+		ws.onerror = function (evt) {
+			console.log(evt.data);
+		};
+	} else {
+		alert('유저명을 입력하세요.');
+		$('#user').focus();
+	}
+});
+
+// 메세지 전송 및 아이디
+function print(user, txt) {
+	let temp = '';
+	temp += '<div style="margin-bottom:5px;">';
+	temp += '[' + user + '] ';
+	temp += txt;
+	temp += ' <span style="font-size:11px;color:#777;">' + new Date().toLocaleTimeString() + '</span>';
+	temp += '</div>';
+			
+	$('#list').append(temp);
+}
+		
+// 다른 client 접속		
+function print2(user) {
+	let temp = ' ';
+	temp += '<div style="margin-bottom:3px;">';
+	temp += "'" + user + "' 이(가) 접속했습니다." ;
+	temp += ' <span style="font-size:11px;color:#777;">' + new Date().toLocaleTimeString() + '</span>';
+	temp += '</div>';
+			
+	$('#list').append(temp);
+}
+
+// client 접속 종료
+function print3(user) {
+	let temp = ' ';
+	temp += '<div style="margin-bottom:3px;">';
+	temp += "'" + user + "' 이(가) 종료했습니다." ;
+	temp += ' <span style="font-size:11px;color:#777;">' + new Date().toLocaleTimeString() + '</span>';
+	temp += '</div>';
+			
+	$('#list').append(temp);
+}
+
+$('#user').keydown(function() {
+	if (event.keyCode == 13) {
+		$('#btnConnect').click();
+	}
+});
+		
+		
+		
+$('#msg').keydown(function() {
+	if (event.keyCode == 13) {
+				
+		//서버에게 메시지 전달
+		//2#유저명#메시지
+		ws.send('2#' + $('#user').val() + '#' + $(this).val()); //서버에게
+		print($('#user').val(), $(this).val()); //본인 대화창에
+		
+        $('#msg').val('');
+		$('#msg').focus();
+				
+	}
+});
+		
+$('#btnDisconnect').click(function() {
+	ws.send('3#' + $('#user').val() + '#');
+	ws.close();
+			
+	$('#user').attr('readonly', false);
+    $('#user').val('');
+			
+	$('#btnConnect').attr('disabled', false);
+	$('#btnDisconnect').attr('disabled', true);
+			
+	$('#msg').val('');
+	$('#msg').attr('disabled', true);
+});
+
+</script>
+	</div>
+	</form>
 	</div>
 	</section>
 	</div>
 	</div>
-	
+
 	<!-- -------------------------------------------------------------------------------------- -->
 	<!-- <div class="css-1oteowz">
   			<div class="css-up958c"> 
