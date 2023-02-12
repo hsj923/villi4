@@ -157,5 +157,9 @@ public class BoardDAO {
 		return jdbcTemplate.query(selectMyBoardList, args, new BoardRowMapper());
 	}
 	
+	public List<BoardVO> MyBoardList(String nickname) {
+		Object[] args = {nickname};
+		return jdbcTemplate.query(selectMyBoardList, args, new BoardRowMapper());
+	}
 	
 }

@@ -41,7 +41,7 @@ body {
 }
 
 header {
-	background-color: #FFFAFA;
+	background-color: #FFF;
 }
 
 nav {

@@ -116,19 +116,17 @@ color:#23dbc9
        </div>
   
     	</div>
-  	</div>
-					
-				
+  	</div>	
       <br />
       <br />
       <br />
       <div class="container " align="left">
         <ul class="list-group list-group-flush">			
   	      <a href="updatePro.do" class="list-group-item">프로필 수정</a>
-          <a href="updateAddr.do?email=${user.getEmail() }" class="list-group-item">동네설정</a>
+          <a href="updateAddr.do" class="list-group-item">동네설정</a>
           <a href="getChatList.do" class="list-group-item">채팅리스트</a> 
           <a href="#" class="list-group-item">찜리스트</a>
-          <a href="#" class="list-group-item">내가 쓴 글 목록</a>
+           <a href="myboardlist.do?nickname=${sessionScope.user.getNickname()}" class="list-group-item">내가 쓴 글 목록</a>
        </ul>
        <hr />
        </div>

@@ -78,30 +78,44 @@ nav {
 </head>
 <body>
 
-<header class="border-bottom border-dark">
-		<div class="container w-50">
+<!-- ===========header================ -->
+	<header class="border-bottom border-white">
+		<div class="container">
 			<div class="row align-items-start p-3">
-				<div class="col mt-3">
-					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
-				</div>
-				<div class="col" align="center">
-					<a href="../getBoardList.do"><img
-						src="../resources/images/test.png" alt="logo" width=70px
-						height=70px></a>
+		
+				
+				<div class="col mb-4">
+					<a href="getBoardList.do"><img src="/img/test.png"
+						alt="logo" width=70px height=70px></a>
 				</div>
 
-				<div class="col mt-3 text-end r_menu">
-					<span class=mx-2><a href="../getLikeList.do"
-						style="text-decoration: none" class="text-dark">좋아요</a> </span> <span
-						class=mx-1><a href="../user/mypage.jsp"
-						style="text-decoration: none" class="text-dark">마이페이지</a></span> <span
-						class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					<c:if test="${ sessionScope.user.getNickname() == null }">
+					   <div class="col mt-3 text-end r_menu">
+						 <span class=mx-2><a href="index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
+					   </div>
+					</c:if> 
+										
+					<c:if test="${ sessionScope.user.getNickname() != null }">			
+					 <div class="col mt-3 text-end r_menu">
+					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
+					    
+					   <c:if test="${ !sessionScope.isAdmin }">
+						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						</c:if>
+						<c:if test="${sessionScope.isAdmin }">
+						<span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
+						</c:if>
+						
+						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
+						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+				     </div>							
+				   </c:if>
 
-				</div>
+
+
 			</div>
 		</div>
 	</header>
-	
 	<!--=============================================================================================== -->
 	
 	<div class="container col-5 mt-4"  align="center">

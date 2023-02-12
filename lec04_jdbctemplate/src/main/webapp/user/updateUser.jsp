@@ -137,10 +137,9 @@ border-radius:1.5em;
 		  
 		 
 		  </div>
-		<form role="form" action="updateUser.do" method="post" onSubmit="return checkResult();" >
+		<form role="form" action="updateUser.do" method="post" enctype="multipart/form-data" >
 			
-			
-			<input type="hidden" name="email" value="${user.getEmail()}">
+		
 			<input type="hidden" name="curPage" value="${searchVO.getCurPage()}">
 			<input type="hidden" name="rowSizePerPage" value="${searchVO.getRowSizePerPage()}">
 			<input type="hidden" name="searchCategory" value="${searchVO.getSearchCategory()}">
@@ -151,8 +150,8 @@ border-radius:1.5em;
 		 <!-- 프로필 사진 수정 -->
 		 
 		  
-		  <input type="file" class="form-control mb-3" name="uploadFile"
-					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">
+		  <input type="file" class="form-control mb-3" name="uploadFile1"
+					id="uploadFile1" aria-describedby="uploadFile1" aria-label="Upload">
 		 
 			 
 			 
@@ -161,13 +160,13 @@ border-radius:1.5em;
 			<label for="inputEmail">* 이메일 주소</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
-				${ user.getEmail() }
+				<input type="text" name="email" class="form-control" value="${ user.email }" readonly>
 			</div>
 
 			<label for="inputEmail">* 이름</label>
 			    
 			<div class="col-2 input-group mb-3 mt-2" >
-				${ user.getName() }
+				${ user.name }
 			</div>
 			
 			<!-- 이름(닉네임) 변경  --> 
@@ -175,7 +174,7 @@ border-radius:1.5em;
 			<label for="inputName">* 닉네임</label>
 			
 			<div class="col-2 input-group mb-3 mt-2">
-				<input type="text" name="name" class="form-control" placeholder="${ user.getName() }">
+				<input type="text" name="nickname" class="form-control" placeholder="${ user.nickname }">
 			</div>
 			
 			
@@ -206,7 +205,7 @@ border-radius:1.5em;
 		  
 			<div class="container btn_box mt-5" align="center">
 				
-				<input type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기" onClick="location.href='user/mypage.jsp'"/>
+				<button type="submit" class="btn btn-dark mx-4 btn_radius"  value="수정하기"></button>
 			<!-- 	<a href="logout.do" class="btn btn-dark mx-4 btn_radius">로그아웃</a> -->
 						
 			</div>	

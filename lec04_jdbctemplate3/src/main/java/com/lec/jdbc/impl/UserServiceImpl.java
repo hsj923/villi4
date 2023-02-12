@@ -98,6 +98,13 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	
+	@Override
+	public UserVO getUser2(UserVO vo) {
+		// TODO Auto-generated method stub
+		return userDAO.getUser(vo);
+	}
+	
+	
 	
 	
 }

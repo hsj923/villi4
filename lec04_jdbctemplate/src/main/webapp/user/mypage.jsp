@@ -120,7 +120,7 @@ color:#23dbc9
     	</c:if>
       </div>
       <div class="container mt-3" id="mem_info">
-      <h3>${sessionScope.user.getName()}님</h3>
+      <h3>${sessionScope.user.getNickname()}님</h3>
   
   
 
@@ -136,7 +136,7 @@ color:#23dbc9
       	<div class="container mt-3" align="left">
         <ul class="list-group list-group-flush">			
  			
-  	     <a href="../updateUser.do?email=${ user.getEmail() }" class="list-group-item">프로필 수정</a>
+  	     <a href="../updateUser.do?email=${user.getEmail() }" class="list-group-item">프로필 수정</a>
          <a href="../updateAddr.do?email=${user.getEmail() }" class="list-group-item">동네설정</a>
           <a href="#" class="list-group-item">채팅리스트</a>
           <a href="#" class="list-group-item">찜리스트</a>

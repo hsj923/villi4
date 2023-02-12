@@ -116,21 +116,44 @@ public class UserController {
 	}	
 	
 	
+	// 마이페이지 내가 작성한 글 목록
+		@RequestMapping(value="/myboardlist.do", method=RequestMethod.GET)
+		public String myboardlist(Model model, UserVO user, SearchVO searchVO, String nickname) {
+			List<BoardVO> MyboardList = boardService.getMyBoardList(nickname);
+			model.addAttribute("MyboardList", MyboardList);
+			
+			model.addAttribute("searchVO", searchVO);
+			model.addAttribute("user", userService.getUserByNick(user));
+			return "user/myboardlist.jsp";
+		}
+		
+		@RequestMapping(value="/myboardlist.do", method=RequestMethod.POST)
+		public String getUser2(UserVO user) {
+			userService.getUser2(user);
+			return "getUserList.do";
+		}
+	
+	
+	
+	
 	// 동네 설정
 	
 		@RequestMapping(value="/updateAddr.do", method=RequestMethod.GET)
-		public String updateAddr(Model model, UserVO user, SearchVO searchVO, @RequestParam String email) {
-			user.setEmail(email);
-			model.addAttribute("searchVO", searchVO);
-			model.addAttribute("user", userService.getUser(user));
+		public String updateAddr(UserVO user, HttpSession sess) throws IOException {
 			return "user/location.jsp";
 		}
 		
 		@RequestMapping(value="/updateAddr.do", method=RequestMethod.POST)
-		public String updateAddr(UserVO user) throws IOException {
-			userService.updateAddr(user);
+		public String updateAddr(UserVO user, Model model, HttpSession sess) throws IOException {
+			
+			  sess.setAttribute("user", userService.updateAddr(user));
+			  sess.getAttribute("user");
+		      sess.setAttribute("user", userService.getUser(user));
+		      model.addAttribute(user);
+			
 			return "getUserList.do";
 		}	
+		
 		
 		// 프로필 수정 
 		
@@ -156,15 +179,12 @@ public class UserController {
 		      sess.setAttribute("user", userService.updatePro(user));
 		      sess.getAttribute("user");
 		      sess.setAttribute("user", userService.getUser(user));
-		      model.addAttribute(user);
-		     
-		
+		      model.addAttribute(user);     
+		      model.addAttribute("msg","정보가 정상적으로 수정되었습니다.");
 			
-			return "redirect:/updatePro.do"; 
+			return "user/alert.jsp"; 
 		}	
-		
-		
-		
+	
 		
 //		
 //		   @RequestMapping(value="/updateUser.do", method = RequestMethod.POST)

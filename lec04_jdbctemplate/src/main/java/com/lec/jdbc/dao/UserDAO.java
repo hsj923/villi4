@@ -82,7 +82,6 @@ public class UserDAO {
 	}
 
 	public int updateUser(UserVO user) {
-		user.setRole((user.getRole() != null) ? "ADMIN" : "USER");
 		return jdbcTemplate.update(updateUser, user.getNickname(), user.getPassword(), user.getEmail(), user.getFileName1());
 	}
 	

@@ -99,14 +99,11 @@ color:#23dbc9;
         <input type="text" name="address" value="" id="centerAddr" readonly></input>
     </div>
    
-   
-   
    	<div class="btn_box">
-   		<span>${ sessionScope.user.getNickname() }님의 변경 전 동네 : ${ user.getAddress() }</span><br>
+   		<h5><strong>${ sessionScope.user.getNickname() }님</strong>의 변경 전 동네 : ${ user.getAddress() }</h5><br>
     	<input type="submit" class="btn btn-dark mx-4 mt-2 btn_radius"  value="현재위치로 동네설정하기" onClick="location.href='mypage.jsp'"/>
     </div>
    
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c9cd8fc62340f0b717e303a629a8b0c3&libraries=services"></script>
 <script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

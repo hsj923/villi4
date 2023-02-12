@@ -67,27 +67,42 @@ color:#23dbc9
 	#bg_admin{ margin-left : 15px; }
 </style>
 <body>
+
 <!-- ===========header================ -->
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
 		
 				
-				<div class="col mb-3">
-					<a href="getBoardList.do"><img src="resources/images/test.png"
+				<div class="col mb-4">
+					<a href="../getBoardList.do"><img src="/img/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
-				<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
+					<c:if test="${ sessionScope.user.getNickname() == null }">
+					   <div class="col mt-3 text-end r_menu">
+						 <span class=mx-2><a href="../index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
+					   </div>
+					</c:if> 
+										
+					<c:if test="${ sessionScope.user.getNickname() != null }">			
+					 <div class="col mt-3 text-end r_menu">
+					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
+					    
+					   <c:if test="${ !sessionScope.isAdmin }">
+						<span class=mx-1><a href="../getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						</c:if>
+						<c:if test="${sessionScope.isAdmin }">
+						<span class=mx-1><a href="../user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
+						</c:if>
+						
+						<span class=mx-1><a href="../location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-				</div>
+				     </div>							
+				   </c:if>
 			</div>
 		</div>
 	</header>
-
 		<!------------- 프로필 이미지, oo님 ---------------->
 		
 		 
@@ -97,19 +112,17 @@ color:#23dbc9
      	
      	<div class="col-2">  	
      	
-    	  <c:if test="${ !empty  user.fileName1}">
-			<img src="../resources/images/${ user.fileName1 }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+    	  <c:if test="${ !empty  user.fileName}">
+			<img src="/img/${ user.fileName }" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
-		  <c:if test="${ empty  user.fileName1}">
-			<img src="../resources/images/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
+		  <c:if test="${ empty  user.fileName}">
+			<img src="/img/noimg.png" class="rounded-circle border border-dark" width="80" height="80" alt="img">
 		  </c:if>
 		  </div>   
 		  
 	   <div class="col mt-4">
      	 <h4>${sessionScope.user.getNickname()}님</h4>
-		  <c:if test="${ sessionScope.isAdmin }">
 		  <span class="badge rounded-pill bg-warning" id="bg_admin">관리자</span>
-		  </c:if>
        </div>
     </div>
   	</div>
@@ -119,24 +132,11 @@ color:#23dbc9
       <br />
       <br />
 		
-		<%-- <div class="admin_my">
-		<div class="admin_img">
-		<img src="resources/images/logo.png" class="rounded-circle" id="admin_img" alt="" width="100px" height="100px">
-		</div>
-		<div class="container mt-3" id="mem_info">
-		  <h3>${ sessionScope.user.getNickname() }님</h3>
-		  </div>
-		<br />
-		</div>
-		<br />
-		<br /> --%>
-		
 		
 		<div class="container mt-3" align="left">
 		  <ul class="list-group list-group-flush">
 		    <a href="#" class="list-group-item">게시물 신고</a>
-		    <a href="../getCsBoardList.do" class="list-group-item">고객 문의사항</a>
-		    <a href="#" class="list-group-item">배너 관리</a>
+		    <a href="../getCsList.do" class="list-group-item">고객 문의사항</a>
 		    <a href="../getNoticeList.do" class="list-group-item">공지사항</a>
 		 </ul>
 		 <hr />
@@ -144,9 +144,7 @@ color:#23dbc9
 		 <div class="container mt-3" align="left">
 		 <ul class="list-group list-group-flush">
 		    <a href="../getBoardList.do" li class="list-group-item">게시판관리</a>
-		    <c:if test="${ sessionScope.isAdmin }">
 		    <a href="../getUserList.do" li class="list-group-item">사용자관리</a>
-		   </c:if>
 		 </ul>
 		 </div>
 </body>

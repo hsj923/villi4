@@ -27,5 +27,7 @@ public interface UserService {
 	
 	// 동네 설정
 	int updateAddr(UserVO user);
+	
+	UserVO getUser2(UserVO vo);
 
 }

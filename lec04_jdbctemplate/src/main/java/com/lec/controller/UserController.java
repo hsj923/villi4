@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -21,8 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lec.jdbc.common.SearchVO;
+import com.lec.jdbc.dao.LoginDAO;
 import com.lec.jdbc.service.UserService;
 import com.lec.jdbc.vo.UserVO;
 
@@ -70,49 +73,40 @@ public class UserController {
 		userService.insertUser(user);
 		return "redirect:/login.do";
 	}	
-
-//	@RequestMapping("*/insertUser.do")
-//	public String insertUser(UserVO user) throws IOException {
-//		MultipartFile uploadFile = user.getUploadFile();
-//		if(!uploadFile.isEmpty()) {
-//			String fileName = uploadFile.getOriginalFilename();
-//			uploadFile.transferTo(new File(uploadFolder + fileName));
-//			user.setFileName(fileName);
-//		}
-//		
-//		userService.insertUser(user);
-//		return "redirect:/getUserList.do";
-//	}	
-	
-	@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
-	public String updateUser(Model model, UserVO user, SearchVO searchVO,  @RequestParam String email) throws IOException {
-		user.setEmail(email);
-		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("user", userService.getUser(user));
-		return "user/updateUser.jsp";
-	}
-	
-	@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
-	public String updateUser(UserVO user) throws IOException {
-		
-		
-       MultipartFile uploadFile = user.getUploadFile1();
-		
-		if(!uploadFile.isEmpty()) {
-			
-			String fileName = uploadFile.getOriginalFilename();
-			
-		    String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
-	         UUID uuid = UUID.randomUUID();
-	         String[] uuids = uuid.toString().split("-");
-	         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
-			uploadFile.transferTo(new File(uploadFolder + fileName));
-			user.setFileName1(uniqueName);
-			System.out.println(user.toString());
+	// 프로필 수정 
+		@RequestMapping(value="/updateUser.do", method=RequestMethod.GET)
+		public String updateUser(Model model, UserVO user, SearchVO searchVO) {
+			model.addAttribute("searchVO", searchVO);
+			model.addAttribute("user", userService.getUser(user));
+			return "user/updateUser.jsp";
 		}
-		userService.updateUser(user);
-		return "getUserList.do";
-	}	
+		
+		@RequestMapping(value="/updateUser.do", method=RequestMethod.POST)
+		public String updateUser(UserVO user) throws IOException {
+			
+			
+			MultipartFile uploadFile5 = user.getUploadFile1();
+			
+			if(!uploadFile5.isEmpty()) {
+				
+				String fileName5 = uploadFile5.getOriginalFilename();
+				
+			    String fileExtension = fileName5.substring(fileName5.lastIndexOf("."),fileName5.length());
+		         UUID uuid = UUID.randomUUID();
+		         String[] uuids = uuid.toString().split("-");
+		         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
+
+				uploadFile5.transferTo(new File(uploadFolder + fileName5));
+				user.setFileName1(uniqueName);
+				
+				System.out.println(user.toString());
+			}
+			
+			userService.updateUser(user);
+			return "getUserList.do?email=" + user.getEmail();
+			
+			
+		}	
 	
 	
 	// 주소 변경

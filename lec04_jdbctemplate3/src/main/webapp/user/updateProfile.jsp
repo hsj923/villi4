@@ -98,7 +98,7 @@ body {
 		  
 		  <input type="file" class="form-control mb-3" name="uploadFile"
 					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">
-		 <input type="hidden" name="fileName" value="" />
+		 <input type="hidden" name="fileName" value="${user.getFileName() }" />
 		 
     <!-- 이메일 수정(불가) -->	
    <label for="inputEmail" class="mt-2">* 이메일 주소</label>

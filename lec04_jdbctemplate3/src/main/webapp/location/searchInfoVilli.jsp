@@ -79,23 +79,39 @@ header {
 
 <body>
 
+
 <!-- ===========header================ -->
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
 		
 				
-				<div class="col mb-3">
-					<a href="../getBoardList.do"><img src="../resources/images/test.png"
+				<div class="col mb-4">
+					<a href="../getBoardList.do"><img src="/img/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
-				<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+					<c:if test="${ sessionScope.user.getNickname() == null }">
+					   <div class="col mt-3 text-end r_menu">
+						 <span class=mx-2><a href="../index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
+					   </div>
+					</c:if> 
+										
+					<c:if test="${ sessionScope.user.getNickname() != null }">			
+					 <div class="col mt-3 text-end r_menu">
+					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
+					    
+					   <c:if test="${ !sessionScope.isAdmin }">
 						<span class=mx-1><a href="../getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						</c:if>
+						<c:if test="${sessionScope.isAdmin }">
+						<span class=mx-1><a href="../user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
+						</c:if>
+						
 						<span class=mx-1><a href="infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-				</div>
+				     </div>							
+				   </c:if>
 			</div>
 		</div>
 	</header>
@@ -202,7 +218,7 @@ function displayMarker(locPosition, message) {
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
         content : iwContent,
-        removable : iwRemoveable
+        removaㅣ56ㅕㅏble : iwRemoveable
     });
     
     // 인포윈도우를 마커위에 표시합니다 
@@ -300,11 +316,11 @@ function displayPlaces(places) {
 
 //마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, order) {
-    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-        imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
+    var imageSrc = 'https://ifh.cc/g/RyLDwt.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+        imageSize = new kakao.maps.Size(30, 36),  // 마커 이미지의 크기
         imgOptions =  {
-            spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
-            spriteOrigin : new kakao.maps.Point(46, (order*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            spriteSize : new kakao.maps.Size(71, 298), // 스프라이트 이미지의 크기
+            spriteOrigin : new kakao.maps.Point(44, (order*43)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
             offset: new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
         },
         markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),

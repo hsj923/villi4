@@ -200,9 +200,6 @@ font-family: 'Pretendard-Regular';
 .card:hover .card__info-hover {
     opacity: 1;
 }
-
-
-
 </style>
 
 </head>
@@ -214,20 +211,39 @@ font-family: 'Pretendard-Regular';
 			<div class="row align-items-start p-3">
 		
 				
-				<div class="col mb-3">
-					<a href="../getBoardList.do"><img src="../resources/images/test.png"
+				<div class="col mb-4">
+					<a href="../getBoardList.do"><img src="/img/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
-				<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
+					<c:if test="${ sessionScope.user.getNickname() == null }">
+					   <div class="col mt-3 text-end r_menu">
+						 <span class=mx-2><a href="../index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
+					   </div>
+					</c:if> 
+										
+					<c:if test="${ sessionScope.user.getNickname() != null }">			
+					 <div class="col mt-3 text-end r_menu">
+					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
+					    
+					   <c:if test="${ !sessionScope.isAdmin }">
 						<span class=mx-1><a href="../getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
+						</c:if>
+						<c:if test="${sessionScope.isAdmin }">
+						<span class=mx-1><a href="../user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
+						</c:if>
+						
+						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-				</div>
+				     </div>							
+				   </c:if>
+
+
+
 			</div>
 		</div>
 	</header>
+
 
 <!--================ cards ================= -->
   <h3 class="container text-center mt-4 mb-4 fw-bold ">동네정보</h3>

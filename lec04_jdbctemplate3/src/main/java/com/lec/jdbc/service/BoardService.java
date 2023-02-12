@@ -22,4 +22,6 @@ public interface BoardService {
 	//	내가쓴글목록
 	List<BoardVO> getMyBoardList(String Writer);
 	
+	List<BoardVO> MyBoardList(String Writer);
+	
 }

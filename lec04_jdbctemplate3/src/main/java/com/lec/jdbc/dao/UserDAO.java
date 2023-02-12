@@ -100,7 +100,6 @@ public class UserDAO {
 //		System.out.println(user.toString());
 //	    return jdbcTemplate.update(updateUser, user.getEmail(), user.getNickname(), user.getPassword(),  user.getFileName());
 //	}
-
 	
 	// 동네 설정
 	

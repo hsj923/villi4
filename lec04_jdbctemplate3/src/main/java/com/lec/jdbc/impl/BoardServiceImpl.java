@@ -63,4 +63,10 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> getMyBoardList(String writer) {
 		return boardDAO.getMyBoardList(writer);
 	}
+	
+	
+	@Override
+	public List<BoardVO> MyBoardList(String writer) {
+		return boardDAO.MyBoardList(writer);
+	}
 }
