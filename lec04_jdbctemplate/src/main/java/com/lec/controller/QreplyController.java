@@ -22,14 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lec.jdbc.common.SearchVO;
-import com.lec.jdbc.service.BoardService;
-import com.lec.jdbc.service.CsboardService;
-import com.lec.jdbc.service.CsreplyService;
 import com.lec.jdbc.service.QreplyService;
 import com.lec.jdbc.service.QuestionService;
-import com.lec.jdbc.vo.BoardVO;
-import com.lec.jdbc.vo.CsBoardVO;
-import com.lec.jdbc.vo.CsReplyVO;
 import com.lec.jdbc.vo.QReplyVO;
 
 @Controller
@@ -74,7 +68,7 @@ public class QreplyController {
 		return "question/getQuestionList.jsp";
 	}
 
-	// ´ñ±Û ÀÛ¼º
+	// ëŒ“ê¸€ ìž‘ì„±
 	@RequestMapping(value = "/insertQReply.do", method = RequestMethod.POST)
 	public String insertQReply(QReplyVO qreply, Model model, int seq) throws Exception {
 		model.addAttribute("seq", seq);
@@ -97,20 +91,20 @@ public class QreplyController {
 	}
 
 	
-	  @RequestMapping(value="/deleteQReply.do", method=RequestMethod.GET) public
-	  String deleteQReply(Model model, QReplyVO qreply, SearchVO searchVO, @RequestParam int rno) { 
+	  @RequestMapping(value="/deleteQReply.do", method=RequestMethod.GET) 
+	  public String deleteQReply(Model model, QReplyVO qreply, SearchVO searchVO, @RequestParam int rno) { 
 		  qreply.setRno(rno);
-		  model.addAttribute("searchVO", searchVO); 
-		  model.addAttribute("qreply",qreplyService.getQReply(qreply)); 
-		  return "question/deleteCsBoard.jsp"; 
+		  qreplyService.deleteQReply(qreply);
+		  return "getQuestionList.do"; 
 	  
 	  }
 	  
-	  @RequestMapping(value="/deleteQReply.do", method=RequestMethod.POST)
-		public String deleteQReply(QReplyVO qreply) {
-		  qreplyService.deleteQReply(qreply);
-		  return "getQuestionList.do";
-		}	
+		/*
+		 * @RequestMapping(value="/deleteQReply.do", method=RequestMethod.POST) public
+		 * String deleteQReply(QReplyVO qreply) {
+		 * 
+		 * return "getQuestionList.do"; }
+		 */
 	 
 
 }

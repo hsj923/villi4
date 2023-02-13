@@ -5,14 +5,14 @@
 <head>
 
 
-   <title>villi login</title>
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">   
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
-      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" 
-      crossorigin="anonymous">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
+	<title>villi login</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" 
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" 
+		crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
 <style>
 .joinbtn{
 text-decoration:none;
@@ -20,19 +20,19 @@ color:white;
 }
 
 @font-face {
-   font-family: 'Pretendard-Regular';
-   src:
-      url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
-      format('woff');
-   font-weight: 400;
-   font-style: normal;
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
 }
 body {
-   font-family: 'Pretendard-Regular';
+	font-family: 'Pretendard-Regular';
 }
 header {
-   background-color: #FFF;
-   height: 90px;
+	background-color: #FFF;
+	height: 90px;
 }
 
 
@@ -44,147 +44,71 @@ header {
 <body>
 
     <!-- ===========header================ -->
-      <header class="border-bottom border-white">
-         <div class="container">
-            <div class="row align-items-start p-3">
-               <div class="col mt-3">
-                  <a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
-               </div>
-               <div class="col" align="center">
-                  <a href="getBoardList.do"><img src="resources/images/test.png"
-                     alt="logo" width=70px height=70px></a>
-               </div>
+	<header class="border-bottom border-white">
+		<div class="container">
+			<div class="row align-items-start p-3">
+		
+				
+				<div class="col mb-3">
+					<a href="index.jsp"><img src="resources/images/test.png"
+						alt="logo" width=70px height=70px></a>
+				</div>
 
-               <div class="col mt-3 text-end r_menu">
-                  <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span>
-                  
-                  <!-- 관리자로 로그인 할 경우 -->
-                  <c:if test="${ sessionScope.isAdmin }">
-                  <span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span> 
-				  </c:if>
-				  
-				  <!-- 관리자로 로그인 하지 않았을 경우 -->
-				  <c:if test="${ sessionScope.isAdmin != null && !sessionScope.isAdmin }">
-                  <span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span> 
-                  </c:if>
-               </div>
-            </div>
-         </div>
-      </header>
+				<div class="col mt-3 text-end r_menu">
+					<span class=mx-2></span> 
+						<span class=mx-1></span>
+						<span class=mx-1></span>  
+						<span class="mx-2"></span>
+				</div>
+			</div>
+		</div>
+	</header>
 
+<form action="login.do" method="post">	
+<div class="container col-5 mt-4">
+		<h3 class="fw-bold">로그인</h3>
+			<hr/>
+			<br/>
 
+						<div class="input-group mb-3">
+							<div class="input-group-text"><i class="fas fa-envelope"></i></div>
+							<input type="text" name="email" class="form-control" id="email" required placeholder="이메일">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-text"><i class="fas fa-lock"></i></div>
+							<input type="password" name="password" class="form-control" id="password" required placeholder="비밀번호">
+						</div>
+					
 
-
-
-   <div class="container mt-5">
-   <form action="login.do" method="post">      
-      <div class="container" align="center">
-      <div class="modal-content">   
-            
-                  
-               <div class="modal-header bg-info text-white">
-                  <h1 class="motal-title fs-5" id="staticBackdropLabel" >로그인</h1>
-               </div> <!-- modal-header -->
-               
-               
-               
-               <div class="modal-body">
-                  <div class="input-group mb-3">
-                     <div class="input-group-text"><i class="fas fa-envelope"></i></div>
-                     <input type="text" name="email" class="form-control" id="email" required placeholder="이메일">
-                  </div>
-                  <div class="input-group mb-3">
-                     <div class="input-group-text"><i class="fas fa-lock"></i></div>
-                     <input type="password" name="password" class="form-control" id="password" required placeholder="비밀번호">
-                  </div>
-               
-               
-         <c:if test="${ sessionScope.matchedPassword != null && !sessionScope.matchedPassword }">
-            <h5 class="bg-danger text-white">비밀번호가 틀립니다!!!</h5>
-         </c:if>
-            
-            
-                  
-               </div> <!-- modal-body -->
-               
-               <div class="modal-footer ">
-               
-               <div class="input-group mb-1">
-                     <a href="findpw.do" style="text-decoration:none;  "> 비밀번호를 잊으셨나요?</a>
-               </div>
-         
-                  <button type="submit" class="btn btn-info text-white" style= "width: 90px;" "height: 38px;" >로그인</button>
-                  <button type="button" class="btn btn-info text-white"> <a class="joinbtn"  href ="login/joinok.jsp" >회원가입</a></button>
-                  
-                  
-                  <!-- 소셜로그인 -->
-                  <a href="kakao_login.do"><img width="90" height="38"  src="resources/images/kakao_loginlogo.png"/></a>
-                  <a href="naver_login.do"><img width="90" height="38" src="resources/images/naver_login.png"/></a>
-                  </div>
-               
-               </div> <!-- modal-footer -->
-            </div> <!-- modal-content -->
-         </form>   
-         
-         
-         
-
-
-
-   </div>      
+			<c:if test="${ sessionScope.matchedPassword != null && !sessionScope.matchedPassword }">
+				<h9 style=" color: #d92742; font-weight: bold;">이메일 또는 비밀번호를 확인해주세요.</h9>
+			</c:if>
+				
+						
+					
+					
+					<br/>
+					<div class="input-group mb-1">
+							<a href="findpw.do" style="text-decoration:none; "> 비밀번호를 잊으셨나요?</a>
+					</div>
+					
+					
+						<div class="container  mt-5" align="center">
+						<button type="submit" class="btn btn-dark text-white" style= "width: 90px;" "height: 38px;" >로그인</button>
+						<button type="button" class="btn btn-dark text-white"> <a class="joinbtn"  href ="login/joinok.jsp" >회원가입</a></button>
+						
+						
+						<!-- 소셜로그인 -->
+						<a href="kakao_login.do"><img width="90" height="38"  src="resources/images/kakao_loginlogo.png"/></a>
+						<a href="naver_login.do"><img width="90" height="38" src="resources/images/naver_login.png"/></a>
+						</div>
+					
+				</div> 
+				
+			</form>	
+			
+			
+			
+	
 </body>
-</html>      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-         
-   
-   <!-- 내꺼 
-      <form action="login.do" method="post">      
-      
-          <div class="container" align="center">
-          
-               <div class="col me-3 input-group" style="width:300px;">
-                  <div class="input-group-text"><i class="fas fa-user"></i></div>
-                  <input type="text" name="email" class="form-control" id="email" placeholder="이메일">
-             </div>
-      <br>
-             <div class="col me-3 input-group"  style="width:300px;">
-               <div class="input-group-text"><i class="fas fa-lock"></i></div>
-               <input type="password" name="password" class="form-control" id="password" placeholder="비밀번호"> 
-               </div>
-       
-   <br>
-   
-      <div style="width:100%; height:150px;">
-                <div class="col me-5 float-sm-end" style="display:flex; flex-direction:column;align-items:center; justify-content:center; position:absolute;left:45%;">
-                <button type="submit" class="btn btn-info">로그인하기</button>
-                <button type="submit" class="btn btn-info" style="margin:10%;">회원가입</button>
-           
-         <a href="kakao_login.do">
-            <img width="150" height="33" src="resources/img/kakao_login.png"/>
-         </a>
-         </div>
-   </div>
-</div>
-   
-   
-   
-      </form>   
--->
+</html>		

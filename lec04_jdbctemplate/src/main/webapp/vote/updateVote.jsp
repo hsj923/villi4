@@ -46,43 +46,60 @@ nav {
 	background-color: #FFFAFA;
 }
 
-pre { white-space: pre-wrap; 
-	  font-family: 'Pretendard-Regular';}
+pre {
+	white-space: pre-wrap;
+	font-family: 'Pretendard-Regular';
+}
 </style>
 </head>
 <body>
 	<!-- ============search=============== -->
-<nav class="border-bottom border-dark sticky-top z-index-10">
+	<nav class="border-bottom border-dark sticky-top z-index-10">
 		<div class="container" align="center">
 			<div class="row p-3">
 				<div class="col">
 					<nav class="navbar navbar-expand navbar-light sticky-top">
 						<div class="container-fluid">
 							<a class="navbar-brand" href="getBoardList.do">Villi</a>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+							<button class="navbar-toggler" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarSupportedContent"
+								aria-controls="navbarSupportedContent" aria-expanded="true"
+								aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
 
 							<!--================ nav bar ===================-->
-							<div class="navbar-collapse collapse show" id="navbarSupportedContent" style="">
+							<div class="navbar-collapse collapse show"
+								id="navbarSupportedContent" style="">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-										<!-- ================글작성버튼============= -->
-										<a class="nav-link active" aria-current="page" href="">글작성</a></li>
+										<!-- ================글작성버튼============= --> <a
+										class="nav-link active" aria-current="page" href="">글작성</a>
+									</li>
 
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getQuestionList.do">동네질문</a></li>
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getLostList.do">분실센터</a></li>
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getMeetingList.do">동네모임</a></li>
-									<li class="nav-item"><a class="nav-link" href="getVoteList.do">동네투표</a></li>
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getDemandList.do">빌리요청</a></li>
-									<li class="nav-item"><a class="nav-link" aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getQuestionList.do">동네질문</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getLostList.do">분실센터</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getMeetingList.do">동네모임</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="getVoteList.do">동네투표</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getDemandList.do">빌리요청</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
 								</ul>
 								<form action="getVoteList.do" method="post" id="voteForm">
-									<input type="hidden" id="curPage" name="curPage" value="1"> <input type="hidden" id="rowSizePerPage" name="rowSizePerPage" value="10">
+									<input type="hidden" id="curPage" name="curPage" value="1">
+									<input type="hidden" id="rowSizePerPage" name="rowSizePerPage"
+										value="10">
 									<div class="container">
 										<div class="row justify-content-md">
 											<div class="col-md-auto">
-												<select class="form-select" id="searchType" name="searchType">
+												<select class="form-select" id="searchType"
+													name="searchType">
 													<option value="">검색</option>
 													<option value="title">제목</option>
 													<option value="writer">작성자</option>
@@ -107,15 +124,15 @@ pre { white-space: pre-wrap;
 	</nav>
 	<!-- 	<!--==============================게시물 제목===============================   -->
 	<div class="container">
-		
+
 		<div class="row">
-						<div class="col-4 text-start">
-							<h4>${ vote.title } </h4>
-						</div>
-						<div class="col-8 text-end">
-							<span class="text-muted fs-6 text-end">조회 : ${ vote.cnt }</span>
-						</div>		 
-					</div>
+			<div class="col-4 text-start">
+				<h4>${ vote.title }</h4>
+			</div>
+			<div class="col-8 text-end">
+				<span class="text-muted fs-6 text-end">조회 : ${ vote.cnt }</span>
+			</div>
+		</div>
 
 
 
@@ -132,7 +149,7 @@ pre { white-space: pre-wrap;
 						<canvas id="myChart1"></canvas>
 					</div>
 					<div class="card-footer text-center text-dark">
-						<h3 class= "text-muted ">${ vote.content }</h3>
+						<h3 class="text-muted ">${ vote.content }</h3>
 					</div>
 				</div>
 			</div>
@@ -144,35 +161,35 @@ pre { white-space: pre-wrap;
 
 		<div class="form-check">
 			<input class="form-check-input" type="radio" name="flexRadioDefault"
-				id="check1" value="${ vote.itemcnt1 }"
-				onchange="checkBox(this)"> <label class="form-check-label"
-				for="flexRadioDefault1"> ${ vote.itemlist1 } </label>
+				id="check1" value="${ vote.itemcnt1 }" onchange="checkBox(this)">
+			<label class="form-check-label" for="flexRadioDefault1"> ${ vote.itemlist1 }
+			</label>
 		</div>
 
 
 		<div class="form-check">
 			<input class="form-check-input" type="radio" name="flexRadioDefault"
-				id="check2" value="${ vote.itemcnt2 }"
-				onchange="checkBox(this)"> <label class="form-check-label"
-				for="flexRadioDefault2"> ${ vote.itemlist2 } </label>
+				id="check2" value="${ vote.itemcnt2 }" onchange="checkBox(this)">
+			<label class="form-check-label" for="flexRadioDefault2"> ${ vote.itemlist2 }
+			</label>
 		</div>
 
 
 		<c:if test="${ !empty  vote.itemlist3}">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="check3" value="${ vote.itemcnt3 }"
-					onchange="checkBox(this)"> <label class="form-check-label"
-					for="flexRadioDefault3"> ${ vote.itemlist3 } </label>
+					id="check3" value="${ vote.itemcnt3 }" onchange="checkBox(this)">
+				<label class="form-check-label" for="flexRadioDefault3"> ${ vote.itemlist3 }
+				</label>
 			</div>
 		</c:if>
 
 		<c:if test="${ !empty  vote.itemlist4}">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="check4" value="${ vote.itemcnt4 }"
-					onchange="checkBox(this)"> <label class="form-check-label"
-					for="flexRadioDefault4"> ${ vote.itemlist4 } </label>
+					id="check4" value="${ vote.itemcnt4 }" onchange="checkBox(this)">
+				<label class="form-check-label" for="flexRadioDefault4"> ${ vote.itemlist4 }
+				</label>
 			</div>
 		</c:if>
 		<!-- ==================부트스트랩====================== -->
@@ -222,24 +239,21 @@ pre { white-space: pre-wrap;
 			//체크박스 체크시 체크된 값 출력
 			function checkBox(box) {
 				var obj_length = document.getElementsByName("flexRadioDefault").length;
-				
-				   for (var i=0; i<obj_length; i++) {
-				if (box.checked==true) { // 체크가 되면 checed==true라는 값을 전달받는다. 
-					if (check1.checked)
-						document.getElementById("sumcnt1").value = parseInt(box.value) + 1; //getElementById메소드 이용&value속성 변경
-					else if (check2.checked) {
-						document.getElementById("sumcnt2").value = parseInt(box.value) + 1;
-					} else if (check3.checked) {
-						document.getElementById("sumcnt3").value = parseInt(box.value) + 1;
-					} else if (check4.checked) {
-						document.getElementById("sumcnt4").value = parseInt(box.value) + 1;
-					} 
+
+				for (var i = 0; i < obj_length; i++) {
+					if (box.checked == true) { // 체크가 되면 checed==true라는 값을 전달받는다. 
+						if (check1.checked)
+							document.getElementById("sumcnt1").value = parseInt(box.value) + 1; //getElementById메소드 이용&value속성 변경
+						else if (check2.checked) {
+							document.getElementById("sumcnt2").value = parseInt(box.value) + 1;
+						} else if (check3.checked) {
+							document.getElementById("sumcnt3").value = parseInt(box.value) + 1;
+						} else if (check4.checked) {
+							document.getElementById("sumcnt4").value = parseInt(box.value) + 1;
+						}
+					}
 				}
 			}
-		}		   
-			
-
-
 		</script>
 
 		<!-- ================================투표하기 버튼=============================== -->
@@ -259,59 +273,74 @@ pre { white-space: pre-wrap;
 					id="sumcnt4" />
 			</c:if>
 
-			<input type="submit" id="vote" class="btn btn-success" onclick="voteconfirm()" value="투표하기" />
+			<input type="submit" id="vote" class="btn btn-success"
+				onclick="voteconfirm()" value="투표하기" />
 
-   
-<script>
-    function voteconfirm() {
-        alert("투표가 성공적으로 완료되었습니다");
-    }
-</script>
+
+			<script>
+				function voteconfirm() {
+					alert("투표가 성공적으로 완료되었습니다");
+				}
+			</script>
 		</form>
 	</div>
-	
+
 	<!-- 댓글 자리 -->
 	<!-- 댓글 작성 -->
-		<div class="container-sm mt-5" align="center">
-		    <form method="post" action="insertVReply.do">
-		        <p>
-		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
-		        </p>
-		        <p>
-		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
-		        </p>
-		        <p>
-		        	<input type="hidden" name="seq" value="${vote.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
-		        </p>
-		    </form> 
-		</div>
-		
-		<!-- 댓글 시작 -->
 	<div class="container-sm mt-5" align="center">
-         <c:forEach items="${vreplyList}" var="vreplyList">
-            <div class="card" style="border: 0;">
-               <ul class="list-group list-group-flush">
-                     <li class="list-group-item text-start">
-                        <span class="fs-5 fw-bold" style="color: #4881f7;">${vreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${vreplyList.regDate}</span>
-                          <pre class="fs-6">${vreplyList.content}</pre>
-                     </li>   
-                  </ul>
-            </div>
-            <hr />
-         </c:forEach>
-		<br />	
-	
-	<!-- 댓글 끝 -->	
-	
-	<div class="container mt-5" align="center">
-		<a href="vote/vote_insert.jsp" class="btn btn-primary">글등록</a><a
-			href="report/report_insert.jsp" class="btn btn-danger">신고</a> <a
-			href="deleteVote.do?seq=${board.getSeq()}" class="btn btn-primary">게시글삭제</a>
-		<a href="getVoteList.do" class="btn btn-primary">게시글목록</a>
+		<form method="post" action="insertVReply.do">
+			<p>
+				<label>댓글 작성자 : </label> <input type="text" name="writer"
+					value="${ sessionScope.user.getName() }" readonly>
+			</p>
+			<p>
+				<textarea rows="5" cols="50" name="content" style="width: 100%"></textarea>
+			</p>
+			<p>
+				<input type="hidden" name="seq" value="${vote.seq}">
+				<c:if test="${ sessionScope.isAdmin }">
+					<button type="submit">댓글 작성</button>
+				</c:if>
+			</p>
+		</form>
 	</div>
-  </div>
+
+	<!-- 댓글 시작 -->
+	<div class="container-sm mt-5" align="center">
+		<c:forEach items="${vreplyList}" var="vreplyList">
+			<div class="card" style="border: 0;">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item text-start"><span
+						class="fs-5 fw-bold" style="color: #4881f7;">${vreplyList.writer}</span>
+						&nbsp; <span class="mt-4 text-end" style="font-size: 12px">댓글
+							등록일 : ${vreplyList.regDate}</span> &nbsp; <a
+						href="deleteVReply.do?rno=${vreplyList.rno}"
+						style="font-size: 12px; color: #999; text-decoration: none;"
+						onclick="deleteVReply()">삭제</a> <pre class="fs-6">${vreplyList.content}</pre>
+					</li>
+				</ul>
+			</div>
+			<hr />
+		</c:forEach>
+		<br />
+
+		<!-- 댓글 끝 -->
+
+		<div class="container mt-5" align="center">
+			<a href="vote/vote_insert.jsp" class="btn btn-primary">글등록</a><a
+				href="report/report_insert.jsp" class="btn btn-danger">신고</a> <a
+				href="deleteVote.do?seq=${board.getSeq()}" class="btn btn-primary">게시글삭제</a>
+			<a href="getVoteList.do" class="btn btn-primary">게시글목록</a>
+		</div>
+	</div>
+	<!-- 댓글 삭제 시 -->
+	<script>
+		function deleteVReply() {
+			if (confirm("댓글을 삭제하겠습니까?")) {
+				self.location.href = "deleteVReply.do?rno=${ vreply.rno }";
+			}
+		}
+	</script>
+
 </body>
 </html>

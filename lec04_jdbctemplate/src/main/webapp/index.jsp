@@ -130,7 +130,8 @@ body {
                   </li>
                   <li class="home-story-list-item2">
                      <div class="text-s text-bold mt-3 mb-2">
-                        <a href="getLostList.do" class="btn btn-secondary rounded-pill">동네분실센터</a>
+                        <a 
+                        href="getLostList.do" class="btn btn-secondary rounded-pill">동네분실센터</a>
                      </div>
                      <div class="text-xs">무언가를 잃어버렸을 때, 함께 찾을 수 있어요.</div>
                   </li>

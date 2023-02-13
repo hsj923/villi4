@@ -40,8 +40,10 @@ nav {
 	background-color: #FFFAFA;
 }
 
-pre { white-space: pre-wrap; 
-	  font-family: 'Pretendard-Regular';}
+pre {
+	white-space: pre-wrap;
+	font-family: 'Pretendard-Regular';
+}
 </style>
 
 </head>
@@ -169,20 +171,21 @@ pre { white-space: pre-wrap;
 								d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
   <path
 								d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-</svg><span class="fs-6 ms-2">${ meeting.meet_date }</span> <br>
-					<br>
+</svg><span class="fs-6 ms-2">${ meeting.meet_date }</span> <br> <br>
 
 
-						<p class="text-muted fs-5">${ meeting.content }</p> <br> <br> <br>
+						<p class="text-muted fs-5">${ meeting.content }</p> <br> <br>
+						<br>
 						<p class="mt-4">조회 : ${ meeting.cnt }</p></li>
 					<li class="list-group-item text-end "><a
 						href="report/report_insert.jsp" class="stretched-link text-danger">이
 							게시글 신고하기</a></li>
 				</ul>
-			<div class="card-body">
+				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span>
+							<span class="fs-4 mx-3"><i
+								class="bi bi-heart-fill text-danger"></i></span>
 						</div>
 						<div class="col-8 text-end">
 							<a href="#" class="btn ps-6 text-white rounded-pill"
@@ -192,63 +195,71 @@ pre { white-space: pre-wrap;
 				</div>
 			</div>
 		</form>
-		
+
 		<!-- 댓글 자리 -->
 		<!-- 댓글 작성 -->
 		<div class="container-sm mt-5" align="center">
-		    <form method="post" action="insertMReply.do">
-		        <p>
-		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
-		        </p>
-		        <p>
-		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
-		        </p>
-		        <p>
-		        	<input type="hidden" name="seq" value="${meeting.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
-		        </p>
-		    </form> 
+			<form method="post" action="insertMReply.do">
+				<p>
+					<label>댓글 작성자 : </label> <input type="text" name="writer"
+						value="${ sessionScope.user.getName() }" readonly>
+				</p>
+				<p>
+					<textarea rows="5" cols="50" name="content" style="width: 100%"></textarea>
+				</p>
+				<p>
+					<input type="hidden" name="seq" value="${meeting.seq}">
+					<c:if test="${ sessionScope.isAdmin }">
+						<button type="submit">댓글 작성</button>
+					</c:if>
+				</p>
+			</form>
 		</div>
-		
+
 		<!-- 댓글 시작 -->
-	<div class="container-sm mt-5" align="center">
-         <c:forEach items="${mreplyList}" var="mreplyList">
-            <div class="card" style="border: 0;">
-               <ul class="list-group list-group-flush">
-                     <li class="list-group-item text-start">
-                        <span class="fs-5 fw-bold" style="color: #4881f7;">${mreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${mreplyList.regDate}</span>
-                          <pre class="fs-6">${mreplyList.content}</pre>
-                     </li>   
-                  </ul>
-            </div>
-            <hr />
-         </c:forEach>
-		<br />	
-	
-	<!-- 댓글 끝 -->	
-		
-		<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
-			<a href="deleteMeeting.do?seq=${meeting.getSeq()}"
-				class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getMeetingList.do"
-				class="btn btn-dark my-5 mx-4">게시글목록</a>
+		<div class="container-sm mt-5" align="center">
+			<c:forEach items="${mreplyList}" var="mreplyList">
+				<div class="card" style="border: 0;">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item text-start"><span
+							class="fs-5 fw-bold" style="color: #4881f7;">${mreplyList.writer}</span>
+							&nbsp; <span class="mt-4 text-end" style="font-size: 12px">댓글
+								등록일 : ${mreplyList.regDate}</span> &nbsp; <a
+							href="deleteMReply.do?rno=${mreplyList.rno}"
+							style="font-size: 12px; color: #999; text-decoration: none;"
+							onclick="deleteMReply()">삭제</a> <pre class="fs-6">${mreplyList.content}</pre>
+						</li>
+					</ul>
+				</div>
+				<hr />
+			</c:forEach>
+			<br />
+
+			<!-- 댓글 끝 -->
+
+			<div class="container row-3" align="center">
+				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+				<a href="deleteMeeting.do?seq=${meeting.getSeq()}"
+					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a
+					href="getMeetingList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
 		</div>
-	</div>
+		<!-- 댓글 삭제 시 -->
+		<script>
+			function deleteMReply() {
+				if (confirm("댓글을 삭제하겠습니까?")) {
+					self.location.href = "deleteMReply.do?rno=${ mreply.rno }";
+				}
+			}
+		</script>
 
-
-
-
-
-
-	<!-- 삭제시 confirm -->
-	<script>
-		function deleteQuestion() {
-			if(confirm("자료를 삭제하겠습니까?")) {
-		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
-		    }
-		}
-	</script>
+		<!-- 삭제시 confirm -->
+		<script>
+			function deleteQuestion() {
+				if (confirm("자료를 삭제하겠습니까?")) {
+					self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+				}
+			}
+		</script>
 </body>
 </html>

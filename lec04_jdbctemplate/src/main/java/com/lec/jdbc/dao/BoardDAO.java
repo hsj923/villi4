@@ -108,9 +108,6 @@ public class BoardDAO {
 	}	
 	
 	public int deleteBoard(BoardVO board) {
-		
-		System.out.println(board.toString());
-		
 		return jdbcTemplate.update(deleteBoard, board.getSeq());
 	}
 

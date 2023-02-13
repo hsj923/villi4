@@ -45,7 +45,7 @@ public class GReplyDAO {
 	public void getSqlPropeties() {
 		selectByRno               = environment.getProperty("selectByRno");
 		greplyTotalRowCount       = environment.getProperty("greplyTotalRowCount");
-		deleteGReply              = environment.getProperty("insertGReply");
+		insertGReply              = environment.getProperty("insertGReply");
 		deleteGReply              = environment.getProperty("deleteGReply");
 		updateGReply              = environment.getProperty("updateGReply");
 		selectGReplyList          = environment.getProperty("selectGReplyList");
@@ -83,7 +83,7 @@ public class GReplyDAO {
 	}
 	
 	public GReplyVO insertGReply(GReplyVO greply) {
-		jdbcTemplate.update(deleteGReply, greply.getSeq(),greply.getWriter(), greply.getContent());
+		jdbcTemplate.update(insertGReply, greply.getSeq(),greply.getWriter(), greply.getContent());
 		return greply;
 	}	
 	

@@ -56,11 +56,9 @@ public class LreplyController {
 	}
 
 	@RequestMapping("getLReplyList.do")
-	public String getCsBoardList(Model model, SearchVO searchVO, int seq,
-			@RequestParam(defaultValue="1") int curPage,
+	public String getCsBoardList(Model model, SearchVO searchVO, int seq, @RequestParam(defaultValue = "1") int curPage,
 			@RequestParam(defaultValue = "10") int rowSizePerPage,
-			@RequestParam(defaultValue = "") String searchCategory,
-			@RequestParam(defaultValue="") String searchType,
+			@RequestParam(defaultValue = "") String searchCategory, @RequestParam(defaultValue = "") String searchType,
 			@RequestParam(defaultValue = "") String searchWord) {
 
 		searchVO.setTotalRowCount(lreplyService.getTotalRowCount(searchVO));
@@ -99,20 +97,16 @@ public class LreplyController {
 		return "getLostList.do";
 	}
 
+	// ¥Ò±€ ªË¡¶
 	
-	/*
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public
-	 * String deleteLReply(Model model, LReplyVO lreply, SearchVO
-	 * searchVO, @RequestParam int rno) { lreply.setRno(rno);
-	 * model.addAttribute("searchVO", searchVO);
-	 * model.addAttribute("qreply",lreplyService.getLReply(lreply)); return
-	 * "lost/deleteCsBoard.jsp";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.POST) public
-	 * String deleteLReply(QReplyVO qreply) { lreplyService.deleteQReply(qreply);
-	 * return "getLostList.do"; }
-	 */
+	@RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) 
+	  public String deleteLReply(Model model, LReplyVO lreply, SearchVO searchVO, @RequestParam int rno) { 
+		  lreply.setRno(rno);
+		  lreplyService.deleteLReply(lreply);
+		  return "getLostList.do"; 
+	  
+	  }
+	  
 
+	 
 }

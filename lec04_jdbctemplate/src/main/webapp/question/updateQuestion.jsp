@@ -40,8 +40,10 @@ nav {
 	background-color: #FFFAFA;
 }
 
-pre { white-space: pre-wrap; 
-	  font-family: 'Pretendard-Regular';}
+pre {
+	white-space: pre-wrap;
+	font-family: 'Pretendard-Regular';
+}
 </style>
 
 </head>
@@ -49,88 +51,89 @@ pre { white-space: pre-wrap;
 
 <body>
 	<!-- ============search=============== -->
-		<nav class="border-bottom border-dark sticky-top z-index-10">
-			<div class="container" align="center">
-				<div class="row p-3">
-					<div class="col">
+	<nav class="border-bottom border-dark sticky-top z-index-10">
+		<div class="container" align="center">
+			<div class="row p-3">
+				<div class="col">
 
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<div class="container-fluid">
-								<a class="navbar-brand" href="getBoardList.do">Villi</a>
-								<button class="navbar-toggler" type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#navbarSupportedContent"
-									aria-controls="navbarSupportedContent" aria-expanded="false"
-									aria-label="Toggle navigation">
-									<span class="navbar-toggler-icon"></span>
-								</button>
-								<!--================ nav bar ===================-->
-								<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<div class="container-fluid">
+							<a class="navbar-brand" href="getBoardList.do">Villi</a>
+							<button class="navbar-toggler" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarSupportedContent"
+								aria-controls="navbarSupportedContent" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<!--================ nav bar ===================-->
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item"><a class="nav-link active"
 										aria-current="page" href="question/insertQuestion.jsp">글작성</a>
 									</li>
-											
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getQuestionList.do">동네질문</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getLostList.do">분실센터</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getMeetingList.do">동네모임</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getVoteList.do">동네투표</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getDemandList.do">빌리요청</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
-									</ul>
-									<form action="getQuestionList.do" method="post" id="questionForm">
-										<input type="hidden" id="curPage" name="curPage"
-											value="${searchVO.getCurPage()}"> <input
-											type="hidden" id="rowSizePerPage" name="rowSizePerPage"
-											value="${searchVO.getRowSizePerPage()}">
-										<div class="container">
-											<div class="row justify-content-md">
-												<div class="col-md-auto">
 
-													<select class="form-select" id="searchType"
-														name="searchType">
-														<option value="">검색</option>
-														<option value="title"
-															${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-														<option value="writer"
-															${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
-														<option value="cate2"
-															${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
-													</select>
-												</div>
-												<div class="col col-lg-6">
-													<input class="form-control" name="searchWord" type="text"
-														placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
-												</div>
-												<div class="col col-lg-2">
-													<button class="btn btn-outline-success" type="submit">Search</button>
-												</div>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getQuestionList.do">동네질문</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getLostList.do">분실센터</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getMeetingList.do">동네모임</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getVoteList.do">동네투표</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getDemandList.do">빌리요청</a></li>
+									<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
+								</ul>
+								<form action="getQuestionList.do" method="post"
+									id="questionForm">
+									<input type="hidden" id="curPage" name="curPage"
+										value="${searchVO.getCurPage()}"> <input type="hidden"
+										id="rowSizePerPage" name="rowSizePerPage"
+										value="${searchVO.getRowSizePerPage()}">
+									<div class="container">
+										<div class="row justify-content-md">
+											<div class="col-md-auto">
+
+												<select class="form-select" id="searchType"
+													name="searchType">
+													<option value="">검색</option>
+													<option value="title"
+														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
+													<option value="writer"
+														${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
+													<option value="cate2"
+														${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
+												</select>
+											</div>
+											<div class="col col-lg-6">
+												<input class="form-control" name="searchWord" type="text"
+													placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
+											</div>
+											<div class="col col-lg-2">
+												<button class="btn btn-outline-success" type="submit">Search</button>
 											</div>
 										</div>
-									</form>
-								</div>
+									</div>
+								</form>
 							</div>
-						</nav>
-					</div>
+						</div>
+					</nav>
 				</div>
 			</div>
-		</nav>
+		</div>
+	</nav>
 
 
 
-<!-- form -->
+	<!-- form -->
 	<div class="container-sm mt-3" align="center">
 		<form action="updateQuestion.do" method="post">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
-						<img  src="resources/images/noimg.png" 
+						<img src="resources/images/noimg.png"
 							class="rounded-circle border border-dark" alt="img" width="75"
 							height="75"><span>${question.writer }</span> <span
 							class="fs-5"><i class="bi bi-award text-warning"></i></span>
@@ -139,28 +142,28 @@ pre { white-space: pre-wrap;
 
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item text-start">
-				<span class="fs-4 fw-bold">${ question.title }</span>
-						<p class="text-muted fs-6 fst-italic">${question.regDate}</p>
-							<br><br>
-							<p class="text-muted fs-5">${ question.content }</p>	
-	              <c:if test="${ !empty  question.fileName1}">
-							<img class="rounded mx-auto d-block" src="resources/images/${ question.fileName1 }"
-							   	height="600px" alt="img"/>
-						</c:if>
-						<c:if test="${ empty  question.fileName1}">
-							
-						</c:if>
-					
-													
-						 <br> <br> <br>
+					<li class="list-group-item text-start"><span
+						class="fs-4 fw-bold">${ question.title }</span>
+						<p class="text-muted fs-6 fst-italic">${question.regDate}</p> <br>
+						<br>
+						<p class="text-muted fs-5">${ question.content }</p> <c:if
+							test="${ !empty  question.fileName1}">
+							<img class="rounded mx-auto d-block"
+								src="resources/images/${ question.fileName1 }" height="600px"
+								alt="img" />
+						</c:if> <c:if test="${ empty  question.fileName1}">
+
+						</c:if> <br> <br> <br>
 						<p class="mt-4">조회 : ${ question.cnt }</p></li>
-					<li class="list-group-item text-end "><a href="report/report_insert.jsp" class="stretched-link text-danger">이 게시글 신고하기</a></li>
+					<li class="list-group-item text-end "><a
+						href="report/report_insert.jsp" class="stretched-link text-danger">이
+							게시글 신고하기</a></li>
 				</ul>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-4 text-start">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span>
+							<span class="fs-4 mx-3"><i
+								class="bi bi-heart-fill text-danger"></i></span>
 						</div>
 						<div class="col-8 text-end">
 							<a href="#" class="btn ps-6 text-white rounded-pill"
@@ -170,60 +173,72 @@ pre { white-space: pre-wrap;
 				</div>
 			</div>
 		</form>
-			
+
 		<!-- 댓글 작성 -->
 		<div class="container-sm mt-5" align="center">
-		    <form method="post" action="insertQReply.do">
-		        <p>
-		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
-		        </p>
-		        <p>
-		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
-		        </p>
-		        <p>
-		        	<input type="hidden" name="seq" value="${question.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
-		        </p>
-		    </form> 
+			<form method="post" action="insertQReply.do">
+				<p>
+					<label>댓글 작성자 : </label> <input type="text" name="writer"
+						value="${ sessionScope.user.getName() }" readonly>
+				</p>
+				<p>
+					<textarea rows="5" cols="50" name="content" style="width: 100%"></textarea>
+				</p>
+				<p>
+					<input type="hidden" name="seq" value="${question.seq}">
+					<c:if test="${ sessionScope.isAdmin }">
+						<button type="submit">댓글 작성</button>
+					</c:if>
+				</p>
+			</form>
 		</div>
-		
+
 		<!-- 댓글 시작 -->
-	<div class="container-sm mt-5" align="center">
-         <c:forEach items="${qreplyList}" var="qreplyList">
-            <div class="card" style="border: 0;">
-               <ul class="list-group list-group-flush">
-                     <li class="list-group-item text-start">
-                        <span class="fs-5 fw-bold" style="color: #4881f7;">${qreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${qreplyList.regDate}</span>
-                          <pre class="fs-6">${qreplyList.content}</pre>
-                     </li>   
-                  </ul>
-            </div>
-            <hr />
-         </c:forEach>
-		<br />	
-			
+		<div class="container-sm mt-5" align="center">
+			<c:forEach items="${qreplyList}" var="qreplyList">
+				<div class="card" style="border: 0;">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item text-start"><span
+							class="fs-5 fw-bold" style="color: #4881f7;">${qreplyList.writer}</span>
+							&nbsp; <span class="mt-4 text-end" style="font-size: 12px">댓글
+								등록일 : ${qreplyList.regDate}</span> &nbsp; <a
+							href="deleteQReply.do?rno=${qreplyList.rno}"
+							style="font-size: 12px; color: #999; text-decoration: none;"
+							onclick="deleteQReply()">삭제</a> <pre class="fs-6">${qreplyList.content}</pre></li>
+					</ul>
+				</div>
+				<hr />
+			</c:forEach>
+			<br />
+
 			<!-- 댓글 끝 -->
 			<div class="container row-3" align="center">
-				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" /> 
-				<a href="deleteQuestion.do?seq=${question.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a> 
-				<a href="getQuestionList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
+				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+				<a href="deleteQuestion.do?seq=${question.getSeq()}"
+					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a
+					href="getQuestionList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 			</div>
-	</div>
+		</div>
+
+		<!-- 댓글 삭제 시 -->
+		<script>
+			function deleteQReply() {
+				if (confirm("댓글을 삭제하겠습니까?")) {
+					self.location.href = "deleteQReply.do?rno=${ qreply.rno }";
+				}
+			}
+		</script>
 
 
 
 
-
-
-	<!-- 삭제시 confirm -->
-	<script>
-		function deleteQuestion() {
-			if(confirm("자료를 삭제하겠습니까?")) {
-		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
-		    }
-		}
-	</script>
+		<!-- 삭제시 confirm -->
+		<script>
+			function deleteQuestion() {
+				if (confirm("자료를 삭제하겠습니까?")) {
+					self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+				}
+			}
+		</script>
 </body>
 </html>

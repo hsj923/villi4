@@ -30,6 +30,7 @@ import com.lec.jdbc.service.VoteService;
 import com.lec.jdbc.service.VreplyService;
 import com.lec.jdbc.vo.DReplyVO;
 import com.lec.jdbc.vo.GReplyVO;
+import com.lec.jdbc.vo.QReplyVO;
 import com.lec.jdbc.vo.VReplyVO;
 
 @Controller
@@ -96,20 +97,13 @@ public class GreplyController {
 		return "getGroupBuyingList.do";
 	}
 
-	
-	/*
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public
-	 * String deleteLReply(Model model, LReplyVO lreply, SearchVO
-	 * searchVO, @RequestParam int rno) { lreply.setRno(rno);
-	 * model.addAttribute("searchVO", searchVO);
-	 * model.addAttribute("qreply",lreplyService.getLReply(lreply)); return
-	 * "lost/deleteCsBoard.jsp";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.POST) public
-	 * String deleteLReply(QReplyVO qreply) { lreplyService.deleteQReply(qreply);
-	 * return "getLostList.do"; }
-	 */
+	// ¥Ò±€ ªË¡¶
+	  @RequestMapping(value="/deleteGReply.do", method=RequestMethod.GET) 
+	  public String deleteGReply(Model model, GReplyVO greply, SearchVO searchVO, @RequestParam int rno) { 
+		  greply.setRno(rno);
+		  greplyService.deleteGReply(greply);
+		  return "getGroupBuyingList.do"; 
+	  
+	  }
 
 }

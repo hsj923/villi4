@@ -27,6 +27,7 @@ import com.lec.jdbc.service.DreplyService;
 import com.lec.jdbc.service.VoteService;
 import com.lec.jdbc.service.VreplyService;
 import com.lec.jdbc.vo.DReplyVO;
+import com.lec.jdbc.vo.QReplyVO;
 import com.lec.jdbc.vo.VReplyVO;
 
 @Controller
@@ -73,9 +74,9 @@ public class DreplyController {
 
 	// ¥Ò±€ ¿€º∫
 	@RequestMapping(value = "/insertDReply.do", method = RequestMethod.POST)
-	public String insertDReply(DReplyVO vreply, Model model, int seq) throws Exception {
+	public String insertDReply(DReplyVO dreply, Model model, int seq) throws Exception {
 		model.addAttribute("seq", seq);
-		dreplyService.insertDReply(vreply);
+		dreplyService.insertDReply(dreply);
 		return "redirect:/updateDemand.do";
 	}
 
@@ -93,20 +94,13 @@ public class DreplyController {
 		return "getDemandList.do";
 	}
 
-	
-	/*
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public
-	 * String deleteLReply(Model model, LReplyVO lreply, SearchVO
-	 * searchVO, @RequestParam int rno) { lreply.setRno(rno);
-	 * model.addAttribute("searchVO", searchVO);
-	 * model.addAttribute("qreply",lreplyService.getLReply(lreply)); return
-	 * "lost/deleteCsBoard.jsp";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.POST) public
-	 * String deleteLReply(QReplyVO qreply) { lreplyService.deleteQReply(qreply);
-	 * return "getLostList.do"; }
-	 */
+	// ¥Ò±€ ªË¡¶
+	  @RequestMapping(value="/deleteDReply.do", method=RequestMethod.GET) 
+	  public String deleteDReply(Model model, DReplyVO dreply, SearchVO searchVO, @RequestParam int rno) { 
+		  dreply.setRno(rno);
+		  dreplyService.deleteDReply(dreply);
+		  return "getDemandList.do"; 
+	  
+	  }
 
 }

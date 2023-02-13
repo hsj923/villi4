@@ -25,6 +25,7 @@ import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.MeetingService;
 import com.lec.jdbc.service.MreplyService;
 import com.lec.jdbc.vo.MReplyVO;
+import com.lec.jdbc.vo.QReplyVO;
 
 @Controller
 @PropertySource("classpath:config/uploadpath.properties")
@@ -90,20 +91,14 @@ public class MreplyController {
 		return "getMeetingList.do";
 	}
 
+	// ¥Ò±€ ªË¡¶
+	 @RequestMapping(value="/deleteMReply.do", method=RequestMethod.GET) 
+	  public String deleteMReply(Model model, MReplyVO mreply, SearchVO searchVO, @RequestParam int rno) { 
+		  mreply.setRno(rno);
+		  mreplyService.deleteMReply(mreply);
+		  return "getMeetingList.do"; 
+	  
+	  }
 	
-	/*
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public
-	 * String deleteLReply(Model model, LReplyVO lreply, SearchVO
-	 * searchVO, @RequestParam int rno) { lreply.setRno(rno);
-	 * model.addAttribute("searchVO", searchVO);
-	 * model.addAttribute("qreply",lreplyService.getLReply(lreply)); return
-	 * "lost/deleteCsBoard.jsp";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.POST) public
-	 * String deleteLReply(QReplyVO qreply) { lreplyService.deleteQReply(qreply);
-	 * return "getLostList.do"; }
-	 */
 
 }

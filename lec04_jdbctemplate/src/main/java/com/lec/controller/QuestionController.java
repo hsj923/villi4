@@ -89,10 +89,9 @@ public class QuestionController {
 	}	
 	
 	@RequestMapping(value="/updateQuestion.do", method=RequestMethod.GET)
-	public String updateQuestion(Model model, QuestionVO question, SearchVO searchVO,int seq) {
+	public String updateQuestion(Model model, QuestionVO question, SearchVO searchVO, int seq) {
 		
 		List<QReplyVO> qreplyList = qreplyService.getQReplyList(seq);
-		
 		questionService.updateQuestionCount(question);
 		model.addAttribute("qreplyList", qreplyList);
 		model.addAttribute("question", questionService.getQuestion(question));

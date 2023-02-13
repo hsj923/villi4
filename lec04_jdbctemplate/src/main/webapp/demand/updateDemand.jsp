@@ -40,8 +40,10 @@ nav {
 	background-color: #FFFAFA;
 }
 
-pre { white-space: pre-wrap; 
-	  font-family: 'Pretendard-Regular';}
+pre {
+	white-space: pre-wrap;
+	font-family: 'Pretendard-Regular';
+}
 </style>
 
 </head>
@@ -150,8 +152,7 @@ pre { white-space: pre-wrap;
 								<span class="badge bg-danger text-white rounded-pill ">${demand.status}</span>
 							</c:when>
 						</c:choose> <span class="fs-4 fw-bold">${ demand.title }</span>
-						<p class="fs-6 fst-italic">${demand.regDate}</p> <br>
-					<br>
+						<p class="fs-6 fst-italic">${demand.regDate}</p> <br> <br>
 
 
 
@@ -171,10 +172,14 @@ pre { white-space: pre-wrap;
 					<div class="row">
 						<div class="col-4 text-start">
 							<c:if test="${ !empty  demand.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">${ demand.price }원</span>
+								<span class="fs-4 mx-3"><i
+									class="bi bi-heart-fill text-danger"></i></span>
+								<span class="fs-5">${ demand.price }원</span>
 							</c:if>
 							<c:if test="${ empty  demand.price}">
-								<span class="fs-4 mx-3"><i class="bi bi-heart-fill text-danger"></i></span><span class="fs-5">가격협의</span>
+								<span class="fs-4 mx-3"><i
+									class="bi bi-heart-fill text-danger"></i></span>
+								<span class="fs-5">가격협의</span>
 							</c:if>
 						</div>
 						<div class="col-8 text-end">
@@ -185,64 +190,72 @@ pre { white-space: pre-wrap;
 				</div>
 			</div>
 		</form>
-		
+
 		<!-- 댓글 자리 -->
 		<!-- 댓글 작성 -->
 		<div class="container-sm mt-5" align="center">
-		    <form method="post" action="insertDReply.do">
-		        <p>
-		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
-		        </p>
-		        <p>
-		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
-		        </p>
-		        <p>
-		        	<input type="hidden" name="seq" value="${demand.seq}">
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button type="submit">댓글 작성</button>
-		            </c:if>
-		        </p>
-		    </form> 
+			<form method="post" action="insertDReply.do">
+				<p>
+					<label>댓글 작성자 : </label> <input type="text" name="writer"
+						value="${ sessionScope.user.getName() }" readonly>
+				</p>
+				<p>
+					<textarea rows="5" cols="50" name="content" style="width: 100%"></textarea>
+				</p>
+				<p>
+					<input type="hidden" name="seq" value="${demand.seq}">
+					<c:if test="${ sessionScope.isAdmin }">
+						<button type="submit">댓글 작성</button>
+					</c:if>
+				</p>
+			</form>
 		</div>
-		
+
 		<!-- 댓글 시작 -->
-	<div class="container-sm mt-5" align="center">
-         <c:forEach items="${dreplyList}" var="dreplyList">
-            <div class="card" style="border: 0;">
-               <ul class="list-group list-group-flush">
-                     <li class="list-group-item text-start">
-                        <span class="fs-5 fw-bold" style="color: #4881f7;">${dreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${dreplyList.regDate}</span>
-                          <pre class="fs-6">${dreplyList.content}</pre>
-                     </li>   
-                  </ul>
-            </div>
-            <hr />
-         </c:forEach>
-		<br />	
-	
-	<!-- 댓글 끝 -->	
-		
-		
-		<div class="container row-3" align="center">
-			<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
-			<a href="deleteDemand.do?seq=${demand.getSeq()}"
-				class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getDemandList.do"
-				class="btn btn-dark my-5 mx-4">게시글목록</a>
+		<div class="container-sm mt-5" align="center">
+			<c:forEach items="${dreplyList}" var="dreplyList">
+				<div class="card" style="border: 0;">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item text-start"><span
+							class="fs-5 fw-bold" style="color: #4881f7;">${dreplyList.writer}</span>
+							&nbsp; <span class="mt-4 text-end" style="font-size: 12px">댓글
+								등록일 : ${dreplyList.regDate}</span>&nbsp; <a
+							href="deleteDReply.do?rno=${dreplyList.rno}"
+							style="font-size: 12px; color: #999; text-decoration: none;"
+							onclick="deleteDReply()">삭제</a> <pre class="fs-6">${dreplyList.content}</pre>
+						</li>
+					</ul>
+				</div>
+				<hr />
+			</c:forEach>
+			<br />
+
+			<!-- 댓글 끝 -->
+
+
+			<div class="container row-3" align="center">
+				<input type="submit" class="btn btn-dark my-5 mx-4" value="게시글수정" />
+				<a href="deleteDemand.do?seq=${demand.getSeq()}"
+					class="btn btn-dark my-5 mx-2">게시글삭제</a> <a href="getDemandList.do"
+					class="btn btn-dark my-5 mx-4">게시글목록</a>
+			</div>
 		</div>
-	</div>
+		<!-- 댓글 삭제 시 -->
+		<script>
+			function deleteDReply() {
+				if (confirm("댓글을 삭제하겠습니까?")) {
+					self.location.href = "deleteDReply.do?rno=${ dreply.rno }";
+				}
+			}
+		</script>
 
-
-
-
-
-
-	<!-- 삭제시 confirm -->
-	<script>
-		function deleteQuestion() {
-			if(confirm("자료를 삭제하겠습니까?")) {
-		    	self.location.href = "deleteQuestion.do?seq=${ question.seq }";
-		    }
-		}
-	</script>
+		<!-- 삭제시 confirm -->
+		<script>
+			function deleteQuestion() {
+				if (confirm("자료를 삭제하겠습니까?")) {
+					self.location.href = "deleteQuestion.do?seq=${ question.seq }";
+				}
+			}
+		</script>
 </body>
 </html>

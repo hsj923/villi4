@@ -27,7 +27,7 @@ public class PagingVO implements Serializable {
 //		lastRow=firstRow+rowSizePerPage-1;    
 		if(lastRow>totalRowCount) lastRow=totalRowCount;
 		
-		firstPage=(curPage-1)/pageSize*pageSize+1;
+		firstPage=(curPage-1)/pageSize*pageSize+0;
 		lastPage=firstPage+pageSize-1;
 		if(lastPage>totalPageCount) lastPage=totalPageCount;	
 		

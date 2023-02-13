@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.VoteService;
 import com.lec.jdbc.service.VreplyService;
+import com.lec.jdbc.vo.QReplyVO;
 import com.lec.jdbc.vo.VReplyVO;
 
 @Controller
@@ -90,20 +91,14 @@ public class VreplyController {
 		return "getVoteList.do";
 	}
 
+	// ¥Ò±€ ªË¡¶
 	
-	/*
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public
-	 * String deleteLReply(Model model, LReplyVO lreply, SearchVO
-	 * searchVO, @RequestParam int rno) { lreply.setRno(rno);
-	 * model.addAttribute("searchVO", searchVO);
-	 * model.addAttribute("qreply",lreplyService.getLReply(lreply)); return
-	 * "lost/deleteCsBoard.jsp";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.POST) public
-	 * String deleteLReply(QReplyVO qreply) { lreplyService.deleteQReply(qreply);
-	 * return "getLostList.do"; }
-	 */
+	@RequestMapping(value="/deleteVReply.do", method=RequestMethod.GET) 
+	  public String deleteVReply(Model model, VReplyVO vreply, SearchVO searchVO, @RequestParam int rno) { 
+		  vreply.setRno(rno);
+		  vreplyService.deleteVReply(vreply);
+		  return "getVoteList.do"; 
+	  
+	  }
 
 }
