@@ -215,7 +215,7 @@ pre {
 				</p>
 			</form>
 		</div>
-					${groupBuying.seq}
+
 		<!-- 댓글 시작 -->
 		<div class="container-sm mt-5" align="center">
 			<c:forEach items="${greplyList}" var="greplyList">

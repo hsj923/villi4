@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>빌리요청</title>
+<title>신고게시판</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -75,7 +75,7 @@ nav {
 								<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="demand/insertDemand.jsp">글작성</a>
+										aria-current="page" href="meeting/insertMeeting.jsp">글작성</a>
 									</li>
 											
 										<li class="nav-item"><a class="nav-link"
@@ -83,7 +83,7 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getLostList.do">분실센터</a></li>
 										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getMeetingList.do">동네모임</a></li>
+											aria-current="page" href="">동네모임</a></li>
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getVoteList.do">동네투표</a></li>
 										<li class="nav-item"><a class="nav-link"
@@ -93,7 +93,7 @@ nav {
 										<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getReportList.do">게시물신고</a></li>
 									</ul>
-									<form action="getDemandList.do" method="post" id="demandForm">
+									<form action="getMeetingList.do" method="post" id="meetingForm">
 										<input type="hidden" id="curPage" name="curPage"
 											value="${searchVO.getCurPage()}"> <input
 											type="hidden" id="rowSizePerPage" name="rowSizePerPage"
@@ -132,32 +132,29 @@ nav {
 		</nav>
 	<!-- =========상품보기=============== -->
 	<!-- ======================LIST========================= -->
-   <div class="container col-5 mt-4"  align="center">
-	 	<h3 class="fw-bold">빌리요청</h3>
-	</div>
-	
-	<hr/>
-
 
 	<div class="container mt-3">
 		<div class="row mt-4">
 			<table class="table table-hover table-bordered">
 				<thead class="table-dark">
-					<th scope="col">No.</th>
-					<th scope="col">제목</th>
-					<th scope="col">내용</th>
-					<th scope="col">상태</th>
-					<th scope="col">작성일</th>
+					<th scope="col">글번호</th>
+					<th scope="col">신고이유</th>
+					<th scope="col">처리여부</th>
+					<th scope="col">신고한대상</th>
+					<th scope="col">처리시간</th>
+					<th scope="col">작성시간</th>
+	
 				</thead>
 				<tbody>
-					<c:forEach var="demand" items="${ demandList }">
+					<c:forEach var="reportList" items="${ reportList }">
 						<tr>
-						   	<td><a href="updateDemand.do?seq=${demand.getSeq()}"
-								style="text-decoration: none">${ demand.seq }</a></td>
-							<td>${ demand.title }</td>
-							<td>${ demand.content }</td>
-							<td>${ demand.status }</td>
-							<td>${ demand.regDate }</td>
+						   	<td><a href="updateReport.do?seq=${reportList.seq}"
+								style="text-decoration: none">${ reportList.seq }</a></td>
+							<td>${ reportList.r_rs1 }</td>
+							<td>${ reportList.r_status }</td>
+							<td>${ reportList.nickname }</td>
+							<td>${ reportList.r_etime }</td>
+							<td>${ reportList.r_time }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -182,75 +179,36 @@ nav {
 
 			<c:if test="${ fp != 1 }">
 				<li class="page-item"><a
-					href="getDemandList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=1&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-fast-backward"></i></a></li>
 				<li class="page-item"><a
-					href="getDemandList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=${fp-1}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-backward"></i></a></li>
 			</c:if>
 
 			<c:forEach var="page" begin="${fp}" end="${lp}">
 				<li class="page-item ${cp==page ? 'active' : ''}"><a
-					href="getDemandList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=${page}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link">${page}</a></li>
 			</c:forEach>
 
 			<c:if test="${ lp < tp }">
 				<li class="page-item"><a
-					href="getDemandList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=${lp+ps}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-forward"></i></a></li>
 				<li class="page-item"><a
-					href="getDemandList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
+					href="getReportList.do?curPage=${tp}&rowSizePerPage=${rp}&searchType=${st}&searchWord=${sw}"
 					class="page-link"><i class="fas fa-fast-forward"></i></a></li>
 			</c:if>
 		</ul>
 		<!-- pagination -->
 
-		<div class="col-auto me-1">
-			<div class="input-group mb-3">
-				<span class="input-group-text"><i class="fas fa-list"></i></span> <select
-					class="col-auto form-select" id="rowPerPage" name="rowPerPage">
-					<option value="10" ${ rp == 10 ? "selected" : "" }>10</option>
-					<option value="20" ${ rp == 20 ? "selected" : "" }>20</option>
-					<option value="40" ${ rp == 40 ? "selected" : "" }>40</option>
-					<option value="60" ${ rp == 60 ? "selected" : "" }>60</option>
-				</select>
-			</div>
-		</div>
+
 		<!-- rowSizePerPage -->
 	</div>
 	<!-- 페이징 -->
-	</div>
-	<!-- main  -->
 
 
-	<script>
-		$(function() {
-
-			// 목록 갯수 변경
-			$('#rowPerPage').change(function(e) {
-				$('#curPage').val(1);
-				$('#rowSizePerPage').val($(this).val());
-				$('#demandForm').submit();
-			}); //#rowPerPage
-
-			// 초기화 버튼 클릭
-			$('#btnReset').click(
-					function() {
-						$('#curPage').val(1);
-						$('#demandForm').find(
-								"select[name='searchCategory'] option:eq(0)")
-								.attr("selected", "selected");
-						$('#demandForm').find(
-								"select[name='searchType'] option:eq(0)").attr(
-								"selected", "selected");
-						$('#demandForm').find("input[name='searchWord']")
-								.val("");
-						$('#demandForm').submit();
-					}); // #id_btn_reset.cli			
-
-		})
-	</script>
 
 </body>
 </html>

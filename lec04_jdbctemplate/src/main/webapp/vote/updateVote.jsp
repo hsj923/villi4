@@ -325,12 +325,11 @@ pre {
 		<br />
 
 		<!-- 댓글 끝 -->
-
+		<!-- 하단 버튼 -->
 		<div class="container mt-5" align="center">
-			<a href="vote/vote_insert.jsp" class="btn btn-primary">글등록</a><a
-				href="report/report_insert.jsp" class="btn btn-danger">신고</a> <a
-				href="deleteVote.do?seq=${board.getSeq()}" class="btn btn-primary">게시글삭제</a>
-			<a href="getVoteList.do" class="btn btn-primary">게시글목록</a>
+			<a href="vote/vote_insert.jsp" class="btn btn-dark my-5 mx-4">글등록</a>
+			<a href="deleteVote.do?seq=${board.getSeq()}" class="btn btn-dark my-5 mx-2">게시글삭제</a>
+			<a href="getVoteList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 		</div>
 	</div>
 	<!-- 댓글 삭제 시 -->

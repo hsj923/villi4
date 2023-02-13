@@ -90,6 +90,8 @@ nav {
 											aria-current="page" href="getDemandList.do">빌리요청</a></li>
 										<li class="nav-item"><a class="nav-link"
 											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
+										<li class="nav-item"><a class="nav-link"
+										aria-current="page" href="getReportList.do">게시물신고</a></li>
 									</ul>
 									<form action="getVoteList.do" method="post" id="voteForm">
 										<input type="hidden" id="curPage" name="curPage"

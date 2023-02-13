@@ -141,7 +141,7 @@ color:#23dbc9
 		
 		<div class="container mt-3" align="left">
 		  <ul class="list-group list-group-flush">
-		    <a href="#" class="list-group-item">게시물 신고</a>
+		    <a href="../getReportList.do" class="list-group-item">게시물 신고</a>
 		    <a href="../getCsBoardList.do" class="list-group-item">고객 문의사항</a>
 		    <a href="#" class="list-group-item">배너 관리</a>
 		    <a href="../getNoticeList.do" class="list-group-item">공지사항</a>

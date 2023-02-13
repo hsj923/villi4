@@ -101,9 +101,6 @@ public class MeetingDAO {
 
 	
 	public int deleteMeeting(MeetingVO meeting) {
-		
-		System.out.println(meeting.toString());
-		
 		return jdbcTemplate.update(deleteMeeting, meeting.getSeq());
 	}
 
