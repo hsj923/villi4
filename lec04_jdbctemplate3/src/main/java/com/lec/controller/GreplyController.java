@@ -74,7 +74,7 @@ public class GreplyController {
 		return "groupBuying/getGroupBuyingList.jsp";
 	}
 
-	// ´ñ±Û ÀÛ¼º
+	// ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
 	@RequestMapping(value = "/insertGReply.do", method = RequestMethod.POST)
 	public String insertGReply(GReplyVO greply, Model model, int seq) throws Exception {
 		model.addAttribute("seq", seq);
@@ -95,21 +95,14 @@ public class GreplyController {
 		greplyService.updateGReply(greply);
 		return "getGroupBuyingList.do";
 	}
-
 	
-	/*
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public
-	 * String deleteLReply(Model model, LReplyVO lreply, SearchVO
-	 * searchVO, @RequestParam int rno) { lreply.setRno(rno);
-	 * model.addAttribute("searchVO", searchVO);
-	 * model.addAttribute("qreply",lreplyService.getLReply(lreply)); return
-	 * "lost/deleteCsBoard.jsp";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.POST) public
-	 * String deleteLReply(QReplyVO qreply) { lreplyService.deleteQReply(qreply);
-	 * return "getLostList.do"; }
-	 */
+	  @RequestMapping(value="/deleteGReply.do", method=RequestMethod.GET) 
+	  public String deleteGReply(Model model, GReplyVO greply, SearchVO searchVO, @RequestParam int rno) { 
+		  greply.setRno(rno);
+		  greplyService.deleteGReply(greply);
+		  return "getGroupBuyingList.do"; 
+	  
+	  }
+
 
 }

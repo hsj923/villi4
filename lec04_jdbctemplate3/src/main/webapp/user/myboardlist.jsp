@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>Villi : 내가 쓴 글 목록</title>
-<link rel="icon" href="/img/favicon.png">
+<link rel="icon" href="../resources/images/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -52,41 +52,27 @@ td {
 
 
 <body>
-		<!-- ===========header================ -->
-	<header class="border-bottom border-white">
+	<!-- ===========header================ -->
+<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
 		
 				
-				<div class="col mb-4">
-					<a href="getBoardList.do"><img src="/img/test.png"
+				<div class="col mb-3">
+					<a href="getBoardList.do"><img src="resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
-				
-					<c:if test="${ sessionScope.user.getNickname() == null }">
-					   <div class="col mt-3 text-end r_menu">
-						 <span class=mx-2><a href="index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
-					   </div>
-					</c:if> 
-										
-					<c:if test="${ sessionScope.user.getNickname() != null }">			
-					 <div class="col mt-3 text-end r_menu">
-					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
-					    
-					   <c:if test="${ !sessionScope.isAdmin }">
+
+				<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
 						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						</c:if>
-						<c:if test="${sessionScope.isAdmin }">
-						<span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
-						</c:if>
-						
 						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
 						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-				     </div>							
-				   </c:if>
+				</div>
 			</div>
 		</div>
 	</header>
+	
 	
 	<!------------------ 본문 --------------------->
 <div class="container col-5 mt-4" align="center" >

@@ -59,11 +59,6 @@ body {
 			<hr/>
 			<br/>
 			
-			<div class="input-group mb-3 w-75">
-				<input type="file" class="form-control" name="uploadFile"
-					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">
-		     </div>
-		     <input type="hidden" name="fileName" value="" />
 						<div class="input-group mb-2">
 							<div class="input-group-text"><i class="fas fa-envelope"></i></div>
 							<input type="text" name="email" class="form-control" id="email" required placeholder="이메일" onchange="checkEmail();"  >

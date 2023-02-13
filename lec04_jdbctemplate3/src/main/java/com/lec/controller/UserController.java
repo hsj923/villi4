@@ -28,8 +28,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.dao.LoginDAO;
 import com.lec.jdbc.service.BoardService;
+import com.lec.jdbc.service.ReportService;
+import com.lec.jdbc.service.ReviewService;
 import com.lec.jdbc.service.UserService;
 import com.lec.jdbc.vo.BoardVO;
+import com.lec.jdbc.vo.ReportVO;
+import com.lec.jdbc.vo.ReviewVO;
 import com.lec.jdbc.vo.UserVO;
 
 @Controller
@@ -41,6 +45,13 @@ public class UserController {
 	
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	ReportService reportService;
+	
+	@Autowired
+	ReviewService reviewService;
+	
 	
 	@Autowired
 	Environment environment;
@@ -82,23 +93,26 @@ public class UserController {
 
 	
 	
-   // 내가 쓴글 목록
-	@RequestMapping(value="/getUser.do", method=RequestMethod.GET)
-	public String getUser(Model model, UserVO user, SearchVO searchVO, String nickname) {
-		List<BoardVO> MyboardList = boardService.getMyBoardList(nickname);
-		model.addAttribute("MyboardList", MyboardList);
+	   // 내가 쓴글 목록
+		@RequestMapping(value="/getUser.do", method=RequestMethod.GET)
+		public String getUser(Model model, UserVO user, SearchVO searchVO, String nickname) {		
+//			내가 쓴글 목록
+			List<BoardVO> MyboardList = boardService.getMyBoardList(nickname);
+			model.addAttribute("MyboardList", MyboardList);		
+			
+//			신고게시글
+			List<ReportVO> MyreportList = reportService.getMyReportList(nickname);
+			model.addAttribute("MyreportList", MyreportList);
+			
+//			후기게시글
+			List<ReviewVO> MyreviewList = reviewService.getMyReviewList(nickname);
+			model.addAttribute("MyreviewList", MyreviewList);
+			
+			model.addAttribute("searchVO", searchVO);
+			model.addAttribute("user", userService.getUserByNick(user));
+			return "user/getUser.jsp";
+		}
 		
-		model.addAttribute("searchVO", searchVO);
-		model.addAttribute("user", userService.getUserByNick(user));
-		return "user/getUser.jsp";
-	}
-	
-	@RequestMapping(value="/getUser.do", method=RequestMethod.POST)
-	public String getUser(UserVO user) {
-             userService.getUser(user);
-             return "getUserList.do";
-	}
-	
 	
 	
 	@RequestMapping(value="/deleteUser.do", method=RequestMethod.GET)
@@ -185,33 +199,6 @@ public class UserController {
 			return "user/alert.jsp"; 
 		}	
 	
-		
-//		
-//		   @RequestMapping(value="/updateUser.do", method = RequestMethod.POST)
-//		   public String updateUser(Model model, UserVO userVO, HttpSession sess) throws IOException {
-//		      
-//		      MultipartFile uploadFile = userVO.getUploadFile();
-//		      
-//		      if (!uploadFile.isEmpty()) {
-//		         new File(uploadFolder+userVO.getUser_photo()).delete();
-//		         String fileName = uploadFile.getOriginalFilename();
-//		         String fileExtension = fileName.substring(fileName.lastIndexOf("."),fileName.length());
-//		         UUID uuid = UUID.randomUUID();
-//		         String[] uuids = uuid.toString().split("-");
-//		         String uniqueName = uuids[0] + fileExtension; // 랜덤 글자 생성
-//		         uploadFile.transferTo(new File(uploadFolder + uniqueName));
-//		         userVO.setUser_photo(uniqueName);
-//		      } 
-//		      
-//		      // 바뀐 정보로 세션 정보 업데이트!
-//		      sess.setAttribute("user", userService.updateUser(userVO));
-//		      model.addAttribute("msg","정보가 정상적으로 수정되었습니다.");
-//		      model.addAttribute("url","my_profile.do");
-//		      
-//		      return "view/comunity/alert.jsp";
-//		   }
-//		
-		
 		
 	
     //거래후기	

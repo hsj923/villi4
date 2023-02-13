@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.VoteService;
 import com.lec.jdbc.service.VreplyService;
+import com.lec.jdbc.vo.GReplyVO;
 import com.lec.jdbc.vo.VReplyVO;
 
 @Controller
@@ -89,6 +90,14 @@ public class VreplyController {
 		vreplyService.updateVReply(vreply);
 		return "getVoteList.do";
 	}
+	
+	  @RequestMapping(value="/deleteVReply.do", method=RequestMethod.GET) 
+	  public String deleteVReply(Model model, VReplyVO vreply, SearchVO searchVO, @RequestParam int rno) { 
+		  vreply.setRno(rno);
+		  vreplyService.deleteVReply(vreply);
+		  return "getVoteList.do"; 
+	  
+	  }
 
 	
 

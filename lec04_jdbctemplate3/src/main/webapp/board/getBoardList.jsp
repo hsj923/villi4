@@ -76,15 +76,17 @@ nav {
 	background: #444 !important;
 	border-color: #444 !important;
 }
+
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
-  border-bottom: .15rem solid transparent;
-}
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
-  color: rgba(0, 0, 0, 0.7);
-  border-bottom-color: rgba(0, 0, 0, 0.7);
+	color: rgba(0, 0, 0, 0.5);
+	border-bottom: .15rem solid transparent;
 }
 
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus
+	{
+	color: rgba(0, 0, 0, 0.7);
+	border-bottom-color: rgba(0, 0, 0, 0.7);
+}
 </style>
 </head>
 <body>
@@ -92,41 +94,45 @@ nav {
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
-		
-				
+
+
 				<div class="col mb-4">
-					<a href="getBoardList.do"><img src="/img/test.png"
-						alt="logo" width=70px height=70px></a>
+					<a href="getBoardList.do"><img src="/img/test.png" alt="logo"
+						width=70px height=70px></a>
 				</div>
-				
-					<c:if test="${ sessionScope.user.getNickname() == null }">
-					   <div class="col mt-3 text-end r_menu">
-						 <span class=mx-2><a href="index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
-					   </div>
-					</c:if> 
-										
-					<c:if test="${ sessionScope.user.getNickname() != null }">			
-					 <div class="col mt-3 text-end r_menu">
-					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
-					    
-					   <c:if test="${ !sessionScope.isAdmin }">
-						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+
+				<c:if test="${ sessionScope.user.getNickname() == null }">
+					<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="index.jsp"
+							style="text-decoration: none" class="text-dark">로그인</a> </span>
+					</div>
+				</c:if>
+
+				<c:if test="${ sessionScope.user.getNickname() != null }">
+					<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="#" style="text-decoration: none"
+							class="text-dark">좋아요</a></span>
+
+						<c:if test="${ !sessionScope.isAdmin }">
+							<span class=mx-1><a href="getUserList.do"
+								style="text-decoration: none" class="text-dark">마이페이지</a></span>
 						</c:if>
 						<c:if test="${sessionScope.isAdmin }">
-						<span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
+							<span class=mx-1><a href="user/adminpage.jsp"
+								style="text-decoration: none" class="text-dark">관리자페이지</a></span>
 						</c:if>
-						
-						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-				     </div>							
-				   </c:if>
+
+						<span class=mx-1><a href="location/infoVilli.jsp"
+							style="text-decoration: none" class="text-dark">동네정보</a></span> <span
+							class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</header>
 	<!-- ============banner=============== -->
 
-	<div id="carouselExampleControls"
-		class="carousel carousel-dark slide"
+	<div id="carouselExampleControls" class="carousel carousel-dark slide"
 		data-bs-ride="carousel" align="center">
 
 		<div class="carousel-indicators">
@@ -195,12 +201,11 @@ nav {
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-									
-										<!-- ================글작성버튼, 로그인============= --> 
-										<c:if test="${ sessionScope.user.getNickname() == null }">
-											<a class="nav-link active" aria-current="page" href="index.jsp">로그인</a>
-										</c:if> 
-										<c:if test="${ sessionScope.user.getNickname() != null }">
+										<!-- ================글작성버튼, 로그인============= --> <c:if
+											test="${ sessionScope.user.getNickname() == null }">
+											<a class="nav-link active" aria-current="page"
+												href="index.jsp">로그인</a>
+										</c:if> <c:if test="${ sessionScope.user.getNickname() != null }">
 											<div class="dropdown">
 												<button class="btn dropdown-toggle" type="button"
 													id="dropdownMenuButton2" data-bs-toggle="dropdown"
@@ -214,7 +219,6 @@ nav {
 												</ul>
 											</div>
 										</c:if>
-										
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="getQuestionList.do">동네질문</a></li>
 									<li class="nav-item"><a class="nav-link"
@@ -242,6 +246,8 @@ nav {
 												<select class="form-select" id="searchType"
 													name="searchType">
 													<option value="">검색</option>
+													<option value="address"
+														${searchVO.getSearchType()=="address" ? "selected" : ""}>동네검색</option>
 													<option value="title"
 														${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
 													<option value="nickname"
@@ -281,24 +287,22 @@ nav {
 					<div class="card">
 						<span class="border border-dark"> <a
 							href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
-							style="text-decoration: none">
-							
-							<img class="card-img-top"
-								width="450" height="250"
-								src="/img/${ board.fileName1 }" alt="image"></a></span>
+							style="text-decoration: none"> <img class="card-img-top"
+								width="450" height="250" src="/img/${ board.fileName1 }"
+								alt="image"></a></span>
 						<div class="card-body">
 
 							<!-- 글자수 넘칠 경우 자르기 -->
 							<h6 class="card-title fw-bold">
 								<c:choose>
-									<c:when test="${fn:length(board.title) > 19}">
-										<c:out value="${fn:substring(board.title,0,18)}" />....
+									<c:when test="${fn:length(board.title) > 17}">
+										<c:out value="${fn:substring(board.title,0,16)}" />....
            </c:when>
 									<c:otherwise>
 										<c:out value="${board.title}" />
 									</c:otherwise>
 								</c:choose>
-								
+
 								<!-- status 따라서 버튼 색상 변경 -->
 								<c:choose>
 									<c:when test="${board.status eq '대기중'}">
@@ -330,7 +334,7 @@ nav {
 								</c:if>
 							</div>
 							<div class="mt-3">작성자 : ${ board.nickname }</div>
-							<div class="text-muted">위치</div>
+							<div class="text-muted">${ board.address }</div>
 							<p class="card-mtext">
 
 
@@ -338,7 +342,8 @@ nav {
 									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
   <path
 										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-</svg>   ${ board.like_cnt }  
+</svg>
+								${ board.like_cnt }
 
 								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
 									fill="currentColor" class="bi bi-chat-square-dots"
@@ -420,7 +425,7 @@ z" />
 	</div>
 	<!-- main  -->
 
-		<script>
+	<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

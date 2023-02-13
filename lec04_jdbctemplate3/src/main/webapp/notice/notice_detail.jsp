@@ -138,12 +138,13 @@ pre { white-space: pre-wrap;
 			</c:if>  --%>
 		   
 		   <div class="mt-4">
-			
+			<c:if test="${sessionScope.isAdmin }">
 			<a href="getNoticeList.do" class="btn btn-dark mx-3"  onclick="deleteNotice()">글삭제</a>
-			 
+			 </c:if>
 			<a href="getNoticeList.do" class="btn btn-dark mx-1">공지사항 목록</a>
-			
+			<c:if test="${sessionScope.isAdmin }">
 			<a href="notice/insertNotice.jsp" class="btn btn-dark mx-3">공지사항 글등록</a>
+			 </c:if>
 			</div>
 			  
 			  

@@ -166,7 +166,6 @@ nav {
 					<th scope="col">글번호</th>
 					<th scope="col">제목</th>
 					<th scope="col">작성자</th>
-					<th scope="col">내용</th>
 					<th scope="col">모임인원</th>
 					<th scope="col">모임장소</th>
 					<th scope="col">모임시간</th>
@@ -179,7 +178,6 @@ nav {
 						   	<td>${ meeting.seq }</td>
 							<td>${ meeting.title }</td>
 							<td>${ meeting.writer }</td>
-							<td>${ meeting.content }</td>
 							<td>${ meeting.per }</td>
 							<td>${ meeting.place }</td>
 							<td>${ meeting.meet_date }</td>

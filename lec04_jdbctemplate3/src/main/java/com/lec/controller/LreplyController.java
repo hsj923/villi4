@@ -30,6 +30,7 @@ import com.lec.jdbc.service.QreplyService;
 import com.lec.jdbc.service.QuestionService;
 import com.lec.jdbc.vo.BoardVO;
 import com.lec.jdbc.vo.CsReplyVO;
+import com.lec.jdbc.vo.GReplyVO;
 import com.lec.jdbc.vo.LReplyVO;
 import com.lec.jdbc.vo.QReplyVO;
 
@@ -97,6 +98,14 @@ public class LreplyController {
 		return "getLostList.do";
 	}
 
+	
+	  @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) 
+	  public String deleteLReply(Model model, LReplyVO lreply, SearchVO searchVO, @RequestParam int rno) { 
+		  lreply.setRno(rno);
+		  lreplyService.deleteLReply(lreply);
+		  return "getLostList.do"; 
+	  
+	  }
 	
 	/*
 	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public

@@ -83,6 +83,15 @@ color:black;
 color:#23dbc9;
 }
 
+.pagination li a {
+	border-radius: 0 !important;
+	color: #333 !important;
+}
+.pagination li.active a {
+	color: #fff !important;
+	background: #444 !important;
+	border-color: #444 !important;
+}
 
 </style>
 

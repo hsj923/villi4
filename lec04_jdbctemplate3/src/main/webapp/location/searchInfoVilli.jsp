@@ -320,7 +320,7 @@ function addMarker(position, order) {
         imageSize = new kakao.maps.Size(30, 36),  // 마커 이미지의 크기
         imgOptions =  {
             spriteSize : new kakao.maps.Size(71, 298), // 스프라이트 이미지의 크기
-            spriteOrigin : new kakao.maps.Point(44, (order*43)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            spriteOrigin : new kakao.maps.Point(44, (order*44)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
             offset: new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
         },
         markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),

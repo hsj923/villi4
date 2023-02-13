@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>Villi : 프로필 수정</title>
+<link rel="stylesheet" href="/jquery/themes/base/jquery.ui.all.css" />
 <link rel="icon" href="/img/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +23,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <style>
 @font-face {
@@ -33,137 +35,85 @@
 	font-weight: 400;
 	font-style: normal;
 }
-
 body {
 	font-family: 'Pretendard-Regular';
 }
 
 /*거래 후기 창 css*/
 #user-filter {
-	margin-top: 20px;
-	margin-bottom: 20px;
+   margin-top: 20px;
+   margin-bottom: 20px;
 }
-
-/* line 121, app/assets/stylesheets/home/users/show.css.scss */
 #user-filter ul {
-	list-style-type: none;
-	border-bottom: 1px solid #e9ecef;
-	padding-bottom: 10px;
+   list-style-type: none;
+   border-bottom: 1px solid ;
+   padding-bottom: 10px;
 }
-
-/* line 125, app/assets/stylesheets/home/users/show.css.scss */
 #user-filter ul li {
-	display: inline-block;
-	font-size: 17px;
+   display: inline-block;
+   font-size: 17px;
 }
-
-/* line 128, app/assets/stylesheets/home/users/show.css.scss */
 #user-filter ul li a {
-	color: #868e96;
-	text-decoration: none;
-	padding: 8px 20px;
+   color: #868e96;
+   text-decoration: none;
+   padding: 8px 20px;
 }
-
-/* line 133, app/assets/stylesheets/home/users/show.css.scss */
 #user-filter ul li a:hover {
-	color: #f76707;
+   color: #73cec7;
 }
-
-/* line 136, app/assets/stylesheets/home/users/show.css.scss */
 #user-filter ul li a.active {
-	border-bottom: 3px solid #f76707;
-	color: #f76707;
-	font-weight: 600;
-}
-/* 전체 후기 영역 */
-#user-records {
-	position: relative;
-}
-
-/* line 186, app/assets/stylesheets/home/users/show.css.scss */
-.user-reviews #reviews-list .review .review-nickname-nickname .destroyed
-	{
-	color: #adb5bd;
-	font-weight: normal;
-}
-
-/* line 190, app/assets/stylesheets/home/users/show.css.scss */
-.user-reviews #reviews-list .review .review-writer-nickname a {
-	color: #212529;
-	text-decoration: none;
-}
-
-/* line 194, app/assets/stylesheets/home/users/show.css.scss */
-.user-reviews #reviews-list .review .review-writer-nickname a:hover {
-	text-decoration: underline;
+   border-bottom: 3px solid #73cec7;
+   color: #73cec7;
+   font-weight: 600;
 }
 </style>
 
-<style type="text/css">
-
-/* Header */
-header {
-	background-color: #FFF;
-}
-
-.r_menu a {
-	text-decoration: none;
-	color: black;
-}
-
-.r_menu a:hover {
-	color: #23dbc9;
-}
-
-.btn_radius {
-	border-radius: 1.5em;
-}
-</style>
 </head>
 
 
 <body>
 	<!-- ===========header================ -->
-	<header class="border-bottom border-white">
-		<div class="container">
-			<div class="row align-items-start p-3">	
-				<div class="col mb-4">
-					<a href="getBoardList.do"><img src="/img/test.png"
-						alt="logo" width=70px height=70px></a>
+	<header class="contatiner border-bottom border-white">
+		<div class="container w-50">
+			<div class="row align-items-start p-2">
+
+
+				<div class="col mb-1">
+					<a href="getBoardList.do"><img src="/img/test.png" alt="logo"
+						width=70px height=70px></a>
 				</div>
-				
-					<c:if test="${ sessionScope.user.getNickname() == null }">
-					   <div class="col mt-3 text-end r_menu">
-						 <span class=mx-2><a href="index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
-					   </div>
-					</c:if> 
-										
-					<c:if test="${ sessionScope.user.getNickname() != null }">			
-					 <div class="col mt-3 text-end r_menu">
-					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
-					    
-					   <c:if test="${ !sessionScope.isAdmin }">
-						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						</c:if>
-						<c:if test="${sessionScope.isAdmin }">
-						<span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
-						</c:if>
-						
-						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-				     </div>							
-				   </c:if>
+
+				<c:if test="${ sessionScope.user.getNickname() == null }">
+					<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="index.jsp"
+							style="text-decoration: none" class="text-dark">로그인</a> </span>
+					</div>
+				</c:if>
+
+				<c:if test="${ sessionScope.user.getNickname() != null }">
+					<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="#" style="text-decoration: none"
+							class="text-dark">좋아요</a></span> <span class=mx-1><a
+							href="user/mypage.jsp" style="text-decoration: none"
+							class="text-dark">마이페이지</a></span> <span class=mx-1><a
+							href="location/infoVilli.jsp" style="text-decoration: none"
+							class="text-dark">동네정보</a></span> <span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					</div>
+				</c:if>
+
+
+
 			</div>
 		</div>
 	</header>
 	<!------------------ 본문 --------------------->
 	<div class="container w-50 mt-4">
-		<h3 class="fw-bold">${ user.nickname }</h3>
+		<h3 class="fw-bold ms-3">${ user.nickname }</h3>
 		<span> ${ user.address } </span>
 		<hr />
 		<section id="content">
-			<label for="inputProfile" class="mt-3">* 프로필 사진</label>
-			<div class="col-2 input-group mb-3 mt-2">
+			<label for="inputProfile" class="mt-3 ms-3">* 프로필 사진</label>
+			<div class="col-2 input-group ms-3 mb-3 mt-2">
 
 				<c:if test="${ !empty  user.fileName}">
 					<img src="/img/${ user.fileName }"
@@ -176,31 +126,30 @@ header {
 						alt="img">
 				</c:if>
 			</div>
-			
-			
+
+
 			<!-- 거래 후기 목록 -->
-			<div id="user-records-detail">
+			<div id="myTabs">
 				<section id="user-filter">
 					<ul>
-						<li><a class="active" href="getUser.do?nickname=${ user.nickname }">등록 게시물 </a></li>
-						<li><a class="" href="../user/getUser.jsp">거래 후기</a></li>
-						<li><a class="ReportList" href="">신고</a></li>
+						<li style="cursor:pointer"><a class="active"  id="goodsBoardBtn">등록 게시물</a></li>
+						<li style="cursor:pointer"><a id="goodsReviewBtn">거래 후기</a></li>
+						<li style="cursor:pointer"><a id="goodsReportBtn">신고</a></li>
+
 					</ul>
 				</section>
 			</div>
-			<div class="container mt-1">
+			<div class="container my-3" id="goodsBoardDiv">
 				<div class="row">
 					<c:forEach items="${MyboardList}" var="MyboardList">
 						<div class="col-12 col-md-6 col-lg-4 mt-2">
-							<div class="card">
-								<span class="border border-dark"> <a
-									href="updateBoard.do?seq=${MyboardList.getSeq()}"
-									class="link-dark" style="text-decoration: none"> <img
+						<div class="card" style="cursor: pointer;" onclick="location.href='updateBoard.do?seq=${MyboardList.getSeq()}';">
+								<span class="border border-dark"> <img
 										class="card-img-top" width="450" height="250"
-										src="/img/${ MyboardList.fileName1 }" alt="image"></a></span>
+										src="/img/${ MyboardList.fileName1 }" alt="image"></span>
 								<div class="card-body">
 
-									<!-- 글자수 넘칠 경우 자르기 -->
+
 									<h6 class="card-title fw-bold">
 										<c:choose>
 											<c:when test="${fn:length(MyboardList.title) > 19}">
@@ -211,7 +160,7 @@ header {
 											</c:otherwise>
 										</c:choose>
 
-										<!-- status 따라서 버튼 색상 변경 -->
+							
 										<c:choose>
 											<c:when test="${MyboardList.status eq '대기중'}">
 												<span class="badge bg-success text-white rounded-pill">${MyboardList.status}</span>
@@ -260,7 +209,7 @@ header {
 												d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
   <path
 												d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0
-z" />
+<!-- z" /> -->
 </svg>
 										${ MyboardList.cnt }
 									</p>
@@ -271,31 +220,95 @@ z" />
 				</div>
 			</div>
 		</section>
+		
+		
+	
+<!-- ==========================신고 게시글 리스트============================ -->
+		<div class="row my-3" style="display: none;" id="goodsReportDiv">
+			<table class="table table-hover table-bordered">
+				<thead class="table-dark">
+					<th scope="col">글번호</th>
+					<th scope="col">신고대상유저</th>
+					<th scope="col">신고사유</th>
+					<th scope="col">처리상태</th>
+<!-- 					<th scope="col">처리시간</th> -->
+					<th scope="col">신고시간</th>
+				</thead>
+				<tbody>
+					<c:forEach var="MyreportList" items="${ MyreportList }">
+						<tr>
+							<td>${ MyreportList.seq }</td>
+							<td>${ MyreportList.nickname }</td>
+							<td>${ MyreportList.r_rs1 }</td>
+							<td>${ MyreportList.r_status }</td>
+<%-- 							<td>${ MyreportList.r_etime }</td> --%>
+							<td>${ MyreportList.r_time }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		
+		
+<!-- ======================후기 게시글 리스트========================== -->		
+		<div class="row my-3" style="display: none;" id="goodsReviewDiv">
+			<table class="table table-hover table-bordered">
+				<thead class="table-dark">
+					<th scope="col">글번호</th>
+					<th scope="col">후기대상유저</th>
+					<th scope="col">후기내용</th>
+					<th scope="col">후기시간</th>
+				</thead>
+				<tbody>
+					<c:forEach var="MyreviewList" items="${ MyreviewList }">
+						<tr>
+							<td>${ MyreviewList.seq }</td>
+							<td>${ MyreviewList.nickname }</td>
+							<td>${ MyreviewList.rv_con }</td>
+							<td>${ MyreviewList.rv_time }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
-	<script>
-		$(function() {
-			
-				
-			$('.ReportList').click(function() {
-		        var form = {
-		                email : "admin@gmail.com"
-		        }	
-		        $.ajax({
-		            url: "good.do",
-		            type: "POST",
-		            data: form,
-		            success: function(data){
-		                $('#result').text(data);
-		            },
-		            error: function(){
-		                alert("ajax 에러!!!!!!!!");
-		            }
-		        });		        				
-			}); 
-		})
-	</script>
-	
+
+
+<script>
+$('#goodsBoardBtn').click(function() {
+    $("#goodsBoardDiv").show();
+    $("#goodsReportDiv").hide();
+    $("#goodsReviewDiv").hide();
+    $(this).addClass('active');
+    $("#goodsReportBtn").removeClass('active');
+    $("#goodsReviewBtn").removeClass('active');
+    // goodsBoardBtn을 클릭하면 goodsBoardDiv를 보여줘라
+ 
+})
+ 
+$('#goodsReportBtn').click(function() {
+    $("#goodsBoardDiv").hide();
+    $("#goodsReviewDiv").hide();
+    $("#goodsReportDiv").show();
+    $(this).addClass('active');
+    $("#goodsBoardBtn").removeClass('active');
+    $("#goodsReviewBtn").removeClass('active');
+    // goodsReportBtn을 클릭하면 goodsReportDiv를 숨겨라
+ 
+})
+ 
+$('#goodsReviewBtn').click(function() {
+    $("#goodsBoardDiv").hide();
+    $("#goodsReportDiv").hide();
+    $("#goodsReviewDiv").show();
+    $(this).addClass('active');
+    $("#goodsReportBtn").removeClass('active');
+    $("#goodsBoardBtn").removeClass('active');
+    // goodsReviewBtn을 클릭하면 goodsReviewDiv를 show
+ 
+})
+</script>
 
 </body>
 </html>

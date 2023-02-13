@@ -23,7 +23,7 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String login(UserVO vo) {
+	public String login() {
 		return "login/login.jsp";
 	}
 	
@@ -33,12 +33,10 @@ public class LoginController {
 		UserVO user = loginDAO.getUser(vo.getEmail());
 		UserVO user2 = userService.getUser(vo);
 
-		
 		if(user == null) {
 			session.setAttribute("isLoginSuccess", false);
 			return "login/login.jsp";
 		}
-		
 		
 		if(!user.getPassword().equals(vo.getPassword())) {
 			session.setAttribute("matchedPassword", false);
@@ -47,7 +45,6 @@ public class LoginController {
 		} else {
 			session.setAttribute("user", user2);
 			session.setAttribute("matchedPassword", true);
-			
 		}
 		
 		   if (user2 != null) {
@@ -61,6 +58,7 @@ public class LoginController {
 		      } else
 		    	  return "login/login.jsp";
 	}
+
 
 	@RequestMapping(value = "/emailCheck.do" , method = RequestMethod.POST)
 	   @ResponseBody

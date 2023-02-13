@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lec.jdbc.common.SearchVO;
 import com.lec.jdbc.service.MeetingService;
 import com.lec.jdbc.service.MreplyService;
+import com.lec.jdbc.vo.GReplyVO;
 import com.lec.jdbc.vo.MReplyVO;
 
 @Controller
@@ -68,7 +69,7 @@ public class MreplyController {
 		return "meeting/getMeetingList.jsp";
 	}
 
-	// ´ñ±Û ÀÛ¼º
+	// ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
 	@RequestMapping(value = "/insertMReply.do", method = RequestMethod.POST)
 	public String insertMReply(MReplyVO mreply, Model model, int seq) throws Exception {
 		model.addAttribute("seq", seq);
@@ -91,19 +92,12 @@ public class MreplyController {
 	}
 
 	
-	/*
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public
-	 * String deleteLReply(Model model, LReplyVO lreply, SearchVO
-	 * searchVO, @RequestParam int rno) { lreply.setRno(rno);
-	 * model.addAttribute("searchVO", searchVO);
-	 * model.addAttribute("qreply",lreplyService.getLReply(lreply)); return
-	 * "lost/deleteCsBoard.jsp";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.POST) public
-	 * String deleteLReply(QReplyVO qreply) { lreplyService.deleteQReply(qreply);
-	 * return "getLostList.do"; }
-	 */
+	  @RequestMapping(value="/deleteMReply.do", method=RequestMethod.GET) 
+	  public String deleteMReply(Model model, MReplyVO mreply, SearchVO searchVO, @RequestParam int rno) { 
+		  mreply.setRno(rno);
+		  mreplyService.deleteMReply(mreply);
+		  return "getMeetingList.do"; 
+	  
+	  }
 
 }

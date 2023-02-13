@@ -252,12 +252,16 @@ a {
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-start">
+					<a href="getUser.do?nickname=${ board.nickname }"
+                     style="text-decoration: none" class="text-dark">
+                     <img src="/img/${ user.fileName }" class="rounded-circle border border-dark" alt="img" width="75" height="75"> 
 						<a href="getUser.do?nickname=${ board.nickname }"
 							style="text-decoration: none" class="text-dark">
 <%-- 							<img src="/img/${ user.fileName }" class="rounded-circle border border-dark" alt="img" width="75" height="75">  --%>
                                     
 							<span>작성자 : ${ board.nickname }</span> <span
 							class="fs-5"></span></a>
+							<p class="fs-6 text-start" >${board.address }</p>
 					</h5>
 				</div>
 				<ul class="list-group list-group-flush">

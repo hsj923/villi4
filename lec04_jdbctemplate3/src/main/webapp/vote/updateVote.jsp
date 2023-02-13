@@ -133,7 +133,7 @@ pre { white-space: pre-wrap;
 				</div>
 			</div>
 		</div>
-	</div>
+
 
 	<!--==============================체크박스===============================   -->
 	<div class="container mt-3">
@@ -288,7 +288,7 @@ pre { white-space: pre-wrap;
 			<p>
 				<input type="hidden" name="seq" value="${vote.seq}">
 				<c:if test="${ sessionScope.isAdmin }">
-					<button type="submit">댓글 작성</button>
+					 <button class="btn btn-dark " type="submit">댓글 작성</button>
 				</c:if>
 			</p>
 		</form>
@@ -312,8 +312,10 @@ pre { white-space: pre-wrap;
 			<hr />
 		</c:forEach>
 		<br />
+		</div>
+				<!-- 댓글 끝 -->
+	</div>
 
-		<!-- 댓글 끝 -->
 
 	
 	<!-- 댓글 삭제 시 -->

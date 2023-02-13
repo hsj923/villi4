@@ -83,14 +83,10 @@ header {
 							<div class="input-group-text"><i class="fas fa-lock"></i></div>
 							<input type="password" name="password" class="form-control" id="password" required placeholder="비밀번호">
 						</div>
-					
-
+				
 			<c:if test="${ sessionScope.matchedPassword != null && !sessionScope.matchedPassword }">
 				<h9 style=" color: #d92742; font-weight: bold;">이메일 또는 비밀번호를 확인해주세요.</h9>
 			</c:if>
-				
-						
-					
 					
 					<br/>
 					<div class="input-group mb-1">
@@ -117,22 +113,3 @@ header {
 	
 </body>
 </html>		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	

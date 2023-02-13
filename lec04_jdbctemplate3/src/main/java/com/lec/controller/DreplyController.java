@@ -71,7 +71,7 @@ public class DreplyController {
 		return "demand/getDemandList.jsp";
 	}
 
-	// ´ñ±Û ÀÛ¼º
+	// ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
 	@RequestMapping(value = "/insertDReply.do", method = RequestMethod.POST)
 	public String insertDReply(DReplyVO vreply, Model model, int seq) throws Exception {
 		model.addAttribute("seq", seq);
@@ -93,20 +93,12 @@ public class DreplyController {
 		return "getDemandList.do";
 	}
 
-	
-	/*
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.GET) public
-	 * String deleteLReply(Model model, LReplyVO lreply, SearchVO
-	 * searchVO, @RequestParam int rno) { lreply.setRno(rno);
-	 * model.addAttribute("searchVO", searchVO);
-	 * model.addAttribute("qreply",lreplyService.getLReply(lreply)); return
-	 * "lost/deleteCsBoard.jsp";
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/deleteLReply.do", method=RequestMethod.POST) public
-	 * String deleteLReply(QReplyVO qreply) { lreplyService.deleteQReply(qreply);
-	 * return "getLostList.do"; }
-	 */
+	  @RequestMapping(value="/deleteDReply.do", method=RequestMethod.GET) 
+	  public String deleteDReply(Model model, DReplyVO dreply, SearchVO searchVO, @RequestParam int rno) { 
+		  dreply.setRno(rno);
+		  dreplyService.deleteDReply(dreply);
+		  return "getDemandList.do"; 
+	  
+	  }
 
 }
