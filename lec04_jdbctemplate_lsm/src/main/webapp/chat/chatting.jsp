@@ -51,7 +51,7 @@ body {
 					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
 				</div>
 				<div class="col" align="center">
-					<a href="getBoardList.do"><img src="resources/images/test.png"
+					<a href="../board/getBoardList.jsp"><img src="../resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
@@ -106,7 +106,7 @@ body {
 				<div class="Side-list">
 					<nav class="Sidebar">
 						<a class="UserProf" href="../index.jsp"> 
-					<img class="selected profile-image" src="../resources/images/logo.png"  alt="villi" >
+					<img class="selected profile-image" src="../resources/images/test.png"  alt="villi" >
 						</a>
 					</nav>
 					<nav class="User-list">
@@ -114,7 +114,7 @@ body {
 							<div class="nickname-area">사용자 닉네임</div>
 						</div>
 
-						<form action="updateChat.do" method="post" id="chatForm">
+						<form action="../chat/updateChat.jsp" method="post" id="chatForm">
 							<input type="hidden" id="curPage" name="curPage"
 								value="${searchVO.getCurPage()}"> <input type="hidden"
 								id="rowSizePerPage" name="rowSizePerPage"
@@ -210,16 +210,18 @@ body {
 					<!-- chat Form -->
 
 					<div id="nav-list">
-
 						<tr>
 							<td><input type="text" name="user" id="user"
 								placeholder="유저명" /></td>
 							<td>
 								<button type="button" class="btn btn-default" id="btnConnect">연결</button>
 							</td>
+								<a>${ sessionScope.user.getName() }</a>
+								<a>${ sessionScope.user.getRole() }</a>
 
 							<button type="button" class="btn btn-default" id="btnDisconnect">
 								<!-- 연결 끊기 -->
+								
 								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
 									fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
   					<path
@@ -286,8 +288,7 @@ body {
 									</div>
 								</label>
 							</div>
-							<input type=text class="disable css-1useanf" aria-disabled="true" placeholder="전송">
-						</input>
+							<input type=text class="disable css-1useanf" aria-disabled="true" placeholder="전송"></input>
 						</div>
 						</button>
 						
@@ -354,8 +355,8 @@ $('#btnConnect').click(function() {
 // 메세지 전송 및 아이디
 function print(user, txt) {
 	let temp = '';
-	temp += '<div style="margin-bottom:5px;">';
-	temp += '[' + user + '] ';
+	temp += '<div style="margin-bottom:5px;font-size: 17px; text-align: right; padding: 5px 12px; margin-right: 6px;">';
+	temp += '[' + user + '] '; /*DB테이블 유저 정보 기입*/
 	temp += txt;
 	temp += ' <span style="font-size:11px;color:#777;">' + new Date().toLocaleTimeString() + '</span>';
 	temp += '</div>';
@@ -398,7 +399,7 @@ $('#msg').keydown(function() {
 				
 		//서버에게 메시지 전달
 		//2#유저명#메시지
-		ws.send('2#' + $('#user').val() + '#' + $(this).val()); //서버에게
+		ws.send('#user' + $('#user').val() + '#' + $(this).val()); //서버에게
 		print($('#user').val(), $(this).val()); //본인 대화창에
 		
         $('#msg').val('');

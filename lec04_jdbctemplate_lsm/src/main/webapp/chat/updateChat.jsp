@@ -100,7 +100,7 @@
 							<div class="nickname-area">사용자 닉네임</div>
 						</div>
 						
-						<form action="updateChat.do" method="post" id="chatForm">
+						<form action="../getChatList.do" method="post" id="chatForm">
 							<input type="hidden" id="curPage" name="curPage"
 								value="${searchVO.getCurPage()}"> <input type="hidden"
 								id="rowSizePerPage" name="rowSizePerPage"
