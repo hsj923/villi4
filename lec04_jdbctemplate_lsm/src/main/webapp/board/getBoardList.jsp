@@ -34,34 +34,43 @@
 	font-weight: 400;
 	font-style: normal;
 }
+
 body {
 	font-family: 'Pretendard-Regular';
 }
+
 header {
 	background-color: #FFF;
 	height: 90px;
 }
+
 nav {
 	background-color: #fcfcfc;
 }
+
 #banner2 {
 	background-color: #ebecf0;
 }
+
 #banner img {
 	width: 100%;
 	height: 650px;
 	object-fit: cover;
 }
+
 .card-mtext {width =10px;height =10px;
 	
 }
+
 .r_menu a:hover {
 	color: #23dbc9
 }
+
 .pagination li a {
 	border-radius: 0 !important;
 	color: #333 !important;
 }
+
 .pagination li.active a {
 	color: #fff !important;
 	background: #444 !important;
@@ -74,27 +83,30 @@ nav {
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
-		
-				
+
+
 				<div class="col mb-4">
 					<a href="getBoardList.do"><img src="resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
-					<c:if test="${ sessionScope.user.getNickname() == null }">
-					   <div class="col mt-3 text-end r_menu">
-						 <span class=mx-2><a href="index.jsp" style="text-decoration:none" class="text-dark">로그인</a> </span> 
-					   </div>
-					</c:if> 
-										
-					<c:if test="${ sessionScope.user.getNickname() != null }">			
-					 <div class="col mt-3 text-end r_menu">
-					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="user/mypage.jsp" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-				     </div>							
-				   </c:if>
+				<c:if test="${ sessionScope.user.getNickname() == null }">
+					<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="index.jsp"
+							style="text-decoration: none" class="text-dark">로그인</a> </span>
+					</div>
+				</c:if>
+
+				<c:if test="${ sessionScope.user.getNickname() != null }">
+					<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="#" style="text-decoration: none"
+							class="text-dark">좋아요</a> </span> <span class=mx-1><a
+							href="user/mypage.jsp" style="text-decoration: none"
+							class="text-dark">마이페이지</a></span> <span class=mx-1><a
+							href="location/infoVilli.jsp" style="text-decoration: none"
+							class="text-dark">동네정보</a></span> <span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					</div>
+				</c:if>
 
 
 
@@ -103,8 +115,7 @@ nav {
 	</header>
 	<!-- ============banner=============== -->
 
-	<div id="carouselExampleControls"
-		class="carousel carousel-dark slide"
+	<div id="carouselExampleControls" class="carousel carousel-dark slide"
 		data-bs-ride="carousel" align="center">
 
 		<div class="carousel-indicators">
@@ -259,12 +270,12 @@ nav {
 								<c:choose>
 									<c:when test="${fn:length(board.title) > 19}">
 										<c:out value="${fn:substring(board.title,0,18)}" />....
-           </c:when>
+           							</c:when>
 									<c:otherwise>
 										<c:out value="${board.title}" />
 									</c:otherwise>
 								</c:choose>
-								
+
 								<!-- status 따라서 버튼 색상 변경 -->
 								<c:choose>
 									<c:when test="${board.status eq '대기중'}">
@@ -285,7 +296,6 @@ nav {
 								<c:if test="${ empty  board.price}">
 									<span>가격협의</span>
 								</c:if>
-
 							</div>
 							<div>
 								<c:if test="${ !empty  board.usedate}">
@@ -297,13 +307,12 @@ nav {
 							</div>
 							<div class="text-muted mt-3">작성자 : ${ board.writer }</div>
 							<p class="card-mtext">
-
-
 								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
 									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-  <path
+ 		 <path
 										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-</svg>        ${ board.like_cnt }
+</svg>
+								${ board.like_cnt }
 
 								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
 									fill="currentColor" class="bi bi-chat-square-dots"

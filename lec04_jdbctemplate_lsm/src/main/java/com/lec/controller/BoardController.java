@@ -141,7 +141,7 @@ public class BoardController {
 		return "getBoardList.do";
 	}	
 	
-	@RequestMapping("/download.do")
+//	@RequestMapping("/download.do")
 	public String download(HttpServletRequest req, HttpServletResponse res) throws Exception { 	
 		req.setCharacterEncoding("utf-8");
 		String fileName = req.getParameter("fn");

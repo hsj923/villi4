@@ -56,7 +56,6 @@ public class UserDAO {
 	}
 
 	public UserVO getUser(UserVO user) {
-		// System.out.println(jdbcTemplate.getDataSource().getConnection().toString());
 		Object[] args = { user.getEmail() };		
 		return (UserVO) jdbcTemplate.queryForObject(selectById, args, new UserRowMapper());
 	}
@@ -67,7 +66,6 @@ public class UserDAO {
 	
 
 	public UserVO getUserByNick(UserVO user) {
-		// System.out.println(jdbcTemplate.getDataSource().getConnection().toString());
 		Object[] args = { user.getNickname() };		
 		return (UserVO) jdbcTemplate.queryForObject(selectByNickname, args, new UserRowMapper());
 	}

@@ -22,6 +22,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	public BoardVO getBoard(BoardVO vo) {
 		return boardDAO.getBoard(vo);
+		
+		
 	}
 	
 	public int getTotalRowCount(SearchVO searchVO) {

@@ -489,16 +489,18 @@ img, svg {
 						<img class="selected profile-image"  src="resources/images/test.png"  alt="villi" >
 						</a>
 					</nav>
+
 					<nav class="User-list">
+							<!-- db에서 user닉네임 호출 -->
 						<div class="nickname-bar">
 							<div class="nickname-area">사용자 닉네임</div>
-							<!-- db에서 user닉네임 호출 -->
 						</div>
+						
 						<form action="getChatList.do" method="post" id="chatForm">
-							<input type="hidden" id="curPage" name="curPage"
+							<%-- <input type="hidden" id="curPage" name="curPage"
 								value="${searchVO.getCurPage()}"> <input type="hidden"
 								id="rowSizePerPage" name="rowSizePerPage"
-								value="${searchVO.getRowSizePerPage()}">
+								value="${searchVO.getRowSizePerPage()}"> --%>
 							<div class="container">
 								<div class="row justify-content-md">
 									<div class="col-md-2">
@@ -517,6 +519,7 @@ img, svg {
 								</div>
 							</div>
 						</form>
+						
 						<!-- 채팅 내의 검색 이동 href -->
 						<ul tabindex="0" role="list" aria-label="내 채널 리스트"
 							class="css-8lfz6g">
@@ -540,7 +543,7 @@ img, svg {
 																<div class="col-7 mb-3">
 																	<%-- ${ chat.getSeq() } --%>
 																	<td scope="row"><a
-																		href="chat/chatting.jsp?id=${ chat.getWriter() }">${ chat.getWriter() }</a>
+																		href="chat/chat.jsp?id=${ chat.getWriter() }">${ chat.getWriter() }</a>
 																		l</td>
 																	<c:choose>
 																		<c:when test="${chat.status eq '대기중'}">
@@ -572,8 +575,8 @@ img, svg {
 																			href="report/insertReport.jsp">신고하기</a></li>
 																		<li><a class="dropdown-item"
 																			href="chat/deleteChat.jsp">채팅방 삭제</a></li>
-																		<li><a class="dropdown-item"
-																			href="user/getUserList.jsp">마이페이지(임시)</a></li>
+																		<!-- <li><a class="dropdown-item"
+																			href="user/getUserList.jsp">마이페이지(임시)</a></li> -->
 																	</ul>
 																</div>
 															</div>

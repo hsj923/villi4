@@ -55,7 +55,7 @@ public class ChatDAO {
 
 	public ChatVO getChat(ChatVO chat) {
 		Object[] args = { chat.getSeq() };		
-		return (ChatVO) jdbcTemplate.queryForObject(selectByChatSeq, args, new ChatRowMapper());
+		return (ChatVO) jdbcTemplate.query(selectByChatSeq, args, new ChatRowMapper());
 	}
 	
 	public int getTotalRowCount(SearchVO searchVO) {
@@ -76,12 +76,11 @@ public class ChatDAO {
 		return jdbcTemplate.queryForInt(sql);
 	}
 
+	
 	public List<ChatVO> getChatList(SearchVO searchVO) {
-				
 		if(searchVO.getSearchType()==null || searchVO.getSearchType().isEmpty() ||
 				searchVO.getSearchWord()==null || searchVO.getSearchWord().isEmpty()) {
-			sql = selectChatListByTitle;
-			searchVO.setSearchType("title");
+			sql = selectChatListByWriter;
 		} else {
 			if(searchVO.getSearchType().equalsIgnoreCase("title")) {
 				sql = selectChatListByTitle;
@@ -91,11 +90,11 @@ public class ChatDAO {
 				sql = selectChatListByCate2;
 			} 					
 		}
-		
 		String searchWord = "%" + searchVO.getSearchWord() + "%";					
 		Object[] args = {searchWord, searchVO.getFirstRow(), searchVO.getRowSizePerPage()};
 		return jdbcTemplate.query(sql, args, new ChatRowMapper());
 	}
+	
 	
 	public ChatVO insertChat(ChatVO chat) {
 		jdbcTemplate.update(insertChat, chat.getTitle(), chat.getWriter(), chat.getContent(), chat.getCate2(), chat.getPrice(), chat.getFileName1(), chat.getFileName2(), chat.getFileName3(), chat.getFileName4(), chat.getFileName5());

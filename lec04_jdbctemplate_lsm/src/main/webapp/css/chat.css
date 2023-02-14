@@ -369,8 +369,9 @@ img, svg {
 	border: solid 1px black;
 }
 
-.col-2 {
-	border: solid 1px blue;
+.userprof {
+	width:45px;
+	height:45px;
 }
 
 .dropdown-toggle-split {

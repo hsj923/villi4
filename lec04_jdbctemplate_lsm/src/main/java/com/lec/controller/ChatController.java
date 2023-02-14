@@ -44,18 +44,15 @@ public class ChatController {
 	}
 
 	@RequestMapping("getChatList.do")
-	public String getChatList(Model model, SearchVO searchVO, @RequestParam(defaultValue = "1") int curPage,
-			@RequestParam(defaultValue = "20") int rowSizePerPage,
-			@RequestParam(defaultValue = "") String searchCategory, @RequestParam(defaultValue = "") String searchType,
+	public String getChatList(Model model, SearchVO searchVO, 
+			@RequestParam(defaultValue = "") String searchCategory,
+			@RequestParam(defaultValue = "") String searchType,
 			@RequestParam(defaultValue = "") String searchWord) {
 
 		searchVO.setTotalRowCount(chatService.getTotalRowCount(searchVO));
-		searchVO.setCurPage(curPage);
-		searchVO.setRowSizePerPage(rowSizePerPage);
 		searchVO.setSearchCategory(searchCategory);
 		searchVO.setSearchType(searchType);
 		searchVO.setSearchWord(searchWord);
-		searchVO.pageSetting();
 
 		List<ChatVO> chatList = chatService.getChatList(searchVO);
 		model.addAttribute("searchVO", searchVO);
@@ -102,14 +99,14 @@ public class ChatController {
 		chatService.deleteChat(chat);
 		return "getChatList.do";
 	}
-	@RequestMapping(value = "/chat.action", method = { RequestMethod.GET })
-	public String chat (HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-		return "chat";
-	}
+//	@RequestMapping(value = "/chat.action", method = { RequestMethod.GET })
+//	public String chat (HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+//		return "chat";
+//	}
 
 
 
-	 @RequestMapping("/download.do") 
+	/* @RequestMapping("/download.do") */
 	public String download(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		req.setCharacterEncoding("utf-8");
 		String fileName = req.getParameter("fn");

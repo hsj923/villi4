@@ -123,7 +123,7 @@
 			<input type="hidden" name="searchCategory" value="${searchVO.getSearchCategory()}">
 			<input type="hidden" name="searchType" value="${searchVO.getSearchType()}">
 			<input type="hidden" name="searchWord" value="${searchVO.getSearchWord()}">
-			<button type="submit" class="btn btn-danger text-white mt-4 rounded-pill" ><b>"${chat.getTitle()}"</b> 삭제하기</button>
+			<button type="submit" class="btn btn-danger text-white mt-4 rounded-pill" ><b>"전재성"님 과의 채팅방</b> 삭제하기</button>
 			<a href="../getChatList.do" class="btn btn-dark text-white ms-3 mt-4 rounded-pill"> 채팅리스트로 돌아가기</a>
 		</form>
 	</div>		
