@@ -257,7 +257,6 @@ a {
                      <img src="/img/${ user.fileName }" class="rounded-circle border border-dark" alt="img" width="75" height="75"> 
 						<a href="getUser.do?nickname=${ board.nickname }"
 							style="text-decoration: none" class="text-dark">
-<%-- 							<img src="/img/${ user.fileName }" class="rounded-circle border border-dark" alt="img" width="75" height="75">  --%>
                                     
 							<span>작성자 : ${ board.nickname }</span> <span
 							class="fs-5"></span></a>
@@ -440,12 +439,12 @@ a {
 				</div>
 			</div>
 		</section>
-		<c:if test="${ sessionScope.user.getName() != board.nickname }">
+		<c:if test="${ sessionScope.user.getNickname() != board.nickname }">
 			<div class="container row-3" align="center">
 				<a href="getBoardList.do" class="btn btn-dark my-5 mx-4">게시글목록</a>
 			</div>
 		</c:if>
-		<c:if test="${ sessionScope.user.getName() ==  board.nickname}">
+		<c:if test="${ sessionScope.user.getNickname() ==  board.nickname}">
 
 			<div class="container mt-3" align="center">
 				<form action="updateBoard.do" method="post">

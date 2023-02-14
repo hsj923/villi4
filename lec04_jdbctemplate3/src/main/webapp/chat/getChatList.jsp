@@ -327,6 +327,18 @@ img, svg {
 	height: 55px;
 }
 
+
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) * -.5);
+    margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+
 .Search-bar .unread-label {
 	display: flex;
 	padding: 6px;
@@ -361,10 +373,11 @@ img, svg {
 	border: solid 1px black;
 }
 
-.col-2 {
-	border: solid 1px blue;
+.userprof {
+	width:60px;
+	height:50px;
+	float:left;
 }
-
 .dropdown-toggle-split {
 	width: 40px;
 	height: 50px;
@@ -400,29 +413,13 @@ img, svg {
 	-moz-appearance: none;
 	appearance: none;
 }
+.mb-3 {
+    margin-bottom: 3rem!important;
+}
 </style>
 </head>
 <body>
-	<!-- ===========header================ -->
-	<header class="border-bottom border-white">
-		<div class="container">
-			<div class="row align-items-start p-3">
-		
-				
-				<div class="col mb-3">
-					<a href="getBoardList.do"><img src="/img/test.png"
-						alt="logo" width=70px height=70px></a>
-				</div>
 
-				<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
-				</div>
-			</div>
-		</div>
-	</header>
 	<!-- ============search=============== -->
 	<header class="border-bottom border-dark sticky-top z-index-10">
 		<div class="container" align="center">
@@ -448,7 +445,7 @@ img, svg {
 									<li class="nav-item"><a class="nav-link"
 										aria-current="page" href="../getLostList.do">동네분실센터</a></li>
 									<li class="nav-item"><a class="nav-link"
-										aria-current="page" href="../getMeetingList.do">동네모임</a></li>
+										aria-current="page" href="getMeetingList.do">동네모임</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="../getVoteList.do">동네투표</a></li>
 								</ul>
@@ -466,7 +463,8 @@ img, svg {
 				<div></div>
 				<div class="Side-list">
 					<nav class="Sidebar">
-						<a class="UserProf" href="../index.jsp"> <!-- 	<img class="selected profile-image" src="../resources/images/logo.png"  alt="villi" > -->
+						<!-- <a class="UserProf" href="../index.jsp"> -->
+						<img class="selected profile-image"  src="/img/test.png"  alt="villi" >
 						</a>
 					</nav>
 					<nav class="User-list">
@@ -513,21 +511,29 @@ img, svg {
 													<td align="center">
 														<div class="container">
 															<div class="row">
-																<div class="col-2 mb-3">프사</div>
+																<!-- <div class="col-2 mb-3"></div> -->
+																<%-- <span class="card-img-top" width="45" height="25"
+																	src="../resources/images/${ chat.filename1 }" alt="image"></span> --%>
+																<img class="userprof"  width="45px" height="45px;" src="/img/Default-Profile-Picture-PNG-Download-Image.png">
 																<div class="col-7 mb-3">
-																	${ chat.getSeq() }
-																	<td scope="row"><a href="updateChat.do?id=${ chat.getWriter() }">${ chat.getWriter() }</a>
-																		l</td><c:choose>
-											<c:when test="${chat.status eq '대기중'}">
-												<span class="badge bg-success text-white rounded-pill ">${chat.status}</span>
-											</c:when>
-											<c:when test="${chat.status eq '예약중'}">
-												<span class="badge bg-warning text-white rounded-pill">${chat.status}</span>
-											</c:when>
-											<c:when test="${chat.status eq '대여중'}">
-												<span class="badge bg-danger text-white rounded-pill ">${chat.status}</span>
-											</c:when>
-										</c:choose>
+																	<%-- ${ chat.getSeq() } --%>
+																	<td scope="row"><a
+																		href="chat/chatting.jsp?id=${ chat.getWriter() }">${ chat.getWriter() }</a>
+																		l</td>
+																	<c:choose>
+																		<c:when test="${chat.status eq '대기중'}">
+																			<span
+																				class="badge bg-success text-white rounded-pill ">${chat.status}</span>
+																		</c:when>
+																		<c:when test="${chat.status eq '예약중'}">
+																			<span
+																				class="badge bg-warning text-white rounded-pill">${chat.status}</span>
+																		</c:when>
+																		<c:when test="${chat.status eq '대여중'}">
+																			<span
+																				class="badge bg-danger text-white rounded-pill ">${chat.status}</span>
+																		</c:when>
+																	</c:choose>
 																</div>
 																<div class="col-1">
 																	<button type="button"
@@ -537,12 +543,15 @@ img, svg {
 																	</button>
 																	<ul class="dropdown-menu"
 																		aria-labelledby="dropdownMenuButton">
-																		<li><a class="dropdown-item" href="#">후기 남기기</a></li>
+																		<li><a class="dropdown-item"
+																			href="review/insertReview.jsp">후기 남기기</a></li>
 																		<!-- 후기 작성폼 생성 -->
 																		<li><a class="dropdown-item"
 																			href="report/insertReport.jsp">신고하기</a></li>
-																		<li><a class="dropdown-item" href="chat/deleteChat.jsp">채팅방
-																				삭제</a></li>
+																		<li><a class="dropdown-item"
+																			href="chat/deleteChat.jsp">채팅방 삭제</a></li>
+																		<li><a class="dropdown-item"
+																			href="user/getUserList.jsp">마이페이지(임시)</a></li>
 																	</ul>
 																</div>
 															</div>

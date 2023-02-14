@@ -55,80 +55,45 @@ nav {
 </style>
 </head>
 <body>
-	<!-- ============search=============== -->
-		<nav class="border-bottom border-dark sticky-top z-index-10">
-			<div class="container" align="center">
-				<div class="row p-3">
-					<div class="col">
+<!-- ===========header================ -->
+	<header class="border-bottom border-white">
+		<div class="container">
+			<div class="row align-items-start p-3">
 
-						<nav class="navbar navbar-expand-lg navbar-light">
-							<div class="container-fluid">
-								<a class="navbar-brand" href="getBoardList.do">Villi</a>
-								<button class="navbar-toggler" type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#navbarSupportedContent"
-									aria-controls="navbarSupportedContent" aria-expanded="false"
-									aria-label="Toggle navigation">
-									<span class="navbar-toggler-icon"></span>
-								</button>
-								<!--================ nav bar ===================-->
-								<div class="collapse navbar-collapse" id="navbarSupportedContent">
-								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									<li class="nav-item"><a class="nav-link active"
-										aria-current="page" href="meeting/insertMeeting.jsp">글작성</a>
-									</li>
-											
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getQuestionList.do">동네질문</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getLostList.do">분실센터</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="">동네모임</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getVoteList.do">동네투표</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getDemandList.do">빌리요청</a></li>
-										<li class="nav-item"><a class="nav-link"
-											aria-current="page" href="getGroupBuyingList.do">공동구매</a></li>
-									</ul>
-									<form action="getMeetingList.do" method="post" id="meetingForm">
-										<input type="hidden" id="curPage" name="curPage"
-											value="${searchVO.getCurPage()}"> <input
-											type="hidden" id="rowSizePerPage" name="rowSizePerPage"
-											value="${searchVO.getRowSizePerPage()}">
-										<div class="container">
-											<div class="row justify-content-md">
-												<div class="col-md-auto">
 
-													<select class="form-select" id="searchType"
-														name="searchType">
-														<option value="">검색</option>
-														<option value="title"
-															${searchVO.getSearchType()=="title" ? "selected" : ""}>제목</option>
-														<option value="writer"
-															${searchVO.getSearchType()=="writer" ? "selected" : "" }>작성자</option>
-														<option value="cate2"
-															${searchVO.getSearchType()=="cate2" ? "selected" : ""}>카테고리</option>
-													</select>
-												</div>
-												<div class="col col-lg-6">
-													<input class="form-control" name="searchWord" type="text"
-														placeholder="${searchVO.getCurPage()}of ${searchVO.getTotalRowCount()}" />
-												</div>
-												<div class="col col-lg-2">
-													<button class="btn btn-outline-success" type="submit">Search</button>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</nav>
-					</div>
+				<div class="col mb-4">
+					<a href="getBoardList.do"><img src="/img/test.png" alt="logo"
+						width=70px height=70px></a>
 				</div>
+
+				<c:if test="${ sessionScope.user.getNickname() == null }">
+					<div class="col mt-3 text-end r_menu">
+						<span class=mx-2><a href="index.jsp"
+							style="text-decoration: none" class="text-dark">로그인</a> </span>
+					</div>
+				</c:if>
+
+				<c:if test="${ sessionScope.user.getNickname() != null }">
+					<div class="col mt-3 text-end r_menu">
+
+						<c:if test="${ !sessionScope.isAdmin }">
+							<span class=mx-2><a href="getUserList.do"
+								style="text-decoration: none" class="text-dark">마이페이지</a></span>
+						</c:if>
+						<c:if test="${sessionScope.isAdmin }">
+							<span class=mx-2><a href="user/adminpage.jsp"
+								style="text-decoration: none" class="text-dark">관리자페이지</a></span>
+						</c:if>
+
+						<span class=mx-1><a href="location/infoVilli.jsp"
+							style="text-decoration: none" class="text-dark">동네정보</a></span> <span
+							class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					</div>
+				</c:if>
 			</div>
-		</nav>
-	<!-- =========상품보기=============== -->
+		</div>
+	</header>
+
 	<!-- ======================LIST========================= -->
 
 	<div class="container mt-3">
@@ -136,7 +101,6 @@ nav {
 			<table class="table table-hover table-bordered">
 				<thead class="table-dark">
 					<th scope="col">글번호</th>
-					<th scope="col">작성자</th>
 					<th scope="col">신고이유</th>
 					<th scope="col">처리여부</th>
 					<th scope="col">신고한대상</th>
@@ -145,16 +109,15 @@ nav {
 	
 				</thead>
 				<tbody>
-					<c:forEach var="report" items="${ reportList }">
+					<c:forEach var="reportList" items="${ reportList }">
 						<tr>
-						   	<td><a href="updateReport.do?rno=${report.getRno()}"
-								style="text-decoration: none">${ report.rno }</a></td>
-							<td>${ report.name }</td>
-							<td>${ report.r_rs1 }</td>
-							<td>${ report.r_status }</td>
-							<td>${ report.writer }</td>
-							<td>${ report.r_etime }</td>
-							<td>${ report.r_time }</td>
+						   	<td><a href="updateReport.do?seq=${reportList.seq}"
+								style="text-decoration: none">${ reportList.seq }</a></td>
+							<td>${ reportList.r_rs1 }</td>
+							<td>${ reportList.r_status }</td>
+							<td>${ reportList.nickname }</td>
+							<td>${ reportList.r_etime }</td>
+							<td>${ reportList.r_time }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

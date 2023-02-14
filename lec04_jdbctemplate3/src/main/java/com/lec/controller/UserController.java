@@ -52,7 +52,6 @@ public class UserController {
 	@Autowired
 	ReviewService reviewService;
 	
-	
 	@Autowired
 	Environment environment;
 	
@@ -150,7 +149,7 @@ public class UserController {
 	
 	
 	
-	// 동네 설정
+	    // 동네 설정
 	
 		@RequestMapping(value="/updateAddr.do", method=RequestMethod.GET)
 		public String updateAddr(UserVO user, HttpSession sess) throws IOException {
@@ -159,7 +158,8 @@ public class UserController {
 		
 		@RequestMapping(value="/updateAddr.do", method=RequestMethod.POST)
 		public String updateAddr(UserVO user, Model model, HttpSession sess) throws IOException {
-			
+			  
+			// 바뀐 동네로 세션 정보 업데이트
 			  sess.setAttribute("user", userService.updateAddr(user));
 			  sess.getAttribute("user");
 		      sess.setAttribute("user", userService.getUser(user));
@@ -179,7 +179,8 @@ public class UserController {
 		
 		@RequestMapping(value="/updatePro.do", method=RequestMethod.POST)
 		public String updatePro(UserVO user, Model model, HttpSession sess) throws IOException {
-		
+			
+			// 파일 업로드
 			MultipartFile uploadFile = user.getUploadFile();
 			
 			if (!uploadFile.isEmpty()) {
@@ -189,7 +190,7 @@ public class UserController {
 				user.setFileName(fileName);
 			}	
 			
-			 // 바뀐 정보로 세션 정보 업데이트!
+			 // 바뀐 정보로 세션 정보 업데이트
 		      sess.setAttribute("user", userService.updatePro(user));
 		      sess.getAttribute("user");
 		      sess.setAttribute("user", userService.getUser(user));

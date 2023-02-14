@@ -15,19 +15,19 @@ public class ReportServiceImpl implements ReportService {
 
 	@Autowired
 	ReportDAO reportDAO;
-	
+
 //	public ReportServiceImpl() {
-//		System.out.println("Service 객체 생성!!!!");
+//		System.out.println("Service ��ü ����!!!!");
 //	}
-	
+
 	public ReportVO getReport(ReportVO vo) {
 		return reportDAO.getReport(vo);
 	}
-	
+
 	public int getTotalRowCount(SearchVO searchVO) {
 		return reportDAO.getTotalRowCount(searchVO);
 	}
-	
+
 	@Override
 	public List<ReportVO> getReportList(SearchVO searchVO) {
 		return reportDAO.getReportList(searchVO);
@@ -37,7 +37,7 @@ public class ReportServiceImpl implements ReportService {
 	public ReportVO insertReport(ReportVO report) {
 		return reportDAO.insertReport(report);
 	}
-	
+
 	@Override
 	public int deleteReport(ReportVO report) {
 		return reportDAO.deleteReport(report);
@@ -48,11 +48,10 @@ public class ReportServiceImpl implements ReportService {
 		return reportDAO.updateReport(report);
 	}
 
-	
-//	내가쓴글목록
+//	�������۸��
 	@Override
 	public List<ReportVO> getMyReportList(String nickname) {
 		return reportDAO.getMyReportList(nickname);
 	}
-	
+
 }

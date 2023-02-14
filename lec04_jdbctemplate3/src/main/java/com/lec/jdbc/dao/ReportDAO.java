@@ -36,11 +36,11 @@ public class ReportDAO {
 	private String updateReport = "";
 	private String selectReportList = "";
 	
-//	내가쓴글목록
+//	�������۸��
 	private String selectMyReportList ="";
 	
 	
-//	제목,작성자,카테고리로 검색하기
+//	����,�ۼ���,ī�װ����� �˻��ϱ�
 	private String selectReportListByTitle = ""; 
 	private String selectReportListByNickname = ""; 
 	private String selectReportListByCate2 = "";
@@ -48,7 +48,7 @@ public class ReportDAO {
 	
 	@PostConstruct
 	public void getSqlPropeties() {
-		selectByReportSeq              = environment.getProperty("selectByReportSeq");
+		selectByReportSeq         = environment.getProperty("selectByReportSeq");
 		reportTotalRowCount       = environment.getProperty("reportTotalRowCount");
 		insertReport              = environment.getProperty("insertReport");
 		deleteReport              = environment.getProperty("deleteReport");
@@ -100,7 +100,6 @@ public class ReportDAO {
 				sql = selectReportListByCate2;
 			} 					
 		}
-		
 		String searchWord = "%" + searchVO.getSearchWord() + "%";					
 		Object[] args = {searchWord, searchVO.getFirstRow(), searchVO.getRowSizePerPage()};
 		return jdbcTemplate.query(sql, args, new ReportRowMapper());
@@ -113,9 +112,6 @@ public class ReportDAO {
 	
 	
 	public int deleteReport(ReportVO report) {
-		
-		System.out.println(report.toString());
-		
 		return jdbcTemplate.update(deleteReport, report.getSeq());
 	}
 

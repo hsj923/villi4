@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+
 import com.lec.jdbc.vo.ReportVO;
 
 public class ReportRowMapper implements RowMapper<ReportVO> {
@@ -15,7 +16,7 @@ public class ReportRowMapper implements RowMapper<ReportVO> {
 		report.setR_rs1(rs.getString("R_RS1"));
 		report.setR_con(rs.getString("R_CON"));
 		report.setR_time(rs.getString("R_TIME"));
-		report.setNickname(rs.getString("Nickname"));
+		report.setNickname(rs.getString("NICKNAME"));
 		return report;
 	}
 }

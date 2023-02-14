@@ -268,42 +268,46 @@ pre { white-space: pre-wrap;
 		}
 	</script>
 		
-			
 		<!-- 댓글 작성 -->
 		<div class="container-sm mt-5" align="center">
-		    <form method="post" action="insertQReply.do">
-		        <p>
-		            <label>댓글 작성자 : </label> <input type="text" name="writer" value="${ sessionScope.user.getName() }"readonly>
-		        </p>
-		        <p>
-		            <textarea rows="5" cols="50" name="content" style="width:100%"></textarea>
-		        </p>
-		        <p>
-		 
-		        	<input type="hidden" name="seq" value="${question.seq}">	 
-		        	<c:if test="${ sessionScope.isAdmin }">
-		            <button class="btn btn-dark " type="submit">댓글 작성</button>
-		            </c:if>
-		        </p>
-		    </form> 
+			<form method="post" action="insertQReply.do">
+				<p>
+					<label>댓글 작성자 : </label> <input type="text" name="writer"
+						value="${ sessionScope.user.getName() }" readonly>
+				</p>
+				<p>
+					<textarea rows="5" cols="50" name="content" style="width: 100%"></textarea>
+				</p>
+				<p>
+					<input type="hidden" name="seq" value="${question.seq}">
+					<c:if test="${ sessionScope.isAdmin }">
+						<button  class="btn btn-dark" type="submit">댓글 작성</button>
+					</c:if>
+				</p>
+			</form>
 		</div>
-		
+
 		<!-- 댓글 시작 -->
-	<div class="container-sm mt-5" align="center">
-         <c:forEach items="${qreplyList}" var="qreplyList">
-            <div class="card" style="border: 0;">
-               <ul class="list-group list-group-flush">
-                     <li class="list-group-item text-start">
-                        <span class="fs-5 fw-bold" style="color: #4881f7;">${qreplyList.writer}</span> &nbsp; <span class="mt-4 text-end" style="font-size:12px">댓글 등록일 : ${qreplyList.regDate}</span>
-                          <pre class="fs-6">${qreplyList.content}</pre>                         				
-                     </li>   
-                  </ul>
-            </div>
-            <hr />
-         </c:forEach>
-		<br />	
-		
-			
+		<div class="container-sm mt-5" align="center">
+			<c:forEach items="${qreplyList}" var="qreplyList">
+				<div class="card" style="border: 0;">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item text-start"><span
+							class="fs-5 fw-bold" style="color: #4881f7;">${qreplyList.writer}</span>
+							&nbsp; <span class="mt-4 text-end" style="font-size: 12px">댓글
+								등록일 : ${qreplyList.regDate}</span> &nbsp; <a
+							href="deleteQReply.do?rno=${qreplyList.rno}"
+							style="font-size: 12px; color: #999; text-decoration: none;"
+							onclick="deleteQReply()">삭제</a> <pre class="fs-6">${qreplyList.content}</pre></li>
+					</ul>
+				</div>
+				<hr />
+			</c:forEach>
+			<br />
+
+			<!-- 댓글 끝 -->
+			<div class="container row-3" align="center">
+						
 	<c:if test="${ sessionScope.user.getNickname() != question.writer }">
 			<div class="container row-3" align="center">
 				<a href="getQuestionList.do"
@@ -318,6 +322,21 @@ pre { white-space: pre-wrap;
 					class="btn btn-dark my-5 mx-4">게시글목록</a>
 			</div>
 		</c:if>
+		</div>
+
+		<!-- 댓글 삭제 시 -->
+		<script>
+			function deleteQReply() {
+				if (confirm("댓글을 삭제하겠습니까?")) {
+					self.location.href = "deleteQReply.do?rno=${ qreply.rno }";
+				}
+			}
+		</script>
+
+
+
+
+
 	</div>
 </body>
 </html>

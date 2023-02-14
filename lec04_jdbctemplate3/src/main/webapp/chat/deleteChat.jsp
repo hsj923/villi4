@@ -111,12 +111,8 @@
 		</div>
 	</nav>
 
-
-
-
-
 	<div class="container col-5 mt-5" align="center">
-			<h4>채팅방 삭제하기</h4>
+			<h4>채팅방 삭제하기</h4> 
 			
 			<hr/>
 	

@@ -69,9 +69,6 @@ public class CsController {
 		return "cs/getCsList.jsp";
 	}
 	
-	
-
-	
 	@RequestMapping("*/insertCs.do")
 	public String insertCs(CsVO cs) throws IOException {
 		MultipartFile uploadFile1 = cs.getUploadFile1();
@@ -115,11 +112,4 @@ public class CsController {
 		csService.deleteCs(cs);
 		return "getCsList.do";
 	}	
-	
-	
-
-	
-	
-	
-	
 	}	

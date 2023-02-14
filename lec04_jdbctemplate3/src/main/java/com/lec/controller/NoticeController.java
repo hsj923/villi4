@@ -28,7 +28,6 @@ public class NoticeController {
 	@Autowired
 	Environment environment;
 	
-	
 	@RequestMapping("getNoticeList.do")
 	public String getNoticeList(Model model, SearchVO searchVO,
 			@RequestParam(defaultValue="1") int curPage,
@@ -56,7 +55,6 @@ public class NoticeController {
 		return "redirect:/getNoticeList.do";
 	}
 	
-	
 	@RequestMapping(value="/updateNotice.do", method=RequestMethod.GET)
 	public String updateNotice(Model model, NoticeVO notice, SearchVO searchVO) {
 		model.addAttribute("searchVO", searchVO);
@@ -70,8 +68,6 @@ public class NoticeController {
 		return "getNoticeList.do";
 	}	
 
-	
-	
 	/*
 	 * @RequestMapping(value="/deleteNotice.do", method=RequestMethod.GET) public
 	 * String deleteNotice(Model model, NoticeVO notice, SearchVO
@@ -91,8 +87,5 @@ public class NoticeController {
 		noticeService.deleteNotice(notice);
 		return "redirect:/getNoticeList.do";	
 	}
-	
-	
-
 	
 }

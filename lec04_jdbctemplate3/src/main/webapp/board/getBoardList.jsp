@@ -110,15 +110,13 @@ nav {
 
 				<c:if test="${ sessionScope.user.getNickname() != null }">
 					<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration: none"
-							class="text-dark">좋아요</a></span>
 
 						<c:if test="${ !sessionScope.isAdmin }">
-							<span class=mx-1><a href="getUserList.do"
+							<span class=mx-2><a href="getUserList.do"
 								style="text-decoration: none" class="text-dark">마이페이지</a></span>
 						</c:if>
 						<c:if test="${sessionScope.isAdmin }">
-							<span class=mx-1><a href="user/adminpage.jsp"
+							<span class=mx-2><a href="user/adminpage.jsp"
 								style="text-decoration: none" class="text-dark">관리자페이지</a></span>
 						</c:if>
 
@@ -283,84 +281,88 @@ nav {
 	<div class="container mt-3">
 		<div class="row">
 			<c:forEach items="${boardList}" var="board">
-				<div class="col-12 col-md-6 col-lg-3 mt-5">
-					<div class="card">
-						<span class="border border-dark"> <a
-							href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
-							style="text-decoration: none"> <img class="card-img-top"
-								width="450" height="250" src="/img/${ board.fileName1 }"
-								alt="image"></a></span>
-						<div class="card-body">
+				<c:if test="${user.address eq board.address}">
+					<div class="col-12 col-md-6 col-lg-3 mt-5">
+						<div class="card">
+							<span class="border border-dark"> <a
+								href="updateBoard.do?seq=${board.getSeq()}" class="link-dark"
+								style="text-decoration: none"> <img class="card-img-top"
+									width="450" height="250" src="/img/${ board.fileName1 }"
+									alt="image"></a></span>
+							<div class="card-body">
 
-							<!-- 글자수 넘칠 경우 자르기 -->
-							<h6 class="card-title fw-bold">
-								<c:choose>
-									<c:when test="${fn:length(board.title) > 17}">
-										<c:out value="${fn:substring(board.title,0,16)}" />....
+								<!-- 글자수 넘칠 경우 자르기 -->
+								<h6 class="card-title fw-bold">
+									<c:choose>
+										<c:when test="${fn:length(board.title) > 17}">
+											<c:out value="${fn:substring(board.title,0,16)}" />....
            </c:when>
-									<c:otherwise>
-										<c:out value="${board.title}" />
-									</c:otherwise>
-								</c:choose>
+										<c:otherwise>
+											<c:out value="${board.title}" />
+										</c:otherwise>
+									</c:choose>
 
-								<!-- status 따라서 버튼 색상 변경 -->
-								<c:choose>
-									<c:when test="${board.status eq '대기중'}">
-										<span class="badge bg-success text-white rounded-pill">${board.status}</span>
-									</c:when>
-									<c:when test="${board.status eq '예약중'}">
-										<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
-									</c:when>
-									<c:when test="${board.status eq '대여중'}">
-										<span class="badge bg-danger text-white rounded-pill">${board.status}</span>
-									</c:when>
-								</c:choose>
-							</h6>
-							<div class="fw-bold">
-								<c:if test="${ !empty  board.price}">
-									<span>${ board.price }원</span>
-								</c:if>
-								<c:if test="${ empty  board.price}">
-									<span>가격협의</span>
-								</c:if>
+									<!-- status 따라서 버튼 색상 변경 -->
+									<c:choose>
+										<c:when test="${board.status eq '대기중'}">
+											<span class="badge bg-success text-white rounded-pill">${board.status}</span>
+										</c:when>
+										<c:when test="${board.status eq '예약중'}">
+											<span class="badge bg-warning text-white rounded-pill">${board.status}</span>
+										</c:when>
+										<c:when test="${board.status eq '대여중'}">
+											<span class="badge bg-danger text-white rounded-pill">${board.status}</span>
+										</c:when>
+									</c:choose>
+								</h6>
+								<div class="fw-bold">
+									<c:if test="${ !empty  board.price}">
+										<span>${ board.price }원</span>
+									</c:if>
+									<c:if test="${ empty  board.price}">
+										<span>가격협의</span>
+									</c:if>
 
-							</div>
-							<div>
-								<c:if test="${ !empty  board.usedate}">
-									<span>${ board.usedate } ~ ${ board.duedate }</span>
-								</c:if>
-								<c:if test="${ empty  board.usedate}">
-									<span>날짜상의</span>
-								</c:if>
-							</div>
-							<div class="mt-3">작성자 : ${ board.nickname }</div>
-							<div class="text-muted">${ board.address }</div>
-							<p class="card-mtext">
+								</div>
+								<div>
+									<c:if test="${ !empty  board.usedate}">
+										<span>${ board.usedate } ~ ${ board.duedate }</span>
+									</c:if>
+									<c:if test="${ empty  board.usedate}">
+										<span>날짜상의</span>
+									</c:if>
+								</div>
+								<div class="mt-3">작성자 : ${ board.nickname }</div>
+								<div class="text-muted">${ board.address }</div>
+								<p class="card-mtext">
 
 
-								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
-									fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+										fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
   <path
-										d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+											d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
 </svg>
-								${ board.like_cnt }
+									${ board.like_cnt }
 
-								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
-									fill="currentColor" class="bi bi-chat-square-dots"
-									viewBox="0 0 16 16">
+									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+										fill="currentColor" class="bi bi-chat-square-dots"
+										viewBox="0 0 16 16">
   <path
-										d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+											d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
   <path
-										d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0
+											d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0
 z" />
 </svg>
-								${ board.cnt }
-							</p>
+									${ board.cnt }
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:if>
 			</c:forEach>
+
 		</div>
+
 		<!-- =======================LIST 끝========================== -->
 
 		<!-- 게시판 -->
@@ -422,18 +424,27 @@ z" />
 			<!-- rowSizePerPage -->
 		</div>
 		<!-- 페이징 -->
+
 	</div>
+
 	<!-- main  -->
 
 	<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'//www.google-analytics.com/analytics.js', 'ga');
 
-		  ga('create', 'UA-11991680-4', 'ianlunn.github.io');
-		  ga('send', 'pageview');
-		</script>
+		ga('create', 'UA-11991680-4', 'ianlunn.github.io');
+		ga('send', 'pageview');
+	</script>
 
 	<script>
 		$(function() {

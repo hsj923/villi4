@@ -70,13 +70,12 @@ body {
 										
 					<c:if test="${ sessionScope.user.getNickname() != null }">			
 					 <div class="col mt-3 text-end r_menu">
-					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
-					    
+					 
 					   <c:if test="${ !sessionScope.isAdmin }">
-						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-2><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
 						</c:if>
 						<c:if test="${sessionScope.isAdmin }">
-						<span class=mx-1><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
+						<span class=mx-2><a href="user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
 						</c:if>
 						
 						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
@@ -89,7 +88,7 @@ body {
 	
 	
 	<!-- =================== 프로필 수정 시작 =======================-->
-   
+	
    <form action="updatePro.do" method="post" enctype="multipart/form-data">
 	<div class="container col-5 mt-4">
 	<h3 class="fw-bold">프로필 수정</h3>
@@ -97,7 +96,7 @@ body {
 	
 	<!-- 프로필 사진 수정 -->   
  	<label for="inputProfile" class="mt-3">* 프로필 사진</label>
-		  <div class="col-2 input-group mb-3 mt-2"> 
+		  <div class="col-2 input-group mb-3 mt-2">  
 		  
 		  <c:if test="${ !empty  user.getFileName()}">
 			<div class="select_img"><img src="/img/${ user.getFileName() }" class="rounded-circle border border-dark" width="80" height="80" alt="img"></div>
@@ -110,7 +109,6 @@ body {
 		  </c:if>
 		  
 		  </div>
-		  
 		  <input type="file" class="form-control mb-3" name="uploadFile"
 					id="uploadFile" aria-describedby="uploadFile" aria-label="Upload">
 		 <input type="hidden" name="fileName" value="${user.getFileName() }" />

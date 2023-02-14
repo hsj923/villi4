@@ -87,13 +87,12 @@ color:#23dbc9
 										
 					<c:if test="${ sessionScope.user.getNickname() != null }">			
 					 <div class="col mt-3 text-end r_menu">
-					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
-					    
+					 
 					   <c:if test="${ !sessionScope.isAdmin }">
-						<span class=mx-1><a href="../getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-2><a href="../getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
 						</c:if>
 						<c:if test="${sessionScope.isAdmin }">
-						<span class=mx-1><a href="../user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
+						<span class=mx-2><a href="../user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
 						</c:if>
 						
 						<span class=mx-1><a href="../location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
@@ -135,7 +134,7 @@ color:#23dbc9
 		
 		<div class="container mt-3" align="left">
 		  <ul class="list-group list-group-flush">
-		    <a href="#" class="list-group-item">게시물 신고</a>
+		     <a href="../getReportList.do" class="list-group-item">게시물 신고</a>
 		    <a href="../getCsList.do" class="list-group-item">고객 문의사항</a>
 		    <a href="../getNoticeList.do" class="list-group-item">공지사항</a>
 		 </ul>

@@ -369,25 +369,24 @@ border:solid 1px blue;
 </head>
 <body>
 	<!-- ===========header================ -->
-	<header class="border-bottom border-white">
-		<div class="container">
-			<div class="row align-items-start p-3">
-		
-				
-				<div class="col mb-3">
-					<a href="getBoardList.do"><img src="/img/test.png"
-						alt="logo" width=70px height=70px></a>
-				</div>
+		<header class="border-bottom border-white">
+			<div class="container">
+				<div class="row align-items-start p-3">
+					<div class="col mt-3">
+						<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
+					</div>
+					<div class="col" align="center">
+						<a href="getBoardList.do"><img src="resources/images/test.png"
+							alt="logo" width=70px height=70px></a>
+					</div>
 
-				<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					<div class="col mt-3 text-end r_menu">
+						<a href="#">좋아요</a> <span class="mx-4"> <a
+							href="getUserList.do">마이페이지</a></span> <span>
+					</div>
 				</div>
 			</div>
-		</div>
-	</header>
+		</header>
 <!-- ============search=============== -->	 		            
    <header class="border-bottom border-dark sticky-top z-index-10">            
 	<div class="container"  align="center">

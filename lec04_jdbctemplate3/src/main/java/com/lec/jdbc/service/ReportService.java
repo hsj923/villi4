@@ -14,6 +14,6 @@ public interface ReportService {
 	int deleteReport(ReportVO report);
 	int updateReport(ReportVO report);
 	
-//	신고리스트확인
+//	�Ű�����ƮȮ��
 	List<ReportVO> getMyReportList(String nickname);
 }

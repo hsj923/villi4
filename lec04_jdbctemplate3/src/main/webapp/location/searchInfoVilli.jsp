@@ -99,13 +99,12 @@ header {
 										
 					<c:if test="${ sessionScope.user.getNickname() != null }">			
 					 <div class="col mt-3 text-end r_menu">
-					    <span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a></span> 
-					    
+					 
 					   <c:if test="${ !sessionScope.isAdmin }">
-						<span class=mx-1><a href="../getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
+						<span class=mx-2><a href="../getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
 						</c:if>
 						<c:if test="${sessionScope.isAdmin }">
-						<span class=mx-1><a href="../user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
+						<span class=mx-2><a href="../user/adminpage.jsp" style="text-decoration:none" class="text-dark">관리자페이지</a></span>
 						</c:if>
 						
 						<span class=mx-1><a href="infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
@@ -218,7 +217,7 @@ function displayMarker(locPosition, message) {
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
         content : iwContent,
-        removaㅣ56ㅕㅏble : iwRemoveable
+        removable : iwRemoveable
     });
     
     // 인포윈도우를 마커위에 표시합니다 

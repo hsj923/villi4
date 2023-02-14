@@ -27,397 +27,24 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
-<style>
-/* @font-face { */
-/*     font-family: 'Pretendard-Regular'; */
-/*     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff'); */
-/*     font-weight: 400; */
-/*     font-style: normal; */
-/* } */
-
-/* body{ */
-/* font-family: 'Pretendard-Regular'; */
-
-/* } */
-
-/* nav{ */
-/*     background-color: #FFFAFA; */
-/* } */
-/* <style> */
-/* 	#banner img{ */
-
-/* 	width:100%; */
-/* 	height:650px; */
-/* 	object-fit: cover; */
-
-/* } */
-
-/* .r_menu a{ */
-/* text-decoration: none; */
-/* color:black; */
-/* } */
-
-/* @font-face { */
-/*     font-family: 'Pretendard-Regular'; */
-/*     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff'); */
-/*     font-weight: 400; */
-/*     font-style: normal; */
-/* } */
-
-/* body{ */
-/* font-family: 'Pretendard-Regular';} */
-.css-1ckh9yi {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	margin: 16px;
-	border: 1px solid gray;
-	border-radius: 8px;
-	height: 125px;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-}
-
-.css-10fmtiz {
-	margin: 12px 12px 0px;
-	width: calc(100% - 24px);
-	height: 63px;
-	line-height: 150%;
-	padding: 0px;
-	resize: none;
-	font-size: 14px;
-	border: solid 1px black;
-	border: none;
-	outline: none;
-	color: gray;
-	background-color: var(- -seed-semantic-color-paper-default);
-}
-
-textarea {
-	overflow: auto;
-}
-
-.css-1ckh9yi .chatform-option-area {
-	display: flex;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-	margin: 8px 10px;
-}
-
-.css-1ckh9yi .chatform-option-area .chatform-submenu {
-	display: flex;
-	-webkit-box-align: center;
-	align-items: center;
-	column-gap: 12px;
-}
-
-.css-1ckh9yi .option-wrapper {
-	display: inline-flex;
-	-webkit-box-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	justify-content: center;
-	width: 32px;
-	height: 32px;
-	cursor: pointer;
-	font-size: 0px;
-	/* 	border: solid 1px black; */
-}
-
-.css-1ckh9yi input[type="file"] {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	opacity: 0;
-}
-
-.css-1f5m7zv .sticker-button {
-	border: none;
-	background-color: white;
-}
-
-.css-1useanf {
-	border-radius: 4px;
-	width: 64px;
-	height: 32px;
-	line-height: 150%;
-	font-weight: bold;
-	font-size: 14px;
-	background-color: var(- -seed-scale-color-carrot-500);
-	color: rgb(255, 255, 255);
-	transition: background-color 0.5s ease 0s, color 0.5s ease 0s;
-}
-
-.css-1useanf.disable {
-	background-color: orange;
-	color: black;
-	border: none;
-}
-
-.css-1ckh9yi .text-length {
-	position: absolute;
-	right: 84px;
-	bottom: 11px;
-	font-size: 12px;
-	line-height: 150%;
-	color: gray;
-}
-
-.bi-geo-alt-fill {
-	height: 30px;
-	border: none;
-}
-/* ---------------------------------------------------------------------- */
-.nav-items {
-	position: fixed;
-}
-
-.List-container {
-	padding-top: 50px;
-	max-height: 100vh;
-	/* overflow: auto;  */
-	/*     float:center; */
-}
-
-.List-container .List-body {
-	display: flex;
-	-webkit-box-pack: center;
-	justify-content: center;
-	flex-direction: column;
-	height: calc(100vh - 64px);
-}
-
-.Chat-list {
-	display: flex;
-	overflow-x: auto;
-	position: relative;
-	margin: 0px auto;
-	height: 100%;
-}
-
-.Side-list {
-	display: flex;
-}
-
-.User-list {
-	display: flex;
-	border-right: 1px solid var(- -seed-semantic-color-divider-2);
-	width: 312px;
-	min-width: 312px;
-	flex-direction: column;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
-	background-color: var(- -seed-semantic-color-paper-default);
-}
-
-.nickname-bar {
-	position: relative;
-	display: flex;
-	height: 64px;
-	min-height: 64px;
-	border-bottom: 1px solid var(- -seed-semantic-color-divider-1);
-	padding: 0px 20px;
-	-webkit-box-align: center;
-	align-items: center;
-	border: solid 1px #ced4da;
-}
-
-.nickname-bar .nickname-area {
-	font-weight: bold;
-	font-size: 16px;
-	line-height: 150%;
-}
-
-.Search-bar {
-	display: flex;
-	flex-direction: row-reverse;
-	height: 44px;
-	min-height: 44px;
-	padding: 0px 6px;
-	border-bottom: 1px solid var(- -seed-semantic-color-divider-1);
-	font-size: 12px;
-	-webkit-box-align: center;
-	align-items: center;
-	border: solid 1px #ced4da;
-}
-
-.css-8lfz6g {
-	position: relative;
-	margin: 0px;
-	/*  padding: 0px; */
-	height: calc(100% - 56px);
-	list-style: none;
-	overflow: hidden auto;
-	background-color: var(- -seed-semantic-color-paper-sheet);
-	border: solid 1px #ced4da;
-}
-
-.User-list .faq-container {
-	display: flex;
-	-webkit-box-align: center;
-	align-items: center;
-	border-top: 1px solid var(- -seed-semantic-color-divider-2);
-	padding-left: 10px;
-	height: 56px;
-	min-height: 56px;
-	border: solid 1px #ced4da;
-}
-
-.Chatlist-box {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	border: 1px solid black;
-	min-width: 812px;
-	max-width: 812px;
-	background-color: var(- -seed-semantic-color-paper-default);
-}
-
-.Chatlist-box .empty-box {
-	display: flex;
-	-webkit-box-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	flex-direction: column;
-	border: solid 1px #ced4da;
-}
-
-.Side-list .Sidebar .profile-image.selected {
-	box-shadow: 0px 0px 0 2px var(- -seed-scale-color-gray-200), 0px 0px 0
-		4px rgb(255, 126, 54);
-}
-
-.Side-list .Sidebar {
-	display: flex;
-	flex-direction: column;
-	border-left: 1px solid var(- -seed-semantic-color-divider-1);
-	border-right: 1px solid var(- -seed-semantic-color-divider-1);
-	padding: 10px 10px;
-	width: 72px;
-	background-color: #BDBDBD;
-	border: solid 1px #ced4da;
-}
-
-.Side-list .Sidebar .UserProf {
-	position: relative;
-	display: inline-block;
-	width: 44px;
-	height: 44px;
-}
-
-.css-up958c {
-	position: relative;
-	display: flex;
-	-webkit-box-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	align-items: center;
-	height: 44px;
-	font-size: 14px;
-	color: var(- -color-blue800);
-	background-color: var(- -color-blue50);
-}
-
-img, svg {
-	vertical-align: middle;
-	height: 55px;
-}
-
-.Search-bar .unread-label {
-	display: flex;
-	padding: 6px;
-	border-radius: 6px;
-	font-weight: normal;
-	font-size: 13px;
-	line-height: 150%;
-	letter-spacing: -0.02em;
-	color: var(- -seed-scale-color-gray-600);
-}
-
-.form-control {
-	display: block;
-	width: 120%;
-	padding: 0.375rem 0.75rem;
-	font-size: 1.1rem;
-	font-weight: 1000;
-	line-height: 1.4;
-	color: #212529;
-	background-color: #fff;
-	background-clip: padding-box;
-	border: 1px solid #ced4da;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	border-radius: 0.25rem;
-	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-
-.col-6 {
-	line-height: 300%;
-	border: solid 1px black;
-}
-
-.col-2 {
-	border: solid 1px blue;
-}
-
-.dropdown-toggle-split {
-	width: 40px;
-	height: 50px;
-	background-color: gray;
-	border: solid 1px black;
-}
-
-.btn-outline-success {
-	width: 60px;
-}
-
-.form-select {
-	display: block;
-	width: 100%;
-	padding: 0.375rem 1.5rem 0.375rem 0.95rem;
-	-moz-padding-start: calc(0.75rem - 3px);
-	font-size: 1rem;
-	font-weight: 400;
-	line-height: 1.5;
-	color: #212529;
-	background-color: #fff;
-	background-image: url(data : image/ svg + xml, % 3csvg xmlns =
-		'http://www.w3.org/2000/svg' viewBox = '0 0 16 16' % 3e % 3cpath fill
-		= 'none' stroke = '%23343a40' stroke-linecap = 'round' stroke-linejoin
-		= 'round' stroke-width = '2' d = 'M2 5l6 6 6-6'/ % 3e % 3c/ svg % 3e);
-	background-repeat: no-repeat;
-	background-position: right 0.75rem center;
-	background-size: 16px 12px;
-	border: 1px solid #ced4da;
-	border-radius: 0.25rem;
-	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-}
-</style>
+ <link rel="stylesheet" href="../css/chat.css"></link>
 </head>
 <body>
-<!-- ===========header================ -->
+	<!-- ===========header================ -->
 	<header class="border-bottom border-white">
 		<div class="container">
 			<div class="row align-items-start p-3">
-		
-				
-				<div class="col mb-3">
-					<a href="getBoardList.do"><img src="/img/test.png"
+				<div class="col mt-3">
+					<a href="#"><i class="fas fa-calendar fa-2x text-dark"></i></a>
+				</div>
+				<div class="col" align="center">
+					<a href="getBoardList.do"><img src="resources/images/test.png"
 						alt="logo" width=70px height=70px></a>
 				</div>
 
 				<div class="col mt-3 text-end r_menu">
-						<span class=mx-2><a href="#" style="text-decoration:none" class="text-dark">좋아요</a> </span> 
-						<span class=mx-1><a href="getUserList.do" style="text-decoration:none" class="text-dark">마이페이지</a></span>
-						<span class=mx-1><a href="location/infoVilli.jsp" style="text-decoration:none" class="text-dark">동네정보</a></span>  
-						<span class="mx-2">${ sessionScope.user.getNickname() }님</span>
+					<a href="#">좋아요</a> <span class="mx-4"> <a
+						href="getUserList.do">마이페이지</a></span><span class="mx-2">${ sessionScope.user.getName() }님</span>
 				</div>
 			</div>
 		</div>
@@ -473,7 +100,7 @@ img, svg {
 							<div class="nickname-area">사용자 닉네임</div>
 						</div>
 						
-						<form action="updateChat.do" method="post" id="chatForm">
+						<form action="../getChatList.do" method="post" id="chatForm">
 							<input type="hidden" id="curPage" name="curPage"
 								value="${searchVO.getCurPage()}"> <input type="hidden"
 								id="rowSizePerPage" name="rowSizePerPage"
@@ -525,7 +152,7 @@ img, svg {
 																	</button>
 																	<ul class="dropdown-menu"
 																		aria-labelledby="dropdownMenuButton">
-																		<li><a class="dropdown-item" href="#">후기 남기기</a></li>
+																		<li><a class="dropdown-item" href="review/insertReview.jsp">후기 남기기</a></li>
 																		<!-- 후기 작성폼 생성 -->
 																		<li><a class="dropdown-item"
 																			href="report/insertReport.jsp">신고하기</a></li>
@@ -570,7 +197,8 @@ img, svg {
 					<div tabindex="0" role="region" aria-label="메시지리스트"
 						class="css-1bc192o"></div>
 					<form class="css-1ckh9yi">
-						<textarea placeholder="메시지를 입력해주세요" class="css-10fmtiz"></textarea>
+						<textarea placeholder="메시지를 입력해주세요" id="msg"></textarea>
+
 						<div class="chatform-option-area">
 							<div class="chatform-submenu">
 								<label class="option-wrapper"> <span
@@ -625,6 +253,7 @@ img, svg {
 	</section>
 	</div>
 	</div>
+	
 	<!-- -------------------------------------------------------------------------------------- -->
 	<!-- <div class="css-1oteowz">
   			<div class="css-up958c"> 
