@@ -99,10 +99,11 @@ public class ChatController {
 		chatService.deleteChat(chat);
 		return "getChatList.do";
 	}
-//	@RequestMapping(value = "/chat.action", method = { RequestMethod.GET })
-//	public String chat (HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
-//		return "chat";
-//	}
+	
+	@RequestMapping(value = "/chat.action", method = { RequestMethod.GET })
+	public String chat (HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
+		return "chat";
+	}
 
 
 

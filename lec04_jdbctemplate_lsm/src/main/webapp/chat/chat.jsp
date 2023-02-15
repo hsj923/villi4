@@ -302,6 +302,8 @@ body {
 						</button>
 			</div>
 			<!-- 채팅창 -->
+			
+			
 			<script>
 				//채팅 서버 주소
 				let url = "ws://localhost:8080/chat/chatServer";
@@ -428,6 +430,9 @@ body {
 					$('#msg').attr('disabled', true);
 				});
 			</script>
+			
+			
+			</main>
 	</div>
 	</form>
 	</div>
@@ -440,7 +445,6 @@ body {
   			<div class="css-up958c"> 
   						</div>
   						</div>-->
-	</main>
 	<div></div>
 	</div>
 	</div>
